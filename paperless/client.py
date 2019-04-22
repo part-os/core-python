@@ -36,19 +36,6 @@ class PaperlessClient(object):
         }
     }
 
-    """urls = {
-        VERSION_0: {
-            LOGIN: "https://api.paperlessparts.com/login",
-            ORDERS: {
-                GET: "https://api.paperlessparts.com/orders/by_number/",
-                LIST: "https://api.paperlessparts.com/orders/groups/"
-            },
-            QUOTES: {
-                GET: "https://dev.paperlessparts.com/api/quotes/by_number/"
-            }
-        }
-    }"""
-
     mappers = {
         VERSION_0: {
             ORDERS: {
