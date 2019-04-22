@@ -126,4 +126,4 @@ dmypy.json
 .idea
 
 # Local storage
-processed_orders.json
+.processed_orders.json
