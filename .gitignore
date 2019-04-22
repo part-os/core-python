@@ -124,3 +124,6 @@ dmypy.json
 
 # PyCharm
 .idea
+
+# Local storage
+.processed_orders.json

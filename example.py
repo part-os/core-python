@@ -8,8 +8,8 @@ class MyOrderListener(OrderListener):
         print(resource)
 
 
-my_order_listener = MyOrderListener(last_updated=49) #Challenge, how does one turn this on and off without passing in this number?
-my_client = PaperlessClient(username='', password='', group_slug='', version=PaperlessClient.VERSION_0)
-my_sdk = PaperlessSDK(my_client)
+my_client = PaperlessClient(username='jason@paperlessparts.com', password='P@perless2', group_slug='a-cut-above-cnc', version=PaperlessClient.VERSION_0)
+my_order_listener = MyOrderListener(client=my_client, last_updated=None)
+my_sdk = PaperlessSDK()
 my_sdk.add_listener(my_order_listener)
 my_sdk.run()
