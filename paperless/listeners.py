@@ -5,7 +5,7 @@ from typing import Optional
 
 class BaseListener:
     """
-    An inheritable base listener for new
+    An inheritable base listener for new object creation events
     """
     client = None
     data_store = None
