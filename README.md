@@ -21,11 +21,10 @@ To authenticate your client you will need to instantiate your client from paperl
 Writing a custom listener involves extending an object listener from paperless/listeners and overwriting its on_event method with your custom
 logic.
 
-```
+
 ### CAUTION
-Once registered, your custom on_event method will be hit repeatedly until it finishes successfully. If your listener is unable to succeed, it means that
-your program will get 'stuck' on that resource and will never be able to move on to other ones.
-```
+Once registered, your custom on_event method will be hit repeatedly until it finishes successfully.
+If your listener is unable to succeed, it means that your program will get 'stuck' on that resource and will never be able to move on to other ones.
 
 ## Instantiating your listener
 The first time you run the Paperless SDK you will have the option of configuring which resource to set as your baseline. 
