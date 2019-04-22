@@ -76,7 +76,7 @@ class BaseListener:
             return None
 
 class OrderListener(BaseListener):
-    data_store = "processed_orders.json"
+    data_store = ".processed_orders.json"
     type = "order"
 
     def get_first_resource_identifier(self):
@@ -87,7 +87,6 @@ class OrderListener(BaseListener):
         """
         order_list = self.client.get_resource_list(self.type, params={ 'o': '-number'})
         try:
-            print(order_list)
             return self.get_resource_unique_identifier(order_list[0])
         except IndexError:
             """
