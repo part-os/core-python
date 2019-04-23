@@ -62,7 +62,6 @@ class OrderItem:
     revision = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     ships_on = attr.ib(validator=attr.validators.instance_of(str)) # TODO: ADD date type checking and define this values format
     unit_price = attr.ib(validator=attr.validators.instance_of(Decimal))
-    #finishes = attr.ib() #TODO: DO WE NEED THIS?
 
 
 @attr.s(frozen=True)
