@@ -1,7 +1,7 @@
 from decimal import *
 from typing import List
 
-from .objects import Order, OrderMinimum
+#from .objects import Order, OrderMinimum
 
 class BaseMapper(object):
     @classmethod
@@ -11,10 +11,10 @@ class BaseMapper(object):
 
 #TODO: Make this a version
 class OrderDetailsMapper(BaseMapper):
-
-    def map(resource) -> Order:
+    @classmethod
+    def map(cls, resource):
         # Verision 0.0
-        billing_address = {
+        billing_info = {
             'business_name': resource['buyer_billing']['business_name'],
             'city': resource['buyer_billing']['address']['city'],
             'country': resource['buyer_billing']['address']['country']['abbr'] if \
@@ -68,7 +68,7 @@ class OrderDetailsMapper(BaseMapper):
             'tax_rate': Decimal(str(resource['tax_rate'])) if Decimal(resource['tax_rate']) > 0 else None,
         }
 
-        shipping_address = {
+        shipping_info = {
             'business_name': resource['buyer_shipping']['business_name'],
             'city': resource['buyer_shipping']['address']['city'],
             'country': resource['buyer_shipping']['address']['country']['abbr'] \
@@ -91,17 +91,29 @@ class OrderDetailsMapper(BaseMapper):
             'type': resource['shipping_option']['type'],
         }
 
-        return Order(
-            billing_address=billing_address,
-            customer=customer,
-            number=resource['number'],
-            order_items=order_items,
-            payment_details=payment_details,
-            shipping_address=shipping_address,
-            shipping_option=shipping_option
-        )
+        return {
+            'billing_info': billing_info,
+            'customer': customer,
+            'number': resource['number'],
+            'order_items': order_items,
+            'payment_details': payment_details,
+            'shipping_info': shipping_info,
+            'shipping_option': shipping_option
+        }
 
 
 class OrderMinimumMapper(BaseMapper):
-    def map(resource) -> List[OrderMinimum]:
-        return [OrderMinimum(o['number']) for o in resource]
+    @classmethod
+    def map(cls, resource) -> List[int]:
+        return { 'number': resource['number'] }
+        #return [o['number'] for o in resources]
+
+
+class PaymentTermsMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        return {
+            'id': resource['id'],
+            'label': resource['label'],
+            'period': resource['period']
+        }

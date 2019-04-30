@@ -1,15 +1,16 @@
 import json
 import requests
 
-from .api_mappers import OrderDetailsMapper, OrderMinimumMapper
-from .exceptions import PaperlessAuthorizationException
-from .listeners import OrderListener
+#from .api_mappers import OrderDetailsMapper, OrderMinimumMapper
+from .exceptions import PaperlessAuthorizationException, PaperlessException, PaperlessNotFoundException
+#from .listeners import OrderListener
 
 class PaperlessClient(object):
     GET = 'get'
     LIST = 'list'
     LOGIN = 'login'
-    ORDERS = OrderListener.type
+    ORDERS = 'orders'
+    PAYMENT_TERMS = 'payment_terms'
     QUOTES = 'quotes'
 
     VERSION_0 = 'v0.0'
@@ -17,33 +18,38 @@ class PaperlessClient(object):
 
     __instance = None
     # TODO: Find a better way to do authentication
+    base_url = "https://api.paperlessparts.com"
     group_slug = None
     password = None
     token = None
     username = None
     version = VERSION_0
 
+    #TODO: KILL!!!
     urls = {
         VERSION_0: {
-            LOGIN: "https://dev.paperlessparts.com/api/login",
+            LOGIN: "login",
             ORDERS: {
-                GET: "https://dev.paperlessparts.com/api/orders/by_number/",
-                LIST: "https://dev.paperlessparts.com/api/orders/groups/"
+                GET: "orders/by_number/",
+                LIST: "orders/groups/"
+            },
+            PAYMENT_TERMS: {
+                LIST: "customers/"
             },
             QUOTES: {
-                GET: "https://dev.paperlessparts.com/api/quotes/by_number/"
+                GET: "quotes/by_number/"
             }
         }
     }
 
-    mappers = {
+    """mappers = {
         VERSION_0: {
             ORDERS: {
                 GET: OrderDetailsMapper,
                 LIST: OrderMinimumMapper
             },
         }
-    }
+    }"""
 
     def __new__(cls, **kwargs):
         """
@@ -52,6 +58,9 @@ class PaperlessClient(object):
         if PaperlessClient.__instance is None:
             PaperlessClient.__instance = object.__new__(cls)
         instance = PaperlessClient.__instance
+
+        if 'base_url' in kwargs:
+            instance.base_url = kwargs['base_url']
 
         if 'username' in kwargs:
             instance.username = kwargs['username']
@@ -96,10 +105,13 @@ class PaperlessClient(object):
             'User-Agent': 'python-paperlessSDK V0 library'
         }
 
+        resp = requests.post(
+            "{}/{}".format(self.base_url, self.urls[self.version][self.LOGIN]),
+            data=json.dumps(data),
+            headers=headers
+        )
 
-        resp = requests.post(self.urls[self.version][self.LOGIN], data=json.dumps(data), headers=headers)
-
-        if resp.status_code is 200:
+        if resp.status_code == 200:
             self.token = resp.json()['token']
         elif 200 < resp.status_code < 500:
             raise PaperlessAuthorizationException(
@@ -108,7 +120,19 @@ class PaperlessClient(object):
                 message = resp.json()['message']
             )
 
-    def check_for_next_resource(self, resource_type, last_updated) -> (bool, object):
+    def get_resource_list(self, list_url, params=None):
+        headers = self.get_authenticated_headers()
+        resp = requests.get(
+            "{}/{}".format(
+                self.base_url,
+                list_url
+            ), # check for next number, assumes they are sequential
+            headers=headers,
+            params=params
+        )
+        return resp.json()
+
+    def get_resource(self, resource_url, id, params=None):
         """
             takes a resource type
             performs GET request for last updated + 1
@@ -116,27 +140,45 @@ class PaperlessClient(object):
         """
         headers = self.get_authenticated_headers()
 
-        resp = requests.get(
-            "{}/{}".format(self.urls[self.version][resource_type][self.GET], last_updated + 1), # check for next number, assumes they are sequential
-            headers=headers,
-            params={'group': self.group_slug}
-        )
+        req_url = "{}/{}/{}".format(self.base_url, resource_url,id)
 
-        if resp.status_code is 200:
-            #todo: map to object
-            return True, self.mappers[self.version][resource_type][self.GET].map(resource=resp.json())
-        elif resp.status_code is 404: # Do I need to do this if this is the default?
-            return False, None
-        elif resp.status_code is 401 and resp.json()['code'] is 'authentication_failed':
-            self.token = None
-        return False, None
-
-    def get_resource_list(self, resource_type, params={}):
-        headers = self.get_authenticated_headers()
         resp = requests.get(
-            "{}/{}".format(self.urls[self.version][resource_type][self.LIST], self.group_slug), # check for next number, assumes they are sequential
+            req_url,
             headers=headers,
             params=params
         )
 
-        return self.mappers[self.version][resource_type][self.LIST].map(resource=resp.json()['results'])
+        if resp.status_code == 200:
+            #return self.mappers[self.version][resource_type][self.GET].map(resource=resp.json())
+            return resp.json()
+        elif resp.status_code == 404: # Do I need to do this if this is the default?
+            raise PaperlessNotFoundException(
+                message="Unable to locate object with id {} from url: {}".format(id, req_url)
+            )
+        elif resp.status_code == 401 and resp.json()['code'] == 'authentication_failed':
+            self.token = None
+            return None
+
+    def create_resource(self, resource_url, data):
+        """
+            takes a resource type
+            performs GET request for last updated + 1
+            will return true if the next object exists, else false
+        """
+        headers = self.get_authenticated_headers()
+
+        req_url = '{}/{}'.format(self.base_url, resource_url)
+
+        resp = requests.post(
+            req_url,
+            headers=headers,
+            data=data
+        )
+
+        if resp.status_code == 201:
+            return resp.json()
+        else:
+            raise PaperlessException(
+                message="Failed to create resource",
+                error_code=resp.status_code
+            )

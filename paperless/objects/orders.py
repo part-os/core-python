@@ -2,45 +2,12 @@ import attr
 from decimal import Decimal
 from typing import List
 
-def convert_cls(cl):
-    """If the attribute is an instance of cls, pass, else try constructing."""
-    def converter(val):
-        if isinstance(val, cl):
-            return val
-        else:
-            return cl(**val)
-    return converter
+from paperless.api_mappers import OrderDetailsMapper, OrderMinimumMapper
+from paperless.client import PaperlessClient
+from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 
-def convert_iterable(cl):
-    # TODO: RAISE UNITERABLE ERROR FOR THIS
-    def converter(iterable):
-        return [cl(**val) for val in iterable]
-    return converter
-
-
-@attr.s(frozen=True)
-class Address:
-    business_name = attr.ib(validator=attr.validators.instance_of(str))
-    city = attr.ib(validator=attr.validators.instance_of(str))
-    country = attr.ib(validator=attr.validators.in_(['CA', 'USA']))
-    first_name = attr.ib(validator=attr.validators.instance_of(str))
-    last_name = attr.ib(validator=attr.validators.instance_of(str))
-    line1 = attr.ib(validator=attr.validators.instance_of(str))
-    line2 = attr.ib(validator=attr.validators.instance_of(str))
-    phone = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    phone_ext = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    postal_code = attr.ib(validator=attr.validators.instance_of(str))
-    state = attr.ib(validator=attr.validators.instance_of(str))  # TODO: DO I WANT THIS TO BE A SATE OR SHOULD THIS BE INTERNATIONAL?
-
-
-@attr.s(frozen=True)
-class Customer:
-    business_name = attr.ib(validator=attr.validators.instance_of(str))
-    email = attr.ib(validator=attr.validators.instance_of(str))
-    first_name = attr.ib(validator=attr.validators.instance_of(str))
-    last_name = attr.ib(validator=attr.validators.instance_of(str))
-    phone = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    phone_ext = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+from .address import Address
+from .utils import convert_cls, convert_iterable
 
 
 @attr.s(frozen=True)
@@ -85,16 +52,50 @@ class ShippingOption:
 
 
 @attr.s(frozen=True)
-class Order:
-    billing_address: Address = attr.ib(converter=convert_cls(Address))
-    customer: Customer = attr.ib(converter=convert_cls(Customer))
-    number = attr.ib(validator=attr.validators.instance_of(int)) #TODO: TYPING FOR THIS
-    order_items: List[OrderItem] = attr.ib(converter=convert_iterable(OrderItem))
-    payment_details: PaymentDetails = attr.ib(converter=convert_cls(PaymentDetails)) # TODO: SHOULD THIS BE A DIFFERENT TITLE?
-    shipping_address: Address = attr.ib(converter=convert_cls(Address))
-    shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))
+class OrderCustomer:
+    business_name = attr.ib(validator=attr.validators.instance_of(str))
+    email = attr.ib(validator=attr.validators.instance_of(str))
+    first_name = attr.ib(validator=attr.validators.instance_of(str))
+    last_name = attr.ib(validator=attr.validators.instance_of(str))
+    phone = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone_ext = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=True)
-class OrderMinimum:
+class OrderMinimum(FromJSONMixin):
+    _mapper = OrderMinimumMapper
+
     number = attr.ib(validator=attr.validators.instance_of(int))
+
+
+@attr.s(frozen=True)
+class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
+    _mapper = OrderDetailsMapper
+    _list_mapper = OrderMinimumMapper
+    _list_object_representation = OrderMinimum
+
+    billing_info: Address = attr.ib(converter=convert_cls(Address))
+    customer: OrderCustomer = attr.ib(converter=convert_cls(OrderCustomer))
+    number: int = attr.ib(validator=attr.validators.instance_of(int))
+    order_items: List[OrderItem] = attr.ib(converter=convert_iterable(OrderItem))
+    payment_details: PaymentDetails = attr.ib(converter=convert_cls(PaymentDetails))
+    shipping_info: Address = attr.ib(converter=convert_cls(Address))
+    shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))
+
+    @classmethod
+    def construct_get_url(cls):
+        return 'orders/by_number'
+
+    @classmethod
+    def construct_get_params(cls):
+        client = PaperlessClient.get_instance()
+        return {'group': client.group_slug }
+
+    @classmethod
+    def construct_list_url(cls):
+        client = PaperlessClient.get_instance()
+        return 'orders/groups/{}'.format(client.group_slug)
+
+    @classmethod
+    def parse_list_response(cls, results):
+        return results['results']
