@@ -1,6 +1,9 @@
 def convert_cls(cl):
     """If the attribute is an instance of cls and not None, pass, else try constructing."""
     def converter(val):
+        print(val)
+        print(cl)
+        print(isinstance(val, cl))
         if val is None:
            return None
         elif isinstance(val, cl):

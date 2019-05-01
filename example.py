@@ -6,7 +6,7 @@ from paperless.mixins import UpdateMixin
 
 from paperless.objects.address import Address
 from paperless.objects.orders import Order
-from paperless.objects.contacts import CustomerContact, PaymentTerms
+from paperless.objects.contacts import CompanyContact, CustomerContact, PaymentTerms
 
 from paperless.client import PaperlessClient
 
@@ -14,8 +14,8 @@ from paperless.client import PaperlessClient
 import attr
 
 my_client = PaperlessClient(
-    username='',
-    password='',
+    username='jason@paperlessparts.com',
+    password='P@perless2',
     group_slug='a-cut-above-cnc',
     version=PaperlessClient.VERSION_0,
     base_url="https://dev.paperlessparts.com/api"
@@ -81,7 +81,25 @@ print("test_customer_contact")
 #print(test_customer_contact)
 """
 
+"""
+TEST CREATE COMPANY
+"""
+"""
+minimum_company = CompanyContact(
+    business_name="minimum business name",
+    id=551
+)
+#minimum_company.create()
+print(minimum_company)
 
+minimum_customer_contact = CustomerContact(
+    email="william+minimalemail30@paperlessparts.com",
+    first_name="William",
+    last_name="Headrick",
+    company=minimum_company
+)
+minimum_customer_contact.create()
+"""
 
 """
 TESTING GET OBJECT
@@ -107,8 +125,12 @@ class MyOrderListener(OrderListener):
         print(resource)
         print(resource.to_dict())
 
+
+order_list = Order.list(params={'o': '-number'})
+print(order_list)
 my_sdk = PaperlessSDK()
-my_sdk.add_listener(MyOrderListener(last_updated=30))
+#my_sdk.add_listener(MyOrderListener(last_updated=30))
+my_sdk.add_listener(MyOrderListener())
 my_sdk.run()
 
 #test = Order.get(52)

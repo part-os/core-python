@@ -77,6 +77,7 @@ class CustomerContactEncoder(BaseContactEncoder):
     def encode(cls, resource):
         company_id = None
         if resource.company is not None:
+            # TODO: ACCESS PRIMARY KEY?
             company_id = getattr(resource.company, 'id')
 
         customer_values = {

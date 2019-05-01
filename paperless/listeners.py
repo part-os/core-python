@@ -83,7 +83,9 @@ class OrderListener(BaseListener):
 
         :return: the order number of the newest order, or 0 if it is None
         """
-        order_list = Order.list(params={'o': '-created'})
+        order_list = Order.list(params={'o': '-number'})
+        print("order_list")
+        print(order_list)
         try:
             return self.get_resource_unique_identifier(order_list[0])
         except IndexError:

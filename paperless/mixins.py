@@ -90,6 +90,8 @@ class CreateMixin(object):
         client = PaperlessClient.get_instance()
         data = self.to_json()
         client.create_resource(self.construct_post_url(), data=data)
+        #TODO: SAVE ID
+        #TODO: DO I NEED TO UPDATE THE ENTIRE OBJECT?
 
 
 class UpdateMixin(object):

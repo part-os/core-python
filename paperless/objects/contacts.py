@@ -30,10 +30,6 @@ class PaymentTerms(CreateMixin, FromJSONMixin, ListMixin, ToDictMixin, ToJSONMix
         client = PaperlessClient.get_instance()
         return 'customers/groups/{}/payment_terms'.format(client.group_slug)
 
-    @classmethod
-    def construct_patch_url(cls):
-        return 'customers'
-
 
 #TODO: MAKE GENERIC CLASSES
 @attr.s
@@ -61,15 +57,27 @@ class CompanyContact(BaseContact):
 
     business_name: str = attr.ib(validator=attr.validators.instance_of(str), kw_only=True)
 
+    @classmethod
+    def construct_patch_url(cls):
+        return 'companies'
+
+    @classmethod
+    def construct_post_url(cls):
+        client = PaperlessClient.get_instance()
+        return 'companies/groups/{}'.format(client.group_slug)
 
 @attr.s
 class CustomerContact(BaseContact):
     _json_encoder = CustomerContactEncoder
 
-    company: Optional[CompanyContact] = attr.ib(converter=convert_cls(PaymentTerms), default=None)
+    company: Optional[CompanyContact] = attr.ib(converter=convert_cls(CompanyContact), default=None)
     email: str = attr.ib(validator=attr.validators.instance_of(str), kw_only=True)
     first_name: str = attr.ib(validator=attr.validators.instance_of(str), kw_only=True)
     last_name: str = attr.ib(validator=attr.validators.instance_of(str), kw_only=True)
+
+    @classmethod
+    def construct_patch_url(cls):
+        return 'customers'
 
     @classmethod
     def construct_post_url(cls):
