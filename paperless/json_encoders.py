@@ -28,7 +28,6 @@ class AddressEncoder(BaseJSONEncoder):
         ])
         country = { 'abbr': getattr(resource, 'country', None)}
         state = { 'abbr': getattr(resource, 'state', None)}
-
         return json.dumps({
             **address_info_values,
             'address': {
@@ -44,11 +43,15 @@ class BaseContactEncoder(BaseJSONEncoder):
     def encode(cls, resource):
         billing_info = []
         if resource.billing_info is not None:
-            billing_info.append(resource.billing_info.to_json())
+            billing_info.append(json.loads(resource.billing_info.to_json()))
 
         shipping_info = []
         if resource.shipping_info is not None:
-            shipping_info.append(resource.shipping_info.to_json())
+            shipping_info.append(json.loads(resource.shipping_info.to_json()))
+
+        payment_terms_id = None
+        if resource.payment_terms is not None:
+            payment_terms_id = getattr(resource.payment_terms, 'id')
 
         contact_values = {
             **select_keys(resource, keys=[
@@ -62,7 +65,7 @@ class BaseContactEncoder(BaseJSONEncoder):
             ]),
         }
 
-        return ({
+        return json.dumps({
             **contact_values,
             'billing_info': billing_info,
             'shipping_info': shipping_info,
@@ -72,6 +75,10 @@ class BaseContactEncoder(BaseJSONEncoder):
 class CustomerContactEncoder(BaseContactEncoder):
     @classmethod
     def encode(cls, resource):
+        company_id = None
+        if resource.company is not None:
+            company_id = getattr(resource.company, 'id')
+
         customer_values = {
             **select_keys(resource, keys=[
                 'email',
@@ -81,6 +88,27 @@ class CustomerContactEncoder(BaseContactEncoder):
         }
 
         return json.dumps({
-            **super().encode(resource),
-            **customer_values
+            **json.loads(super().encode(resource)),
+            **customer_values,
+            'company_id': company_id
         })
+
+
+class CompanyContactEncoder(BaseContactEncoder):
+    @classmethod
+    def encode(cls, resource):
+        company_values = {
+            **select_keys(resource, keys=[
+                'business_name',
+            ])
+        }
+
+        return json.dumps({
+            **json.loads(super().encode(resource)),
+            **company_values
+        })
+
+class PaymentTermsEncoder(BaseJSONEncoder):
+    @classmethod
+    def encode(cls, resource):
+        return json.dumps(select_keys(resource, keys=['label','period']))

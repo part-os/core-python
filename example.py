@@ -13,55 +13,48 @@ from paperless.client import PaperlessClient
 
 import attr
 
+my_client = PaperlessClient(
+    username='',
+    password='',
+    group_slug='a-cut-above-cnc',
+    version=PaperlessClient.VERSION_0,
+    base_url="https://dev.paperlessparts.com/api"
+)
+
 print("HELLO WILLIAM")
 
 """
 TESTING PAYMENT TERMS
 """
 """
-my_client = PaperlessClient(
-    username='jason@paperlessparts.com',
-    password='P@perless2',
-    group_slug='a-cut-above-cnc',
-    version=PaperlessClient.VERSION_0,
-    base_url="https://dev.paperlessparts.com/api"
-)
 print(PaymentTerms.list())
 """
 """
 TESTING CREATE CUSTOMER
 """
-my_client = PaperlessClient(
-    username='jason@paperlessparts.com',
-    password='P@perless2',
-    group_slug='a-cut-above-cnc',
-    version=PaperlessClient.VERSION_0,
-    base_url="https://dev.paperlessparts.com/api"
-)
-
+"""
 test_shipping_address = Address(
+    address1="133 Portland St",
     business_name="Test Shipping Dept",
     city="Boston",
     country="USA",
     first_name="Shippo",
     last_name="Hippo",
-    line1="133 Portland St",
     phone=1234567890,
     postal_code="02134",
     state="MA"
 )
 test_billing_address = Address(
+    address1="137 Portland St",
     business_name="Test Accts Payable Dept",
     city="Boston",
     country="USA",
     first_name="Accountant",
     last_name="Dude",
-    line1="137 Portland St",
     phone=1234567890,
     postal_code="02134",
     state="MA"
 )
-
 minimum_customer_contact = CustomerContact(
     email="william+minimalemail4@paperlessparts.com",
     first_name="William",
@@ -69,39 +62,31 @@ minimum_customer_contact = CustomerContact(
 )
 print(minimum_customer_contact.to_json())
 #test_customer_contact.save()
+
+payment_term = PaymentTerms.list()[0]
+
 complete_customer_contact = CustomerContact(
     billing_info=test_billing_address,
-    email="william+minimalemail4@paperlessparts.com",
+    email="william+minimalemail8@paperlessparts.com",
     first_name="William",
     last_name="Headrick",
+    payment_terms=payment_term,
     shipping_info=test_shipping_address
 )
 print(complete_customer_contact.to_json())
-complete_customer_contact.save()
-"""for attr, value in test_customer_contact.__dict__.items():
-    print("attr")
-    print(attr)
-    print("value")
-    print(value)
-    print("isinstance(value, UpdateMixin)")
-    print(isinstance(value, UpdateMixin))"""
+complete_customer_contact.create(
 
 
 print("test_customer_contact")
 #print(test_customer_contact)
+"""
+
 
 
 """
 TESTING GET OBJECT
 """
 """
-my_client = PaperlessClient(
-    username='jason@paperlessparts.com',
-    password='P@perless2',
-    group_slug='a-cut-above-cnc',
-    version=PaperlessClient.VERSION_0,
-    base_url="https://dev.paperlessparts.com/api"
-)
 test = Order.get(52)
 order_list = Order.list()
 print("order list")
@@ -112,20 +97,15 @@ print(order_list)
 """
 TESTING LISTENERS!
 """
-"""
+#test = Address(**{'address1': '15 MAIN ST', 'address2': '', 'business_name': 'MAS Product Development Inc.', 'city': 'NASHU', 'country': 'USA', 'first_name': 'Matt', 'last_name': 'Sordillo', 'phone': '', 'phone_ext': '', 'postal_code': '03064-2728', 'state': 'NH'})
+#print(test)
+
+
 class MyOrderListener(OrderListener):
     def on_event(self, resource):
         print("on event")
         print(resource)
         print(resource.to_dict())
-
-my_client = PaperlessClient(
-    username='jason@paperlessparts.com',
-    password='P@perless2',
-    group_slug='a-cut-above-cnc',
-    version=PaperlessClient.VERSION_0,
-    base_url="https://dev.paperlessparts.com/api"
-)
 
 my_sdk = PaperlessSDK()
 my_sdk.add_listener(MyOrderListener(last_updated=30))
@@ -137,5 +117,4 @@ print("test")
 #print(test)
 print("to dict")
 #print(test.to_dict())
-"""
 

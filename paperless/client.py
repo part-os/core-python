@@ -140,7 +140,7 @@ class PaperlessClient(object):
         """
         headers = self.get_authenticated_headers()
 
-        req_url = "{}/{}/{}".format(self.base_url, resource_url,id)
+        req_url = "{}/{}/{}".format(self.base_url, resource_url, id)
 
         resp = requests.get(
             req_url,
@@ -161,9 +161,6 @@ class PaperlessClient(object):
 
     def create_resource(self, resource_url, data):
         """
-            takes a resource type
-            performs GET request for last updated + 1
-            will return true if the next object exists, else false
         """
         headers = self.get_authenticated_headers()
 
@@ -180,5 +177,29 @@ class PaperlessClient(object):
         else:
             raise PaperlessException(
                 message="Failed to create resource",
+                error_code=resp.status_code
+            )
+
+    def update_resource(self, resource_url, id, data):
+        """
+            takes a resource type
+            performs GET request for last updated + 1
+            will return true if the next object exists, else false
+        """
+        headers = self.get_authenticated_headers()
+
+        req_url = '{}/{}/{}'.format(self.base_url, resource_url, id)
+
+        resp = requests.patch(
+            req_url,
+            headers=headers,
+            data=data
+        )
+
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            raise PaperlessException(
+                message="Failed to update resource",
                 error_code=resp.status_code
             )

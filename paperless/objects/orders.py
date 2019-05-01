@@ -82,6 +82,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     shipping_info: Address = attr.ib(converter=convert_cls(Address))
     shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))
 
+
     @classmethod
     def construct_get_url(cls):
         return 'orders/by_number'

@@ -83,7 +83,6 @@ class OrderListener(BaseListener):
 
         :return: the order number of the newest order, or 0 if it is None
         """
-
         order_list = Order.list(params={'o': '-created'})
         try:
             return self.get_resource_unique_identifier(order_list[0])
@@ -98,6 +97,7 @@ class OrderListener(BaseListener):
 
     def get_resource_unique_identifier(self, resource):
         """ returns order.number """
+        # TODO: BRING TO THE OBJECT LEVEL
         return resource.number
 
     def get_new_resource(self):
@@ -105,4 +105,3 @@ class OrderListener(BaseListener):
             return Order.get(self.get_last_resource_processed() + 1)
         except PaperlessNotFoundException:
             return None
-

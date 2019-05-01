@@ -15,14 +15,14 @@ class OrderDetailsMapper(BaseMapper):
     def map(cls, resource):
         # Verision 0.0
         billing_info = {
+            'address1': resource['buyer_billing']['address']['address1'],
+            'address2': resource['buyer_billing']['address']['address2'],
             'business_name': resource['buyer_billing']['business_name'],
             'city': resource['buyer_billing']['address']['city'],
             'country': resource['buyer_billing']['address']['country']['abbr'] if \
                 resource['buyer_billing']['address']['country'] else 'USA',
             'first_name': resource['buyer_billing']['first_name'],
             'last_name': resource['buyer_billing']['last_name'],
-            'line1': resource['buyer_billing']['address']['address1'],
-            'line2': resource['buyer_billing']['address']['address2'],
             'phone': resource['buyer_billing']['phone'],
             'phone_ext': resource['buyer_billing']['phone_ext'],
             'postal_code': resource['buyer_billing']['address']['postal_code'],
@@ -69,14 +69,14 @@ class OrderDetailsMapper(BaseMapper):
         }
 
         shipping_info = {
+            'address1': resource['buyer_shipping']['address']['address1'],
+            'address2': resource['buyer_shipping']['address']['address2'],
             'business_name': resource['buyer_shipping']['business_name'],
             'city': resource['buyer_shipping']['address']['city'],
             'country': resource['buyer_shipping']['address']['country']['abbr'] \
                 if resource['buyer_shipping']['address']['country'] else 'USA', # TODO: Apparantely for some old addresses we don't have countries stored? See interpro Order 102. I think its better to default it to null then to let it be blank
             'first_name': resource['buyer_shipping']['first_name'],
             'last_name': resource['buyer_shipping']['last_name'],
-            'line1': resource['buyer_shipping']['address']['address1'],
-            'line2': resource['buyer_shipping']['address']['address2'],
             'phone': resource['buyer_shipping']['phone'],
             'phone_ext': resource['buyer_shipping']['phone_ext'],
             'postal_code': resource['buyer_shipping']['address']['postal_code'],

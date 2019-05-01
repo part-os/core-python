@@ -5,15 +5,16 @@ from typing import Optional
 
 from paperless.api_mappers import PaymentTermsMapper
 from paperless.client import PaperlessClient
-from paperless.json_encoders import CustomerContactEncoder
-from paperless.mixins import FromJSONMixin, ListMixin, ToDictMixin, ToJSONMixin, UpdateMixin
+from paperless.json_encoders import CompanyContactEncoder, CustomerContactEncoder, PaymentTermsEncoder
+from paperless.mixins import CreateMixin, FromJSONMixin, ListMixin, ToDictMixin, ToJSONMixin, UpdateMixin
 
 from .address import Address
 from .utils import convert_cls, convert_iterable, phone_length_validator, tax_rate_validator
 
 @attr.s
-class PaymentTerms(FromJSONMixin, ListMixin, ToDictMixin, UpdateMixin): #TODO: LIST MIXIN
+class PaymentTerms(CreateMixin, FromJSONMixin, ListMixin, ToDictMixin, ToJSONMixin):
     _mapper = PaymentTermsMapper
+    _json_encoder = PaymentTermsEncoder
 
     id: int = attr.ib(validator=(attr.validators.instance_of(int)))
     label: str = attr.ib(validator=(attr.validators.instance_of(str)))
@@ -24,18 +25,28 @@ class PaymentTerms(FromJSONMixin, ListMixin, ToDictMixin, UpdateMixin): #TODO: L
         client = PaperlessClient.get_instance()
         return 'customers/groups/{}/payment_terms'.format(client.group_slug)
 
+    @classmethod
+    def construct_post_url(cls):
+        client = PaperlessClient.get_instance()
+        return 'customers/groups/{}/payment_terms'.format(client.group_slug)
 
+    @classmethod
+    def construct_patch_url(cls):
+        return 'customers'
+
+
+#TODO: MAKE GENERIC CLASSES
 @attr.s
-class BaseContact(FromJSONMixin, UpdateMixin):
+class BaseContact(CreateMixin, FromJSONMixin, ToJSONMixin, UpdateMixin):
     billing_info: Optional[Address] = attr.ib(converter=convert_cls(Address), default=None)
     credit_line: Optional[Decimal] = attr.ib(validator=attr.validators.optional(
         attr.validators.instance_of(Decimal)), default=None)
     id: Optional[int] = attr.ib(validator=attr.validators.optional(
         attr.validators.instance_of(int)), default=None)
-    payment_terms_id: Optional[PaymentTerms] = attr.ib(converter=convert_cls(PaymentTerms), default=None)
-    phone: Optional[int] = attr.ib(validator=attr.validators.optional(
-        [attr.validators.instance_of(int), phone_length_validator]), default=None)
-    phone_ext: int = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)), default=None)
+    payment_terms: Optional[PaymentTerms] = attr.ib(converter=convert_cls(PaymentTerms), default=None)
+    phone: Optional[str] = attr.ib(validator=attr.validators.optional(
+        [attr.validators.instance_of(str), phone_length_validator]), default=None)
+    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
     purchase_orders: bool = attr.ib(validator=attr.validators.instance_of(bool), default=False)
     shipping_info: Optional[Address] = attr.ib(converter=convert_cls(Address), default=None)
     tax_exempt: bool = attr.ib(validator=attr.validators.instance_of(bool), default=True)
@@ -46,11 +57,13 @@ class BaseContact(FromJSONMixin, UpdateMixin):
 
 @attr.s
 class CompanyContact(BaseContact):
+    _json_encoder = CompanyContactEncoder
+
     business_name: str = attr.ib(validator=attr.validators.instance_of(str), kw_only=True)
 
 
 @attr.s
-class CustomerContact(BaseContact, ToJSONMixin):
+class CustomerContact(BaseContact):
     _json_encoder = CustomerContactEncoder
 
     company: Optional[CompanyContact] = attr.ib(converter=convert_cls(PaymentTerms), default=None)

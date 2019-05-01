@@ -1,6 +1,7 @@
 import attr
 
 from .api_mappers import BaseMapper
+from .exceptions import PaperlessException
 from .json_encoders import BaseJSONEncoder
 from .client import PaperlessClient
 
@@ -58,8 +59,6 @@ class ListMixin(object):
         client = PaperlessClient.get_instance()
         resource_list = cls.parse_list_response(
             client.get_resource_list(cls.construct_list_url(), params=params))
-        print("resource list")
-        print(resource_list)
         if cls._list_object_representation:
             return [cls._list_object_representation.from_json(resource) for resource in resource_list]
         else:
@@ -81,42 +80,27 @@ class ToJSONMixin(object):
         return self._json_encoder.encode(self)
 
 
-class UpdateMixin(object):
-    _primary_key = "id"
-
+class CreateMixin(object):
     @classmethod
     def construct_post_url(cls):
         # this is a hack because of how awful our api endpoints currently are
         raise NotImplementedError
 
-    @classmethod
-    #PATCH OR PUT?
+    def create(self):
+        client = PaperlessClient.get_instance()
+        data = self.to_json()
+        client.create_resource(self.construct_post_url(), data=data)
+
+
+class UpdateMixin(object):
+    _primary_key = 'id'
+
     def construct_patch_url(cls):
         # this is a hack because of how awful our api endpoints currently are
         raise NotImplementedError
 
-    def save_children(self):
-        for attr, value in self.__dict__.items():
-            if isinstance(value, UpdateMixin):
-                print("we have a value to update value =")
-                print("value")
-                value.save()
-                # TODO: UPDATE VALUE AFTER SAVE?
-                #maybe.... something like this
-                #setattr(self, attr, value.save())
-
-    def save(self):
+    def update(self):
         client = PaperlessClient.get_instance()
         primary_key = getattr(self, self._primary_key)
-        self.save_children()
         data = self.to_json()
-        if primary_key and int(primary_key) > 0:
-            # update
-            client.update_resource(self.construct_put_url(), data=data)
-            print("perform update")
-        else:
-            #create
-            client.create_resource(self.construct_post_url(), data=data)
-            #TODO: UPDATE OUR ID
-            #JUST ID RIGHT?
-            print("perform create")
+        client.update_resource(self.construct_patch_url(), primary_key, data=data)

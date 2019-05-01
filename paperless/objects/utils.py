@@ -12,11 +12,17 @@ def convert_cls(cl):
 def convert_iterable(cl):
     # TODO: RAISE UNITERABLE ERROR FOR THIS
     def converter(iterable):
-        return [cl(**val) for val in iterable]
+        result = []
+        for val in iterable:
+            if isinstance(val, cl):
+                result.append(val)
+            else:
+                result.append(cl(**val))
+        return result
     return converter
 
 def phone_length_validator(instance, attribute, value):
-    if len(str(value)) is not 10:
+    if len(value) is not 10:
         raise ValueError("Invalid phone number for {}. Phone number must be 10 digits.".format(
             attribute
         ))
