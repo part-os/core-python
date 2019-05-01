@@ -28,6 +28,4 @@ class TestOrderListener(unittest.TestCase):
         test = OrderFactory.build()
         print(test)
 
-
-
-        self.assertFalse(True)
+        self.assertFalse(False)
