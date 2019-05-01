@@ -1,6 +1,6 @@
 import attr
 from decimal import Decimal
-from typing import List
+from typing import List, Optional
 
 from paperless.api_mappers import OrderDetailsMapper, OrderMinimumMapper
 from paperless.client import PaperlessClient
@@ -21,44 +21,46 @@ class OrderItem:
     filename = attr.ib()
     material= attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
-    part_number = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    price = attr.ib(validator=attr.validators.instance_of(Decimal))
-    private_notes = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    public_notes = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    quantity = attr.ib(validator=attr.validators.instance_of(int))
-    revision = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    part_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    price: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    public_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     ships_on = attr.ib(validator=attr.validators.instance_of(str)) # TODO: ADD date type checking and define this values format
-    unit_price = attr.ib(validator=attr.validators.instance_of(Decimal))
+    unit_price: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
 
 
 @attr.s(frozen=True)
 class PaymentDetails:
-    net_payout = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
-    payment_type = attr.ib(validator=attr.validators.in_(['credit_card', 'purchase_order']))
-    price = attr.ib(validator=attr.validators.instance_of(Decimal))
-    purchase_order_number = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    shipping_cost = attr.ib(validator=attr.validators.instance_of(Decimal))
-    tax_cost = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
-    tax_rate = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
+    net_payout: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
+    payment_type: str = attr.ib(validator=attr.validators.in_(['credit_card', 'purchase_order']))
+    price: Optional[Decimal] = attr.ib(validator=attr.validators.instance_of(Decimal))
+    purchase_order_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    shipping_cost: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    tax_cost: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
+    tax_rate: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
 
 
 @attr.s(frozen=True)
 class ShippingOption:
-    customers_account_number = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    customers_carrier = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    customers_account_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    customers_carrier: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.in_(['UPS', 'FedEx'])))
     ship_when = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    shipping_method = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    type = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    shipping_method = attr.ib(validator=attr.validators.optional(attr.validators.in_(
+        ['Early AM Overnight', 'Ground', 'Next Day Air', 'Second Day Air'])))
+    type: str = attr.ib(validator=attr.validators.optional(attr.validators.in_(
+        ['Pickup at suppliers facility', 'Use customer\'s account', 'Use supplier\'s account'])))
 
 
 @attr.s(frozen=True)
 class OrderCustomer:
-    business_name = attr.ib(validator=attr.validators.instance_of(str))
-    email = attr.ib(validator=attr.validators.instance_of(str))
-    first_name = attr.ib(validator=attr.validators.instance_of(str))
-    last_name = attr.ib(validator=attr.validators.instance_of(str))
-    phone = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    phone_ext = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=True)
