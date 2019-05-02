@@ -21,8 +21,6 @@ my_client = PaperlessClient(
     base_url="https://dev.paperlessparts.com/api"
 )
 
-print("HELLO WILLIAM")
-
 """
 TESTING PAYMENT TERMS
 """
@@ -119,6 +117,22 @@ TESTING LISTENERS!
 #print(test)
 
 
+from tests.factories.orders import OperationFactory, OrderFactory, OrderItemFactory
+
+dummy_order1 = OrderFactory.build()
+print(dummy_order1.number)
+
+number = 404
+dummy_order2 = OrderFactory.build(number=number)
+print(dummy_order2.number)
+assert dummy_order2.number == number
+
+dummy_operations = OperationFactory.build_batch(10)
+print(dummy_operations)
+dummy_order_item = OrderItemFactory.build(operations=dummy_operations)
+print(dummy_order_item)
+
+"""
 class MyOrderListener(OrderListener):
     def on_event(self, resource):
         print("on event")
@@ -139,4 +153,4 @@ print("test")
 #print(test)
 print("to dict")
 #print(test.to_dict())
-
+"""
