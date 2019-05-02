@@ -3,17 +3,18 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+from .exceptions import PaperlessNotFoundException
+from .objects.orders import Order
+
 class BaseListener:
     """
     An inheritable base listener for new object creation events
     """
-    client = None
     data_store = None
     last_updated = None
-    response_mapper = None
     type = None
 
-    def __init__(self, client, last_updated: Optional[int] = None):
+    def __init__(self, last_updated: Optional[int] = None):
         """
         Sets up the initial state of the listener by either:
         1. defaulting to the existing datastore located in the data_store file
@@ -22,10 +23,8 @@ class BaseListener:
         2. uses the custom implementation in the get_first_resource_identifier
         method to determine where initialization should begin.
 
-        :param client: PaperlessClient
         :param last_updated: resource identifier, all future resources will be indexed AFTER this one
         """
-        self.client = client
         datafile = Path(self.data_store)
         if not datafile.is_file():
             # create file for persisting state
@@ -39,14 +38,14 @@ class BaseListener:
         raise NotImplementedError
 
     def get_new_resource(self):
-        return self.client.check_for_next_resource(self.type, self.get_last_resource_processed())
+        raise NotImplementedError
 
     def on_event(self, resource):
         raise NotImplementedError
 
     def listen(self):
-        new_resource_exists, resource = self.get_new_resource()
-        if new_resource_exists:
+        resource = self.get_new_resource()
+        if resource is not None:
             self.on_event(resource)
             # on_event was processed successfully
             self.record_successful_resource_process(resource)
@@ -77,7 +76,6 @@ class BaseListener:
 
 class OrderListener(BaseListener):
     data_store = ".processed_orders.json"
-    type = "order"
 
     def get_first_resource_identifier(self):
         """
@@ -85,7 +83,9 @@ class OrderListener(BaseListener):
 
         :return: the order number of the newest order, or 0 if it is None
         """
-        order_list = self.client.get_resource_list(self.type, params={ 'o': '-number'})
+        order_list = Order.list(params={'o': '-number'})
+        print("order_list")
+        print(order_list)
         try:
             return self.get_resource_unique_identifier(order_list[0])
         except IndexError:
@@ -99,5 +99,11 @@ class OrderListener(BaseListener):
 
     def get_resource_unique_identifier(self, resource):
         """ returns order.number """
+        # TODO: BRING TO THE OBJECT LEVEL
         return resource.number
 
+    def get_new_resource(self):
+        try:
+            return Order.get(self.get_last_resource_processed() + 1)
+        except PaperlessNotFoundException:
+            return None
