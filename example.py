@@ -14,8 +14,8 @@ from paperless.client import PaperlessClient
 import attr
 
 my_client = PaperlessClient(
-    username='jason@paperlessparts.com',
-    password='P@perless2',
+    username='',
+    password='',
     group_slug='a-cut-above-cnc',
     version=PaperlessClient.VERSION_0,
     base_url="https://dev.paperlessparts.com/api"
