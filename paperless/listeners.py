@@ -14,6 +14,7 @@ class BaseListener:
     last_updated = None
     type = None
 
+    # TODO: clear_cache param
     def __init__(self, last_updated: Optional[int] = None):
         """
         Sets up the initial state of the listener by either:
@@ -84,8 +85,6 @@ class OrderListener(BaseListener):
         :return: the order number of the newest order, or 0 if it is None
         """
         order_list = Order.list(params={'o': '-number'})
-        print("order_list")
-        print(order_list)
         try:
             return self.get_resource_unique_identifier(order_list[0])
         except IndexError:
@@ -107,3 +106,11 @@ class OrderListener(BaseListener):
             return Order.get(self.get_last_resource_processed() + 1)
         except PaperlessNotFoundException:
             return None
+
+    def on_event(self, resource: Order):
+        """
+        Called to handle when a new Order is processed.
+
+        :param resource: Order
+        """
+        raise NotImplementedError
