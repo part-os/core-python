@@ -45,12 +45,12 @@ class PaymentDetails:
 @attr.s(frozen=True)
 class ShippingOption:
     customers_account_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    customers_carrier: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.in_(['UPS', 'FedEx'])))
+    customers_carrier: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.in_(['ups', 'fedex'])))
     ship_when = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     shipping_method = attr.ib(validator=attr.validators.optional(attr.validators.in_(
-        ['Early AM Overnight', 'Ground', 'Next Day Air', 'Second Day Air'])))
+        ['early_am_overnight', 'ground', 'next_day_air', 'second_day_air', 'expedited'])))
     type: str = attr.ib(validator=attr.validators.optional(attr.validators.in_(
-        ['Pickup at suppliers facility', 'Use customer\'s account', 'Use supplier\'s account'])))
+        ['pickup', 'customers_shipping_account', 'suppliers_shipping_account'])))
 
 
 @attr.s(frozen=True)

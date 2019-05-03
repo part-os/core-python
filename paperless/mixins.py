@@ -15,8 +15,12 @@ class FromJSONMixin(object):
     _mapper = BaseMapper
 
     @classmethod
+    def from_json_to_dict(cls, resource):
+        return cls._mapper.map(resource)
+
+    @classmethod
     def from_json(cls, resource):
-        return cls(**cls._mapper.map(resource))
+        return cls(**cls.from_json_to_dict(resource))
 
 class ReadMixin(object):
 
@@ -135,9 +139,10 @@ class CreateMixin(object):
         """
         client = PaperlessClient.get_instance()
         data = self.to_json()
-        client.create_resource(self.construct_post_url(), data=data)
-        #TODO: SAVE ID
-        #TODO: DO I NEED TO UPDATE THE ENTIRE OBJECT?
+        resp = client.create_resource(self.construct_post_url(), data=data)
+        resp_dict = self.from_json_to_dict(resp)
+        for key, val in resp_dict.items():
+            setattr(self, key, val)
 
 
 class UpdateMixin(object):
@@ -158,4 +163,7 @@ class UpdateMixin(object):
         client = PaperlessClient.get_instance()
         primary_key = getattr(self, self._primary_key)
         data = self.to_json()
-        client.update_resource(self.construct_patch_url(), primary_key, data=data)
+        resp = client.update_resource(self.construct_patch_url(), primary_key, data=data)
+        resp_dict = self.from_json_to_dict(resp)
+        for key, val in resp_dict.items():
+            setattr(self, key, val)

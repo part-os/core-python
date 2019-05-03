@@ -83,22 +83,30 @@ print("test_customer_contact")
 TEST CREATE COMPANY
 """
 """
+payment_term = PaymentTerms.list()[0]
+
 minimum_company = CompanyContact(
-    business_name="minimum business name",
-    id=551
+    business_name="minimum business name 19",
 )
-#minimum_company.create()
+created_company = minimum_company.create()
+print("create result")
+print(minimum_company)
+
+minimum_company.payment_terms = payment_term
+print("before update")
+print(minimum_company)
+minimum_company.update()
+print("after update")
 print(minimum_company)
 
 minimum_customer_contact = CustomerContact(
-    email="william+minimalemail30@paperlessparts.com",
+    email="william+minimalemail51@paperlessparts.com",
     first_name="William",
     last_name="Headrick",
     company=minimum_company
 )
 minimum_customer_contact.create()
 """
-
 """
 TESTING GET OBJECT
 """
@@ -116,7 +124,7 @@ TESTING LISTENERS!
 #test = Address(**{'address1': '15 MAIN ST', 'address2': '', 'business_name': 'MAS Product Development Inc.', 'city': 'NASHU', 'country': 'USA', 'first_name': 'Matt', 'last_name': 'Sordillo', 'phone': '', 'phone_ext': '', 'postal_code': '03064-2728', 'state': 'NH'})
 #print(test)
 
-
+"""
 from tests.factories.orders import OperationFactory, OrderFactory, OrderItemFactory
 
 dummy_order1 = OrderFactory.build()
@@ -131,7 +139,9 @@ dummy_operations = OperationFactory.build_batch(10)
 print(dummy_operations)
 dummy_order_item = OrderItemFactory.build(operations=dummy_operations)
 print(dummy_order_item)
-
+"""
+test = Order.get(52)
+print(test.to_dict())
 """
 class MyOrderListener(OrderListener):
     def on_event(self, resource):

@@ -80,21 +80,21 @@ Supported Contact Entities
 .. autoclass:: paperless.objects.contacts.PaymentTerms
     :members:
     :undoc-members:
-    :exclude-members: construct_list_url, parse_list_response, construct_post_url
+    :exclude-members: construct_list_url, parse_list_response, construct_post_url, from_json_to_dict
     :show-inheritance:
     :inherited-members:
 
 .. autoclass:: paperless.objects.contacts.CompanyContact
     :members:
     :undoc-members:
-    :exclude-members: construct_patch_url, construct_post_url
+    :exclude-members: construct_patch_url, construct_post_url, from_json_to_dict
     :show-inheritance:
     :inherited-members:
 
 .. autoclass:: paperless.objects.contacts.CustomerContact
     :members:
     :undoc-members:
-    :exclude-members: construct_patch_url, construct_post_url
+    :exclude-members: construct_patch_url, construct_post_url, from_json_to_dict
     :show-inheritance:
     :inherited-members:
 
@@ -103,7 +103,7 @@ Supported Order Entities
 .. autoclass:: paperless.objects.orders.Order
     :members:
     :undoc-members:
-    :exclude-members: construct_get_url, construct_list_url, construct_get_params, parse_list_response
+    :exclude-members: construct_get_url, construct_list_url, construct_get_params, parse_list_response, from_json_to_dict
     :show-inheritance:
     :inherited-members: to_dict, list, from_json, get
 
