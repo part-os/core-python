@@ -3,7 +3,7 @@ from decimal import Decimal
 
 from typing import Optional
 
-from paperless.api_mappers import PaymentTermsMapper
+from paperless.api_mappers import CompanyContactMapper, CustomerContactMapper, PaymentTermsMapper
 from paperless.client import PaperlessClient
 from paperless.json_encoders import CompanyContactEncoder, CustomerContactEncoder, PaymentTermsEncoder
 from paperless.mixins import CreateMixin, FromJSONMixin, ListMixin, ToDictMixin, ToJSONMixin, UpdateMixin
@@ -54,6 +54,7 @@ class BaseContact(CreateMixin, FromJSONMixin, ToJSONMixin, UpdateMixin):
 @attr.s
 class CompanyContact(BaseContact):
     _json_encoder = CompanyContactEncoder
+    _mapper = CompanyContactMapper
 
     business_name: str = attr.ib(validator=attr.validators.instance_of(str), kw_only=True)
 
@@ -69,6 +70,7 @@ class CompanyContact(BaseContact):
 @attr.s
 class CustomerContact(BaseContact):
     _json_encoder = CustomerContactEncoder
+    _mapper = CustomerContactMapper
 
     company: Optional[CompanyContact] = attr.ib(converter=convert_cls(CompanyContact), default=None)
     email: str = attr.ib(validator=attr.validators.instance_of(str), kw_only=True)

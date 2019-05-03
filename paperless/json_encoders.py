@@ -68,6 +68,7 @@ class BaseContactEncoder(BaseJSONEncoder):
         return json.dumps({
             **contact_values,
             'billing_info': billing_info,
+            'payment_terms_id': payment_terms_id,
             'shipping_info': shipping_info,
         })
 
@@ -108,6 +109,7 @@ class CompanyContactEncoder(BaseContactEncoder):
             **json.loads(super().encode(resource)),
             **company_values
         })
+
 
 class PaymentTermsEncoder(BaseJSONEncoder):
     @classmethod

@@ -9,25 +9,30 @@ class BaseMapper(object):
         raise NotImplementedError
 
 
+class AddressMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        return {
+            'address1': resource['address']['address1'],
+            'address2': resource['address']['address2'],
+            'business_name': resource['business_name'],
+            'city': resource['address']['city'],
+            'country': resource['address']['country']['abbr'] if \
+                resource['address']['country'] else 'USA',
+            'first_name': resource['first_name'],
+            'last_name': resource['last_name'],
+            'phone': resource['phone'],
+            'phone_ext': resource['phone_ext'],
+            'postal_code': resource['address']['postal_code'],
+            'state': resource['address']['state']['abbr'],
+        }
+
 #TODO: Make this a version
 class OrderDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         # Verision 0.0
-        billing_info = {
-            'address1': resource['buyer_billing']['address']['address1'],
-            'address2': resource['buyer_billing']['address']['address2'],
-            'business_name': resource['buyer_billing']['business_name'],
-            'city': resource['buyer_billing']['address']['city'],
-            'country': resource['buyer_billing']['address']['country']['abbr'] if \
-                resource['buyer_billing']['address']['country'] else 'USA',
-            'first_name': resource['buyer_billing']['first_name'],
-            'last_name': resource['buyer_billing']['last_name'],
-            'phone': resource['buyer_billing']['phone'],
-            'phone_ext': resource['buyer_billing']['phone_ext'],
-            'postal_code': resource['buyer_billing']['address']['postal_code'],
-            'state': resource['buyer_billing']['address']['state']['abbr'],
-        }
+        billing_info = AddressMapper.map(resource['billing_info'])
 
         customer = {
             'business_name': resource['customer']['business_name'],
@@ -68,20 +73,7 @@ class OrderDetailsMapper(BaseMapper):
             'tax_rate': Decimal(str(resource['tax_rate'])) if Decimal(resource['tax_rate']) > 0 else None,
         }
 
-        shipping_info = {
-            'address1': resource['buyer_shipping']['address']['address1'],
-            'address2': resource['buyer_shipping']['address']['address2'],
-            'business_name': resource['buyer_shipping']['business_name'],
-            'city': resource['buyer_shipping']['address']['city'],
-            'country': resource['buyer_shipping']['address']['country']['abbr'] \
-                if resource['buyer_shipping']['address']['country'] else 'USA', # TODO: Apparantely for some old addresses we don't have countries stored? See interpro Order 102. I think its better to default it to null then to let it be blank
-            'first_name': resource['buyer_shipping']['first_name'],
-            'last_name': resource['buyer_shipping']['last_name'],
-            'phone': resource['buyer_shipping']['phone'],
-            'phone_ext': resource['buyer_shipping']['phone_ext'],
-            'postal_code': resource['buyer_shipping']['address']['postal_code'],
-            'state': resource['buyer_shipping']['address']['state']['abbr'],
-        }
+        shipping_info = AddressMapper.map(resource['shipping_info'])
 
         shipping_option = {
             'customers_account_number': resource['shipping_option']['customers_account_number'],
@@ -106,7 +98,6 @@ class OrderMinimumMapper(BaseMapper):
     @classmethod
     def map(cls, resource) -> List[int]:
         return { 'number': resource['number'] }
-        #return [o['number'] for o in resources]
 
 
 class PaymentTermsMapper(BaseMapper):
@@ -116,4 +107,48 @@ class PaymentTermsMapper(BaseMapper):
             'id': resource['id'],
             'label': resource['label'],
             'period': resource['period']
+        }
+
+class BaseContactMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        print("resource")
+        print(resource)
+        # HACK: Billing Info/Shipping Info is a list for some reason... we only ever interact with one on the paperless parts platform so thats all we show.
+        return {
+            'billing_info': AddressMapper.map(resource['billing_info']) if \
+                len(resource['billing_info']) else None,
+            'credit_line': resource['credit_line'],
+            'id': resource['id'],
+            'payment_terms': PaymentTermsMapper.map(resource['payment_terms']) if \
+                resource['payment_terms'] else None,
+            'phone': resource['phone'],
+            'phone_ext': resource['phone_ext'],
+            'purchase_orders': resource['purchase_orders'],
+            'shipping_info': AddressMapper.map(resource['shipping_info']) if \
+                len(resource['shipping_info']) else None,
+            'tax_exempt': resource['tax_exempt'],
+            'url': resource['url']
+        }
+
+
+class CompanyContactMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        return {
+            **BaseContactMapper.map(resource),
+            'business_name': resource['business_name']
+        }
+
+
+class CustomerContactMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        return {
+            **BaseContactMapper.map(resource),
+            'company': CompanyContactMapper.map(resource['company']) if \
+                resource['company'] else None,
+            'email': resource['email'],
+            'first_name': resource['first_name'],
+            'last_name': resource['last_name']
         }
