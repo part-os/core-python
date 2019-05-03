@@ -11,6 +11,7 @@ Paperless Parts python SDK
    :caption: Contents:
 
    modules/overview
+   modules/client
    modules/event_listeners
    modules/factories
 
