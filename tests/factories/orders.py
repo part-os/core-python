@@ -66,14 +66,14 @@ class ShippingOptionFactory(factory.Factory):
         strategy = factory.BUILD_STRATEGY
 
     customers_account_number = fake.text(max_nb_chars=15)
-    customers_carrier = factory.fuzzy.FuzzyChoice(choices=['UPS', 'FedEx'])
+    customers_carrier = factory.fuzzy.FuzzyChoice(choices=['ups', 'fedex'])
     ship_when = FuzzyDateString(
         start_date=datetime.date.today() + datetime.timedelta(days=1),
         end_date=datetime.date.today() + datetime.timedelta(days=180))
     shipping_method = factory.fuzzy.FuzzyChoice(choices=
-        ['Early AM Overnight', 'Ground', 'Next Day Air', 'Second Day Air'])
+        ['early_am_overnight', 'ground', 'next_day_air', 'second_day_air', 'expedited'])
     type =  factory.fuzzy.FuzzyChoice(choices=
-        ['Pickup at suppliers facility', 'Use customer\'s account', 'Use supplier\'s account'])
+        ['pickup', 'customers_shipping_account', 'suppliers_shipping_account'])
 
 
 class OrderCustomerFactory(factory.Factory):

@@ -32,7 +32,9 @@ class OrderDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         # Verision 0.0
-        billing_info = AddressMapper.map(resource['billing_info'])
+        print("resource")
+        print(resource)
+        billing_info = AddressMapper.map(resource['buyer_shipping'])
 
         customer = {
             'business_name': resource['customer']['business_name'],
@@ -73,7 +75,7 @@ class OrderDetailsMapper(BaseMapper):
             'tax_rate': Decimal(str(resource['tax_rate'])) if Decimal(resource['tax_rate']) > 0 else None,
         }
 
-        shipping_info = AddressMapper.map(resource['shipping_info'])
+        shipping_info = AddressMapper.map(resource['buyer_shipping'])
 
         shipping_option = {
             'customers_account_number': resource['shipping_option']['customers_account_number'],
@@ -112,8 +114,6 @@ class PaymentTermsMapper(BaseMapper):
 class BaseContactMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
-        print("resource")
-        print(resource)
         # HACK: Billing Info/Shipping Info is a list for some reason... we only ever interact with one on the paperless parts platform so thats all we show.
         return {
             'billing_info': AddressMapper.map(resource['billing_info']) if \

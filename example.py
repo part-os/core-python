@@ -82,6 +82,7 @@ print("test_customer_contact")
 """
 TEST CREATE COMPANY
 """
+"""
 payment_term = PaymentTerms.list()[0]
 
 minimum_company = CompanyContact(
@@ -105,7 +106,7 @@ minimum_customer_contact = CustomerContact(
     company=minimum_company
 )
 minimum_customer_contact.create()
-
+"""
 """
 TESTING GET OBJECT
 """
@@ -139,6 +140,8 @@ print(dummy_operations)
 dummy_order_item = OrderItemFactory.build(operations=dummy_operations)
 print(dummy_order_item)
 """
+test = Order.get(52)
+print(test.to_dict())
 """
 class MyOrderListener(OrderListener):
     def on_event(self, resource):
