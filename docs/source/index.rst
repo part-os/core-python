@@ -14,6 +14,7 @@ Paperless Parts python SDK
    modules/client
    modules/event_listeners
    modules/factories
+   modules/entities
 
 
 
