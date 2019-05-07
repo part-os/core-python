@@ -25,32 +25,6 @@ class PaperlessClient(object):
     username = None
     version = VERSION_0
 
-    #TODO: KILL!!!
-    urls = {
-        VERSION_0: {
-            LOGIN: "login",
-            ORDERS: {
-                GET: "orders/by_number/",
-                LIST: "orders/groups/"
-            },
-            PAYMENT_TERMS: {
-                LIST: "customers/"
-            },
-            QUOTES: {
-                GET: "quotes/by_number/"
-            }
-        }
-    }
-
-    """mappers = {
-        VERSION_0: {
-            ORDERS: {
-                GET: OrderDetailsMapper,
-                LIST: OrderMinimumMapper
-            },
-        }
-    }"""
-
     def __new__(cls, **kwargs):
         """
         Create or return the PaperlessClient Singleton.
@@ -93,7 +67,18 @@ class PaperlessClient(object):
 
     def authenticate(self):
         """uses a suppliers login information to retrieve a valid bearer token"""
-        # TODO: ASSERT WE HAVE AN EMAIL AND A PASSWORD
+        # validate we have the proper values to authenticate
+        required_fields = ['password', 'username']
+        missing_fields = [field for field in required_fields if getattr(self, field) is None]
+        if missing_fields:
+            error_detail = ""
+            for missing_field in missing_fields:
+                error_detail += "Missing required field: " + missing_field
+            raise PaperlessAuthorizationException(
+                message="Unable to authenticate client.",
+                detail=error_detail
+            )
+
         data = {
             'password': self.password,
             'username': self.username
@@ -106,7 +91,7 @@ class PaperlessClient(object):
         }
 
         resp = requests.post(
-            "{}/{}".format(self.base_url, self.urls[self.version][self.LOGIN]),
+            "{}/{}".format(self.base_url, 'login'),
             data=json.dumps(data),
             headers=headers
         )
@@ -141,7 +126,7 @@ class PaperlessClient(object):
         headers = self.get_authenticated_headers()
 
         req_url = "{}/{}/{}".format(self.base_url, resource_url, id)
-
+        print(requests)
         resp = requests.get(
             req_url,
             headers=headers,

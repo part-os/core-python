@@ -32,8 +32,6 @@ class OrderDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         # Verision 0.0
-        print("resource")
-        print(resource)
         billing_info = AddressMapper.map(resource['buyer_shipping'])
 
         customer = {

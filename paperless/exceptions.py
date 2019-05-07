@@ -10,8 +10,8 @@ class PaperlessException(Exception):
 
 
 class PaperlessAuthorizationException(PaperlessException):
-    def __init__(self, message, error_code, detail=""):
-        super(PaperlessAuthorizationException, self).__init__(message)
+    def __init__(self, message, error_code=None, detail=""):
+        super(PaperlessAuthorizationException, self).__init__(message, error_code, detail)
 
     def __str__(self):
         return "Paperless Auth Exception: {}  \n\n {}".format(self.message, self.detail)
@@ -19,7 +19,7 @@ class PaperlessAuthorizationException(PaperlessException):
 
 class PaperlessNotFoundException(PaperlessException):
     def __init__(self, message, error_code=404, detail=""):
-        super(PaperlessNotFoundException, self).__init__(message)
+        super(PaperlessNotFoundException, self).__init__(message, error_code, detail)
 
         self.detail = detail
         self.error_code = error_code

@@ -34,6 +34,11 @@ class BaseListener:
                     last_updated = self.get_first_resource_identifier()
                 json.dump([{'processed_on': str(datetime.now()), 'resource': last_updated}], json_file)
 
+    @classmethod
+    def clear_cache(cls):
+        # TODO @William
+        raise NotImplementedError
+
     def get_first_resource_identifier(self) -> int:
         """ Returns the unique resource identifier which will determine where we begin to look for future resources."""
         raise NotImplementedError
@@ -74,6 +79,7 @@ class BaseListener:
             return data[-1]['resource']
         except (IndexError, KeyError):
             return None
+
 
 class OrderListener(BaseListener):
     data_store = ".processed_orders.json"

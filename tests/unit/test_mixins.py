@@ -1,4 +1,4 @@
-import unittest
+"""import unittest
 
 from tests.factories.orders import OperationFactory, OrderFactory, OrderItemFactory, PaymentDetailsFactory,\
     ShippingOptionFactory, OrderCustomerFactory
@@ -30,4 +30,5 @@ class TestOrderListener(unittest.TestCase):
 
         self.assertFalse(False)
 
-    def test_
+    #def test_
+"""
