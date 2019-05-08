@@ -1,11 +1,9 @@
-from decimal import *
-from typing import List
+from decimal import Decimal, InvalidOperation
 
-#from .objects import Order, OrderMinimum
 
 class BaseMapper(object):
     @classmethod
-    def map(resource):
+    def map(cls, resource):
         raise NotImplementedError
 
 
@@ -27,11 +25,42 @@ class AddressMapper(BaseMapper):
             'state': resource['address']['state']['abbr'],
         }
 
+
+class OperationMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        op = {
+            'name': resource['name'],
+            'runtime': None,
+            'setup_time': None
+        }
+        for d in resource['display_context']:
+            if d.get('secondary_key') == 'runtime':
+                try:
+                    op['runtime'] = Decimal(d.get('value'))
+                except (TypeError, InvalidOperation):
+                    pass
+            if d.get('secondary_key') == 'setup_time':
+                try:
+                    op['setup_time'] = Decimal(d.get('value'))
+                except (TypeError, InvalidOperation):
+                    pass
+        try:
+            op['runtime'] = Decimal(resource['overrides']['variables']['runtime'])
+        except (KeyError, TypeError, InvalidOperation):
+            pass
+        try:
+            op['setup_time'] = Decimal(resource['overrides']['variables']['setup_time'])
+        except (KeyError, TypeError, InvalidOperation):
+            pass
+        return op
+
+
 #TODO: Make this a version
 class OrderDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
-        # Verision 0.0
+        # Version 0.0
         billing_info = AddressMapper.map(resource['buyer_shipping'])
 
         customer = {
@@ -50,9 +79,8 @@ class OrderDetailsMapper(BaseMapper):
                     if oi['quote_item']['material']['custom_name'] \
                     else oi['quote_item']['material']['name']) \
                 if oi['quote_item']['material'] else None,
-            'operations': map(lambda op: {
-                'name': op['name'],
-            }, oi['quote_item']['root_component']['operations']),
+            'operations': map(OperationMapper.map,
+                              oi['quote_item']['root_component']['operations']),
             'part_number': oi['quote_item']['root_component']['part_number'],
             'price': Decimal(oi['price']),
             'private_notes': oi['quote_item']['private_notes'],
@@ -96,8 +124,8 @@ class OrderDetailsMapper(BaseMapper):
 
 class OrderMinimumMapper(BaseMapper):
     @classmethod
-    def map(cls, resource) -> List[int]:
-        return { 'number': resource['number'] }
+    def map(cls, resource):
+        return {'number': resource['number']}
 
 
 class PaymentTermsMapper(BaseMapper):
@@ -108,6 +136,7 @@ class PaymentTermsMapper(BaseMapper):
             'label': resource['label'],
             'period': resource['period']
         }
+
 
 class BaseContactMapper(BaseMapper):
     @classmethod

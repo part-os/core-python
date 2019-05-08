@@ -13,13 +13,15 @@ from .utils import convert_cls, convert_iterable
 @attr.s(frozen=True)
 class Operation:
     name = attr.ib()
+    runtime: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
+    setup_time: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
 
 
 @attr.s(frozen=True)
 class OrderItem:
     description = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     filename = attr.ib()
-    material= attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    material = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
     part_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     price: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
@@ -83,7 +85,6 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     payment_details: PaymentDetails = attr.ib(converter=convert_cls(PaymentDetails))
     shipping_info: Address = attr.ib(converter=convert_cls(Address))
     shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))
-
 
     @classmethod
     def construct_get_url(cls):

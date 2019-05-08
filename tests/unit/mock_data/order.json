@@ -684,7 +684,9 @@
                             "name": "CNC Machining - Prototypes",
                             "notes": null,
                             "position": 0,
-                            "overrides": {},
+                            "overrides": {
+                                "variables": {"runtime": "0.25"}
+                            },
                             "category": "operation",
                             "display_context": [
                                 {
@@ -913,6 +915,18 @@
                                     "primary_key": "variables",
                                     "secondary_key": "Shipping time per part",
                                     "value": 1,
+                                    "type": "number"
+                                },
+                                {
+                                    "primary_key": "variables",
+                                    "secondary_key": "runtime",
+                                    "value": 0.5,
+                                    "type": "number"
+                                },
+                                {
+                                    "primary_key": "variables",
+                                    "secondary_key": "setup_time",
+                                    "value": 1.0,
                                     "type": "number"
                                 }
                             ],

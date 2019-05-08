@@ -9,6 +9,7 @@ def convert_cls(cl):
             return cl(**val)
     return converter
 
+
 def convert_iterable(cl):
     # TODO: RAISE UNITERABLE ERROR FOR THIS
     def converter(iterable):
@@ -21,11 +22,13 @@ def convert_iterable(cl):
         return result
     return converter
 
+
 def phone_length_validator(instance, attribute, value):
     if len(value) is not 10:
         raise ValueError("Invalid phone number for {}. Phone number must be 10 digits.".format(
             attribute
         ))
+
 
 def tax_rate_validator(instance, attribute, value):
     if value < 0:

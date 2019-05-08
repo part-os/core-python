@@ -4,8 +4,10 @@ import unittest
 import json
 from unittest.mock import MagicMock
 
-from paperless.objects.orders import Order
+from paperless.objects.orders import Order, Operation
 from paperless.client import PaperlessClient
+from paperless.api_mappers import OperationMapper
+
 
 class TestOrders(unittest.TestCase):
     def setUp(self):
@@ -20,5 +22,49 @@ class TestOrders(unittest.TestCase):
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
-        self.assertEqual(o.number, 31) # 31 is loaded from mock order json
+        self.assertEqual(o.number, 31)  # 31 is loaded from mock order json
+        op1 = o.order_items[0].operations[0]
+        self.assertEqual(0.25, op1.runtime)
 
+    def test_operation_mapper(self):
+        op1 = {
+            'name': 'name1',
+            'display_context': [
+                {"primary_key": "variables", "secondary_key": "runtime",
+                 "value": 1.0, "type": "number"},
+                {"primary_key": "variables", "secondary_key": "other",
+                 "value": 1.0, "type": "number"}
+            ],
+        }
+        op: Operation = Operation(**OperationMapper.map(op1))
+        self.assertEqual('name1', op.name)
+        self.assertEqual(1.0, op.runtime)
+        self.assertIsNone(op.setup_time)
+
+        op2 = {
+            'name': 'name1',
+            'display_context': [
+                {"primary_key": "variables", "secondary_key": "runtime",
+                 "value": 1.0, "type": "number"},
+                {"primary_key": "variables", "secondary_key": "setup_time",
+                 "value": 2.0, "type": "number"}
+            ],
+            'overrides': {}
+        }
+        op: Operation = Operation(**OperationMapper.map(op2))
+        self.assertEqual(1.0, op.runtime)
+        self.assertEqual(2.0, op.setup_time)
+
+        op3 = {
+            'name': 'name1',
+            'display_context': [
+                {"primary_key": "variables", "secondary_key": "runtime",
+                 "value": 1.0, "type": "number"},
+                {"primary_key": "variables", "secondary_key": "setup_time",
+                 "value": 2.0, "type": "number"}
+            ],
+            'overrides': {'variables': {'runtime': '0.25'}}
+        }
+        op: Operation = Operation(**OperationMapper.map(op3))
+        self.assertEqual(0.25, op.runtime)
+        self.assertEqual(2.0, op.setup_time)

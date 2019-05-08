@@ -13,12 +13,15 @@ from .fuzzies import FuzzyDateString, FuzzyMaterialName, FuzzyPartFilename, Fuzz
 #TODO: JUST USE FUZZY VALUES?
 fake = Faker()
 
+
 class OperationFactory(factory.Factory):
     class Meta:
         model = Operation
         strategy = factory.BUILD_STRATEGY
 
     name = FuzzyOperationName()
+    runtime = factory.fuzzy.FuzzyDecimal(0.1, 120.0)
+    setup_time = factory.fuzzy.FuzzyDecimal(0.1, 120.0)
 
 
 class OrderItemFactory(factory.Factory):
@@ -42,6 +45,7 @@ class OrderItemFactory(factory.Factory):
         start_date=datetime.date.today() + datetime.timedelta(days=1),
         end_date=datetime.date.today() + datetime.timedelta(days=180))
     unit_price = factory.LazyAttribute(lambda o: round(o.price / o.quantity, 2))
+
 
 class PaymentDetailsFactory(factory.Factory):
     class Meta:
