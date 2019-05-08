@@ -63,6 +63,7 @@ class OrderItemMapper(BaseMapper):
         oi = resource
         d = {
             'price': Decimal(oi['price']),
+            'lead_days': oi['lead_time'],
             'private_notes': oi['quote_item']['private_notes'],
             'public_notes': oi['quote_item']['public_notes'],
             'quantity': oi['quantity'],
