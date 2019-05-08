@@ -42,6 +42,7 @@ class PaymentDetails:
     shipping_cost: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
     tax_cost: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     tax_rate: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
+    terms: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=True)

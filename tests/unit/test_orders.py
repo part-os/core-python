@@ -25,6 +25,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(o.number, 31)  # 31 is loaded from mock order json
         op1 = o.order_items[0].operations[0]
         self.assertEqual(0.25, op1.runtime)
+        self.assertEqual('Net 30', o.payment_details.terms)
 
     def test_operation_mapper(self):
         op1 = {
