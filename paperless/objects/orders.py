@@ -13,6 +13,7 @@ from .utils import convert_cls, convert_iterable
 @attr.s(frozen=True)
 class Operation:
     name = attr.ib()
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     runtime: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     setup_time: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
 

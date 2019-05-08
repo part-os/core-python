@@ -31,6 +31,7 @@ class OperationMapper(BaseMapper):
     def map(cls, resource):
         op = {
             'name': resource['name'],
+            'notes': resource['notes'],
             'runtime': None,
             'setup_time': None
         }

@@ -30,6 +30,7 @@ class TestOrders(unittest.TestCase):
     def test_operation_mapper(self):
         op1 = {
             'name': 'name1',
+            'notes': None,
             'display_context': [
                 {"primary_key": "variables", "secondary_key": "runtime",
                  "value": 1.0, "type": "number"},
@@ -44,6 +45,7 @@ class TestOrders(unittest.TestCase):
 
         op2 = {
             'name': 'name1',
+            'notes': None,
             'display_context': [
                 {"primary_key": "variables", "secondary_key": "runtime",
                  "value": 1.0, "type": "number"},
@@ -58,6 +60,7 @@ class TestOrders(unittest.TestCase):
 
         op3 = {
             'name': 'name1',
+            'notes': 'A note',
             'display_context': [
                 {"primary_key": "variables", "secondary_key": "runtime",
                  "value": 1.0, "type": "number"},
@@ -69,3 +72,4 @@ class TestOrders(unittest.TestCase):
         op: Operation = Operation(**OperationMapper.map(op3))
         self.assertEqual(0.25, op.runtime)
         self.assertEqual(2.0, op.setup_time)
+        self.assertEqual('A note', op.notes)
