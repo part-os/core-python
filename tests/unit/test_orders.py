@@ -22,9 +22,9 @@ class TestOrders(unittest.TestCase):
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
-        self.assertEqual(o.number, 31)  # 31 is loaded from mock order json
-        op1 = o.order_items[0].operations[0]
-        self.assertEqual(0.25, op1.runtime)
+        self.assertEqual(o.number, 192)
+        op1 = o.order_items[0].operations[3]
+        self.assertEqual(2, op1.setup_time)
         self.assertEqual('Net 30', o.payment_details.terms)
 
     def test_operation_mapper(self):

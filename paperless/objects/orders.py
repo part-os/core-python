@@ -28,6 +28,7 @@ class OrderItem:
     private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     public_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    make_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     ships_on = attr.ib(validator=attr.validators.instance_of(str)) # TODO: ADD date type checking and define this values format
     unit_price: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))

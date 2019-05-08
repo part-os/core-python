@@ -56,6 +56,44 @@ class OperationMapper(BaseMapper):
         return op
 
 
+class OrderItemMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        # populate the fields that apply to all quote items
+        oi = resource
+        d = {
+            'price': Decimal(oi['price']),
+            'private_notes': oi['quote_item']['private_notes'],
+            'public_notes': oi['quote_item']['public_notes'],
+            'quantity': oi['quantity'],
+            'make_quantity': oi['quantity'],
+            'ships_on': oi['ships_on'],
+            'unit_price': Decimal(oi['unit_price']),
+            'description': oi['quote_item']['root_component']['description'],
+            'part_number': oi['quote_item']['root_component']['part_number'],
+            'revision': oi['quote_item']['root_component']['revision'],
+            'filename': oi['quote_item']['root_component']['part']['filename']
+                if oi['quote_item']['root_component']['part'] else None,
+            'operations': map(
+                OperationMapper.map,
+                oi['quote_item']['root_component']['operations']),
+            'material': None,
+        }
+
+        # material for automatic quote items
+        if oi['quote_item']['material']:
+            d['material'] = oi['quote_item']['material']['custom_name'] \
+                if oi['quote_item']['material']['custom_name'] \
+                else oi['quote_item']['material']['name']
+        # find make qty
+        for cq in oi['quote_item']['root_component']['quantities']:
+            if cq['quantity'] == oi['quantity']:
+                d['make_quantity'] = cq['make_quantity']
+                break
+
+        return d
+
+
 #TODO: Make this a version
 class OrderDetailsMapper(BaseMapper):
     @classmethod
@@ -72,24 +110,7 @@ class OrderDetailsMapper(BaseMapper):
             'phone_ext': resource['customer']['phone_ext']
         }
 
-        order_items = map(lambda oi: {
-            'description': oi['quote_item']['root_component']['description'],
-            'filename': oi['quote_item']['root_component']['part']['filename'],
-            'material': (oi['quote_item']['material']['custom_name'] \
-                    if oi['quote_item']['material']['custom_name'] \
-                    else oi['quote_item']['material']['name']) \
-                if oi['quote_item']['material'] else None,
-            'operations': map(OperationMapper.map,
-                              oi['quote_item']['root_component']['operations']),
-            'part_number': oi['quote_item']['root_component']['part_number'],
-            'price': Decimal(oi['price']),
-            'private_notes': oi['quote_item']['private_notes'],
-            'public_notes': oi['quote_item']['public_notes'],
-            'quantity': oi['quantity'],
-            'revision': oi['quote_item']['root_component']['revision'],
-            'ships_on': oi['ships_on'],
-            'unit_price': Decimal(oi['unit_price']),
-        }, resource['order_items'])
+        order_items = map(OrderItemMapper.map, resource['order_items'])
 
         payment_details = {
             'net_payout': Decimal(resource['net_payout']) if resource['net_payout'] else None,

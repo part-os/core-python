@@ -1,3019 +1,994 @@
 {
-    "id": 541,
-    "company": "Test Buyer Inc.",
-    "customer": {
-        "email": "sdk-test@paperlessparts.com",
-        "first_name": "SDK",
-        "last_name": "Test",
-        "full_name": "SDK Test",
-        "business_name": "Test Buyer Inc.",
-        "city": "NASHUA",
-        "address": "15 MAIN ST",
-        "address1": "15 MAIN ST",
-        "address2": "",
-        "postal_code": "03064-2728",
-        "phone": "2142137323",
-        "phone_ext": "222",
-        "state": "New Hampshire"
+    "buyer_billing": {
+        "address": {
+            "address1": "1 CITY HALL SQ",
+            "address2": "STE 500",
+            "city": "BOSTON",
+            "country": {
+                "abbr": "USA",
+                "name": "United States"
+            },
+            "postal_code": "02201-1020",
+            "state": {
+                "abbr": "MA",
+                "name": "Massachusetts"
+            }
+        },
+        "business_name": "Paperless Parts",
+        "company": null,
+        "first_name": "Joe",
+        "id": 3223,
+        "last_name": "Paperless",
+        "phone": "6175550000",
+        "phone_ext": ""
     },
-    "status": "pending",
-    "purchase_token": "PO$2231",
-    "sales_person": "Test Sales",
-    "total_price": "13838.74",
-    "ships_on": "2019-02-26",
-    "created": "2019-02-12T15:36:04+00:00",
+    "buyer_shipping": {
+        "address": {
+            "address1": "1 CITY HALL SQ",
+            "address2": "STE 500",
+            "city": "BOSTON",
+            "country": {
+                "abbr": "USA",
+                "name": "United States"
+            },
+            "postal_code": "02201-1020",
+            "state": {
+                "abbr": "MA",
+                "name": "Massachusetts"
+            }
+        },
+        "business_name": "Paperless Parts",
+        "company": null,
+        "first_name": "Joe",
+        "id": 3621,
+        "last_name": "Paperless",
+        "phone": "6175550000",
+        "phone_ext": ""
+    },
+    "company": "Paperless Parts",
+    "confirmation_email": null,
+    "created": "2019-05-08T14:12:14+00:00",
+    "customer": {
+        "address": "1 CITY HALL SQ",
+        "address1": "1 CITY HALL SQ",
+        "address2": "STE 500",
+        "business_name": "Paperless Parts",
+        "city": "BOSTON",
+        "email": "support@paperlessparts.com",
+        "first_name": "Joe",
+        "full_name": "Joe Paperless",
+        "last_name": "Paperless",
+        "phone": "6175550000",
+        "phone_ext": "",
+        "postal_code": "02201-1020",
+        "state": "Massachusetts"
+    },
     "deliver_by": null,
-    "payment_status": "Purchase Order",
-    "number": 31,
-    "private_notes": null,
+    "id": 2823,
+    "is_from_marketplace": false,
+    "net_payout": "1594.91",
+    "number": 192,
+    "order_invoice_url": null,
     "order_items": [
         {
-            "id": 810,
+            "id": 9125,
+            "lead_time": 10,
+            "line_items": [
+            ],
+            "price": "625.90",
+            "quantity": 5,
+            "quantity_outstanding": 5,
             "quote_item": {
-                "id": 4101,
-                "type": "automatic",
+                "color": null,
+                "components": [
+                ],
+                "export_controlled": false,
+                "finishes": [
+                ],
+                "id": 10668,
+                "material": {
+                    "custom_name": null,
+                    "id": 656,
+                    "material": {
+                        "id": 1161,
+                        "name": "Aluminum 6061-T6"
+                    },
+                    "name": "Aluminum 6061-T6"
+                },
+                "material_notes": null,
+                "position": 1,
+                "private_notes": null,
                 "process": {
-                    "id": 516,
-                    "name": "CNC Machining - Prototypes",
-                    "external_name": "CNC Machining - Prototypes",
+                    "external_name": "CNC Machining",
+                    "id": 882,
+                    "name": "Ops CNC",
+                    "op_factory_class_name": "manufacturing",
+                    "process_finishes": [
+                    ],
                     "process_materials": [
                         {
-                            "id": 570,
+                            "added_lead_time": 0,
+                            "available_colors": [
+                                {
+                                    "id": 1,
+                                    "name": "natural"
+                                }
+                            ],
+                            "colors": [
+                                {
+                                    "id": 1,
+                                    "name": "natural"
+                                }
+                            ],
+                            "cost": "6.00000000",
+                            "custom_name": null,
+                            "display_name": "Aluminum 6061-T6",
+                            "id": 656,
                             "material": {
                                 "id": 1161,
                                 "name": "Aluminum 6061-T6"
                             },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
                             "spec_url": "",
-                            "custom_name": "Aluminum 6061 (RTP)",
-                            "cost": "1.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Aluminum 6061 (RTP)"
-                        },
-                        {
-                            "id": 528,
-                            "material": {
-                                "id": 679,
-                                "name": "Stainless Steel 316"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "2.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Stainless Steel 316"
-                        },
-                        {
-                            "id": 527,
-                            "material": {
-                                "id": 1167,
-                                "name": "Stainless Steel 303"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "4.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Stainless Steel 303"
-                        },
-                        {
-                            "id": 526,
-                            "material": {
-                                "id": 210,
-                                "name": "Aluminium 6061"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                },
-                                {
-                                    "id": 5,
-                                    "name": "blue"
-                                },
-                                {
-                                    "id": 6,
-                                    "name": "grey"
-                                },
-                                {
-                                    "id": 8,
-                                    "name": "Clear"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "1.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Aluminium 6061"
+                            "units": "pound"
                         }
-                    ],
-                    "process_finishes": [
-                        {
-                            "id": 209,
-                            "finish": {
-                                "id": 6,
-                                "name": "Buff and Polish",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 210,
-                            "finish": {
-                                "id": 2,
-                                "name": "Painting",
-                                "explanation": "Spray paint"
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 211,
-                            "finish": {
-                                "id": 5,
-                                "name": "Passivate",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 212,
-                            "finish": {
-                                "id": 7,
-                                "name": "Powder Coat RAL 7035 Light Gray",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 213,
-                            "finish": {
-                                "id": 1,
-                                "name": "Powder coating",
-                                "explanation": null
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 206,
-                            "finish": {
-                                "id": 4,
-                                "name": "Anodize Black",
-                                "explanation": ""
-                            },
-                            "cost": "10.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 207,
-                            "finish": {
-                                "id": 3,
-                                "name": "Anodizing",
-                                "explanation": "Special Treatment for the part."
-                            },
-                            "cost": "15.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 208,
-                            "finish": {
-                                "id": 8,
-                                "name": "Chromate",
-                                "explanation": ""
-                            },
-                            "cost": "30.0000000000",
-                            "added_lead_time": 0
-                        }
-                    ],
-                    "process_class_key": "machining",
-                    "process_family_key": "milling",
-                    "op_factory_class_name": "marketplace",
-                    "task_set": [
-                        "mill3"
                     ]
                 },
-                "material": {
-                    "id": 526,
-                    "name": "Aluminium 6061",
-                    "material": {
-                        "id": 210,
-                        "name": "Aluminium 6061"
-                    },
-                    "custom_name": null
-                },
-                "color": null,
-                "position": 3,
-                "finishes": [],
+                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
                 "root_component": {
-                    "id": 3815,
-                    "part": {
-                        "uuid": "tested7d-5834-4b64-aca4-b2test88e024",
-                        "filename": "test-file.stp",
-                        "units": "mm",
-                        "size_x": 111.76000213623047,
-                        "size_y": 36.79620552062988,
-                        "thickness": null,
-                        "size_z": 19.04999923706055,
-                        "area": 11001.4736328125,
-                        "volume": 31758.052734375,
-                        "volume_removal": 59,
-                        "dfm": {
-                            "part": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "additive": {
-                                "feedback": [],
-                                "mfg": "ok"
-                            },
-                            "flat": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "mill3": {
-                                "feedback": [],
-                                "mfg": "warning"
-                            },
-                            "casting": {
-                                "feedback": [],
-                                "mfg": "ok"
-                            },
-                            "sheet_metal": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "lathe": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "wire_edm": {
-                                "feedback": [],
-                                "mfg": null
-                            }
-                        },
-                        "thumbnail_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-                        "file_type": "stp",
-                        "in_action": false,
-                        "viewer_file_size": 164406,
-                        "reduced": false,
-                        "interrogation_failed": false,
-                        "url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.stp",
-                        "viewer_messages": [
-                            {
-                                "original_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "authenticated_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "paths": [
-                                    [
-                                        "features"
-                                    ],
-                                    [
-                                        "machining",
-                                        "milling"
-                                    ],
-                                    [
-                                        "cast_urethane"
-                                    ]
-                                ]
-                            },
-                            {
-                                "original_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "authenticated_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "paths": [
-                                    [
-                                        "tess"
-                                    ]
-                                ]
-                            }
-                        ],
-                        "innate_quantity": 1,
-                        "parent_uuid": null,
-                        "child_uuids": [],
-                        "assembly_position": 0
-                    },
-                    "part_number": null,
-                    "description": null,
-                    "revision": null,
-                    "misc_unit_charge": null,
-                    "misc_line_charge": null,
-                    "type": "component",
-                    "cells": [
+                    "calculated_orientation": "z",
+                    "cells": [],
+                    "description": "Mounting plate for higher-level assembly",
+                    "files": [
                         {
-                            "id": 6479,
-                            "quantity_id": 7747,
-                            "operation_id": 3153,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "424.89",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6478,
-                            "quantity_id": 7749,
-                            "operation_id": 3153,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "836.40",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6477,
-                            "quantity_id": 7748,
-                            "operation_id": 3153,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "542.45",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6476,
-                            "quantity_id": 7746,
-                            "operation_id": 3153,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "307.34",
-                            "manual_price": null,
-                            "overrides": {}
+                            "filename": "24mm-wheel-2020-gantry.step",
+                            "id": null,
+                            "url": null
                         }
                     ],
-                    "quantities": [
-                        {
-                            "id": 7746,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 2,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 175.72513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 49.22513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 98.45026673537456,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 10.4,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 1,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 1,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "307.34",
-                            "calculated_subtotal_unit_price": "307.34",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "307.34",
-                            "manual_unit_price": null,
-                            "total_price": "307.34",
-                            "calculated_total_unit_price": "307.34",
-                            "total_unit_price": "307.34",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
-                                {
-                                    "id": 6476,
-                                    "quantity_id": 7746,
-                                    "operation_id": 3153,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "307.34",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7747,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 4,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 175.72513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 49.22513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 196.9005334707491,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 20.8,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 3,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 3,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "424.89",
-                            "calculated_subtotal_unit_price": "141.63",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "424.89",
-                            "manual_unit_price": null,
-                            "total_price": "424.89",
-                            "calculated_total_unit_price": "141.63",
-                            "total_unit_price": "141.63",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
-                                {
-                                    "id": 6479,
-                                    "quantity_id": 7747,
-                                    "operation_id": 3153,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "424.89",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7748,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 6,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 175.72513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 49.22513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 295.35080020612367,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 31.200000000000003,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 5,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 5,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "542.45",
-                            "calculated_subtotal_unit_price": "108.49",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "542.45",
-                            "manual_unit_price": null,
-                            "total_price": "542.45",
-                            "calculated_total_unit_price": "108.49",
-                            "total_unit_price": "108.49",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
-                                {
-                                    "id": 6477,
-                                    "quantity_id": 7748,
-                                    "operation_id": 3153,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "542.45",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7749,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 11,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 175.72513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 49.22513336768728,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 541.4764670445601,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 57.2,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 10,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 10,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "836.40",
-                            "calculated_subtotal_unit_price": "83.64",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "836.40",
-                            "manual_unit_price": null,
-                            "total_price": "836.40",
-                            "calculated_total_unit_price": "83.64",
-                            "total_unit_price": "83.64",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": true,
-                            "cells": [
-                                {
-                                    "id": 6478,
-                                    "quantity_id": 7749,
-                                    "operation_id": 3153,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "836.40",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        }
-                    ],
+                    "id": 9999,
                     "operations": [
                         {
-                            "id": 3153,
-                            "component_id": 3815,
-                            "op_def_id": 98,
-                            "formula_id": 964,
-                            "name": "CNC Machining - Prototypes",
-                            "notes": null,
-                            "position": 0,
-                            "overrides": {
-                                "variables": {"runtime": "0.25"}
-                            },
                             "category": "operation",
+                            "component_id": 9999,
+                            "display_context": [
+                            ],
+                            "formula_id": 2933,
+                            "id": 18874,
+                            "is_finish": false,
+                            "name": "Order Entry",
+                            "notes": null,
+                            "op_def_id": 461,
+                            "overrides": {
+                            },
+                            "position": 1,
+                            "task_set": [
+                            ]
+                        },
+                        {
+                            "category": "operation",
+                            "component_id": 9999,
+                            "display_context": [
+                            ],
+                            "formula_id": 2934,
+                            "id": 18875,
+                            "is_finish": false,
+                            "name": "Material Prep",
+                            "notes": null,
+                            "op_def_id": 460,
+                            "overrides": {
+                            },
+                            "position": 2,
+                            "task_set": [
+                            ]
+                        },
+                        {
+                            "category": "material",
+                            "component_id": 9999,
+                            "display_context": [
+                            ],
+                            "formula_id": 2935,
+                            "id": 18876,
+                            "is_finish": false,
+                            "name": "Material",
+                            "notes": null,
+                            "op_def_id": 185,
+                            "overrides": {
+                            },
+                            "position": 3,
+                            "task_set": [
+                            ]
+                        },
+                        {
+                            "category": "operation",
+                            "component_id": 9999,
                             "display_context": [
                                 {
                                     "primary_key": "variables",
-                                    "secondary_key": "Material markup",
-                                    "value": 0.3,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Finish markup",
-                                    "value": 0.35,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Labor markup",
-                                    "value": 0.1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Global markup",
-                                    "value": 0.03,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Sales rep markup",
-                                    "value": 0.05,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "% Extra parts to make",
-                                    "value": 0.1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum material",
-                                    "value": 4,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum order value",
-                                    "value": 150,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Finish lot size",
-                                    "value": 20,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Machine hrs per day",
-                                    "value": 16,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Days to start milling",
-                                    "value": 2,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum run time auto quote Total",
-                                    "value": 200,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum run time auto quote each",
-                                    "value": 3,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum quantity",
-                                    "value": 200,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum price",
-                                    "value": 13000,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum setup auto quote",
-                                    "value": 4,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Order entry rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Programing rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Milling rate",
-                                    "value": 75,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe rate",
-                                    "value": 70,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tapping rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Hardware rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Part marking rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Order entry Time",
-                                    "value": 15,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum program time",
-                                    "value": 15,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum program time",
-                                    "value": 300,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe program time",
-                                    "value": 20,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Mill setup time",
-                                    "value": 30,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe setup time",
-                                    "value": 30,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tap setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Insert setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Marking setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tap time per hole",
-                                    "value": 0.5,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Insert install Time per insert",
-                                    "value": 1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Marking time per part",
-                                    "value": 5,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping time per part",
-                                    "value": 1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
                                     "secondary_key": "runtime",
-                                    "value": 0.5,
-                                    "type": "number"
+                                    "type": "number",
+                                    "value": "0.09916405549890997"
                                 },
                                 {
                                     "primary_key": "variables",
                                     "secondary_key": "setup_time",
-                                    "value": 1.0,
-                                    "type": "number"
+                                    "type": "number",
+                                    "value": 2
+                                },
+                                {
+                                    "primary_key": "variables",
+                                    "secondary_key": "machine_rate",
+                                    "type": "currency",
+                                    "value": 50
+                                },
+                                {
+                                    "primary_key": "variables",
+                                    "secondary_key": "setup_rate",
+                                    "type": "currency",
+                                    "value": 75
                                 }
                             ],
+                            "formula_id": 2938,
+                            "id": 18877,
                             "is_finish": false,
-                            "task_set": []
-                        }
-                    ],
-                    "features": {
-                        "tap_setups": null,
-                        "insert_setups": null,
-                        "marking_setups": null,
-                        "tap_qty": null,
-                        "insert_qty": null,
-                        "marking_qty": null
-                    },
-                    "overrides": {
-                        "process_runtime": null,
-                        "mat_price": null,
-                        "process_setups": null,
-                        "lathe_runtime": null,
-                        "lathe_setups": null,
-                        "finish_price_each": null
-                    },
-                    "files": [
-                        {
-                            "id": null,
-                            "filename": "test-bracket.stp",
-                            "url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.stp"
-                        }
-                    ],
-                    "orientation": "",
-                    "calculated_orientation": "z"
-                },
-                "components": [],
-                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-                "private_notes": null,
-                "status": null,
-                "material_notes": null,
-                "export_controlled": false
-            },
-            "quantity": 10,
-            "lead_time": 10,
-            "ships_on": "2019-02-26",
-            "price": "836.40",
-            "unit_price": "83.64",
-            "shipping_time": 0,
-            "line_items": [
-                {
-                    "name": "Make quantity",
-                    "value": 11,
-                    "value_type": "number"
-                },
-                {
-                    "name": "Setup price",
-                    "value": 175.72513336768728,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Run price each",
-                    "value": 49.22513336768728,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Run price total",
-                    "value": 541.4764670445601,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Total material cost",
-                    "value": 57.2,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Total finish",
-                    "value": 0,
-                    "value_type": "currency"
-                }
-            ],
-            "quantity_outstanding": 10
-        },
-        {
-            "id": 811,
-            "quote_item": {
-                "id": 4102,
-                "type": "automatic",
-                "process": {
-                    "id": 516,
-                    "name": "CNC Machining - Prototypes",
-                    "external_name": "CNC Machining - Prototypes",
-                    "process_materials": [
-                        {
-                            "id": 570,
-                            "material": {
-                                "id": 1161,
-                                "name": "Aluminum 6061-T6"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": "Aluminum 6061 (RTP)",
-                            "cost": "1.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Aluminum 6061 (RTP)"
-                        },
-                        {
-                            "id": 528,
-                            "material": {
-                                "id": 679,
-                                "name": "Stainless Steel 316"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "2.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Stainless Steel 316"
-                        },
-                        {
-                            "id": 527,
-                            "material": {
-                                "id": 1167,
-                                "name": "Stainless Steel 303"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "4.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Stainless Steel 303"
-                        },
-                        {
-                            "id": 526,
-                            "material": {
-                                "id": 210,
-                                "name": "Aluminium 6061"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                },
-                                {
-                                    "id": 5,
-                                    "name": "blue"
-                                },
-                                {
-                                    "id": 6,
-                                    "name": "grey"
-                                },
-                                {
-                                    "id": 8,
-                                    "name": "Clear"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "1.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Aluminium 6061"
-                        }
-                    ],
-                    "process_finishes": [
-                        {
-                            "id": 209,
-                            "finish": {
-                                "id": 6,
-                                "name": "Buff and Polish",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 210,
-                            "finish": {
-                                "id": 2,
-                                "name": "Painting",
-                                "explanation": "Spray paint"
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 211,
-                            "finish": {
-                                "id": 5,
-                                "name": "Passivate",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 212,
-                            "finish": {
-                                "id": 7,
-                                "name": "Powder Coat RAL 7035 Light Gray",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 213,
-                            "finish": {
-                                "id": 1,
-                                "name": "Powder coating",
-                                "explanation": null
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 206,
-                            "finish": {
-                                "id": 4,
-                                "name": "Anodize Black",
-                                "explanation": ""
-                            },
-                            "cost": "10.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 207,
-                            "finish": {
-                                "id": 3,
-                                "name": "Anodizing",
-                                "explanation": "Special Treatment for the part."
-                            },
-                            "cost": "15.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 208,
-                            "finish": {
-                                "id": 8,
-                                "name": "Chromate",
-                                "explanation": ""
-                            },
-                            "cost": "30.0000000000",
-                            "added_lead_time": 0
-                        }
-                    ],
-                    "process_class_key": "machining",
-                    "process_family_key": "milling",
-                    "op_factory_class_name": "marketplace",
-                    "task_set": [
-                        "mill3"
-                    ]
-                },
-                "material": {
-                    "id": 526,
-                    "name": "Aluminium 6061",
-                    "material": {
-                        "id": 210,
-                        "name": "Aluminium 6061"
-                    },
-                    "custom_name": null
-                },
-                "color": null,
-                "position": 4,
-                "finishes": [],
-                "root_component": {
-                    "id": 3816,
-                    "part": {
-                        "uuid": "test6e09-3180-4bb1-test-6a2test34e34",
-                        "filename": "test_cover.stp",
-                        "units": "mm",
-                        "size_x": 125.68030166625977,
-                        "size_y": 125.70514678955078,
-                        "thickness": null,
-                        "size_z": 47.62500000000001,
-                        "area": 40782.7734375,
-                        "volume": 119528.8984375,
-                        "volume_removal": 84,
-                        "dfm": {
-                            "part": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "additive": {
-                                "feedback": [],
-                                "mfg": "ok"
-                            },
-                            "flat": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "mill3": {
-                                "feedback": [],
-                                "mfg": "warning"
-                            },
-                            "casting": {
-                                "feedback": [],
-                                "mfg": "ok"
-                            },
-                            "sheet_metal": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "lathe": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "wire_edm": {
-                                "feedback": [],
-                                "mfg": null
-                            }
-                        },
-                        "thumbnail_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-                        "file_type": "stp",
-                        "in_action": false,
-                        "viewer_file_size": 2025492,
-                        "reduced": false,
-                        "interrogation_failed": false,
-                        "url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-                        "viewer_messages": [
-                            {
-                                "original_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "authenticated_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "paths": [
-                                    [
-                                        "features"
-                                    ],
-                                    [
-                                        "machining",
-                                        "milling"
-                                    ],
-                                    [
-                                        "cast_urethane"
-                                    ]
-                                ]
-                            },
-                            {
-                                "original_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "authenticated_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-                                "paths": [
-                                    [
-                                        "tess"
-                                    ]
-                                ]
-                            }
-                        ],
-                        "innate_quantity": 1,
-                        "parent_uuid": null,
-                        "child_uuids": [],
-                        "assembly_position": 0
-                    },
-                    "part_number": null,
-                    "description": null,
-                    "revision": null,
-                    "misc_unit_charge": null,
-                    "misc_line_charge": null,
-                    "type": "component",
-                    "cells": [
-                        {
-                            "id": 6483,
-                            "quantity_id": 7751,
-                            "operation_id": 3154,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "2034.30",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6482,
-                            "quantity_id": 7753,
-                            "operation_id": 3154,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "4700.90",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6481,
-                            "quantity_id": 7752,
-                            "operation_id": 3154,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "2796.20",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6480,
-                            "quantity_id": 7750,
-                            "operation_id": 3154,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "1272.41",
-                            "manual_price": null,
-                            "overrides": {}
-                        }
-                    ],
-                    "quantities": [
-                        {
-                            "id": 7750,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 2,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 472.69977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 346.19977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 692.3995547903821,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 13.058477231289961,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 1,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 1,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "1272.41",
-                            "calculated_subtotal_unit_price": "1272.41",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "1272.41",
-                            "manual_unit_price": null,
-                            "total_price": "1272.41",
-                            "calculated_total_unit_price": "1272.41",
-                            "total_unit_price": "1272.41",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
-                                {
-                                    "id": 6480,
-                                    "quantity_id": 7750,
-                                    "operation_id": 3154,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "1272.41",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7751,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 4,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 472.69977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 346.19977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 1384.7991095807643,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 26.116954462579923,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 3,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 3,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "2034.30",
-                            "calculated_subtotal_unit_price": "678.10",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "2034.30",
-                            "manual_unit_price": null,
-                            "total_price": "2034.30",
-                            "calculated_total_unit_price": "678.10",
-                            "total_unit_price": "678.10",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
-                                {
-                                    "id": 6483,
-                                    "quantity_id": 7751,
-                                    "operation_id": 3154,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "2034.30",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7752,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 6,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 472.69977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 346.19977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 2077.198664371146,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 39.17543169386988,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 5,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 5,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "2796.20",
-                            "calculated_subtotal_unit_price": "559.24",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "2796.20",
-                            "manual_unit_price": null,
-                            "total_price": "2796.20",
-                            "calculated_total_unit_price": "559.24",
-                            "total_unit_price": "559.24",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
-                                {
-                                    "id": 6481,
-                                    "quantity_id": 7752,
-                                    "operation_id": 3154,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "2796.20",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7753,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 11,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 472.69977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 346.19977739519106,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 3808.1975513471016,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 71.82162477209478,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 10,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 10,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "4700.90",
-                            "calculated_subtotal_unit_price": "470.09",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "4700.90",
-                            "manual_unit_price": null,
-                            "total_price": "4700.90",
-                            "calculated_total_unit_price": "470.09",
-                            "total_unit_price": "470.09",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": true,
-                            "cells": [
-                                {
-                                    "id": 6482,
-                                    "quantity_id": 7753,
-                                    "operation_id": 3154,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "4700.90",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        }
-                    ],
-                    "operations": [
-                        {
-                            "id": 3154,
-                            "component_id": 3816,
-                            "op_def_id": 98,
-                            "formula_id": 964,
-                            "name": "CNC Machining - Prototypes",
+                            "name": "Milling",
                             "notes": null,
-                            "position": 0,
-                            "overrides": {},
+                            "op_def_id": 459,
+                            "overrides": {
+                            },
+                            "position": 4,
+                            "task_set": [
+                                "mill3"
+                            ]
+                        },
+                        {
                             "category": "operation",
+                            "component_id": 9999,
+                            "display_context": [
+                            ],
+                            "formula_id": 2932,
+                            "id": 18878,
+                            "is_finish": false,
+                            "name": "QA",
+                            "notes": null,
+                            "op_def_id": 450,
+                            "overrides": {
+                            },
+                            "position": 5,
+                            "task_set": [
+                            ]
+                        },
+                        {
+                            "category": "operation",
+                            "component_id": 9999,
+                            "display_context": [
+                            ],
+                            "formula_id": 2937,
+                            "id": 18879,
+                            "is_finish": false,
+                            "name": "Painting",
+                            "notes": null,
+                            "op_def_id": 446,
+                            "overrides": {
+                            },
+                            "position": 6,
+                            "task_set": [
+                            ]
+                        },
+                        {
+                            "category": "operation",
+                            "component_id": 9999,
                             "display_context": [
                                 {
                                     "primary_key": "variables",
-                                    "secondary_key": "Material markup",
-                                    "value": 0.3,
-                                    "type": "number"
+                                    "secondary_key": "Lot Charge",
+                                    "type": "currency",
+                                    "value": 150
                                 },
                                 {
                                     "primary_key": "variables",
-                                    "secondary_key": "Finish markup",
-                                    "value": 0.35,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Labor markup",
-                                    "value": 0.1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Global markup",
-                                    "value": 0.03,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Sales rep markup",
-                                    "value": 0.05,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "% Extra parts to make",
-                                    "value": 0.1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum material",
-                                    "value": 4,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum order value",
-                                    "value": 150,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Finish lot size",
-                                    "value": 20,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Machine hrs per day",
-                                    "value": 16,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Days to start milling",
-                                    "value": 2,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum run time auto quote Total",
-                                    "value": 200,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum run time auto quote each",
-                                    "value": 3,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum quantity",
-                                    "value": 200,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum price",
-                                    "value": 13000,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum setup auto quote",
-                                    "value": 4,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Order entry rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Programing rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Milling rate",
-                                    "value": 75,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe rate",
-                                    "value": 70,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tapping rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Hardware rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Part marking rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Order entry Time",
-                                    "value": 15,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum program time",
-                                    "value": 15,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum program time",
-                                    "value": 300,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe program time",
-                                    "value": 20,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Mill setup time",
-                                    "value": 30,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe setup time",
-                                    "value": 30,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tap setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Insert setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Marking setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tap time per hole",
-                                    "value": 0.5,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Insert install Time per insert",
-                                    "value": 1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Marking time per part",
-                                    "value": 5,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping time per part",
-                                    "value": 1,
-                                    "type": "number"
+                                    "secondary_key": "Piece Price",
+                                    "type": "currency",
+                                    "value": 2
                                 }
                             ],
-                            "is_finish": false,
-                            "task_set": []
-                        }
-                    ],
-                    "features": {
-                        "tap_setups": null,
-                        "insert_setups": null,
-                        "marking_setups": null,
-                        "tap_qty": null,
-                        "insert_qty": null,
-                        "marking_qty": null
-                    },
-                    "overrides": {
-                        "process_runtime": null,
-                        "mat_price": null,
-                        "process_setups": null,
-                        "lathe_runtime": null,
-                        "lathe_setups": null,
-                        "finish_price_each": null
-                    },
-                    "files": [
-                        {
-                            "id": null,
-                            "filename": "test_cover.stp",
-                            "url": ""
+                            "formula_id": 2163,
+                            "id": 18880,
+                            "is_finish": true,
+                            "name": "Anodizing",
+                            "notes": null,
+                            "op_def_id": 534,
+                            "overrides": {
+                            },
+                            "position": 7,
+                            "task_set": [
+                            ]
                         }
                     ],
                     "orientation": "",
-                    "calculated_orientation": "z"
-                },
-                "components": [],
-                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-                "private_notes": null,
-                "status": null,
-                "material_notes": null,
-                "export_controlled": false
-            },
-            "quantity": 10,
-            "lead_time": 10,
-            "ships_on": "2019-02-26",
-            "price": "4700.90",
-            "unit_price": "470.09",
-            "shipping_time": 0,
-            "line_items": [
-                {
-                    "name": "Make quantity",
-                    "value": 11,
-                    "value_type": "number"
-                },
-                {
-                    "name": "Setup price",
-                    "value": 472.69977739519106,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Run price each",
-                    "value": 346.19977739519106,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Run price total",
-                    "value": 3808.1975513471016,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Total material cost",
-                    "value": 71.82162477209478,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Total finish",
-                    "value": 0,
-                    "value_type": "currency"
-                }
-            ],
-            "quantity_outstanding": 10
-        },
-        {
-            "id": 812,
-            "quote_item": {
-                "id": 4103,
-                "type": "automatic",
-                "process": {
-                    "id": 516,
-                    "name": "CNC Machining - Prototypes",
-                    "external_name": "CNC Machining - Prototypes",
-                    "process_materials": [
-                        {
-                            "id": 570,
-                            "material": {
-                                "id": 1161,
-                                "name": "Aluminum 6061-T6"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": "Aluminum 6061 (RTP)",
-                            "cost": "1.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Aluminum 6061 (RTP)"
-                        },
-                        {
-                            "id": 528,
-                            "material": {
-                                "id": 679,
-                                "name": "Stainless Steel 316"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "2.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Stainless Steel 316"
-                        },
-                        {
-                            "id": 527,
-                            "material": {
-                                "id": 1167,
-                                "name": "Stainless Steel 303"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "4.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Stainless Steel 303"
-                        },
-                        {
-                            "id": 526,
-                            "material": {
-                                "id": 210,
-                                "name": "Aluminium 6061"
-                            },
-                            "colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                }
-                            ],
-                            "available_colors": [
-                                {
-                                    "id": 1,
-                                    "name": "natural"
-                                },
-                                {
-                                    "id": 5,
-                                    "name": "blue"
-                                },
-                                {
-                                    "id": 6,
-                                    "name": "grey"
-                                },
-                                {
-                                    "id": 8,
-                                    "name": "Clear"
-                                }
-                            ],
-                            "spec_url": "",
-                            "custom_name": null,
-                            "cost": "1.00000000",
-                            "units": "pound",
-                            "added_lead_time": 0,
-                            "display_name": "Aluminium 6061"
-                        }
-                    ],
-                    "process_finishes": [
-                        {
-                            "id": 209,
-                            "finish": {
-                                "id": 6,
-                                "name": "Buff and Polish",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 210,
-                            "finish": {
-                                "id": 2,
-                                "name": "Painting",
-                                "explanation": "Spray paint"
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 211,
-                            "finish": {
-                                "id": 5,
-                                "name": "Passivate",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 212,
-                            "finish": {
-                                "id": 7,
-                                "name": "Powder Coat RAL 7035 Light Gray",
-                                "explanation": ""
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 213,
-                            "finish": {
-                                "id": 1,
-                                "name": "Powder coating",
-                                "explanation": null
-                            },
-                            "cost": "0.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 206,
-                            "finish": {
-                                "id": 4,
-                                "name": "Anodize Black",
-                                "explanation": ""
-                            },
-                            "cost": "10.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 207,
-                            "finish": {
-                                "id": 3,
-                                "name": "Anodizing",
-                                "explanation": "Special Treatment for the part."
-                            },
-                            "cost": "15.0000000000",
-                            "added_lead_time": 0
-                        },
-                        {
-                            "id": 208,
-                            "finish": {
-                                "id": 8,
-                                "name": "Chromate",
-                                "explanation": ""
-                            },
-                            "cost": "30.0000000000",
-                            "added_lead_time": 0
-                        }
-                    ],
-                    "process_class_key": "machining",
-                    "process_family_key": "milling",
-                    "op_factory_class_name": "marketplace",
-                    "task_set": [
-                        "mill3"
-                    ]
-                },
-                "material": {
-                    "id": 526,
-                    "name": "Aluminium 6061",
-                    "material": {
-                        "id": 210,
-                        "name": "Aluminium 6061"
+                    "overrides": {
+                        "finish_price_each": null,
+                        "lathe_runtime": null,
+                        "lathe_setups": null,
+                        "mat_price": null,
+                        "process_runtime": null,
+                        "process_setups": null
                     },
-                    "custom_name": null
-                },
-                "color": null,
-                "position": 5,
-                "finishes": [],
-                "root_component": {
-                    "id": 3817,
                     "part": {
-                        "uuid": "6e5a26d4-fbfa-4c8e-af9c-a955cb2ea151",
-                        "filename": "pulley-bracket.stp",
-                        "units": "mm",
-                        "size_x": 12.700000286102295,
-                        "size_y": 22.05423867702484,
-                        "thickness": null,
-                        "size_z": 8.636001586914062,
-                        "area": 1088.521484375,
-                        "volume": 1144.6295166015625,
-                        "volume_removal": 53,
-                        "dfm": {
-                            "part": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "additive": {
-                                "feedback": [],
-                                "mfg": "ok"
-                            },
-                            "flat": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "mill3": {
-                                "feedback": [],
-                                "mfg": "warning"
-                            },
-                            "casting": {
-                                "feedback": [],
-                                "mfg": "ok"
-                            },
-                            "sheet_metal": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "lathe": {
-                                "feedback": [],
-                                "mfg": null
-                            },
-                            "wire_edm": {
-                                "feedback": [],
-                                "mfg": null
-                            }
-                        },
-                        "thumbnail_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-                        "file_type": "stp",
-                        "in_action": false,
-                        "viewer_file_size": 268264,
-                        "reduced": false,
-                        "interrogation_failed": false,
-                        "url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-                        "viewer_messages": [
-                            {
-                                "original_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "authenticated_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "paths": [
-                                    [
-                                        "features"
-                                    ],
-                                    [
-                                        "machining",
-                                        "milling"
-                                    ],
-                                    [
-                                        "cast_urethane"
-                                    ]
-                                ]
-                            },
-                            {
-                                "original_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "authenticated_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.json",
-                                "paths": [
-                                    [
-                                        "tess"
-                                    ]
-                                ]
-                            }
+                        "area": 9407.28515625,
+                        "assembly_position": 0,
+                        "child_uuids": [
                         ],
+                        "dfm": {},
+                        "file_type": "step",
+                        "filename": "24mm-wheel-2020-gantry.step",
+                        "in_action": false,
                         "innate_quantity": 1,
+                        "interrogation_failed": false,
                         "parent_uuid": null,
-                        "child_uuids": [],
-                        "assembly_position": 0
+                        "reduced": false,
+                        "size_x": 60,
+                        "size_y": 60,
+                        "size_z": "6.349999904632572",
+                        "thickness": null,
+                        "thumbnail_url": null,
+                        "units": "mm",
+                        "url": null,
+                        "uuid": "8aa8f364-691b-4a36-bab1-31a8039ff1a1",
+                        "viewer_file_size": 236573,
+                        "viewer_messages": [],
+                        "volume": 20372.8984375,
+                        "volume_removal": 11
                     },
-                    "part_number": null,
-                    "description": null,
-                    "revision": null,
-                    "misc_unit_charge": null,
-                    "misc_line_charge": null,
-                    "type": "component",
-                    "cells": [
-                        {
-                            "id": 6487,
-                            "quantity_id": 7757,
-                            "operation_id": 3155,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "413.90",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6486,
-                            "quantity_id": 7754,
-                            "operation_id": 3155,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "268.56",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6485,
-                            "quantity_id": 7756,
-                            "operation_id": 3155,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "333.15",
-                            "manual_price": null,
-                            "overrides": {}
-                        },
-                        {
-                            "id": 6484,
-                            "quantity_id": 7755,
-                            "operation_id": 3155,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price": "300.87",
-                            "manual_price": null,
-                            "overrides": {}
-                        }
-                    ],
+                    "part_number": "3000-001",
                     "quantities": [
                         {
-                            "id": 7754,
+                            "adjustment_type": "usd",
+                            "calculated_markup_cost": "27.83",
+                            "calculated_overhead_cost": "92.78",
+                            "calculated_subtotal_unit_price": "463.91",
+                            "calculated_total_unit_price": "584.52",
+                            "cells": [],
+                            "expedites": [],
+                            "id": 20518,
+                            "is_ordered": false,
+                            "lead_time": 16,
                             "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 2,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 218.75544472372266,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 9.755444723722643,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 19.510889447445287,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 10.4,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
                             ],
+                            "make_quantity": 2,
+                            "manual_lead_time": 10,
+                            "manual_markup_cost": null,
+                            "manual_overhead_cost": null,
+                            "manual_total_unit_price": null,
+                            "manual_unit_price": null,
+                            "manual_yield_pct": null,
+                            "markup": 6,
+                            "material_cells_subtotal": "3.99",
+                            "operation_cells_subtotal": "459.92",
+                            "overhead": 20,
+                            "price_adjustment": null,
                             "quantity": 1,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 1,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "268.56",
-                            "calculated_subtotal_unit_price": "268.56",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "268.56",
-                            "manual_unit_price": null,
-                            "total_price": "268.56",
-                            "calculated_total_unit_price": "268.56",
-                            "total_unit_price": "268.56",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
-                                {
-                                    "id": 6486,
-                                    "quantity_id": 7754,
-                                    "operation_id": 3155,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "268.56",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
+                            "subtotal": "463.91",
+                            "total_price": "584.52",
+                            "total_unit_price": "584.52",
+                            "yield_pct": 95
                         },
                         {
-                            "id": 7755,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 4,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 218.75544472372266,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 9.755444723722643,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 39.02177889489057,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 20.8,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
-                                }
-                            ],
-                            "quantity": 3,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
                             "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 3,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "300.87",
-                            "calculated_subtotal_unit_price": "100.29",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "300.87",
-                            "manual_unit_price": null,
-                            "total_price": "300.87",
-                            "calculated_total_unit_price": "100.29",
-                            "total_unit_price": "100.29",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
+                            "calculated_markup_cost": "29.81",
+                            "calculated_overhead_cost": "99.35",
+                            "calculated_subtotal_unit_price": "99.35",
+                            "calculated_total_unit_price": "125.18",
                             "cells": [
                                 {
-                                    "id": 6484,
-                                    "quantity_id": 7755,
-                                    "operation_id": 3155,
-                                    "lead_time": 10,
+                                    "id": 47051,
+                                    "lead_time": 2,
                                     "manual_lead_time": null,
-                                    "price": "300.87",
                                     "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7756,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 6,
-                                    "value_type": "number"
+                                    "operation_id": 18880,
+                                    "overrides": {
+                                    },
+                                    "price": "150.00",
+                                    "quantity_id": 20519
                                 },
                                 {
-                                    "name": "Setup price",
-                                    "value": 218.75544472372266,
-                                    "value_type": "currency"
+                                    "id": 47048,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18879,
+                                    "overrides": {
+                                    },
+                                    "price": "50.00",
+                                    "quantity_id": 20519
                                 },
                                 {
-                                    "name": "Run price each",
-                                    "value": 9.755444723722643,
-                                    "value_type": "currency"
+                                    "id": 47045,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18878,
+                                    "overrides": {
+                                    },
+                                    "price": "25.00",
+                                    "quantity_id": 20519
                                 },
                                 {
-                                    "name": "Run price total",
-                                    "value": 58.53266834233586,
-                                    "value_type": "currency"
+                                    "id": 47042,
+                                    "lead_time": 1,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18877,
+                                    "overrides": {
+                                    },
+                                    "price": "179.75",
+                                    "quantity_id": 20519
                                 },
                                 {
-                                    "name": "Total material cost",
-                                    "value": 31.200000000000003,
-                                    "value_type": "currency"
+                                    "id": 47039,
+                                    "lead_time": 3,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18876,
+                                    "overrides": {
+                                    },
+                                    "price": "11.98",
+                                    "quantity_id": 20519
                                 },
                                 {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
+                                    "id": 47036,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18875,
+                                    "overrides": {
+                                    },
+                                    "price": "30.00",
+                                    "quantity_id": 20519
+                                },
+                                {
+                                    "id": 47033,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18874,
+                                    "overrides": {
+                                    },
+                                    "price": "50.00",
+                                    "quantity_id": 20519
                                 }
                             ],
-                            "quantity": 5,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 5,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "333.15",
-                            "calculated_subtotal_unit_price": "66.63",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "333.15",
-                            "manual_unit_price": null,
-                            "total_price": "333.15",
-                            "calculated_total_unit_price": "66.63",
-                            "total_unit_price": "66.63",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
-                            "is_ordered": false,
-                            "cells": [
+                            "expedites": [
                                 {
-                                    "id": 6485,
-                                    "quantity_id": 7756,
-                                    "operation_id": 3155,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "333.15",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
-                        },
-                        {
-                            "id": 7757,
-                            "line_items": [
-                                {
-                                    "name": "Make quantity",
-                                    "value": 11,
-                                    "value_type": "number"
-                                },
-                                {
-                                    "name": "Setup price",
-                                    "value": 218.75544472372266,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price each",
-                                    "value": 9.755444723722643,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Run price total",
-                                    "value": 107.30989196094907,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total material cost",
-                                    "value": 57.2,
-                                    "value_type": "currency"
-                                },
-                                {
-                                    "name": "Total finish",
-                                    "value": 0,
-                                    "value_type": "currency"
+                                    "id": 11522,
+                                    "lead_time": 7,
+                                    "markup": 10,
+                                    "total_price": "688.50",
+                                    "unit_price": "137.70"
                                 }
                             ],
-                            "quantity": 10,
-                            "lead_time": 10,
-                            "manual_lead_time": null,
-                            "price_adjustment": null,
-                            "adjustment_type": "usd",
-                            "yield_pct": 100,
-                            "manual_yield_pct": null,
-                            "make_quantity": 10,
-                            "markup": null,
-                            "manual_markup_cost": null,
-                            "calculated_markup_cost": "0.00",
-                            "overhead": null,
-                            "manual_overhead_cost": null,
-                            "calculated_overhead_cost": "0.00",
-                            "subtotal": "413.90",
-                            "calculated_subtotal_unit_price": "41.39",
-                            "material_cells_subtotal": "0.00",
-                            "operation_cells_subtotal": "413.90",
-                            "manual_unit_price": null,
-                            "total_price": "413.90",
-                            "calculated_total_unit_price": "41.39",
-                            "total_unit_price": "41.39",
-                            "manual_total_unit_price": null,
-                            "expedites": [],
+                            "id": 20519,
                             "is_ordered": true,
-                            "cells": [
-                                {
-                                    "id": 6487,
-                                    "quantity_id": 7757,
-                                    "operation_id": 3155,
-                                    "lead_time": 10,
-                                    "manual_lead_time": null,
-                                    "price": "413.90",
-                                    "manual_price": null,
-                                    "overrides": {}
-                                }
-                            ]
+                            "lead_time": 16,
+                            "line_items": [
+                            ],
+                            "make_quantity": 6,
+                            "manual_lead_time": 10,
+                            "manual_markup_cost": null,
+                            "manual_overhead_cost": null,
+                            "manual_total_unit_price": null,
+                            "manual_unit_price": null,
+                            "manual_yield_pct": null,
+                            "markup": 6,
+                            "material_cells_subtotal": "11.98",
+                            "operation_cells_subtotal": "484.75",
+                            "overhead": 20,
+                            "price_adjustment": null,
+                            "quantity": 5,
+                            "subtotal": "496.75",
+                            "total_price": "625.90",
+                            "total_unit_price": "125.18",
+                            "yield_pct": 95
+                        },
+                        {
+                            "adjustment_type": "usd",
+                            "calculated_markup_cost": "34.89",
+                            "calculated_overhead_cost": "116.30",
+                            "calculated_subtotal_unit_price": "58.15",
+                            "calculated_total_unit_price": "73.27",
+                            "cells": [],
+                            "expedites": [],
+                            "id": 20520,
+                            "is_ordered": false,
+                            "lead_time": 16,
+                            "line_items": [
+                            ],
+                            "make_quantity": 11,
+                            "manual_lead_time": 10,
+                            "manual_markup_cost": null,
+                            "manual_overhead_cost": null,
+                            "manual_total_unit_price": null,
+                            "manual_unit_price": null,
+                            "manual_yield_pct": null,
+                            "markup": 6,
+                            "material_cells_subtotal": "21.96",
+                            "operation_cells_subtotal": "559.54",
+                            "overhead": 20,
+                            "price_adjustment": null,
+                            "quantity": 10,
+                            "subtotal": "581.50",
+                            "total_price": "732.70",
+                            "total_unit_price": "73.27",
+                            "yield_pct": 95
                         }
                     ],
+                    "revision": "1",
+                    "type": "component"
+                },
+                "status": null,
+                "type": "automatic"
+            },
+            "shipping_time": 0,
+            "ships_on": "2019-05-22",
+            "unit_price": "125.18"
+        },
+        {
+            "id": 9126,
+            "lead_time": 7,
+            "line_items": [
+            ],
+            "price": "877.02",
+            "quantity": 3,
+            "quantity_outstanding": 3,
+            "quote_item": {
+                "color": null,
+                "components": [
+                ],
+                "export_controlled": true,
+                "finishes": [
+                ],
+                "id": 10669,
+                "material": {
+                    "custom_name": null,
+                    "id": 817,
+                    "material": {
+                        "id": 1050,
+                        "name": "ABS-M30"
+                    },
+                    "name": "ABS-M30"
+                },
+                "material_notes": null,
+                "position": 2,
+                "private_notes": null,
+                "process": {
+                    "external_name": null,
+                    "id": 994,
+                    "name": "Fortus Ops",
+                    "op_factory_class_name": "manufacturing",
+                    "process_finishes": [
+                    ],
+                    "process_materials": [
+                        {
+                            "added_lead_time": 0,
+                            "available_colors": [],
+                            "colors": [
+                                {
+                                    "id": 1,
+                                    "name": "natural"
+                                }
+                            ],
+                            "cost": "2.50000000",
+                            "custom_name": null,
+                            "display_name": "ABS-M30",
+                            "id": 817,
+                            "material": {
+                                "id": 1050,
+                                "name": "ABS-M30"
+                            },
+                            "spec_url": "",
+                            "units": "in"
+                        }
+                    ]
+                },
+                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
+                "root_component": {
+                    "calculated_orientation": "y",
+                    "cells": [
+                        {
+                            "id": 47056,
+                            "lead_time": 0,
+                            "manual_lead_time": null,
+                            "manual_price": null,
+                            "operation_id": 18884,
+                            "overrides": {
+                            },
+                            "price": "25.00",
+                            "quantity_id": 20521
+                        },
+                        {
+                            "id": 47055,
+                            "lead_time": 0,
+                            "manual_lead_time": null,
+                            "manual_price": null,
+                            "operation_id": 18883,
+                            "overrides": {
+                            },
+                            "price": "0.00",
+                            "quantity_id": 20521
+                        },
+                        {
+                            "id": 47054,
+                            "lead_time": 0,
+                            "manual_lead_time": null,
+                            "manual_price": null,
+                            "operation_id": 18882,
+                            "overrides": {
+                            },
+                            "price": "596.21",
+                            "quantity_id": 20521
+                        },
+                        {
+                            "id": 47053,
+                            "lead_time": 0,
+                            "manual_lead_time": null,
+                            "manual_price": null,
+                            "operation_id": 18881,
+                            "overrides": {
+                            },
+                            "price": "11.56",
+                            "quantity_id": 20521
+                        }
+                    ],
+                    "description": null,
+                    "files": [
+                        {
+                            "filename": "Cover.STL",
+                            "id": null,
+                            "url": null
+                        }
+                    ],
+                    "id": 10000,
+                    "misc_line_charge": null,
+                    "misc_unit_charge": null,
                     "operations": [
                         {
-                            "id": 3155,
-                            "component_id": 3817,
-                            "op_def_id": 98,
-                            "formula_id": 964,
-                            "name": "CNC Machining - Prototypes",
+                            "category": "material",
+                            "component_id": 10000,
+                            "display_context": [
+                            ],
+                            "formula_id": 2001,
+                            "id": 18881,
+                            "is_finish": false,
+                            "name": "ABS-M30",
                             "notes": null,
-                            "position": 0,
-                            "overrides": {},
+                            "op_def_id": 449,
+                            "overrides": {
+                            },
+                            "position": 1,
+                            "task_set": [
+                                "additive"
+                            ]
+                        },
+                        {
                             "category": "operation",
+                            "component_id": 10000,
                             "display_context": [
                                 {
                                     "primary_key": "variables",
-                                    "secondary_key": "Material markup",
-                                    "value": 0.3,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Finish markup",
-                                    "value": 0.35,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Labor markup",
-                                    "value": 0.1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Global markup",
-                                    "value": 0.03,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Sales rep markup",
-                                    "value": 0.05,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "% Extra parts to make",
-                                    "value": 0.1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum material",
-                                    "value": 4,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum order value",
-                                    "value": 150,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Finish lot size",
-                                    "value": 20,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Machine hrs per day",
-                                    "value": 16,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Days to start milling",
-                                    "value": 2,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum run time auto quote Total",
-                                    "value": 200,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum run time auto quote each",
-                                    "value": 3,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum quantity",
-                                    "value": 200,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum price",
-                                    "value": 13000,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum setup auto quote",
-                                    "value": 4,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Order entry rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Programing rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Milling rate",
-                                    "value": 75,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe rate",
-                                    "value": 70,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tapping rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Hardware rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Part marking rate",
-                                    "value": 80,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping rate",
-                                    "value": 60,
-                                    "type": "currency"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Order entry Time",
-                                    "value": 15,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Minimum program time",
-                                    "value": 15,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Maximum program time",
-                                    "value": 300,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe program time",
-                                    "value": 20,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Mill setup time",
-                                    "value": 30,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Lathe setup time",
-                                    "value": 30,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tap setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Insert setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Marking setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping setup time",
-                                    "value": 10,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Tap time per hole",
-                                    "value": 0.5,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Insert install Time per insert",
-                                    "value": 1,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Marking time per part",
-                                    "value": 5,
-                                    "type": "number"
-                                },
-                                {
-                                    "primary_key": "variables",
-                                    "secondary_key": "Shipping time per part",
-                                    "value": 1,
-                                    "type": "number"
+                                    "secondary_key": "runtime",
+                                    "type": "number",
+                                    "value": "3.9747468387871288"
                                 }
                             ],
+                            "formula_id": 2078,
+                            "id": 18882,
                             "is_finish": false,
-                            "task_set": []
-                        }
-                    ],
-                    "features": {
-                        "tap_setups": null,
-                        "insert_setups": null,
-                        "marking_setups": null,
-                        "tap_qty": null,
-                        "insert_qty": null,
-                        "marking_qty": null
-                    },
-                    "overrides": {
-                        "process_runtime": null,
-                        "mat_price": null,
-                        "process_setups": null,
-                        "lathe_runtime": null,
-                        "lathe_setups": null,
-                        "finish_price_each": null
-                    },
-                    "files": [
+                            "name": "Fortus 450mc Ops",
+                            "notes": null,
+                            "op_def_id": 376,
+                            "overrides": {
+                            },
+                            "position": 2,
+                            "task_set": [
+                                "additive"
+                            ]
+                        },
                         {
-                            "id": null,
-                            "filename": "test-bracket.stp",
-                            "url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png"
+                            "category": "operation",
+                            "component_id": 10000,
+                            "display_context": [
+                                {
+                                    "primary_key": "variables",
+                                    "secondary_key": "Scuffing Time",
+                                    "type": "number",
+                                    "value": 0
+                                }
+                            ],
+                            "formula_id": 2156,
+                            "id": 18883,
+                            "is_finish": false,
+                            "name": "Scuffing",
+                            "notes": null,
+                            "op_def_id": 456,
+                            "overrides": {
+                            },
+                            "position": 3,
+                            "task_set": [
+                            ]
+                        },
+                        {
+                            "category": "operation",
+                            "component_id": 10000,
+                            "display_context": [
+                            ],
+                            "formula_id": 2932,
+                            "id": 18884,
+                            "is_finish": false,
+                            "name": "QA",
+                            "notes": null,
+                            "op_def_id": 450,
+                            "overrides": {
+                            },
+                            "position": 4,
+                            "task_set": [
+                            ]
                         }
                     ],
                     "orientation": "",
-                    "calculated_orientation": "z"
+                    "overrides": {
+                        "finish_price_each": null,
+                        "lathe_runtime": null,
+                        "lathe_setups": null,
+                        "mat_price": null,
+                        "process_runtime": null,
+                        "process_setups": null
+                    },
+                    "part": {
+                        "area": 37671.00390625,
+                        "assembly_position": 0,
+                        "child_uuids": [
+                        ],
+                        "dfm": {},
+                        "file_type": "stl",
+                        "filename": "Cover.STL",
+                        "in_action": false,
+                        "innate_quantity": 1,
+                        "interrogation_failed": false,
+                        "parent_uuid": null,
+                        "reduced": false,
+                        "size_x": "76.20000457763672",
+                        "size_y": "25.399999618530273",
+                        "size_z": "127.00000762939453",
+                        "thickness": null,
+                        "thumbnail_url": null,
+                        "units": "mm",
+                        "url": null,
+                        "uuid": "d91ad86f-0692-4968-a2e8-044375371863",
+                        "viewer_file_size": 1913505,
+                        "viewer_messages": [],
+                        "volume": 53367.54296875,
+                        "volume_removal": 78
+                    },
+                    "part_number": "8334B",
+                    "quantities": [
+                        {
+                            "adjustment_type": "usd",
+                            "calculated_markup_cost": "37.97",
+                            "calculated_overhead_cost": "126.55",
+                            "calculated_subtotal_unit_price": "210.92",
+                            "calculated_total_unit_price": "265.76",
+                            "cells": [
+                                {
+                                    "id": 47056,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18884,
+                                    "overrides": {
+                                    },
+                                    "price": "25.00",
+                                    "quantity_id": 20521
+                                },
+                                {
+                                    "id": 47055,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18883,
+                                    "overrides": {
+                                    },
+                                    "price": "0.00",
+                                    "quantity_id": 20521
+                                },
+                                {
+                                    "id": 47054,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18882,
+                                    "overrides": {
+                                    },
+                                    "price": "596.21",
+                                    "quantity_id": 20521
+                                },
+                                {
+                                    "id": 47053,
+                                    "lead_time": 0,
+                                    "manual_lead_time": null,
+                                    "manual_price": null,
+                                    "operation_id": 18881,
+                                    "overrides": {
+                                    },
+                                    "price": "11.56",
+                                    "quantity_id": 20521
+                                }
+                            ],
+                            "expedites": [
+                                {
+                                    "id": 11524,
+                                    "lead_time": 7,
+                                    "markup": 10,
+                                    "total_price": "877.02",
+                                    "unit_price": "292.34"
+                                }
+                            ],
+                            "id": 20521,
+                            "is_ordered": true,
+                            "lead_time": 0,
+                            "line_items": [
+                            ],
+                            "make_quantity": 3,
+                            "manual_lead_time": 10,
+                            "manual_markup_cost": null,
+                            "manual_overhead_cost": null,
+                            "manual_total_unit_price": null,
+                            "manual_unit_price": null,
+                            "manual_yield_pct": null,
+                            "markup": 6,
+                            "material_cells_subtotal": "11.56",
+                            "operation_cells_subtotal": "621.21",
+                            "overhead": 20,
+                            "price_adjustment": null,
+                            "quantity": 3,
+                            "subtotal": "632.76",
+                            "total_price": "797.28",
+                            "total_unit_price": "265.76",
+                            "yield_pct": 100
+                        }
+                    ],
+                    "revision": "2-c",
+                    "type": "component"
                 },
-                "components": [],
-                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-                "private_notes": null,
                 "status": null,
-                "material_notes": null,
-                "export_controlled": false
+                "type": "automatic"
             },
-            "quantity": 10,
-            "lead_time": 10,
-            "ships_on": "2019-02-26",
-            "price": "413.90",
-            "unit_price": "41.39",
             "shipping_time": 0,
+            "ships_on": "2019-05-17",
+            "unit_price": "292.34"
+        },
+        {
+            "id": 9127,
+            "lead_time": 20,
             "line_items": [
-                {
-                    "name": "Make quantity",
-                    "value": 11,
-                    "value_type": "number"
-                },
-                {
-                    "name": "Setup price",
-                    "value": 218.75544472372266,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Run price each",
-                    "value": 9.755444723722643,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Run price total",
-                    "value": 107.30989196094907,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Total material cost",
-                    "value": 57.2,
-                    "value_type": "currency"
-                },
-                {
-                    "name": "Total finish",
-                    "value": 0,
-                    "value_type": "currency"
-                }
             ],
-            "quantity_outstanding": 10
+            "price": "100.00",
+            "quantity": 1,
+            "quantity_outstanding": 1,
+            "quote_item": {
+                "color": null,
+                "components": [
+                ],
+                "export_controlled": false,
+                "finishes": [
+                ],
+                "id": 10670,
+                "material": null,
+                "material_notes": null,
+                "position": 3,
+                "private_notes": "Additional components from inventory/consignment",
+                "process": null,
+                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
+                "root_component": {
+                    "calculated_orientation": "z",
+                    "cells": [
+                    ],
+                    "description": "Assembly Services",
+                    "features": null,
+                    "files": [
+                    ],
+                    "id": 10001,
+                    "misc_line_charge": null,
+                    "misc_unit_charge": null,
+                    "operations": [
+                    ],
+                    "orientation": "",
+                    "overrides": null,
+                    "part": null,
+                    "part_number": null,
+                    "quantities": [
+                        {
+                            "adjustment_type": "usd",
+                            "calculated_markup_cost": "0.00",
+                            "calculated_overhead_cost": "0.00",
+                            "calculated_subtotal_unit_price": "0.00",
+                            "calculated_total_unit_price": "0.00",
+                            "cells": [
+                            ],
+                            "expedites": [
+                                {
+                                    "id": 11525,
+                                    "lead_time": 7,
+                                    "markup": 10,
+                                    "total_price": "110.00",
+                                    "unit_price": "110.00"
+                                }
+                            ],
+                            "id": 20522,
+                            "is_ordered": true,
+                            "lead_time": 0,
+                            "line_items": [
+                            ],
+                            "make_quantity": 1,
+                            "manual_lead_time": 20,
+                            "manual_markup_cost": null,
+                            "manual_overhead_cost": null,
+                            "manual_total_unit_price": "100.00",
+                            "manual_unit_price": null,
+                            "manual_yield_pct": null,
+                            "markup": 6,
+                            "material_cells_subtotal": "0.00",
+                            "operation_cells_subtotal": "0.00",
+                            "overhead": 20,
+                            "price_adjustment": null,
+                            "quantity": 1,
+                            "subtotal": "0.00",
+                            "total_price": "100.00",
+                            "total_unit_price": "100.00",
+                            "yield_pct": null
+                        }
+                    ],
+                    "revision": null,
+                    "type": "component"
+                },
+                "status": null,
+                "type": "manual"
+            },
+            "shipping_time": 0,
+            "ships_on": "2019-06-06",
+            "unit_price": "100.00"
         }
     ],
-    "tax_rate": 0.001,
-    "price": "5951.20",
-    "shipping_cost": "0.00",
-    "tax_cost": "0.06",
-    "is_from_marketplace": false,
-    "quote_id": 1687,
-    "shipments": [],
-    "buyer_billing": {
-        "id": 643,
-        "address": {
-            "country": {
-                "abbr": "USA",
-                "name": "United States"
-            },
-            "state": {
-                "abbr": "NH",
-                "name": "New Hampshire"
-            },
-            "city": "NASHU",
-            "address1": "15 MAIN ST",
-            "address2": "",
-            "postal_code": "03064-2728"
-        },
-        "business_name": "Test Buyer Inc.",
-        "first_name": "Test",
-        "last_name": "Buyer",
-        "phone": "",
-        "phone_ext": "",
-        "company": null
-    },
-    "buyer_shipping": {
-        "id": 1055,
-        "address": {
-            "country": {
-                "abbr": "USA",
-                "name": "United States"
-            },
-            "state": {
-                "abbr": "NH",
-                "name": "New Hampshire"
-            },
-            "city": "NASHUA",
-            "address1": "15 MAIN ST",
-            "address2": "",
-            "postal_code": "03064-2728"
-        },
-        "business_name": "Test Buyer Inc.",
-        "first_name": "Test",
-        "last_name": "Buyer",
-        "phone": "2142132323",
-        "phone_ext": "222",
-        "company": null
-    },
+    "order_router_url": null,
     "payment_information": null,
-    "po_file_url": null,
-    "point_of_contact": "",
-    "order_invoice_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-    "shipping_option": {
-        "type": "suppliers_shipping_account",
-        "customers_account_number": null,
-        "customers_carrier": null,
-        "ship_when": "all_at_once",
-        "shipping_method": "ground"
-    },
-    "confirmation_email": null,
-    "quote_notes": "- Customers are responsible for ensuring that the properties and performance of the material selected meet the requirements of their application;\n- CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved;\n- The standard finish (or surface finish) for all parts will include deburring through sanding or bead blasting and support structure removal (additive parts);\n- The estimated arrival time is based on available capacity at the time of this quote. Quotes that are not executed same day are subject to change or delays. Reasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
+    "payment_status": "Purchase Order",
     "payment_terms": {
+        "active": true,
         "id": 2,
         "is_global": true,
         "label": "Net 30",
-        "period": 30,
-        "active": true
+        "period": 30
     },
-    "quote_number": 350,
-    "order_router_url": "https://www.testurl.com/b3adf92b8a08878fd2cba832c2ca05fb63d48550.png",
-    "net_payout": "13769.55"
+    "po_file_url": null,
+    "point_of_contact": "",
+    "price": "1602.92",
+    "private_notes": null,
+    "purchase_token": "6789",
+    "quote_id": 5544,
+    "quote_notes": "CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved.\nReasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
+    "quote_number": 103,
+    "sales_person": "Scott Sawyer",
+    "shipments": [
+    ],
+    "shipping_cost": "0.00",
+    "shipping_option": {
+        "customers_account_number": "12345",
+        "customers_carrier": "ups",
+        "ship_when": "all_at_once",
+        "shipping_method": "ground",
+        "type": "customers_shipping_account"
+    },
+    "ships_on": "2019-06-06",
+    "status": "pending",
+    "tax_cost": "0.00",
+    "tax_rate": 0,
+    "total_price": "1602.92"
 }
