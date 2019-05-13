@@ -66,6 +66,40 @@ class ShippingOption:
     type: str = attr.ib(validator=attr.validators.optional(attr.validators.in_(
         ['pickup', 'customers_shipping_account', 'suppliers_shipping_account'])))
 
+    def summary(self, ships_on_dt, payment_type):
+        if self.type == 'pickup':
+            return 'Customer will pickup from supplier\'s location.\n' \
+                   'Deadline: Order should be ready for pickup by start of day ' \
+                   '{}.'.format(ships_on_dt.strftime('%m/%d/%Y'))
+        elif self.type == 'customers_shipping_account':
+            return 'Use Customer\'s Shipping Account\n' \
+                   'Carrier: {}\n' \
+                   'Method: {}\n' \
+                   'Account #: {}\n' \
+                   'Deadline: Order should ship by noon on {}.'.format(
+                self.customers_carrier.upper(),
+                self.shipping_method.upper(),
+                self.customers_account_number,
+                ships_on_dt.strftime('%m/%d/%Y')
+            )
+        elif (self.type == 'suppliers_shipping_account') and (
+                payment_type == 'credit_card'):
+            return 'Customer has been charged for shipping. ' \
+                   'Ship with your account.\n' \
+                   'Method: {}\n' \
+                   'Deadline: Order should ship by noon on {}.'.format(
+                self.shipping_method.upper(),
+                ships_on_dt.strftime('%m/%d/%Y')
+            )
+        elif (self.type == 'suppliers_shipping_account') and (
+                payment_type == 'purchase_order'):
+            return 'Ship with your account and bill customer for shipping.\n' \
+                   'Method: {}\n' \
+                   'Deadline: Order should ship by noon on {}.'.format(
+                self.shipping_method.upper(),
+                ships_on_dt.strftime('%m/%d/%Y')
+            )
+
 
 @attr.s(frozen=True)
 class OrderCustomer:

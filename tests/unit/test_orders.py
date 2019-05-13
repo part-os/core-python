@@ -84,3 +84,43 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(0.25, op.runtime)
         self.assertEqual(2.0, op.setup_time)
         self.assertEqual('A note', op.notes)
+
+    def test_ship_desc(self):
+        from paperless.objects.orders import ShippingOption
+        import datetime
+        dt = datetime.datetime.now()
+
+        # pickup
+        so1 = ShippingOption(
+            customers_account_number=None,
+            customers_carrier=None,
+            ship_when='all_at_once',
+            shipping_method=None,
+            type='pickup'
+        )
+        self.assertTrue(so1.summary(dt, '').startswith(
+            'Customer will pickup from supplier\'s location.',))
+
+        # customer's account
+        so2 = ShippingOption(
+            customers_account_number='12345',
+            customers_carrier='ups',
+            ship_when='all_at_once',
+            shipping_method='ground',
+            type='customers_shipping_account'
+        )
+        self.assertIn('Use Customer\'s Shipping Account', so2.summary(dt, ''))
+        self.assertIn('Method: GROUND', so2.summary(dt, ''))
+
+        # supplier's account
+        so3 = ShippingOption(
+            customers_account_number=None,
+            customers_carrier=None,
+            ship_when='all_at_once',
+            shipping_method='ground',
+            type='suppliers_shipping_account'
+        )
+        summ = so3.summary(dt, 'credit_card')
+        self.assertIn('has been charged', summ)
+        summ = so3.summary(dt, 'purchase_order')
+        self.assertIn('bill customer', summ)
