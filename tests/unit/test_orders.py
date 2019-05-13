@@ -31,10 +31,12 @@ class TestOrders(unittest.TestCase):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
         oi = o.order_items[0]
-        print(oi.ships_on)
         self.assertEqual(2019, oi.ships_on_dt.year)
         self.assertEqual(5, oi.ships_on_dt.month)
         self.assertEqual(22, oi.ships_on_dt.day)
+        self.assertEqual(2019, o.created_dt.year)
+        self.assertEqual(5, o.created_dt.month)
+        self.assertEqual(8, o.created_dt.day)
 
     def test_operation_mapper(self):
         op1 = {

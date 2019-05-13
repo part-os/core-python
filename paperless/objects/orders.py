@@ -1,6 +1,7 @@
 import attr
 from decimal import Decimal
 import datetime
+import dateutil.parser
 from typing import List, Optional
 
 from paperless.api_mappers import OrderDetailsMapper, OrderMinimumMapper
@@ -90,12 +91,23 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     _list_object_representation = OrderMinimum
 
     billing_info: Address = attr.ib(converter=convert_cls(Address))
+    created = attr.ib(validator=attr.validators.instance_of(str))
     customer: OrderCustomer = attr.ib(converter=convert_cls(OrderCustomer))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     order_items: List[OrderItem] = attr.ib(converter=convert_iterable(OrderItem))
     payment_details: PaymentDetails = attr.ib(converter=convert_cls(PaymentDetails))
+    private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     shipping_info: Address = attr.ib(converter=convert_cls(Address))
     shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))
+    ships_on = attr.ib(validator=attr.validators.instance_of(str))
+
+    @property
+    def created_dt(self):
+        return dateutil.parser.parse(self.created)
+
+    @property
+    def ships_on_dt(self):
+        return datetime.datetime.strptime(self.ships_on, DATE_FMT)
 
     @classmethod
     def construct_get_url(cls):
