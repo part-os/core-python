@@ -96,7 +96,6 @@ class OrderItemMapper(BaseMapper):
         return d
 
 
-#TODO: Make this a version
 class OrderDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):

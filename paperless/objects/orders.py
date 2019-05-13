@@ -1,5 +1,6 @@
 import attr
 from decimal import Decimal
+import datetime
 from typing import List, Optional
 
 from paperless.api_mappers import OrderDetailsMapper, OrderMinimumMapper
@@ -8,6 +9,8 @@ from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 
 from .address import Address
 from .utils import convert_cls, convert_iterable
+
+DATE_FMT = '%Y-%m-%d'
 
 
 @attr.s(frozen=True)
@@ -32,8 +35,12 @@ class OrderItem:
     public_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    ships_on = attr.ib(validator=attr.validators.instance_of(str)) # TODO: ADD date type checking and define this values format
+    ships_on = attr.ib(validator=attr.validators.instance_of(str))
     unit_price: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+
+    @property
+    def ships_on_dt(self):
+        return datetime.datetime.strptime(self.ships_on, DATE_FMT)
 
 
 @attr.s(frozen=True)

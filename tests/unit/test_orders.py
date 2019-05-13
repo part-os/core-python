@@ -27,6 +27,15 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(2, op1.setup_time)
         self.assertEqual('Net 30', o.payment_details.terms)
 
+    def test_date_fmt(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_order_json)
+        o = Order.get(1)
+        oi = o.order_items[0]
+        print(oi.ships_on)
+        self.assertEqual(2019, oi.ships_on_dt.year)
+        self.assertEqual(5, oi.ships_on_dt.month)
+        self.assertEqual(22, oi.ships_on_dt.day)
+
     def test_operation_mapper(self):
         op1 = {
             'name': 'name1',
