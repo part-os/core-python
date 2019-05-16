@@ -68,14 +68,14 @@ class ShippingOption:
 
     def summary(self, ships_on_dt, payment_type):
         if self.type == 'pickup':
-            return 'Customer will pickup from supplier\'s location.\n' \
+            return 'Customer will pickup from supplier\'s location.\r\n' \
                    'Deadline: Order should be ready for pickup by start of day ' \
                    '{}.'.format(ships_on_dt.strftime('%m/%d/%Y'))
         elif self.type == 'customers_shipping_account':
-            return 'Use Customer\'s Shipping Account\n' \
-                   'Carrier: {}\n' \
-                   'Method: {}\n' \
-                   'Account #: {}\n' \
+            return 'Use Customer\'s Shipping Account\r\n' \
+                   'Carrier: {}\r\n' \
+                   'Method: {}\r\n' \
+                   'Account #: {}\r\n' \
                    'Deadline: Order should ship by noon on {}.'.format(
                 self.customers_carrier.upper(),
                 self.shipping_method.upper(),
@@ -85,16 +85,16 @@ class ShippingOption:
         elif (self.type == 'suppliers_shipping_account') and (
                 payment_type == 'credit_card'):
             return 'Customer has been charged for shipping. ' \
-                   'Ship with your account.\n' \
-                   'Method: {}\n' \
+                   'Ship with your account.\r\n' \
+                   'Method: {}\r\n' \
                    'Deadline: Order should ship by noon on {}.'.format(
                 self.shipping_method.upper(),
                 ships_on_dt.strftime('%m/%d/%Y')
             )
         elif (self.type == 'suppliers_shipping_account') and (
                 payment_type == 'purchase_order'):
-            return 'Ship with your account and bill customer for shipping.\n' \
-                   'Method: {}\n' \
+            return 'Ship with your account and bill customer for shipping.\r\n' \
+                   'Method: {}\r\n' \
                    'Deadline: Order should ship by noon on {}.'.format(
                 self.shipping_method.upper(),
                 ships_on_dt.strftime('%m/%d/%Y')
