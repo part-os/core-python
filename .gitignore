@@ -127,3 +127,5 @@ dmypy.json
 
 # Local storage
 .processed_orders.json
+
+.DS_Store
