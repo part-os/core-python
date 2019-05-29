@@ -126,7 +126,7 @@
                     ]
                 },
                     "material": {
-                    "custom_name": null,
+                    "display_name": "Aluminum 6061-T6",
                     "id": 656,
                     "material": {
                         "id": 1161,
@@ -582,14 +582,14 @@
                     ]
                 },
                     "material": {
-                    "custom_name": null,
-                    "id": 817,
-                    "material": {
-                        "id": 1050,
+                        "display_name": "ABS-M30",
+                        "id": 817,
+                        "material": {
+                            "id": 1050,
+                            "name": "ABS-M30"
+                        },
                         "name": "ABS-M30"
                     },
-                    "name": "ABS-M30"
-                },
                     "calculated_orientation": "y",
                     "cells": [
                         {
