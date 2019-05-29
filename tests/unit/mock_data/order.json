@@ -79,26 +79,18 @@
             "quantity": 5,
             "quantity_outstanding": 5,
             "quote_item": {
-                "color": null,
                 "components": [
                 ],
                 "export_controlled": false,
                 "finishes": [
                 ],
                 "id": 10668,
-                "material": {
-                    "custom_name": null,
-                    "id": 656,
-                    "material": {
-                        "id": 1161,
-                        "name": "Aluminum 6061-T6"
-                    },
-                    "name": "Aluminum 6061-T6"
-                },
                 "material_notes": null,
                 "position": 1,
                 "private_notes": null,
-                "process": {
+                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
+                "root_component": {
+                    "process": {
                     "external_name": "CNC Machining",
                     "id": 882,
                     "name": "Ops CNC",
@@ -133,8 +125,15 @@
                         }
                     ]
                 },
-                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-                "root_component": {
+                    "material": {
+                    "custom_name": null,
+                    "id": 656,
+                    "material": {
+                        "id": 1161,
+                        "name": "Aluminum 6061-T6"
+                    },
+                    "name": "Aluminum 6061-T6"
+                },
                     "calculated_orientation": "z",
                     "cells": [],
                     "description": "Mounting plate for higher-level assembly",
@@ -547,19 +546,12 @@
                 "finishes": [
                 ],
                 "id": 10669,
-                "material": {
-                    "custom_name": null,
-                    "id": 817,
-                    "material": {
-                        "id": 1050,
-                        "name": "ABS-M30"
-                    },
-                    "name": "ABS-M30"
-                },
                 "material_notes": null,
                 "position": 2,
                 "private_notes": null,
-                "process": {
+                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
+                "root_component": {
+                    "process": {
                     "external_name": null,
                     "id": 994,
                     "name": "Fortus Ops",
@@ -589,8 +581,15 @@
                         }
                     ]
                 },
-                "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-                "root_component": {
+                    "material": {
+                    "custom_name": null,
+                    "id": 817,
+                    "material": {
+                        "id": 1050,
+                        "name": "ABS-M30"
+                    },
+                    "name": "ABS-M30"
+                },
                     "calculated_orientation": "y",
                     "cells": [
                         {
@@ -881,13 +880,13 @@
                 "finishes": [
                 ],
                 "id": 10670,
-                "material": null,
                 "material_notes": null,
                 "position": 3,
                 "private_notes": "Additional components from inventory/consignment",
-                "process": null,
                 "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
                 "root_component": {
+                    "material": null,
+                    "process": null,
                     "calculated_orientation": "z",
                     "cells": [
                     ],

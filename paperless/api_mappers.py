@@ -83,10 +83,10 @@ class OrderItemMapper(BaseMapper):
         }
 
         # material for automatic quote items
-        if oi['quote_item']['material']:
-            d['material'] = oi['quote_item']['material']['custom_name'] \
-                if oi['quote_item']['material']['custom_name'] \
-                else oi['quote_item']['material']['name']
+        if oi['quote_item']['root_component']['material']:
+            d['material'] = oi['quote_item']['root_component']['material']['custom_name'] \
+                if oi['quote_item']['root_component']['material']['custom_name'] \
+                else oi['quote_item']['root_component']['material']['name']
         # find make qty
         for cq in oi['quote_item']['root_component']['quantities']:
             if cq['quantity'] == oi['quantity']:
