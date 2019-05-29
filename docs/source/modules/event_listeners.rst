@@ -36,9 +36,10 @@ See the following example:
             print("on event")
             print(resource)
             print(resource.to_dict())
+            return True
 
     # Step 3
-    my_order_listener_instance = MyOrderListener(last_updated=None)
+    my_order_listener_instance = MyOrderListener(last_record_id=None)
 
     # Step 4
     my_sdk = PaperlessSDK()
@@ -56,13 +57,11 @@ When you instantiate your listener you configure what defines a new resource. Th
 Because listeners come with built in caching, you get to draw this line the **first time** you instantiate a subclass of a specific ResourceListener. There are two ways to do this:
 
 1. You can pass in the unique identifier of the last resource of that type you have processed as the last_updated param. By passing in a value as the last_updated param you are telling the listener to trigger the on_event method for all **future** resources **not including** the resource whose identifier you passed.
-2. You can choose not to pass a last_updated param. Not passing a last_updated param will result in the listener finding the last updated resource in Paperless Parts and then using that as the starting point so that on_event will only be triggered for resources created after the moment you instantiate your listener.
+2. You can choose not to pass a last_record_id param. Not passing a last_record_id param will result in the listener finding the last updated resource in Paperless Parts and then using that as the starting point so that on_event will only be triggered for resources created after the moment you instantiate your listener.
 
-**Note: You can run into a weird situation if you choose not to pass in a last_updated, do not have any Paperless resources for the resource you are listening for, and have requested from Paperless to initiaite your resource at a specific index (for instance requested a specific order or quote number).**
+**Note: If your account has no orders but is set for the first order to have a number greater than 1, then you MUST specify last_record_id.**
 
 Paperless resource listeners will cache all successfully processed resources. When re-initiating or re-starting your program, you will start off right where you left off.
-
-TODO: ADD A WAY TO CLEAR THE CACHE AND DOCUMENT THAT HERE
 
 
 Available Resource Listeners

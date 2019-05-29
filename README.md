@@ -24,7 +24,8 @@ logic.
 
 ### CAUTION
 Once registered, your custom on_event method will be hit repeatedly until it finishes successfully.
-If your listener is unable to succeed, it means that your program will get 'stuck' on that resource and will never be able to move on to other ones.
+If your listener is unable to succeed, it means that your program will get 'stuck' on that resource and will never be able to move on to other ones. 
+It is the responsibility of the listener subclass to handle exceptions.
 
 ## Instantiating your listener
 The first time you run the Paperless SDK you will have the option of configuring which resource to set as your baseline. 
@@ -58,13 +59,8 @@ class MyOrderListener(OrderListener):
 
 
 my_client = PaperlessClient(username='', password='', group_slug='', version=PaperlessClient.VERSION_0)
-my_order_listener = MyOrderListener(client=my_client, last_updated=None)
+my_order_listener = MyOrderListener(client=my_client, last_record_id=None)
 my_sdk = PaperlessSDK()
 my_sdk.add_listener(my_order_listener)
 my_sdk.run()
 ```
-
-
-
-
-
