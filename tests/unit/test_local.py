@@ -25,3 +25,4 @@ class TestLocalStorage(unittest.TestCase):
         self.assertEqual(10, storage.get_last_processed(Operation))
         storage.clear_cache()
         self.assertIsNone(storage.get_last_processed(Operation))
+        os.remove(filename)

@@ -41,9 +41,8 @@ class BaseListener:
     def listen(self):
         resource = self.get_new_resource()
         if resource is not None:
-            self.on_event(resource)
-            # on_event was processed successfully
-            self.record_successful_resource_process(resource)
+            success = self.on_event(resource)
+            self.record_resource_processed(resource, success)
 
     @staticmethod
     def get_resource_unique_identifier(self, resource):

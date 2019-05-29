@@ -1,17 +1,23 @@
 import time
+import logging
 from .listeners import BaseListener
+
+LOGGER = logging.getLogger(__name__)
+
 
 class PaperlessSDK:
     listeners = []
-    delay = 30
+    delay = 60 * 15  # 15 minutes
 
     def add_listener(self, listener: BaseListener):
-        #todo: assert it is a listener
-        #todo: should we verify that we only listen to one of each types of listeners? Will we run into any situations with threading where we detect (or don't detect) multiple of the same objects?
+        assert(isinstance(listener, BaseListener))
         self.listeners.append(listener)
 
     def run(self):
         while True:
             for listener in self.listeners:
-                listener.listen()
+                try:
+                    listener.listen()
+                except Exception as e:
+                    LOGGER.exception('Unhandled exception in listener')
             time.sleep(self.delay)

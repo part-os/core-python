@@ -5,6 +5,7 @@ from unittest.mock import MagicMock
 from paperless.client import PaperlessClient
 from paperless.exceptions import PaperlessAuthorizationException
 
+
 class TestClient(unittest.TestCase):
     def setUp(self):
         # instantiate client singleton

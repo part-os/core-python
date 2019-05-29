@@ -1,9 +1,8 @@
 import json
 import requests
 
-#from .api_mappers import OrderDetailsMapper, OrderMinimumMapper
 from .exceptions import PaperlessAuthorizationException, PaperlessException, PaperlessNotFoundException
-#from .listeners import OrderListener
+
 
 class PaperlessClient(object):
     GET = 'get'
@@ -62,7 +61,7 @@ class PaperlessClient(object):
             'Accept': 'application/json',
             'Authorization': 'Token {}'.format(self.token),
             'Content-Type': 'application/json',
-            'User-Agent': 'python-paperlessSDK V0 library'
+            'User-Agent': 'python-paperlessSDK {}'.format(self.version)
         }
 
     def authenticate(self):
@@ -126,7 +125,6 @@ class PaperlessClient(object):
         headers = self.get_authenticated_headers()
 
         req_url = "{}/{}/{}".format(self.base_url, resource_url, id)
-        print(requests)
         resp = requests.get(
             req_url,
             headers=headers,
@@ -134,9 +132,8 @@ class PaperlessClient(object):
         )
 
         if resp.status_code == 200:
-            #return self.mappers[self.version][resource_type][self.GET].map(resource=resp.json())
             return resp.json()
-        elif resp.status_code == 404: # Do I need to do this if this is the default?
+        elif resp.status_code == 404:
             raise PaperlessNotFoundException(
                 message="Unable to locate object with id {} from url: {}".format(id, req_url)
             )
