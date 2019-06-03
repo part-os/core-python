@@ -33,9 +33,11 @@ class OperationMapper(BaseMapper):
             'name': resource['name'],
             'notes': resource['notes'],
             'runtime': None,
-            'setup_time': None
+            'setup_time': None,
+            'variables': {}
         }
         for d in resource['display_context']:
+            op['variables'][d.get('secondary_key')] = d.get('value')
             if d.get('secondary_key') == 'runtime':
                 try:
                     op['runtime'] = Decimal(d.get('value'))

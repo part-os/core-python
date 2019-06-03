@@ -20,6 +20,7 @@ class Operation:
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     runtime: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     setup_time: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
+    variables: dict = attr.ib()
 
 
 @attr.s(frozen=True)

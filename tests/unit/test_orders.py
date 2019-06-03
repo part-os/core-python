@@ -53,6 +53,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual('name1', op.name)
         self.assertEqual(1.0, op.runtime)
         self.assertIsNone(op.setup_time)
+        self.assertEqual(1.0, op.variables['runtime'])
 
         op2 = {
             'name': 'name1',
