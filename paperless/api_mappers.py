@@ -80,11 +80,14 @@ class OrderItemMapper(BaseMapper):
                 OperationMapper.map,
                 oi['quote_item']['root_component']['operations']),
             'material': None,
+            'process': None
         }
 
         # material for automatic quote items
         if oi['quote_item']['root_component']['material']:
             d['material'] = oi['quote_item']['root_component']['material']['display_name']
+        if oi['quote_item']['root_component']['process']:
+            d['process']: oi['quote_item']['root_component']['process']['name']
         # find make qty
         for cq in oi['quote_item']['root_component']['quantities']:
             if cq['quantity'] == oi['quantity']:

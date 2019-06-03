@@ -31,6 +31,7 @@ class OrderItem:
     material = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
     part_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    process = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     price: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
     private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     public_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
