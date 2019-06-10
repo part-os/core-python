@@ -103,7 +103,7 @@ class OrderDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         # Version 0.0
-        billing_info = AddressMapper.map(resource['buyer_shipping'])
+        billing_info = AddressMapper.map(resource['buyer_billing'])
 
         customer = {
             'business_name': resource['customer']['business_name'],
