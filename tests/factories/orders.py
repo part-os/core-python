@@ -55,12 +55,13 @@ class PaymentDetailsFactory(factory.Factory):
     net_payout = factory.LazyAttribute(lambda p: None if p.payment_type == 'purchase_order' \
         else round(p.price *  Decimal(.95), 2))
     payment_type = factory.fuzzy.FuzzyChoice(choices=['credit_card', 'purchase_order'])
-    price = factory.fuzzy.FuzzyDecimal(200, 100000)
     purchase_order_number = factory.LazyAttribute(lambda p: None if p.payment_type == 'credit_card' \
         else fake.text(max_nb_chars=15))
     shipping_cost = factory.fuzzy.FuzzyDecimal(0, 200)
+    subtotal = factory.fuzzy.FuzzyDecimal(200, 100000)
     tax_cost = factory.fuzzy.FuzzyDecimal(0, 200)
     tax_rate = factory.fuzzy.FuzzyDecimal(0, 10)
+    total_price = factory.fuzzy.FuzzyDecimal(200, 100000)
 
 
 #TODO: MAKE THIS SMARTER! SO THE FIELDS DEPEND ON EACH OTHER
