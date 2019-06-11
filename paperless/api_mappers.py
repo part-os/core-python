@@ -119,12 +119,13 @@ class OrderDetailsMapper(BaseMapper):
         payment_details = {
             'net_payout': Decimal(resource['net_payout']) if resource['net_payout'] else None,
             'payment_type': 'purchase_order' if resource['purchase_token'] else 'credit_card',
-            'price': Decimal(resource['price']),
             'purchase_order_number': resource['purchase_token'],
+            'subtotal': Decimal(resource['price']),
             'shipping_cost': Decimal(resource['shipping_cost']),
             'tax_cost': Decimal(resource['tax_cost']) if Decimal(resource['tax_cost']) > 0 else None,
             'tax_rate': Decimal(str(resource['tax_rate'])) if Decimal(resource['tax_rate']) > 0 else None,
             'terms': resource.get('payment_terms', dict()).get('label') if resource['purchase_token'] else None,
+            'total_price': Decimal(resource['total_price']),
         }
 
         shipping_info = AddressMapper.map(resource['buyer_shipping'])

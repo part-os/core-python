@@ -50,12 +50,13 @@ class OrderItem:
 class PaymentDetails:
     net_payout: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     payment_type: str = attr.ib(validator=attr.validators.in_(['credit_card', 'purchase_order']))
-    price: Optional[Decimal] = attr.ib(validator=attr.validators.instance_of(Decimal))
     purchase_order_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     shipping_cost: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    subtotal: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
     tax_cost: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     tax_rate: Optional[Decimal] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     terms: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    total_price: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
 
 
 @attr.s(frozen=True)
