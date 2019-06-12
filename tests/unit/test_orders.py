@@ -26,6 +26,7 @@ class TestOrders(unittest.TestCase):
         op1 = o.order_items[0].operations[3]
         self.assertEqual(2, op1.setup_time)
         self.assertEqual('Net 30', o.payment_details.terms)
+        self.assertEqual('pending', o.status)
 
     def test_date_fmt(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)

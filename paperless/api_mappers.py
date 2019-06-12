@@ -149,6 +149,7 @@ class OrderDetailsMapper(BaseMapper):
             'shipping_info': shipping_info,
             'shipping_option': shipping_option,
             'ships_on': resource['ships_on'],
+            'status': resource['status'],
         }
 
 

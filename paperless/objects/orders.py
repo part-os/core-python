@@ -137,6 +137,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     shipping_info: Address = attr.ib(converter=convert_cls(Address))
     shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))
     ships_on = attr.ib(validator=attr.validators.instance_of(str))
+    status: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
     @property
     def created_dt(self):
