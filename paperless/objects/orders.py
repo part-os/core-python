@@ -134,6 +134,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     order_items: List[OrderItem] = attr.ib(converter=convert_iterable(OrderItem))
     payment_details: PaymentDetails = attr.ib(converter=convert_cls(PaymentDetails))
     private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    quote_number: int = attr.ib(validator=attr.validators.instance_of(int))
     shipping_info: Address = attr.ib(converter=convert_cls(Address))
     shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))
     ships_on = attr.ib(validator=attr.validators.instance_of(str))

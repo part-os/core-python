@@ -146,6 +146,7 @@ class OrderDetailsMapper(BaseMapper):
             'order_items': order_items,
             'payment_details': payment_details,
             'private_notes': resource['private_notes'],
+            'quote_number': resource['quote_number'],
             'shipping_info': shipping_info,
             'shipping_option': shipping_option,
             'ships_on': resource['ships_on'],
