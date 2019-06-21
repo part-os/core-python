@@ -99,61 +99,6 @@ class OrderItemMapper(BaseMapper):
         return d
 
 
-class OrderDetailsMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        # Version 0.0
-        billing_info = AddressMapper.map(resource['buyer_billing'])
-
-        customer = {
-            'business_name': resource['customer']['business_name'],
-            'email': resource['customer']['email'],
-            'first_name': resource['customer']['first_name'],
-            'last_name': resource['customer']['last_name'],
-            'phone': resource['customer']['phone'],
-            'phone_ext': resource['customer']['phone_ext']
-        }
-
-        order_items = map(OrderItemMapper.map, resource['order_items'])
-
-        payment_details = {
-            'net_payout': Decimal(resource['net_payout']) if resource['net_payout'] else None,
-            'payment_type': 'purchase_order' if resource['purchase_token'] else 'credit_card',
-            'purchase_order_number': resource['purchase_token'],
-            'subtotal': Decimal(resource['price']),
-            'shipping_cost': Decimal(resource['shipping_cost']),
-            'tax_cost': Decimal(resource['tax_cost']) if Decimal(resource['tax_cost']) > 0 else None,
-            'tax_rate': Decimal(str(resource['tax_rate'])) if Decimal(resource['tax_rate']) > 0 else None,
-            'terms': resource.get('payment_terms', dict()).get('label') if resource['purchase_token'] else None,
-            'total_price': Decimal(resource['total_price']),
-        }
-
-        shipping_info = AddressMapper.map(resource['buyer_shipping'])
-
-        shipping_option = {
-            'customers_account_number': resource['shipping_option']['customers_account_number'],
-            'customers_carrier': resource['shipping_option']['customers_carrier'],
-            'ship_when': resource['shipping_option']['ship_when'],
-            'shipping_method': resource['shipping_option']['shipping_method'],
-            'type': resource['shipping_option']['type'],
-        }
-
-        return {
-            'billing_info': billing_info,
-            'customer': customer,
-            'created': resource['created'],
-            'number': resource['number'],
-            'order_items': order_items,
-            'payment_details': payment_details,
-            'private_notes': resource['private_notes'],
-            'quote_number': resource['quote_number'],
-            'shipping_info': shipping_info,
-            'shipping_option': shipping_option,
-            'ships_on': resource['ships_on'],
-            'status': resource['status'],
-        }
-
-
 class OrderMinimumMapper(BaseMapper):
     @classmethod
     def map(cls, resource):

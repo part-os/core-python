@@ -23,6 +23,15 @@ def convert_iterable(cl):
     return converter
 
 
+def optional_convert(convert):
+    """Invoke the subconverter only if the value is present."""
+    def optional_converter(val):
+        if val is None:
+            return None
+        return convert(val)
+    return optional_converter
+
+
 def phone_length_validator(instance, attribute, value):
     if len(value) is not 10:
         raise ValueError("Invalid phone number for {}. Phone number must be 10 digits.".format(

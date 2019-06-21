@@ -6,7 +6,7 @@ for object created events from the Paperless Parts web application.
 
 Install the required Python packages:
 ```
-cd path\to\jobboss-python
+cd path\to\core-python
 pip install -r requirements.txt
 ```
 

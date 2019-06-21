@@ -9,14 +9,16 @@ class FromJSONMixin(object):
     """
     Takes a JSON response with the specific format from the Paperless API and returns a new instance of this resource.
 
-    Note: The response from the API will not necessarily neatly map to this resource. Because of this, use the _mapper to specify how to map from the API to your resource.
+    Note: The response from the API will not necessarily neatly map to this resource.
+    Because of this, use the _mapper to specify how to map from the API to your resource.
     """
-    # TODO: RENAME TO json_decoder
-    _mapper = BaseMapper
-
     @classmethod
     def from_json_to_dict(cls, resource):
-        return cls._mapper.map(resource)
+        # optionally map the resource to the correct structure
+        if hasattr(cls, '_mapper'):
+            return cls._mapper.map(resource)
+        else:
+            return resource
 
     @classmethod
     def from_json(cls, resource):

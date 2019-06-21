@@ -9,7 +9,8 @@ from paperless.json_encoders import CompanyContactEncoder, CustomerContactEncode
 from paperless.mixins import CreateMixin, FromJSONMixin, ListMixin, ToDictMixin, ToJSONMixin, UpdateMixin
 
 from .address import Address
-from .utils import convert_cls, convert_iterable, phone_length_validator, tax_rate_validator
+from .utils import convert_cls, phone_length_validator, tax_rate_validator
+
 
 @attr.s
 class PaymentTerms(CreateMixin, FromJSONMixin, ListMixin, ToDictMixin, ToJSONMixin):
@@ -31,7 +32,6 @@ class PaymentTerms(CreateMixin, FromJSONMixin, ListMixin, ToDictMixin, ToJSONMix
         return 'customers/groups/{}/payment_terms'.format(client.group_slug)
 
 
-#TODO: MAKE GENERIC CLASSES
 @attr.s
 class BaseContact(CreateMixin, FromJSONMixin, ToJSONMixin, UpdateMixin):
     billing_info: Optional[Address] = attr.ib(converter=convert_cls(Address), default=None)
@@ -66,6 +66,7 @@ class CompanyContact(BaseContact):
     def construct_post_url(cls):
         client = PaperlessClient.get_instance()
         return 'companies/groups/{}'.format(client.group_slug)
+
 
 @attr.s
 class CustomerContact(BaseContact):

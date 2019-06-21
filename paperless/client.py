@@ -16,12 +16,10 @@ class PaperlessClient(object):
     VALID_VERSIONS = [VERSION_0]
 
     __instance = None
-    # TODO: Find a better way to do authentication
+    access_token = None
     base_url = "https://api.paperlessparts.com"
     group_slug = None
-    password = None
     token = None
-    username = None
     version = VERSION_0
 
     def __new__(cls, **kwargs):
@@ -32,14 +30,11 @@ class PaperlessClient(object):
             PaperlessClient.__instance = object.__new__(cls)
         instance = PaperlessClient.__instance
 
+        if 'access_token' in kwargs:
+            instance.access_token = kwargs['access_token']
+
         if 'base_url' in kwargs:
             instance.base_url = kwargs['base_url']
-
-        if 'username' in kwargs:
-            instance.username = kwargs['username']
-
-        if 'password' in kwargs:
-            instance.password = kwargs['password']
 
         if 'group_slug' in kwargs:
             instance.group_slug = kwargs['group_slug']
@@ -54,55 +49,15 @@ class PaperlessClient(object):
         return cls.__instance
 
     def get_authenticated_headers(self):
-        if not self.token:
-            self.authenticate()
+        if not self.access_token:
+            raise Exception('You are trying to perform an HTTP request without a proper access token.')
 
         return {
             'Accept': 'application/json',
-            'Authorization': 'Token {}'.format(self.token),
+            'Authorization': 'API-Token {}'.format(self.access_token),
             'Content-Type': 'application/json',
             'User-Agent': 'python-paperlessSDK {}'.format(self.version)
         }
-
-    def authenticate(self):
-        """uses a suppliers login information to retrieve a valid bearer token"""
-        # validate we have the proper values to authenticate
-        required_fields = ['password', 'username']
-        missing_fields = [field for field in required_fields if getattr(self, field) is None]
-        if missing_fields:
-            error_detail = ""
-            for missing_field in missing_fields:
-                error_detail += "Missing required field: " + missing_field
-            raise PaperlessAuthorizationException(
-                message="Unable to authenticate client.",
-                detail=error_detail
-            )
-
-        data = {
-            'password': self.password,
-            'username': self.username
-        }
-
-        headers = {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'User-Agent': 'python-paperlessSDK V0 library'
-        }
-
-        resp = requests.post(
-            "{}/{}".format(self.base_url, 'login'),
-            data=json.dumps(data),
-            headers=headers
-        )
-
-        if resp.status_code == 200:
-            self.token = resp.json()['token']
-        elif 200 < resp.status_code < 500:
-            raise PaperlessAuthorizationException(
-                detail=resp.json()['extra'],
-                error_code=resp.status_code,
-                message = resp.json()['message']
-            )
 
     def get_resource_list(self, list_url, params=None):
         headers = self.get_authenticated_headers()
