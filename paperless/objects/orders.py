@@ -9,6 +9,7 @@ from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 
 from .address import Address
+from .common import Money
 from .contacts import CustomerContact
 from .utils import convert_cls, convert_iterable, optional_convert
 
@@ -30,16 +31,18 @@ class Operation:
     class CostingVariable:
         label: str = attr.ib(validator=attr.validators.instance_of(str))
         type: str = attr.ib(validator=attr.validators.instance_of(str))
-        value: float = attr.ib(validator=attr.validators.instance_of(float))
+        value = attr.ib()
 
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     category: str = attr.ib(validator=attr.validators.in_(['operation', 'material']))
-    cost: float = attr.ib(validator=attr.validators.instance_of(float))
+    cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
     is_finish: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     position: int = attr.ib(validator=attr.validators.instance_of(int))
+    runtime: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+    setup_time: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
 
 
 @attr.s(frozen=True)
@@ -87,8 +90,8 @@ class OrderItem:
     quote_item_type: str = attr.ib(validator=attr.validators.instance_of(str))
     root_component_id: int = attr.ib(validator=attr.validators.instance_of(int))
     ships_on = attr.ib(validator=attr.validators.instance_of(str))
-    total_price: float = attr.ib(converter=float, validator=attr.validators.instance_of(float))
-    unit_price: float = attr.ib(converter=float, validator=attr.validators.instance_of(float))
+    total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
 
     @property
     def ships_on_dt(self):
@@ -99,17 +102,17 @@ class OrderItem:
 class PaymentDetails:
     card_brand: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     card_last4: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    net_payout: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+    net_payout: Money = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
     payment_terms: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     payment_type: str = attr.ib(validator=attr.validators.in_(['credit_card', 'purchase_order']))
     purchase_order_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     purchasing_dept_contact_email: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     purchasing_dept_contact_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    shipping_cost: float = attr.ib(converter=float, validator=attr.validators.instance_of(float))
-    subtotal: float = attr.ib(converter=float, validator=attr.validators.instance_of(float))
-    tax_cost: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+    shipping_cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    subtotal: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    tax_cost: Money = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
     tax_rate: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
-    total_price: float = attr.ib(converter=float, validator=attr.validators.instance_of(float))
+    total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
 
 
 @attr.s(frozen=True)
@@ -169,7 +172,7 @@ class OrderShipment:
     pickup_recipient: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     shipment_date = attr.ib(validator=attr.validators.instance_of(str))
     shipment_items: List[ShipmentItem] = attr.ib(converter=convert_iterable(ShipmentItem))
-    shipping_cost: Optional[float] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(float)))
+    shipping_cost: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     tracking_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 

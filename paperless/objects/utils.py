@@ -48,3 +48,6 @@ def tax_rate_validator(instance, attribute, value):
         raise ValueError("Invalid tax rate. Rate cannot be above 100%. {} provided.".format(
             value
         ))
+
+def positive_number_validator(instance, attribute, value):
+    return value >= 0

@@ -1,6 +1,3 @@
-from decimal import Decimal, InvalidOperation
-
-
 class BaseMapper(object):
     @classmethod
     def map(cls, resource):
@@ -24,79 +21,6 @@ class AddressMapper(BaseMapper):
             'postal_code': resource['address']['postal_code'],
             'state': resource['address']['state']['abbr'],
         }
-
-
-class OperationMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        op = {
-            'name': resource['name'],
-            'notes': resource['notes'],
-            'runtime': None,
-            'setup_time': None,
-            'variables': {}
-        }
-        for d in resource['display_context']:
-            op['variables'][d.get('secondary_key')] = d.get('value')
-            if d.get('secondary_key') == 'runtime':
-                try:
-                    op['runtime'] = Decimal(d.get('value'))
-                except (TypeError, InvalidOperation):
-                    pass
-            if d.get('secondary_key') == 'setup_time':
-                try:
-                    op['setup_time'] = Decimal(d.get('value'))
-                except (TypeError, InvalidOperation):
-                    pass
-        try:
-            op['runtime'] = Decimal(resource['overrides']['variables']['runtime'])
-        except (KeyError, TypeError, InvalidOperation):
-            pass
-        try:
-            op['setup_time'] = Decimal(resource['overrides']['variables']['setup_time'])
-        except (KeyError, TypeError, InvalidOperation):
-            pass
-        return op
-
-
-class OrderItemMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        # populate the fields that apply to all quote items
-        oi = resource
-        d = {
-            'price': Decimal(oi['price']),
-            'lead_days': oi['lead_time'],
-            'private_notes': oi['quote_item']['private_notes'],
-            'public_notes': oi['quote_item']['public_notes'],
-            'quantity': oi['quantity'],
-            'make_quantity': oi['quantity'],
-            'ships_on': oi['ships_on'],
-            'unit_price': Decimal(oi['unit_price']),
-            'description': oi['quote_item']['root_component']['description'],
-            'part_number': oi['quote_item']['root_component']['part_number'],
-            'revision': oi['quote_item']['root_component']['revision'],
-            'filename': oi['quote_item']['root_component']['part']['filename']
-                if oi['quote_item']['root_component']['part'] else None,
-            'operations': map(
-                OperationMapper.map,
-                oi['quote_item']['root_component']['operations']),
-            'material': None,
-            'process': None
-        }
-
-        # material for automatic quote items
-        if oi['quote_item']['root_component']['material']:
-            d['material'] = oi['quote_item']['root_component']['material']['display_name']
-        if oi['quote_item']['root_component']['process']:
-            d['process'] = oi['quote_item']['root_component']['process']['name']
-        # find make qty
-        for cq in oi['quote_item']['root_component']['quantities']:
-            if cq['quantity'] == oi['quantity']:
-                d['make_quantity'] = cq['make_quantity']
-                break
-
-        return d
 
 
 class OrderMinimumMapper(BaseMapper):

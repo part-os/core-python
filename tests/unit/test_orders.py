@@ -2,88 +2,58 @@ import unittest
 import json
 from unittest.mock import MagicMock
 
-from paperless.objects.orders import Order, Operation
+from paperless.objects.orders import Order
 from paperless.client import PaperlessClient
-from paperless.api_mappers import OperationMapper
 
 
 class TestOrders(unittest.TestCase):
     def setUp(self):
         # instantiate client singleton
-        self.client = PaperlessClient(
-
-        )
+        self.client = PaperlessClient()
         with open('tests/unit/mock_data/order.json') as data_file:
             self.mock_order_json = json.load(data_file)
 
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
-        self.assertEqual(o.number, 192)
-        op1 = o.order_items[0].operations[3]
-        self.assertEqual(2, op1.setup_time)
-        self.assertEqual('Net 30', o.payment_details.terms)
+        self.assertEqual(o.number, 42)
+        self.assertEqual('Net 30', o.payment_details.payment_terms)
+        self.assertEqual('purchase_order', o.payment_details.payment_type)
         self.assertEqual('pending', o.status)
-        self.assertEqual(103, o.quote_number)
+        self.assertEqual(370, o.quote_number)
+        self.assertEqual(len(o.order_items), 11)
+        # test assembly order item
+        assmb_oi = o.order_items[0]
+        self.assertEqual(assmb_oi.id, 9183)
+        self.assertEqual(len(assmb_oi.components), 10)
+        self.assertEqual((assmb_oi.quote_item_id), 11374)
+        # test single component order item
+        standard_oi = o.order_items[1]
+        self.assertEqual(standard_oi.id, 9184)
+        self.assertEqual(standard_oi.root_component_id, 11726)
+        self.assertEqual(len(standard_oi.components), 1)
+        root_component = standard_oi.components[0]
+        self.assertEqual(len(root_component.material_operations), 1)
+        self.assertEqual(len(root_component.shop_operations), 1)
+        lathe_op = root_component.shop_operations[0]
+        self.assertEqual(lathe_op.name, 'Lathe')
+        self.assertEqual(lathe_op.runtime, 5.5773691161791294)
+        self.assertEqual(lathe_op.setup_time, 1)
+        # test manual line item
+        manual_oi = o.order_items[10]
+        self.assertEqual('manual', manual_oi.quote_item_type)
+        self.assertEqual('My Manual Line Item', manual_oi.description)
 
     def test_date_fmt(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
         oi = o.order_items[0]
         self.assertEqual(2019, oi.ships_on_dt.year)
-        self.assertEqual(5, oi.ships_on_dt.month)
-        self.assertEqual(22, oi.ships_on_dt.day)
+        self.assertEqual(7, oi.ships_on_dt.month)
+        self.assertEqual(11, oi.ships_on_dt.day)
         self.assertEqual(2019, o.created_dt.year)
-        self.assertEqual(5, o.created_dt.month)
-        self.assertEqual(8, o.created_dt.day)
-
-    def test_operation_mapper(self):
-        op1 = {
-            'name': 'name1',
-            'notes': None,
-            'display_context': [
-                {"primary_key": "variables", "secondary_key": "runtime",
-                 "value": 1.0, "type": "number"},
-                {"primary_key": "variables", "secondary_key": "other",
-                 "value": 1.0, "type": "number"}
-            ],
-        }
-        op: Operation = Operation(**OperationMapper.map(op1))
-        self.assertEqual('name1', op.name)
-        self.assertEqual(1.0, op.runtime)
-        self.assertIsNone(op.setup_time)
-        self.assertEqual(1.0, op.variables['runtime'])
-
-        op2 = {
-            'name': 'name1',
-            'notes': None,
-            'display_context': [
-                {"primary_key": "variables", "secondary_key": "runtime",
-                 "value": 1.0, "type": "number"},
-                {"primary_key": "variables", "secondary_key": "setup_time",
-                 "value": 2.0, "type": "number"}
-            ],
-            'overrides': {}
-        }
-        op: Operation = Operation(**OperationMapper.map(op2))
-        self.assertEqual(1.0, op.runtime)
-        self.assertEqual(2.0, op.setup_time)
-
-        op3 = {
-            'name': 'name1',
-            'notes': 'A note',
-            'display_context': [
-                {"primary_key": "variables", "secondary_key": "runtime",
-                 "value": 1.0, "type": "number"},
-                {"primary_key": "variables", "secondary_key": "setup_time",
-                 "value": 2.0, "type": "number"}
-            ],
-            'overrides': {'variables': {'runtime': '0.25'}}
-        }
-        op: Operation = Operation(**OperationMapper.map(op3))
-        self.assertEqual(0.25, op.runtime)
-        self.assertEqual(2.0, op.setup_time)
-        self.assertEqual('A note', op.notes)
+        self.assertEqual(6, o.created_dt.month)
+        self.assertEqual(20, o.created_dt.day)
 
     def test_ship_desc(self):
         from paperless.objects.orders import ShippingOption
@@ -94,7 +64,6 @@ class TestOrders(unittest.TestCase):
         so1 = ShippingOption(
             customers_account_number=None,
             customers_carrier=None,
-            ship_when='all_at_once',
             shipping_method=None,
             type='pickup'
         )
@@ -105,7 +74,6 @@ class TestOrders(unittest.TestCase):
         so2 = ShippingOption(
             customers_account_number='12345',
             customers_carrier='ups',
-            ship_when='all_at_once',
             shipping_method='ground',
             type='customers_shipping_account'
         )
@@ -116,7 +84,6 @@ class TestOrders(unittest.TestCase):
         so3 = ShippingOption(
             customers_account_number=None,
             customers_carrier=None,
-            ship_when='all_at_once',
             shipping_method='ground',
             type='suppliers_shipping_account'
         )
