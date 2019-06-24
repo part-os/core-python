@@ -12,9 +12,7 @@ pip install -r requirements.txt
 
 ## Authenticating the client
 To authenticate your client you will need to instantiate your client from paperless/client with
-1. username = your paperless email login
-2. password = the password to your paperless account
-3. group_slug = the slug associated with your supplier user group
+    1. Your paperless API access token
 
 ## Writing custom listeners 
 
@@ -58,7 +56,7 @@ class MyOrderListener(OrderListener):
         print(resource)
 
 
-my_client = PaperlessClient(username='', password='', group_slug='', version=PaperlessClient.VERSION_0)
+my_client = PaperlessClient(access_token='', version=PaperlessClient.VERSION_0)
 my_order_listener = MyOrderListener(client=my_client, last_record_id=None)
 my_sdk = PaperlessSDK()
 my_sdk.add_listener(my_order_listener)
