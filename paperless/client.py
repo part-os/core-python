@@ -50,7 +50,10 @@ class PaperlessClient(object):
 
     def get_authenticated_headers(self):
         if not self.access_token:
-            raise Exception('You are trying to perform an HTTP request without a proper access token.')
+            raise PaperlessAuthorizationException(
+                message='Unable to authenticate call',
+                detail='You are trying to perform an HTTP request without a proper access token.'
+            )
 
         return {
             'Accept': 'application/json',
