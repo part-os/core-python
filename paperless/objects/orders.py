@@ -78,7 +78,7 @@ class OrderItem:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     components: List[Component] = attr.ib(converter=convert_iterable(Component))
     description: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    expedite_revenue: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+    expedite_revenue: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(int))
     filename: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     lead_days: int = attr.ib(validator=attr.validators.instance_of(int))
