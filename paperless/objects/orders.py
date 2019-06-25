@@ -111,7 +111,7 @@ class PaymentDetails:
     shipping_cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     subtotal: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     tax_cost: Money = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
-    tax_rate: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+    tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal), validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
 
 
