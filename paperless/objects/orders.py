@@ -191,7 +191,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     billing_info: Address = attr.ib(converter=convert_cls(Address))
     created = attr.ib(validator=attr.validators.instance_of(str))
     customer: CustomerContact = attr.ib(converter=convert_cls(CustomerContact))
-    deliver_by: Optional[datetime.date] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(datetime.date))) # TODO verify this works
+    deliver_by: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     order_items: List[OrderItem] = attr.ib(converter=convert_iterable(OrderItem))
     payment_details: PaymentDetails = attr.ib(converter=convert_cls(PaymentDetails))
