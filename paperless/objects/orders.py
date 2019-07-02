@@ -4,7 +4,7 @@ import datetime
 import dateutil.parser
 from typing import List, Optional
 
-from paperless.api_mappers import OrderMinimumMapper
+from paperless.api_mappers import OrderMinimumMapper, OrderDetailsMapper
 from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 
@@ -187,6 +187,7 @@ class OrderMinimum(FromJSONMixin):
 class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     _list_mapper = OrderMinimumMapper
     _list_object_representation = OrderMinimum
+    _mapper = OrderDetailsMapper
 
     billing_info: Address = attr.ib(converter=convert_cls(Address))
     created = attr.ib(validator=attr.validators.instance_of(str))
@@ -213,7 +214,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
 
     @classmethod
     def construct_get_url(cls):
-        return 'orders'
+        return 'orders/open'
 
     @classmethod
     def construct_list_url(cls):
