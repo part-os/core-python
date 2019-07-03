@@ -19,7 +19,6 @@ class PaperlessClient(object):
     access_token = None
     base_url = "https://api.paperlessparts.com"
     group_slug = None
-    token = None
     version = VERSION_0
 
     def __new__(cls, **kwargs):
@@ -96,8 +95,14 @@ class PaperlessClient(object):
                 message="Unable to locate object with id {} from url: {}".format(id, req_url)
             )
         elif resp.status_code == 401 and resp.json()['code'] == 'authentication_failed':
-            self.token = None
-            return None
+            raise PaperlessAuthorizationException(
+                message="Not authorized to access url: {}".format(req_url)
+            )
+        else:
+            raise PaperlessException(
+                message="Failed to get resource with id {} from url: {}".format(id, req_url),
+                error_code=resp.status_code
+            )
 
     def create_resource(self, resource_url, data):
         """
