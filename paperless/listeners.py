@@ -1,7 +1,7 @@
 from typing import Optional
 
 from .local import LocalStorage
-from .exceptions import PaperlessNotFoundException
+from .exceptions import PaperlessException, PaperlessNotFoundException
 from .objects.orders import Order
 
 
@@ -104,7 +104,7 @@ class OrderListener(BaseListener):
     def get_new_resource(self):
         try:
             return Order.get(self.get_last_resource_processed() + 1)
-        except PaperlessNotFoundException:
+        except (PaperlessException, PaperlessNotFoundException):
             return None
 
     def on_event(self, resource: Order):
