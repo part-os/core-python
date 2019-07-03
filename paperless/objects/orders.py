@@ -214,7 +214,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
 
     @classmethod
     def construct_get_url(cls):
-        return 'orders/open'
+        return 'orders/public'
 
     @classmethod
     def construct_list_url(cls):
