@@ -75,7 +75,7 @@ class OrderListener(BaseListener):
     def __init__(self, filename=LOCAL_STORAGE_PATH,
                  last_record_id: Optional[int] = None):
         super().__init__(filename, last_record_id)
-        self._most_recent_order = None
+        self._most_recent_order = last_record_id
 
     def get_default_last_record_id(self):
         """

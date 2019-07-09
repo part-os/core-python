@@ -166,7 +166,6 @@ class PaymentDetailsMapper(BaseMapper):
         return mapped_result
 
 
-
 class ShipmentItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -244,4 +243,5 @@ class OrderDetailsMapper(BaseMapper):
         field_keys = ['created', 'deliver_by', 'number', 'private_notes', 'quote_number', 'ships_on', 'status']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
+
         return mapped_result

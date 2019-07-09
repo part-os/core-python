@@ -11,7 +11,7 @@ from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 from .address import Address
 from .common import Money
 from .contacts import CustomerContact
-from .utils import convert_cls, convert_iterable, optional_convert
+from .utils import convert_cls, convert_iterable, optional_convert, phone_length_validator
 
 DATE_FMT = '%Y-%m-%d'
 
@@ -177,6 +177,23 @@ class OrderShipment:
 
 
 @attr.s(frozen=True)
+class OrderCompany:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
+class OrderCustomer:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    company: Optional[OrderCompany] = attr.ib(converter=optional_convert(convert_cls(OrderCompany)), validator=attr.validators.optional(attr.validators.instance_of(OrderCompany)))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+
+
+@attr.s(frozen=True)
 class OrderMinimum(FromJSONMixin):
     _mapper = OrderMinimumMapper
 
@@ -191,7 +208,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
 
     billing_info: Address = attr.ib(converter=convert_cls(Address))
     created = attr.ib(validator=attr.validators.instance_of(str))
-    customer: CustomerContact = attr.ib(converter=convert_cls(CustomerContact))
+    customer: OrderCustomer = attr.ib(converter=convert_cls(OrderCustomer))
     deliver_by: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     order_items: List[OrderItem] = attr.ib(converter=convert_iterable(OrderItem))
