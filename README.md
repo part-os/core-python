@@ -37,7 +37,7 @@ be applied to all new resources.
 ## Registering your listener and running the SDK
 
 The PaperlessSDK is found in paperless/main and is event driven. It has two methods add_listener and run. 
-add_listener() accepts an insance of a class that extends the BaseListener class and implements the on_event method.
+add_listener() accepts an instance of a class that extends the BaseListener class and implements the on_event method.
 run() begins the execution of the PaperlessSDK.
 
 After you have writen your custom listener class and instantiated it, you can register it with the add_listener method and start the SDK
