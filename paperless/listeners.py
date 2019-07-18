@@ -1,10 +1,10 @@
 from typing import Optional
-
+import logging
 from .local import LocalStorage
 from .exceptions import PaperlessNotFoundException
 from .objects.orders import Order
 
-
+LOGGER = logging.getLogger(__name__)
 LOCAL_STORAGE_PATH = 'processed_records.json'
 
 
@@ -41,7 +41,13 @@ class BaseListener:
     def listen(self):
         resource = self.get_new_resource()
         while resource is not None:
-            success = self.on_event(resource)
+            try:
+                success = self.on_event(resource)
+            except Exception as e:
+                success = False
+                LOGGER.exception(
+                    'Unhandled exception in listener, will not retry {}'.format(
+                        self.get_resource_unique_identifier(resource)))
             self.record_resource_processed(resource, success)
             resource = self.get_new_resource()
 

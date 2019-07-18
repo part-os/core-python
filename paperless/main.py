@@ -41,4 +41,4 @@ class PaperlessSDK:
                 try:
                     listener.listen()
                 except Exception as e:
-                    LOGGER.exception('Unhandled exception in listener')
+                    LOGGER.exception('Unhandled exception in BaseListener')
