@@ -32,10 +32,13 @@ class PaperlessSDK:
         self.listeners.append(listener)
 
     def run(self):
-        while self.loop:
+        first_run = True
+        while first_run or self.loop:
+            if not first_run:
+                time.sleep(self.delay)
+            first_run = False
             for listener in self.listeners:
                 try:
                     listener.listen()
                 except Exception as e:
                     LOGGER.exception('Unhandled exception in listener')
-            time.sleep(self.delay)
