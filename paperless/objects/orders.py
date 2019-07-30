@@ -44,6 +44,12 @@ class Operation:
     runtime: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
     setup_time: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
 
+    def get_variable(self, label):
+        """Return the value of the variable with the specified label or None if
+        that variable does not exist."""
+        return {cv.label: cv.value for cv in self.costing_variables}.get(
+            label, None)
+
 
 @attr.s(frozen=True)
 class Process:

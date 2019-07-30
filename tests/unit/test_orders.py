@@ -39,6 +39,8 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(lathe_op.name, 'Lathe')
         self.assertEqual(lathe_op.runtime, 5.5773691161791294)
         self.assertEqual(lathe_op.setup_time, 1)
+        self.assertEqual(lathe_op.get_variable('runtime'), 5.5773691161791294)
+        self.assertIsNone(lathe_op.get_variable('bad name'))
         # test manual line item
         manual_oi = o.order_items[10]
         self.assertEqual('manual', manual_oi.quote_item_type)
