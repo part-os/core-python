@@ -119,3 +119,6 @@ class OrderListener(BaseListener):
         :param resource: Order
         """
         raise NotImplementedError
+
+# class QuoteListner(BaseListener):
+#     resource_type = Quote

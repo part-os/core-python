@@ -6,6 +6,7 @@ from paperless.mixins import UpdateMixin
 
 from paperless.objects.address import Address
 from paperless.objects.orders import Order
+from paperless.objects.quotes import Quote
 from paperless.objects.contacts import CompanyContact, CustomerContact, PaymentTerms
 
 from paperless.client import PaperlessClient
@@ -14,11 +15,7 @@ from paperless.client import PaperlessClient
 import attr
 
 my_client = PaperlessClient(
-    username='',
-    password='',
-    group_slug='a-cut-above-cnc',
-    version=PaperlessClient.VERSION_0,
-    base_url="https://dev.paperlessparts.com/api"
+    access_token='5e6f3e8b0395ebea51a2d855894f308f19d8df18'
 )
 
 """
@@ -140,8 +137,11 @@ print(dummy_operations)
 dummy_order_item = OrderItemFactory.build(operations=dummy_operations)
 print(dummy_order_item)
 """
-test = Order.get(52)
-print(test.to_dict())
+# test = Order.get(2)
+# print(test.to_dict())
+# test = Quote.get(4)
+test = Quote.get_new(2)
+print(test)
 """
 class MyOrderListener(OrderListener):
     def on_event(self, resource):
