@@ -15,7 +15,7 @@ from paperless.client import PaperlessClient
 import attr
 
 my_client = PaperlessClient(
-    access_token='5e6f3e8b0395ebea51a2d855894f308f19d8df18'
+
 )
 
 """
