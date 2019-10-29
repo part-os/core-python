@@ -6,7 +6,6 @@ from paperless.mixins import UpdateMixin
 
 from paperless.objects.address import Address
 from paperless.objects.orders import Order
-from paperless.objects.quotes import Quote
 from paperless.objects.contacts import CompanyContact, CustomerContact, PaymentTerms
 
 from paperless.client import PaperlessClient
@@ -15,7 +14,11 @@ from paperless.client import PaperlessClient
 import attr
 
 my_client = PaperlessClient(
-
+    username='',
+    password='',
+    group_slug='a-cut-above-cnc',
+    version=PaperlessClient.VERSION_0,
+    base_url="https://dev.paperlessparts.com/api"
 )
 
 """
@@ -57,9 +60,7 @@ minimum_customer_contact = CustomerContact(
 )
 print(minimum_customer_contact.to_json())
 #test_customer_contact.save()
-
 payment_term = PaymentTerms.list()[0]
-
 complete_customer_contact = CustomerContact(
     billing_info=test_billing_address,
     email="william+minimalemail8@paperlessparts.com",
@@ -70,8 +71,6 @@ complete_customer_contact = CustomerContact(
 )
 print(complete_customer_contact.to_json())
 complete_customer_contact.create(
-
-
 print("test_customer_contact")
 #print(test_customer_contact)
 """
@@ -81,21 +80,18 @@ TEST CREATE COMPANY
 """
 """
 payment_term = PaymentTerms.list()[0]
-
 minimum_company = CompanyContact(
     business_name="minimum business name 19",
 )
 created_company = minimum_company.create()
 print("create result")
 print(minimum_company)
-
 minimum_company.payment_terms = payment_term
 print("before update")
 print(minimum_company)
 minimum_company.update()
 print("after update")
 print(minimum_company)
-
 minimum_customer_contact = CustomerContact(
     email="william+minimalemail51@paperlessparts.com",
     first_name="William",
@@ -123,40 +119,31 @@ TESTING LISTENERS!
 
 """
 from tests.factories.orders import OperationFactory, OrderFactory, OrderItemFactory
-
 dummy_order1 = OrderFactory.build()
 print(dummy_order1.number)
-
 number = 404
 dummy_order2 = OrderFactory.build(number=number)
 print(dummy_order2.number)
 assert dummy_order2.number == number
-
 dummy_operations = OperationFactory.build_batch(10)
 print(dummy_operations)
 dummy_order_item = OrderItemFactory.build(operations=dummy_operations)
 print(dummy_order_item)
 """
-# test = Order.get(2)
-# print(test.to_dict())
-# test = Quote.get(4)
-test = Quote.get_new(2)
-print(test)
+test = Order.get(52)
+print(test.to_dict())
 """
 class MyOrderListener(OrderListener):
     def on_event(self, resource):
         print("on event")
         print(resource)
         print(resource.to_dict())
-
-
 order_list = Order.list(params={'o': '-number'})
 print(order_list)
 my_sdk = PaperlessSDK()
 #my_sdk.add_listener(MyOrderListener(last_updated=30))
 my_sdk.add_listener(MyOrderListener())
 my_sdk.run()
-
 #test = Order.get(52)
 #print(getattr(test, 'number', 'WIALLIAM!!!!!'))
 print("test")
