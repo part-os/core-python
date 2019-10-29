@@ -250,12 +250,7 @@ class OrderDetailsMapper(BaseMapper):
 class QuoteDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
-        # print("here")
         mapped_result = {}
         mapped_result['id'] = resource['id']
         mapped_result['number'] = resource['number']
-        # mapped_result['billing_info'] = OrderAddressInfoMapper.map(resource['billing_info'])
-        # mapped_result['number'] = resource['number']
-        # for key in field_keys:
-        #     mapped_result[key] = resource.get(key, None)
         return mapped_result

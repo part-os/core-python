@@ -74,12 +74,12 @@ class ReadMixin(object):
         )
 
     @classmethod
-    def get_new(cls, id):
+    def get_new(cls, id=None):
         client = PaperlessClient.get_instance()
 
         return client.get_new_resources(
             cls.construct_get_new_resources_url(),
-            params=cls.construct_get_new_params(id)
+            params= cls.construct_get_new_params(id) if id else None
         )
 
 
