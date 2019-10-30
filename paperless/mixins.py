@@ -19,8 +19,6 @@ class FromJSONMixin(object):
     """
     @classmethod
     def from_json_to_dict(cls, resource):
-        # print(resource)
-        # optionally map the resource to the correct structure
         if hasattr(cls, '_mapper'):
             return cls._mapper.map(resource)
         else:
@@ -66,7 +64,6 @@ class ReadMixin(object):
         :return: resource
         """
         client = PaperlessClient.get_instance()
-        # print(id)
         return cls.from_json(client.get_resource(
             cls.construct_get_url(),
             id,

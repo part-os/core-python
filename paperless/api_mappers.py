@@ -276,22 +276,3 @@ class QuoteDetailsMapper(BaseMapper):
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
-        # mapped_result['id'] = resource['id']
-        # return mapped_result
-
-
-        # number: int = attr.ib(validator=attr.validators.instance_of(int))
-        # id: int = attr.ib(validator=attr.validators.instance_of(int))
-        # tax_cost: Money = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
-        # tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal), validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
-        # private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-        # status: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-        # sent_date: str =attr.ib(validator=attr.validators.instance_of(str))
-        # expired_date: str =attr.ib(validator=attr.validators.instance_of(str))
-        # quote_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-        # export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
-        # digital_last_viewed_on: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-        # expired: bool = attr.ib(validator=attr.validators.instance_of(bool))
-        # is_unviewed_drafted_rfq: bool = attr.ib(validator=attr.validators.instance_of(bool))
-        # created: str=attr.ib(validator=attr.validators.instance_of(str))
-        # authenticated_pdf_quote_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
