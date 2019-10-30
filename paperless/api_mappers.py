@@ -217,6 +217,14 @@ class OrderCompanyMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+class QuoteCompanyMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'business_name']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
 
 class OrderCustomerMapper(BaseMapper):
     @classmethod
@@ -228,6 +236,15 @@ class OrderCustomerMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+class QuoteCustomerMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        mapped_result['company'] = QuoteCompanyMapper.map(resource['company']) if resource['company'] else None
+        field_keys = ['id', 'email', 'first_name', 'last_name', 'phone', 'phone_ext']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
 
 class OrderDetailsMapper(BaseMapper):
     @classmethod
@@ -251,6 +268,30 @@ class QuoteDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        mapped_result['id'] = resource['id']
-        mapped_result['number'] = resource['number']
+        field_keys = ['id','digi_quote_key','number','tax_rate','tax_cost',\
+                'private_notes','status','sent_date','expired_date','quote_notes','export_controlled','digital_last_viewed_on'\
+                ,'expired','authenticated_pdf_quote_url','is_unviewed_drafted_rfq','shipping_cost','created'
+            ]
+        mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer'])
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
         return mapped_result
+        # mapped_result['id'] = resource['id']
+        # return mapped_result
+
+
+        # number: int = attr.ib(validator=attr.validators.instance_of(int))
+        # id: int = attr.ib(validator=attr.validators.instance_of(int))
+        # tax_cost: Money = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
+        # tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal), validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
+        # private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+        # status: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+        # sent_date: str =attr.ib(validator=attr.validators.instance_of(str))
+        # expired_date: str =attr.ib(validator=attr.validators.instance_of(str))
+        # quote_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+        # export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
+        # digital_last_viewed_on: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+        # expired: bool = attr.ib(validator=attr.validators.instance_of(bool))
+        # is_unviewed_drafted_rfq: bool = attr.ib(validator=attr.validators.instance_of(bool))
+        # created: str=attr.ib(validator=attr.validators.instance_of(str))
+        # authenticated_pdf_quote_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
