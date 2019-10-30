@@ -268,7 +268,7 @@ class QuoteDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id','digi_quote_key','number','tax_rate','tax_cost',\
+        field_keys = ['id','digi_quote_key','number','tax_rate','tax_cost','quote_items',\
                 'private_notes','status','sent_date','expired_date','quote_notes','export_controlled','digital_last_viewed_on'\
                 ,'expired','authenticated_pdf_quote_url','is_unviewed_drafted_rfq','shipping_cost','created'
             ]

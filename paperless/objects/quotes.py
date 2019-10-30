@@ -53,6 +53,7 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     authenticated_pdf_quote_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     shipping_cost: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     customer: QuoteCustomer = attr.ib(converter=convert_cls(QuoteCustomer))
+    quote_items = attr.ib()
 
     @classmethod
     def construct_get_url(cls):
