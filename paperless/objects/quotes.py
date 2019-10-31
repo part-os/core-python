@@ -12,22 +12,8 @@ from .address import Address
 from .common import Money
 from .contacts import CustomerContact
 from .utils import convert_cls, convert_iterable, optional_convert, phone_length_validator
+from .orders import OrderCompany, OrderCustomer
 
-
-@attr.s(frozen=True)
-class QuoteCompany:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
-
-@attr.s(frozen=True)
-class QuoteCustomer:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    company: Optional[QuoteCompany] = attr.ib(converter=optional_convert(convert_cls(QuoteCompany)), validator=attr.validators.optional(attr.validators.instance_of(QuoteCompany)))
-    email: str = attr.ib(validator=attr.validators.instance_of(str))
-    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=True)
@@ -52,7 +38,7 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     created: str=attr.ib(validator=attr.validators.instance_of(str))
     authenticated_pdf_quote_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     shipping_cost: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
-    customer: QuoteCustomer = attr.ib(converter=convert_cls(QuoteCustomer))
+    customer: OrderCustomer = attr.ib(converter=convert_cls(OrderCustomer))
     quote_items = attr.ib()
 
     @classmethod
