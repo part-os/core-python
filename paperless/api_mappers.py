@@ -217,6 +217,14 @@ class OrderCompanyMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+class QuoteCompanyMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'business_name']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
 
 class OrderCustomerMapper(BaseMapper):
     @classmethod
@@ -228,6 +236,15 @@ class OrderCustomerMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+class QuoteCustomerMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        mapped_result['company'] = QuoteCompanyMapper.map(resource['company']) if resource['company'] else None
+        field_keys = ['id', 'email', 'first_name', 'last_name', 'phone', 'phone_ext']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
 
 class OrderDetailsMapper(BaseMapper):
     @classmethod
@@ -244,4 +261,18 @@ class OrderDetailsMapper(BaseMapper):
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
 
+        return mapped_result
+
+
+class QuoteDetailsMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id','digi_quote_key','number','tax_rate','tax_cost','quote_items',\
+                'private_notes','status','sent_date','expired_date','quote_notes','export_controlled','digital_last_viewed_on'\
+                ,'expired','authenticated_pdf_quote_url','is_unviewed_drafted_rfq','shipping_cost','created'
+            ]
+        mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer'])
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
         return mapped_result
