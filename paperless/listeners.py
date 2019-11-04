@@ -143,7 +143,7 @@ class QuoteListener(BaseListener):
                 self._most_recent_order = quotes_list[-1]
             except IndexError:
                 # Default to 0 if there are no orders.
-                # This will not work for suppliers with no orders and
+                # This will not work for suppliers with no quotes and
                 # a configured starting order number that is greater than 1.
                 # In that case, you MUST specify a default_last_record_id.
                 self._most_recent_order = 0
@@ -162,8 +162,8 @@ class QuoteListener(BaseListener):
 
     def on_event(self, resource: Order):
         """
-        Called to handle when a new Order is processed.
+        Called to handle when a new Quote is processed.
 
-        :param resource: Order
+        :param resource: Quote
         """
         raise NotImplementedError

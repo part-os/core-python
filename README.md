@@ -50,7 +50,8 @@ Writing custom listeners
 The SDK provides the `paperless.listeners.BaseListener` class, which can be 
 extended to listen for particular object creation event. The subclass
 `paperless.listeners.OrderListener` is provided to listen for new order creation 
-events. You can extend `OrderListener` and implement an `on_event` method. 
+events. You can extend `OrderListener` and implement an `on_event` method. Similary,
+`paperless.listeners.QuoteListener` is provided to listen for new quote creation.
 
 You will need to handle all exceptions if you intend to have a long-running 
 listener that does not require manual restarts. Alternatively, you can add
