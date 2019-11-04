@@ -99,9 +99,16 @@ Example
         def on_event(self, resource):
             print("on event")
             print(resource)
+
+    class MyQuoteListner(QuoteListener):
+        def on_event(self, resource):
+            print("on event")
+            print(resource)
     
     my_client = PaperlessClient(access_token='', version=PaperlessClient.VERSION_0)
     my_order_listener = MyOrderListener(client=my_client, last_record_id=None)
+    my_quote_listener = MyQuoteListener(client=my_client, last_record_id=None)
     my_sdk = PaperlessSDK()
     my_sdk.add_listener(my_order_listener)
+    my_sdk.add_listener(my_quote_listener)
     my_sdk.run()
