@@ -27,7 +27,15 @@ class FromJSONMixin(object):
 
     @classmethod
     def from_json(cls, resource):
-        return cls(**cls.from_json_to_dict(resource))
+        try:
+            d = dict()
+            cls_attrs = [a.name for a in attr.fields(cls)]
+            for k, v in resource.items():
+                if k in cls_attrs:
+                    d[k] = v
+        except attr.exceptions.NotAnAttrsClassError:
+            d = resource
+        return cls(**cls.from_json_to_dict(d))
 
 class ReadMixin(object):
 
