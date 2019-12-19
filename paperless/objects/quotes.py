@@ -1,19 +1,13 @@
-import attr
 from decimal import Decimal
-import datetime
-import dateutil.parser
-from typing import List, Optional
+from typing import Optional
+
+import attr
 
 from paperless.api_mappers import QuoteDetailsMapper
-from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
-
-from .address import Address
 from .common import Money
-from .contacts import CustomerContact
-from .utils import convert_cls, convert_iterable, optional_convert, phone_length_validator
-from .orders import OrderCompany, OrderCustomer
-
+from .orders import OrderCustomer
+from .utils import convert_cls, optional_convert
 
 
 @attr.s(frozen=True)
@@ -22,13 +16,12 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     _mapper = QuoteDetailsMapper
 
     number: int = attr.ib(validator=attr.validators.instance_of(int))
-    digi_quote_key: str =attr.ib(validator=attr.validators.instance_of(str))
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     tax_cost: Money = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
     tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal), validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     status: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    sent_date: str =attr.ib(validator=attr.validators.instance_of(str))
+    sent_date: Optional[str] =attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     expired_date: str =attr.ib(validator=attr.validators.instance_of(str))
     quote_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))

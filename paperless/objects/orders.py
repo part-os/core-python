@@ -1,17 +1,16 @@
-import attr
-from decimal import Decimal
 import datetime
-import dateutil.parser
+from decimal import Decimal
 from typing import List, Optional
+
+import attr
+import dateutil.parser
 
 from paperless.api_mappers import OrderMinimumMapper, OrderDetailsMapper
 from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
-
 from .address import Address
 from .common import Money
-from .contacts import CustomerContact
-from .utils import convert_cls, convert_iterable, optional_convert, phone_length_validator
+from .utils import convert_cls, convert_iterable, optional_convert
 
 DATE_FMT = '%Y-%m-%d'
 

@@ -4,82 +4,10 @@ class BaseMapper(object):
         raise NotImplementedError
 
 
-class AddressMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        return {
-            'address1': resource['address']['address1'],
-            'address2': resource['address']['address2'],
-            'business_name': resource['business_name'],
-            'city': resource['address']['city'],
-            'country': resource['address']['country']['abbr'] if \
-                resource['address']['country'] else 'USA',
-            'first_name': resource['first_name'],
-            'last_name': resource['last_name'],
-            'phone': resource['phone'],
-            'phone_ext': resource['phone_ext'],
-            'postal_code': resource['address']['postal_code'],
-            'state': resource['address']['state']['abbr'],
-        }
-
-
 class OrderMinimumMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         return {'number': resource['number']}
-
-
-class PaymentTermsMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        return {
-            'id': resource['id'],
-            'label': resource['label'],
-            'period': resource['period']
-        }
-
-
-class BaseContactMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        # HACK: Billing Info/Shipping Info is a list for some reason... we only ever interact with one on the paperless parts platform so thats all we show.
-        return {
-            'billing_info': AddressMapper.map(resource['billing_info']) if \
-                len(resource['billing_info']) else None,
-            'credit_line': resource['credit_line'],
-            'id': resource['id'],
-            'payment_terms': PaymentTermsMapper.map(resource['payment_terms']) if \
-                resource['payment_terms'] else None,
-            'phone': resource['phone'],
-            'phone_ext': resource['phone_ext'],
-            'purchase_orders': resource['purchase_orders'],
-            'shipping_info': AddressMapper.map(resource['shipping_info']) if \
-                len(resource['shipping_info']) else None,
-            'tax_exempt': resource['tax_exempt'],
-            'url': resource['url']
-        }
-
-
-class CompanyContactMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        return {
-            **BaseContactMapper.map(resource),
-            'business_name': resource['business_name']
-        }
-
-
-class CustomerContactMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        return {
-            **BaseContactMapper.map(resource),
-            'company': CompanyContactMapper.map(resource['company']) if \
-                resource['company'] else None,
-            'email': resource['email'],
-            'first_name': resource['first_name'],
-            'last_name': resource['last_name']
-        }
 
 
 class CostingVariablesMapper(BaseMapper):
@@ -90,6 +18,7 @@ class CostingVariablesMapper(BaseMapper):
         for key in keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
+
 
 class OperationsMapper(BaseMapper):
     @classmethod
@@ -102,6 +31,7 @@ class OperationsMapper(BaseMapper):
         mapped_result['is_finish'] = resource.get('is_finish', False)
         mapped_result['costing_variables'] = costing_variables
         return mapped_result
+
 
 class MaterialMapper(BaseMapper):
     @classmethod
@@ -122,6 +52,7 @@ class ProcessMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+
 class ComponentMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -137,6 +68,7 @@ class ComponentMapper(BaseMapper):
         for key in list_keys:
             mapped_result[key] = resource.get(key, [])
         return mapped_result
+
 
 class OrderItemMapper(BaseMapper):
     @classmethod
@@ -217,6 +149,7 @@ class OrderCompanyMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+
 class QuoteCompanyMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -225,6 +158,7 @@ class QuoteCompanyMapper(BaseMapper):
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
+
 
 class OrderCustomerMapper(BaseMapper):
     @classmethod
@@ -236,6 +170,7 @@ class OrderCustomerMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+
 class QuoteCustomerMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -245,6 +180,7 @@ class QuoteCustomerMapper(BaseMapper):
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
+
 
 class OrderDetailsMapper(BaseMapper):
     @classmethod
@@ -268,7 +204,7 @@ class QuoteDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id','digi_quote_key','number','tax_rate','tax_cost','quote_items',\
+        field_keys = ['id','number','tax_rate','tax_cost','quote_items',\
                 'private_notes','status','sent_date','expired_date','quote_notes','export_controlled','digital_last_viewed_on'\
                 ,'expired','authenticated_pdf_quote_url','is_unviewed_drafted_rfq','shipping_cost','created'
             ]

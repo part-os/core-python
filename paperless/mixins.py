@@ -28,6 +28,7 @@ class FromJSONMixin(object):
     def from_json(cls, resource):
         return cls(**cls.from_json_to_dict(resource))
 
+
 class ReadMixin(object):
 
     @classmethod
