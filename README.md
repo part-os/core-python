@@ -100,7 +100,7 @@ Example
             print("on event")
             print(resource)
 
-    class MyQuoteListner(QuoteListener):
+    class MyQuoteListener(QuoteListener):
         def on_event(self, resource):
             print("on event")
             print(resource)

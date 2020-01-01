@@ -19,6 +19,15 @@ class Part:
 
 
 @attr.s(frozen=True)
+class Expedite:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
+    markup: int = attr.ib(validator=attr.validators.instance_of(int))
+    unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+
+
+@attr.s(frozen=True)
 class Quantity:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -28,6 +37,8 @@ class Quantity:
     markup_2_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
+    expedites: List[Expedite] = attr.ib(converter=convert_iterable(Expedite))
 
 
 @attr.s(frozen=True)
@@ -86,7 +97,8 @@ class Metric:
 class Company:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    metrics: List[Metric]
+    metrics: List[Metric] = attr.ib(converter=convert_iterable(Metric))
+    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
 @attr.s(frozen=True)
