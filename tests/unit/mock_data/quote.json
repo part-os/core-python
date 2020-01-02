@@ -3,23 +3,23 @@
   "number": 67,
   "sales_person": {
     "first_name": "Rob",
-    "last_name": "Paperless",
-    "email": "rob.paperless@paperlessparts.com"
+    "last_name": "Carrington",
+    "email": "rob.carrington@paperlessparts.com"
   },
   "customer": {
     "id": 3545,
     "first_name": "Test",
     "last_name": "Customer",
-    "email": "rob.paperless+outsidefirm@paperlessparts.com",
+    "email": "rob.carrington+outsidefirm@paperlessparts.com",
     "notes": null,
     "company": {
       "id": 1986,
       "notes": null,
       "metrics": {
-        "order_revenue_all_time": 0,
-        "order_revenue_last_thirty_days": 0,
-        "quotes_sent_all_time": 0,
-        "quotes_sent_last_thirty_days": 0
+        "order_revenue_all_time": 4359.38,
+        "order_revenue_last_thirty_days": 4359.38,
+        "quotes_sent_all_time": 1,
+        "quotes_sent_last_thirty_days": 1
       },
       "business_name": "Outside Firm"
     }
@@ -35,8 +35,8 @@
         "id": 28600,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=SHSZTYqMGh6clY6rrdqm0iER1yQ%3D&Expires=1577140246",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=1s3sgfEytm9%2BWNpPIr4S4m4ISx0%3D&Expires=1577139678",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=IXW2qU1H%2FbZKi3hMP8cH3K2lI1I%3D&Expires=1578429732",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=k13s%2FXQdYDpOUVENnAUyG%2FxUMVs%3D&Expires=1578429732",
           "supporting_files": []
         },
         "part_number": null,
@@ -96,8 +96,31 @@
         "operations": [
           {
             "id": 52152,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "Lot Charge",
+                "type": "currency",
+                "value": 150.0
+              },
+              {
+                "label": "Piece Price",
+                "type": "currency",
+                "value": 1.0
+              },
+              {
+                "label": "Added Lead Time",
+                "type": "number",
+                "value": 3.0
+              }
+            ],
+            "is_finish": true,
             "name": "Chromate",
-            "is_finish": true
+            "notes": null,
+            "position": 1,
+            "runtime": null,
+            "setup_time": null
           }
         ],
         "process": {
@@ -116,14 +139,14 @@
       "position": 1,
       "export_controlled": false,
       "component_ids": [
-        28607,
-        28606,
-        28605,
-        28604,
-        28603,
-        28602,
+        28600,
         28601,
-        28600
+        28602,
+        28603,
+        28604,
+        28605,
+        28606,
+        28607
       ]
     },
     {
@@ -133,8 +156,8 @@
         "id": 28608,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=pVZvwrq3Dt8tpgQwSjm4Ysjpiw0%3D&Expires=1577140246",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=eBrjvuqTwq%2F0pbzNMAIEGTtunv0%3D&Expires=1577139709",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=FxKL6En57edrimkN2uDb2UETjY4%3D&Expires=1578429732",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=5CmkDhP4ouKocX6FXXj0iyWEwhA%3D&Expires=1578429732",
           "supporting_files": []
         },
         "part_number": null,
@@ -194,48 +217,265 @@
         "operations": [
           {
             "id": 52207,
+            "category": "material",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "Cost Per Pound",
+                "type": "currency",
+                "value": 11.0
+              },
+              {
+                "label": "Material Buffer (in)",
+                "type": "number",
+                "value": 0.0
+              },
+              {
+                "label": "Pounds Per Part",
+                "type": "number",
+                "value": 0.55
+              },
+              {
+                "label": "Material Unit Cost",
+                "type": "currency",
+                "value": 6.05
+              }
+            ],
+            "is_finish": false,
             "name": "Aluminium 6061",
-            "is_finish": false
+            "notes": null,
+            "position": 1,
+            "runtime": null,
+            "setup_time": null
           },
           {
             "id": 52208,
+            "category": "material",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "Markup Percentage",
+                "type": "number",
+                "value": 30.0
+              }
+            ],
+            "is_finish": false,
             "name": "Material Markup",
-            "is_finish": false
+            "notes": null,
+            "position": 2,
+            "runtime": null,
+            "setup_time": null
           },
           {
             "id": 52209,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "setup_time",
+                "type": "number",
+                "value": 0.5
+              },
+              {
+                "label": "Setup Labor Rate",
+                "type": "currency",
+                "value": 50.0
+              }
+            ],
+            "is_finish": false,
             "name": "Order Processing",
-            "is_finish": false
+            "notes": null,
+            "position": 3,
+            "runtime": null,
+            "setup_time": 0.5
           },
           {
             "id": 52210,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "setup_time",
+                "type": "number",
+                "value": 2.0
+              },
+              {
+                "label": "Setup Labor Rate",
+                "type": "currency",
+                "value": 50.0
+              }
+            ],
+            "is_finish": false,
             "name": "Programming",
-            "is_finish": false
+            "notes": null,
+            "position": 4,
+            "runtime": null,
+            "setup_time": 2.0
           },
           {
             "id": 52211,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "Setup Labor Rate",
+                "type": "currency",
+                "value": 75.0
+              },
+              {
+                "label": "Run Labor Rate",
+                "type": "currency",
+                "value": 50.0
+              },
+              {
+                "label": "Crew",
+                "type": "number",
+                "value": 1.0
+              },
+              {
+                "label": "Machine Rate",
+                "type": "currency",
+                "value": 50.0
+              },
+              {
+                "label": "Efficiency",
+                "type": "number",
+                "value": 80.0
+              },
+              {
+                "label": "Percent Attended",
+                "type": "number",
+                "value": 100.0
+              },
+              {
+                "label": "Minimum Material Removal Rate",
+                "type": "number",
+                "value": 1.0
+              },
+              {
+                "label": "Stock Buffer, in",
+                "type": "number",
+                "value": 0.25
+              },
+              {
+                "label": "Setup Time Per Setup",
+                "type": "number",
+                "value": 0.5
+              },
+              {
+                "label": "setup_time",
+                "type": "number",
+                "value": 1.0
+              },
+              {
+                "label": "runtime",
+                "type": "number",
+                "value": 0.08333333333333333
+              }
+            ],
+            "is_finish": false,
             "name": "Milling With Estimates",
-            "is_finish": false
+            "notes": null,
+            "position": 5,
+            "runtime": 0.08333333333333333,
+            "setup_time": 1.0
           },
           {
             "id": 52212,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "setup_time",
+                "type": "number",
+                "value": 0.25
+              },
+              {
+                "label": "runtime",
+                "type": "number",
+                "value": 0.0083
+              },
+              {
+                "label": "Setup Labor Rate",
+                "type": "currency",
+                "value": 25.0
+              },
+              {
+                "label": "Run Labor Rate",
+                "type": "currency",
+                "value": 25.0
+              }
+            ],
+            "is_finish": false,
             "name": "Packaging",
-            "is_finish": false
+            "notes": null,
+            "position": 6,
+            "runtime": 0.0083,
+            "setup_time": 0.25
           },
           {
             "id": 52213,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "Markup Percentage",
+                "type": "number",
+                "value": 10.0
+              }
+            ],
+            "is_finish": false,
             "name": "Machine Markup",
-            "is_finish": false
+            "notes": null,
+            "position": 7,
+            "runtime": null,
+            "setup_time": null
           },
           {
             "id": 52214,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "Markup Percentage",
+                "type": "number",
+                "value": 20.0
+              }
+            ],
+            "is_finish": false,
             "name": "Labor Markup",
-            "is_finish": false
+            "notes": null,
+            "position": 8,
+            "runtime": null,
+            "setup_time": null
           },
           {
             "id": 52215,
+            "category": "operation",
+            "cost": "0",
+            "costing_variables": [
+              {
+                "label": "Lot Charge",
+                "type": "currency",
+                "value": 150.0
+              },
+              {
+                "label": "Piece Price",
+                "type": "currency",
+                "value": 1.0
+              },
+              {
+                "label": "Added Lead Time",
+                "type": "number",
+                "value": 3.0
+              }
+            ],
+            "is_finish": true,
             "name": "Chromate",
-            "is_finish": true
+            "notes": null,
+            "position": 9,
+            "runtime": null,
+            "setup_time": null
           }
         ],
         "process": {
@@ -282,7 +522,7 @@
               {
                 "id": 18547,
                 "lead_time": 2,
-                "markup": 30,
+                "markup": 30.0,
                 "unit_price": "65.00",
                 "total_price": "65.00"
               }
@@ -302,7 +542,7 @@
               {
                 "id": 18548,
                 "lead_time": 2,
-                "markup": 30,
+                "markup": 30.0,
                 "unit_price": "123.50",
                 "total_price": "247.00"
               }
@@ -322,17 +562,17 @@
       ]
     }
   ],
-  "status": "draft",
-  "sent_date": null,
+  "status": "accepted",
+  "sent_date": "2019-12-18T22:35:52+00:00",
   "expired_date": "2020-01-17T22:19:49+00:00",
   "quote_notes": "- Customers are responsible for ensuring that the properties and performance of the material selected meet the requirements of their application;\n- CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved;\n- The standard finish (or surface finish) for all parts will include deburring through sanding or bead blasting and support structure removal (additive parts);\n- The estimated arrival time is based on available capacity at the time of this quote. Quotes that are not executed same day are subject to change or delays. Reasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
   "export_controlled": false,
-  "digital_last_viewed_on": null,
+  "digital_last_viewed_on": "2019-12-18T22:41:02+00:00",
   "expired": false,
   "request_for_quote": null,
   "parent_quote": null,
   "parent_supplier_order": null,
-  "authenticated_pdf_quote_url": null,
+  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/b66b6d53-0179-4965-8d18-e8be21b9056d/Quote67.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=oOhMxZqG%2BmkEjiJnOq1pzf15aSs%3D&Expires=1578429732",
   "is_unviewed_drafted_rfq": false,
   "created": "2019-12-18T22:19:49+00:00"
 }

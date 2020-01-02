@@ -21,7 +21,7 @@ class Part:
 class Expedite:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
-    markup: int = attr.ib(validator=attr.validators.instance_of(int))
+    markup: float = attr.ib(validator=attr.validators.instance_of(float))
     unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
 
@@ -42,9 +42,28 @@ class Quantity:
 
 @attr.s(frozen=True)
 class Operation:
+    @attr.s(frozen=True)
+    class CostingVariable:
+        label: str = attr.ib(validator=attr.validators.instance_of(str))
+        type: str = attr.ib(validator=attr.validators.instance_of(str))
+        value = attr.ib()
+
     id: int = attr.ib(validator=attr.validators.instance_of(int))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    category: str = attr.ib(validator=attr.validators.in_(['operation', 'material']))
+    cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
     is_finish: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    position: int = attr.ib(validator=attr.validators.instance_of(int))
+    runtime: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+    setup_time: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+
+    def get_variable(self, label):
+        """Return the value of the variable with the specified label or None if
+        that variable does not exist."""
+        return {cv.label: cv.value for cv in self.costing_variables}.get(
+            label, None)
 
 
 @attr.s(frozen=True)

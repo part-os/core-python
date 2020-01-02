@@ -48,9 +48,12 @@ class QuotePartMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['filename', 'thumbnail_url', 'url', 'supporting_files']
+        field_keys = ['filename', 'thumbnail_url', 'url']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
+        list_keys = ['supporting_files']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
         return mapped_result
 
 
@@ -76,16 +79,26 @@ class QuoteQuantityMapper(BaseMapper):
         return mapped_result
 
 
+class QuoteCostingVariablesMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        keys = ['label', 'type', 'value']
+        mapped_result = {}
+        for key in keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
 class QuoteOperationMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
+        costing_variables = map(QuoteCostingVariablesMapper.map, resource['costing_variables'])
+        keys = ['id', 'category', 'cost', 'name', 'notes', 'position', 'runtime', 'setup_time']
         mapped_result = {}
-        field_keys = ['id', 'name']
-        for key in field_keys:
+        for key in keys:
             mapped_result[key] = resource.get(key, None)
-        bool_keys = ['is_finish']
-        for key in bool_keys:
-            mapped_result[key] = resource.get(key, False)
+        mapped_result['is_finish'] = resource.get('is_finish', False)
+        mapped_result['costing_variables'] = costing_variables
         return mapped_result
 
 
@@ -113,9 +126,12 @@ class QuoteRootComponentMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id', 'part_number', 'revision', 'description', 'type', 'finishes', 'material_notes']
+        field_keys = ['id', 'part_number', 'revision', 'description', 'type', 'material_notes']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
+        list_keys = ['finishes']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
         mapped_result['part'] = QuotePartMapper.map(resource['part']) if resource['part'] else None
         mapped_result['quantities'] = map(QuoteQuantityMapper.map, resource['quantities'])
         mapped_result['operations'] = map(QuoteOperationMapper.map, resource['operations'])
@@ -128,9 +144,12 @@ class QuoteItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id', 'type', 'position', 'component_ids']
+        field_keys = ['id', 'type', 'position']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
+        list_keys = ['component_ids']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
         bool_keys = ['export_controlled']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)

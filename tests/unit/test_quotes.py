@@ -28,12 +28,12 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(company.business_name, 'Outside Firm')
         # test metrics
         metrics = company.metrics
-        self.assertEqual(metrics.order_revenue_all_time.dollars, 0)
+        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('4359.38'))
         # test quote items
         quote_item = q.quote_items[0]
         self.assertEqual(quote_item.id, 24988)
         self.assertEqual(quote_item.type, 'automatic')
-        self.assertEqual(quote_item.component_ids[0], 28607)
+        self.assertEqual(quote_item.component_ids[0], 28600)
         # test root component
         root_component = quote_item.root_component
         self.assertEqual(root_component.id, 28600)
