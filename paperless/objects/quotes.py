@@ -6,7 +6,6 @@ import attr
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 from .common import Money
-from .orders import OrderCustomer
 from .utils import convert_cls, optional_convert, convert_iterable
 
 
@@ -86,7 +85,7 @@ class SalesPerson:
 
 
 @attr.s(frozen=True)
-class Metric:
+class Metrics:
     order_revenue_all_time: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     order_revenue_last_thirty_days: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     quotes_sent_all_time: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -97,7 +96,7 @@ class Metric:
 class Company:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    metrics: List[Metric] = attr.ib(converter=convert_iterable(Metric))
+    metrics: Metrics = attr.ib(converter=convert_cls(Metrics))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
@@ -107,6 +106,7 @@ class Customer:
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     company: Company = attr.ib(converter=convert_cls(Company))
 
 
@@ -128,7 +128,7 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     sales_person: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
-    customer: Customer = attr.ib(converter=convert_cls(OrderCustomer))
+    customer: Customer = attr.ib(converter=convert_cls(Customer))
     tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal),
                                           validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     tax_cost: Optional[Money] = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
