@@ -52,5 +52,9 @@ class TestQuotes(unittest.TestCase):
         # test material
         material = root_component.material
         self.assertEqual(material.name, 'Aluminium 6061')
+        # test expedites
+        expedite = q.quote_items[2].root_component.quantities[0].expedites[0]
+        self.assertEqual(expedite.unit_price.dollars, 65.)
+
 
 
