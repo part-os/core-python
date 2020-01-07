@@ -7,6 +7,7 @@ performance for large numbers of records.
 import os
 import json
 import datetime
+import time
 
 
 class LocalStorage:

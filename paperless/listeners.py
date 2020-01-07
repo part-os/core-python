@@ -155,8 +155,11 @@ class QuoteListener(BaseListener):
     def get_new_resource(self):
         try:
             new_quotes = Quote.get_new(self.get_last_resource_processed())
-            first_new_quote = new_quotes[0]
-            return Quote.get(first_new_quote)
+            if new_quotes:
+                first_new_quote = new_quotes[0]
+                return Quote.get(first_new_quote)
+            else:
+                return None
         except PaperlessNotFoundException:
             return None
 

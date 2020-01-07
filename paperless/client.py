@@ -114,15 +114,12 @@ class PaperlessClient(object):
             headers=headers,
             params=params
         )
-        if len(resp.json()) == 0:
-            raise PaperlessNotFoundException(
-                message="Unable to find resource"
-            )
-        elif resp.status_code == 200:
+
+        if resp.status_code == 200:
             return resp.json()
         elif resp.status_code == 404:
             raise PaperlessNotFoundException(
-                message="Unable to locate object with id {} from url: {}".format(id, req_url)
+                message="Unable to get new resources from url: {}".format(req_url)
             )
         elif resp.status_code == 401 and resp.json()['code'] == 'authentication_failed':
             raise PaperlessAuthorizationException(
@@ -130,7 +127,7 @@ class PaperlessClient(object):
             )
         else:
             raise PaperlessException(
-                message="Failed to get resource with id {} from url: {}".format(id, req_url),
+                message="Failed to get resources from url: {}".format(req_url),
                 error_code=resp.status_code
             )
 
