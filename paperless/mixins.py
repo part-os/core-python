@@ -19,7 +19,6 @@ class FromJSONMixin(object):
     """
     @classmethod
     def from_json_to_dict(cls, resource):
-        # optionally map the resource to the correct structure
         if hasattr(cls, '_mapper'):
             return cls._mapper.map(resource)
         else:
@@ -36,6 +35,7 @@ class FromJSONMixin(object):
         except attr.exceptions.NotAnAttrsClassError:
             d = resource
         return cls(**cls.from_json_to_dict(d))
+
 
 class ReadMixin(object):
 
@@ -58,6 +58,10 @@ class ReadMixin(object):
         return None
 
     @classmethod
+    def construct_get_new_params(cls, id):
+        return None
+
+    @classmethod
     def get(cls, id):
         """
         Retrieves the resource specified by the id.
@@ -72,6 +76,15 @@ class ReadMixin(object):
             cls.construct_get_url(),
             id,
             params=cls.construct_get_params())
+        )
+
+    @classmethod
+    def get_new(cls, id=None):
+        client = PaperlessClient.get_instance()
+
+        return client.get_new_resources(
+            cls.construct_get_new_resources_url(),
+            params=cls.construct_get_new_params(id) if id else None
         )
 
 

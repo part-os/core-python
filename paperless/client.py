@@ -104,6 +104,33 @@ class PaperlessClient(object):
                 error_code=resp.status_code
             )
 
+    def get_new_resources(self, resource_url, params=None):
+
+        headers = self.get_authenticated_headers()
+
+        req_url = "{}/{}".format(self.base_url, resource_url)
+        resp = requests.get(
+            req_url,
+            headers=headers,
+            params=params
+        )
+
+        if resp.status_code == 200:
+            return resp.json()
+        elif resp.status_code == 404:
+            raise PaperlessNotFoundException(
+                message="Unable to get new resources from url: {}".format(req_url)
+            )
+        elif resp.status_code == 401 and resp.json()['code'] == 'authentication_failed':
+            raise PaperlessAuthorizationException(
+                message="Not authorized to access url: {}".format(req_url)
+            )
+        else:
+            raise PaperlessException(
+                message="Failed to get resources from url: {}".format(req_url),
+                error_code=resp.status_code
+            )
+
     def create_resource(self, resource_url, data):
         """
         """

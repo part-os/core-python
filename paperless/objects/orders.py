@@ -1,17 +1,16 @@
-import attr
-from decimal import Decimal
 import datetime
-import dateutil.parser
+from decimal import Decimal
 from typing import List, Optional
 
-from paperless.api_mappers import OrderMinimumMapper, OrderDetailsMapper
+import attr
+import dateutil.parser
+
+from paperless.api_mappers.orders import OrderDetailsMapper, OrderMinimumMapper
 from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
-
 from .address import Address
 from .common import Money
-from .contacts import CustomerContact
-from .utils import convert_cls, convert_iterable, optional_convert, phone_length_validator
+from .utils import convert_cls, convert_iterable, optional_convert
 
 DATE_FMT = '%Y-%m-%d'
 
@@ -59,11 +58,18 @@ class Process:
 
 
 @attr.s(frozen=True)
+class SupportingFile:
+    filename: str = attr.ib(validator=attr.validators.instance_of(str))
+    url: str = attr.ib(validator=attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
 class Component:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     child_ids: List[int] = attr.ib(converter=convert_iterable(int))
     deliver_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     description: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     finishes: List[str] = attr.ib(converter=convert_iterable(str))
     innate_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     make_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -76,6 +82,7 @@ class Component:
     process: Process = attr.ib(converter=convert_cls(Process))
     revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     shop_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
+    supporting_files: List[SupportingFile] = attr.ib(converter=convert_iterable(SupportingFile))
     type: str = attr.ib(validator=attr.validators.in_(['assembled', 'manufactured', 'purchased']))
 
 

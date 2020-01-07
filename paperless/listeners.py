@@ -3,6 +3,7 @@ import logging
 from .local import LocalStorage
 from .exceptions import PaperlessNotFoundException
 from .objects.orders import Order
+from .objects.quotes import Quote
 
 LOGGER = logging.getLogger(__name__)
 LOCAL_STORAGE_PATH = 'processed_records.json'
@@ -51,7 +52,6 @@ class BaseListener:
             self.record_resource_processed(resource, success)
             resource = self.get_new_resource()
 
-    @staticmethod
     def get_resource_unique_identifier(self, resource):
         raise NotImplementedError
 
@@ -117,5 +117,56 @@ class OrderListener(BaseListener):
         Called to handle when a new Order is processed.
 
         :param resource: Order
+        """
+        raise NotImplementedError
+
+
+class QuoteListener(BaseListener):
+    resource_type = Quote
+
+    def __init__(self, filename=LOCAL_STORAGE_PATH,
+                 last_record_id: Optional[int] = None):
+        super().__init__(filename, last_record_id)
+        self._most_recent_quote = last_record_id
+
+    def get_default_last_record_id(self):
+        """
+        Loads the order list by descending order number order and returns the newest orders number.
+
+        :return: the order number of the newest order, or 0 if it is None
+        """
+        if self._most_recent_quote is not None:
+            return self._most_recent_quote
+        else:
+            quotes_list = Quote.get_new()
+            try:
+                self._most_recent_quote = quotes_list[-1]
+            except IndexError:
+                # Default to 0 if there are no quotes.
+                # This will not work for suppliers with no quotes and
+                # a configured starting order number that is greater than 1.
+                # In that case, you MUST specify a default_last_record_id.
+                self._most_recent_quote = 0
+            return self._most_recent_quote
+
+    def get_resource_unique_identifier(self, resource):
+        return resource.number
+
+    def get_new_resource(self):
+        try:
+            new_quotes = Quote.get_new(self.get_last_resource_processed())
+            if new_quotes:
+                first_new_quote = new_quotes[0]
+                return Quote.get(first_new_quote)
+            else:
+                return None
+        except PaperlessNotFoundException:
+            return None
+
+    def on_event(self, resource: Order):
+        """
+        Called to handle when a new Quote is processed.
+
+        :param resource: Quote
         """
         raise NotImplementedError

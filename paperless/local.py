@@ -7,6 +7,7 @@ performance for large numbers of records.
 import os
 import json
 import datetime
+import time
 
 
 class LocalStorage:
@@ -57,12 +58,17 @@ class LocalJSONStorage(LocalStorage):
     def _write(self):
         with open(self.filename, 'w') as f:
             json.dump(self.store, f)
+        # This is a hack to make sure we don't process the same record twice. We were seeing isues
+        # due to non-atomic file writes
+        time.sleep(0.5)
 
     def get_last_processed(self, resource_type):
         assert(isinstance(resource_type, type))
         key = resource_type.__name__
         if key in self.store and len(self.store[key]) > 0:
-            return max([record['id'] for record in self.store[key]])
+            # Return the ID of the most recently processed record. Quotes are not necessarily processed in increasing
+            # order of ID so it's important to do the comparison based on timestamp
+            return max(self.store[key], key=lambda x: x['dt'])['id']
         else:
             return None
 

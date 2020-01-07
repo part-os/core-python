@@ -16,46 +16,44 @@ class TestOrders(unittest.TestCase):
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
-        self.assertEqual(o.number, 42)
-        self.assertEqual('Net 30', o.payment_details.payment_terms)
-        self.assertEqual('purchase_order', o.payment_details.payment_type)
+        self.assertEqual(o.number, 14)
+        self.assertEqual('credit_card', o.payment_details.payment_type)
         self.assertEqual('pending', o.status)
-        self.assertEqual(370, o.quote_number)
-        self.assertEqual(len(o.order_items), 11)
+        self.assertEqual(67, o.quote_number)
+        self.assertEqual(len(o.order_items), 3)
         # test assembly order item
         assmb_oi = o.order_items[0]
-        self.assertEqual(assmb_oi.id, 9183)
-        self.assertEqual(len(assmb_oi.components), 10)
-        self.assertEqual((assmb_oi.quote_item_id), 11374)
+        self.assertEqual(assmb_oi.id, 15845)
+        self.assertEqual(len(assmb_oi.components), 8)
+        self.assertEqual((assmb_oi.quote_item_id), 24988)
         # test single component order item
         standard_oi = o.order_items[1]
-        self.assertEqual(standard_oi.id, 9184)
-        self.assertEqual(standard_oi.root_component_id, 11726)
+        self.assertEqual(standard_oi.id, 15846)
+        self.assertEqual(standard_oi.root_component_id, 28608)
         self.assertEqual(len(standard_oi.components), 1)
         root_component = standard_oi.components[0]
-        self.assertEqual(len(root_component.material_operations), 1)
-        self.assertEqual(len(root_component.shop_operations), 1)
-        lathe_op = root_component.shop_operations[0]
-        self.assertEqual(lathe_op.name, 'Lathe')
-        self.assertEqual(lathe_op.runtime, 5.5773691161791294)
-        self.assertEqual(lathe_op.setup_time, 1)
-        self.assertEqual(lathe_op.get_variable('runtime'), 5.5773691161791294)
-        self.assertIsNone(lathe_op.get_variable('bad name'))
+        self.assertEqual(len(root_component.material_operations), 2)
+        self.assertEqual(len(root_component.shop_operations), 7)
+        finish_op = root_component.shop_operations[6]
+        self.assertEqual(finish_op.name, 'Chromate')
+        self.assertEqual(finish_op.cost.dollars, 150.)
+        self.assertIsNone(finish_op.setup_time)
+        self.assertIsNone(finish_op.get_variable('bad name'))
         # test manual line item
-        manual_oi = o.order_items[10]
+        manual_oi = o.order_items[2]
         self.assertEqual('manual', manual_oi.quote_item_type)
-        self.assertEqual('My Manual Line Item', manual_oi.description)
+        self.assertEqual('', manual_oi.description)
 
     def test_date_fmt(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
         oi = o.order_items[0]
-        self.assertEqual(2019, oi.ships_on_dt.year)
-        self.assertEqual(7, oi.ships_on_dt.month)
-        self.assertEqual(11, oi.ships_on_dt.day)
+        self.assertEqual(2020, oi.ships_on_dt.year)
+        self.assertEqual(1, oi.ships_on_dt.month)
+        self.assertEqual(9, oi.ships_on_dt.day)
         self.assertEqual(2019, o.created_dt.year)
-        self.assertEqual(6, o.created_dt.month)
-        self.assertEqual(20, o.created_dt.day)
+        self.assertEqual(12, o.created_dt.month)
+        self.assertEqual(18, o.created_dt.day)
 
     def test_ship_desc(self):
         from paperless.objects.orders import ShippingOption

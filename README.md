@@ -50,7 +50,8 @@ Writing custom listeners
 The SDK provides the `paperless.listeners.BaseListener` class, which can be 
 extended to listen for particular object creation event. The subclass
 `paperless.listeners.OrderListener` is provided to listen for new order creation 
-events. You can extend `OrderListener` and implement an `on_event` method. 
+events. You can extend `OrderListener` and implement an `on_event` method. Similary,
+`paperless.listeners.QuoteListener` is provided to listen for new quotes.
 
 You will need to handle all exceptions if you intend to have a long-running 
 listener that does not require manual restarts. Alternatively, you can add
@@ -98,9 +99,16 @@ Example
         def on_event(self, resource):
             print("on event")
             print(resource)
+
+    class MyQuoteListener(QuoteListener):
+        def on_event(self, resource):
+            print("on event")
+            print(resource)
     
     my_client = PaperlessClient(access_token='', version=PaperlessClient.VERSION_0)
-    my_order_listener = MyOrderListener(client=my_client, last_record_id=None)
+    my_order_listener = MyOrderListener(last_record_id=None)
+    my_quote_listener = MyQuoteListener(last_record_id=None)
     my_sdk = PaperlessSDK()
     my_sdk.add_listener(my_order_listener)
+    my_sdk.add_listener(my_quote_listener)
     my_sdk.run()
