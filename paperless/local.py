@@ -58,6 +58,9 @@ class LocalJSONStorage(LocalStorage):
     def _write(self):
         with open(self.filename, 'w') as f:
             json.dump(self.store, f)
+        # This is a hack to make sure we don't process the same record twice. We were seeing isues
+        # due to non-atomic file writes
+        time.sleep(0.5)
 
     def get_last_processed(self, resource_type):
         assert(isinstance(resource_type, type))
