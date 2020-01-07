@@ -179,3 +179,7 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     @classmethod
     def construct_get_new_resources_url(cls):
         return 'quotes/public/new_sent'
+
+    @classmethod
+    def construct_get_new_params(cls, id):
+        return {'last_quote': id}

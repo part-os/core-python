@@ -62,7 +62,9 @@ class LocalJSONStorage(LocalStorage):
         assert(isinstance(resource_type, type))
         key = resource_type.__name__
         if key in self.store and len(self.store[key]) > 0:
-            return max([record['id'] for record in self.store[key]])
+            # Return the ID of the most recently processed record. Quotes are not necessarily processed in increasing
+            # order of ID so it's important to do the comparison based on timestamp
+            return max(self.store[key], key=lambda x: x['dt'])['id']
         else:
             return None
 

@@ -52,7 +52,6 @@ class BaseListener:
             self.record_resource_processed(resource, success)
             resource = self.get_new_resource()
 
-    @staticmethod
     def get_resource_unique_identifier(self, resource):
         raise NotImplementedError
 
@@ -121,13 +120,14 @@ class OrderListener(BaseListener):
         """
         raise NotImplementedError
 
+
 class QuoteListener(BaseListener):
     resource_type = Quote
 
     def __init__(self, filename=LOCAL_STORAGE_PATH,
-                 last_quote_id: Optional[int] = None):
-        super().__init__(filename, last_quote_id)
-        self._most_recent_quote = last_quote_id
+                 last_record_id: Optional[int] = None):
+        super().__init__(filename, last_record_id)
+        self._most_recent_quote = last_record_id
 
     def get_default_last_record_id(self):
         """
@@ -140,23 +140,23 @@ class QuoteListener(BaseListener):
         else:
             quotes_list = Quote.get_new()
             try:
-                self._most_recent_order = quotes_list[-1]
+                self._most_recent_quote = quotes_list[-1]
             except IndexError:
-                # Default to 0 if there are no orders.
+                # Default to 0 if there are no quotes.
                 # This will not work for suppliers with no quotes and
                 # a configured starting order number that is greater than 1.
                 # In that case, you MUST specify a default_last_record_id.
-                self._most_recent_order = 0
-            return self._most_recent_order
+                self._most_recent_quote = 0
+            return self._most_recent_quote
 
     def get_resource_unique_identifier(self, resource):
         return resource.number
 
     def get_new_resource(self):
         try:
-            # print("The last id is " + str(self.get_last_resource_processed()))
-            new_quote = Quote.get_new(self.get_last_resource_processed())[-1]
-            return Quote.get(new_quote)
+            new_quotes = Quote.get_new(self.get_last_resource_processed())
+            first_new_quote = new_quotes[0]
+            return Quote.get(first_new_quote)
         except PaperlessNotFoundException:
             return None
 

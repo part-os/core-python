@@ -114,9 +114,9 @@ class PaperlessClient(object):
             headers=headers,
             params=params
         )
-        if len(resp.json())==0:
+        if len(resp.json()) == 0:
             raise PaperlessNotFoundException(
-                message="Unable to find quotes"
+                message="Unable to find resource"
             )
         elif resp.status_code == 200:
             return resp.json()

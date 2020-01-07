@@ -50,9 +50,8 @@ class ReadMixin(object):
         return None
 
     @classmethod
-    def construct_get_new_params(cls,id):
-
-        return {'last_quote': id}
+    def construct_get_new_params(cls, id):
+        return None
 
     @classmethod
     def get(cls, id):
@@ -77,7 +76,7 @@ class ReadMixin(object):
 
         return client.get_new_resources(
             cls.construct_get_new_resources_url(),
-            params= cls.construct_get_new_params(id) if id else None
+            params=cls.construct_get_new_params(id) if id else None
         )
 
 
