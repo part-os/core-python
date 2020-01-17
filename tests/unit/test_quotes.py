@@ -48,6 +48,7 @@ class TestQuotes(unittest.TestCase):
         quantity = root_component.quantities[0]
         self.assertEqual(quantity.quantity, 1)
         self.assertEqual(quantity.unit_price.dollars, Decimal('3086.88'))
+        self.assertEqual(quantity.total_price_with_required_add_ons.dollars, Decimal('4086.88'))
         # test operations
         operation = root_component.shop_operations[0]
         self.assertEqual(operation.name, 'Chromate')

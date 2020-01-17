@@ -41,6 +41,7 @@ class Quantity:
     markup_2_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    total_price_with_required_add_ons: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
     expedites: List[Expedite] = attr.ib(converter=convert_iterable(Expedite))
 

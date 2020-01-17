@@ -72,7 +72,7 @@ class QuoteQuantityMapper(BaseMapper):
     def map(cls, resource):
         mapped_result = {}
         field_keys = ['id', 'quantity', 'markup_1_price', 'markup_1_name', 'markup_2_price', 'markup_2_name',
-                      'unit_price', 'total_price', 'lead_time']
+                      'unit_price', 'total_price', 'total_price_with_required_add_ons', 'lead_time']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         mapped_result['expedites'] = map(QuoteExpediteMapper.map, resource['expedites'])
