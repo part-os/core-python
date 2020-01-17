@@ -146,6 +146,20 @@ class QuoteItem:
 
 
 @attr.s(frozen=True)
+class ParentQuote:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    number: int = attr.ib(validator=attr.validators.instance_of(int))
+    status: str = attr.ib(validator=attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
+class ParentSupplierOrder:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    number: int = attr.ib(validator=attr.validators.instance_of(int))
+    status: str = attr.ib(validator=attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
 class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
 
     _mapper = QuoteDetailsMapper
@@ -167,8 +181,12 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     digital_last_viewed_on: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     expired: bool = attr.ib(validator=attr.validators.instance_of(bool))
     request_for_quote: Optional[bool] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(bool)))
-    parent_quote: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    parent_supplier_order: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    parent_quote: Optional[ParentQuote] = \
+        attr.ib(converter=convert_cls(ParentQuote),
+                validator=attr.validators.optional(attr.validators.instance_of(ParentQuote)))
+    parent_supplier_order: Optional[ParentSupplierOrder] = \
+        attr.ib(converter=convert_cls(ParentSupplierOrder),
+                validator=attr.validators.optional(attr.validators.instance_of(ParentSupplierOrder)))
     authenticated_pdf_quote_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     is_unviewed_drafted_rfq: bool = attr.ib(validator=attr.validators.instance_of(bool))
     created: str = attr.ib(validator=attr.validators.instance_of(str))

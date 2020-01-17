@@ -17,7 +17,7 @@ class TestQuotes(unittest.TestCase):
     def test_get_quote(self):
         self.client.get_resource = MagicMock(return_value=self.mock_quote_json)
         q = Quote.get(1)
-        self.assertEqual(q.number, 72)
+        self.assertEqual(q.number, 73)
         self.assertEqual(q.tax_rate, 0.)
         self.assertFalse(q.is_unviewed_drafted_rfq)
         # test customer
@@ -31,12 +31,12 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('4359.38'))
         # test quote items
         quote_item = q.quote_items[0]
-        self.assertEqual(quote_item.id, 24988)
+        self.assertEqual(quote_item.id, 27010)
         self.assertEqual(quote_item.type, 'automatic')
-        self.assertEqual(quote_item.component_ids[0], 28600)
+        self.assertEqual(quote_item.component_ids[0], 30746)
         # test root component
         root_component = quote_item.root_component
-        self.assertEqual(root_component.id, 28600)
+        self.assertEqual(root_component.id, 30739)
         self.assertEqual(root_component.type, 'assembled')
         self.assertEqual(root_component.part.filename, 'small-sub-assembly.STEP')
         # test quantities
@@ -44,7 +44,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(quantity.quantity, 1)
         self.assertEqual(quantity.unit_price.dollars, Decimal('3086.88'))
         # test operations
-        operation = root_component.operations[0]
+        operation = root_component.shop_operations[0]
         self.assertEqual(operation.name, 'Chromate')
         # test process
         process = root_component.process
@@ -55,6 +55,12 @@ class TestQuotes(unittest.TestCase):
         # test expedites
         expedite = q.quote_items[2].root_component.quantities[0].expedites[0]
         self.assertEqual(expedite.unit_price.dollars, 65.)
+        # test parent quote
+        parent_quote = q.parent_quote
+        self.assertEqual(parent_quote.number, 67)
+        # test parent supplier order
+        parent_supplier_order = q.parent_supplier_order
+        self.assertEqual(parent_supplier_order.number, 14)
 
 
 

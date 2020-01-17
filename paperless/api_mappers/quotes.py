@@ -158,6 +158,26 @@ class QuoteItemMapper(BaseMapper):
         return mapped_result
 
 
+class ParentQuoteMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'number', 'status']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
+class ParentSupplierOrderMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'number', 'status']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
 class QuoteDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -175,4 +195,6 @@ class QuoteDetailsMapper(BaseMapper):
         mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer'])
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
+        mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote'])
+        mapped_result['parent_supplier_order'] = ParentSupplierOrderMapper.map(resource['parent_supplier_order'])
         return mapped_result
