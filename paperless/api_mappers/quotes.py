@@ -134,7 +134,8 @@ class QuoteRootComponentMapper(BaseMapper):
             mapped_result[key] = resource.get(key, [])
         mapped_result['part'] = QuotePartMapper.map(resource['part']) if resource['part'] else None
         mapped_result['quantities'] = map(QuoteQuantityMapper.map, resource['quantities'])
-        mapped_result['operations'] = map(QuoteOperationMapper.map, resource['operations'])
+        mapped_result['shop_operations'] = map(QuoteOperationMapper.map, resource['shop_operations'])
+        mapped_result['material_operations'] = map(QuoteOperationMapper.map, resource['material_operations'])
         mapped_result['process'] = QuoteProcessMapper.map(resource['process']) if resource['process'] else None
         mapped_result['material'] = QuoteMaterialMapper.map(resource['material']) if resource['material'] else None
         return mapped_result

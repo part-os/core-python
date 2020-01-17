@@ -17,7 +17,7 @@ class TestQuotes(unittest.TestCase):
     def test_get_quote(self):
         self.client.get_resource = MagicMock(return_value=self.mock_quote_json)
         q = Quote.get(1)
-        self.assertEqual(q.number, 67)
+        self.assertEqual(q.number, 72)
         self.assertEqual(q.tax_rate, 0.)
         self.assertFalse(q.is_unviewed_drafted_rfq)
         # test customer
