@@ -86,6 +86,19 @@ class Material:
 
 
 @attr.s(frozen=True)
+class AddOnQuantity:
+    manual_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+
+
+@attr.s(frozen=True)
+class AddOn:
+    is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
+
+
+@attr.s(frozen=True)
 class Component:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     part: Part = attr.ib(converter=convert_cls(Part))
@@ -100,6 +113,7 @@ class Component:
     process: Process = attr.ib(converter=convert_cls(Process))
     material: Material = attr.ib(converter=convert_cls(Material))
     material_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
 
 
 @attr.s(frozen=True)

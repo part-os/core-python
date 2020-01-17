@@ -122,6 +122,30 @@ class QuoteMaterialMapper(BaseMapper):
         return mapped_result
 
 
+class AddOnQuantityMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['manual_price', 'quantity']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
+class AddOnMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['name']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        bool_keys = ['is_required']
+        for key in bool_keys:
+            mapped_result[key] = resource.get(key, False)
+        mapped_result['quantities'] = map(AddOnQuantityMapper.map, resource['quantities'])
+        return mapped_result
+
+
 class QuoteRootComponentMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -138,6 +162,7 @@ class QuoteRootComponentMapper(BaseMapper):
         mapped_result['material_operations'] = map(QuoteOperationMapper.map, resource['material_operations'])
         mapped_result['process'] = QuoteProcessMapper.map(resource['process']) if resource['process'] else None
         mapped_result['material'] = QuoteMaterialMapper.map(resource['material']) if resource['material'] else None
+        mapped_result['add_ons'] = map(AddOnMapper.map, resource['add_ons'])
         return mapped_result
 
 

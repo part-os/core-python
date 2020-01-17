@@ -53,7 +53,7 @@
             "markup_2_name": "N/A",
             "unit_price": "3086.88",
             "total_price": "3086.88",
-            "total_price_with_required_add_ons": "3086.88",
+            "total_price_with_required_add_ons": "4086.88",
             "lead_time": 13,
             "expedites": []
           },
@@ -66,7 +66,7 @@
             "markup_2_name": "N/A",
             "unit_price": "651.85",
             "total_price": "3259.25",
-            "total_price_with_required_add_ons": "3259.25",
+            "total_price_with_required_add_ons": "4259.25",
             "lead_time": 13,
             "expedites": []
           },
@@ -79,7 +79,7 @@
             "markup_2_name": "N/A",
             "unit_price": "347.47",
             "total_price": "3474.70",
-            "total_price_with_required_add_ons": "3474.70",
+            "total_price_with_required_add_ons": "4474.70",
             "lead_time": 13,
             "expedites": []
           },
@@ -92,7 +92,7 @@
             "markup_2_name": "N/A",
             "unit_price": "164.83",
             "total_price": "4120.75",
-            "total_price_with_required_add_ons": "4120.75",
+            "total_price_with_required_add_ons": "5120.75",
             "lead_time": 13,
             "expedites": []
           }
@@ -140,7 +140,52 @@
         ],
         "finishes": [],
         "material_notes": null,
-        "add_ons": []
+        "add_ons": [
+          {
+            "is_required": true,
+            "name": "Non-Recurring Engineering",
+            "quantities": [
+              {
+                "manual_price": "1000.00",
+                "quantity": 1
+              },
+              {
+                "manual_price": "1000.00",
+                "quantity": 5
+              },
+              {
+                "manual_price": "1000.00",
+                "quantity": 10
+              },
+              {
+                "manual_price": "1000.00",
+                "quantity": 25
+              }
+            ]
+          },
+          {
+            "is_required": false,
+            "name": "Non-Recurring Engineering",
+            "quantities": [
+              {
+                "manual_price": "200.00",
+                "quantity": 1
+              },
+              {
+                "manual_price": "300.00",
+                "quantity": 5
+              },
+              {
+                "manual_price": "400.00",
+                "quantity": 10
+              },
+              {
+                "manual_price": "500.00",
+                "quantity": 25
+              }
+            ]
+          }
+        ]
       },
       "position": 1,
       "export_controlled": false,

@@ -39,6 +39,11 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(root_component.id, 30739)
         self.assertEqual(root_component.type, 'assembled')
         self.assertEqual(root_component.part.filename, 'small-sub-assembly.STEP')
+        # test addons
+        add_on = root_component.add_ons[0]
+        self.assertEqual(add_on.is_required, True)
+        add_on_quantity = add_on.quantities[0]
+        self.assertEqual(add_on_quantity.manual_price.dollars, Decimal('1000'))
         # test quantities
         quantity = root_component.quantities[0]
         self.assertEqual(quantity.quantity, 1)
