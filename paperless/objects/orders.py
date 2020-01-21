@@ -88,6 +88,7 @@ class Component:
 
 @attr.s(frozen=True)
 class AddOn:
+    is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))

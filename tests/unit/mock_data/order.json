@@ -58,7 +58,7 @@
           "parent_ids": [],
           "part_name": "small-sub-assembly.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=sD%2Fs8d2yN67GfnvgLZvZ06BegGU%3D&Expires=1579720405",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=arKd0kZ1p8s1jJBOfZ%2Fv26oh1cs%3D&Expires=1580049299",
           "part_uuid": "ddab27ae-ff7b-4db2-be24-41002be6cb58",
           "process": {
             "id": 1117,
@@ -175,7 +175,7 @@
           ],
           "part_name": "Top Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=kftVzPAVjHyiIy2XL%2FkBu15cLWU%3D&Expires=1579723217",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=jtC%2Brxl8NU80kMQrQ2xolOgJqx0%3D&Expires=1580049299",
           "part_uuid": "cbe4fd08-c10a-4804-ae97-c647ce862040",
           "process": {
             "id": 1117,
@@ -475,7 +475,7 @@
           ],
           "part_name": "Plug.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=rfLpzFasKyWzEIDJv49e%2Fkc%2BEJg%3D&Expires=1579723217",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=LOgS06I5hn%2FejeZmBo8vExK8dvc%3D&Expires=1580049299",
           "part_uuid": "a300d612-2209-41b2-b914-a33c960743db",
           "process": {
             "id": 1117,
@@ -775,7 +775,7 @@
           ],
           "part_name": "O-Ring.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=uK1z4%2FqO7Db6Q5GO3kcKL3kznOU%3D&Expires=1579723217",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=EctRvesVLmfyDRfEBuWGmaNaQlQ%3D&Expires=1580049299",
           "part_uuid": "860b8958-9733-4bea-a6d2-3473d308a93d",
           "process": {
             "id": 1117,
@@ -1075,7 +1075,7 @@
           ],
           "part_name": "Fitting.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=1zxocGMh0V4yO661YOGzOcPuIjM%3D&Expires=1579723217",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=o53DPYdUjDocslkoA2YxzfNVuXI%3D&Expires=1580049299",
           "part_uuid": "a0b71d80-a16e-446e-8e7b-6977ff2c5e0c",
           "process": {
             "id": 1117,
@@ -1375,7 +1375,7 @@
           ],
           "part_name": "Seal.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=l1Thk%2Fpt7J%2FV8d%2B2fKf4eJz%2FvoU%3D&Expires=1579723217",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=28%2BFX4Uu15z5yWQBm0b3ZZAlEzQ%3D&Expires=1580049299",
           "part_uuid": "a9be1070-67d8-4a95-8c7d-54a5f6e58d4d",
           "process": {
             "id": 1117,
@@ -1675,7 +1675,7 @@
           ],
           "part_name": "Bottom Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=Gcpf0R9nX%2BQPZtJbJ57Akmo0bd8%3D&Expires=1579723217",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=9QjvOyEIqWtPr89%2F%2BUBoZyjZGtw%3D&Expires=1580049299",
           "part_uuid": "f56acc3c-e75e-4735-a712-bf111182b437",
           "process": {
             "id": 1117,
@@ -1926,7 +1926,7 @@
           ],
           "part_name": "Subassembly <1>.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=I%2FV5SIXIkwsXHkFw4y9hTygZ6zM%3D&Expires=1579723217",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=Gsb2niY2Oj7jTHXUJ5XxKGoySVk%3D&Expires=1580049299",
           "part_uuid": "8deb6257-56f8-4aaf-bebc-1707361bf2af",
           "process": {
             "id": 1117,
@@ -1962,11 +1962,13 @@
       "add_on_fees": "1200.00",
       "ordered_add_ons": [
         {
+          "is_required": true,
           "name": "Non-Recurring Engineering",
           "price": "1000.00",
           "quantity": 1
         },
         {
+          "is_required": false,
           "name": "Non-Recurring Engineering",
           "price": "200.00",
           "quantity": 1
@@ -2050,7 +2052,7 @@
           "parent_ids": [],
           "part_name": "Counter_Sinks.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=BgFGN26J7JfpeajE7QpI7ilARm8%3D&Expires=1579720405",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=gOekHFDquWXX0WDxWHwEi2ev6Qs%3D&Expires=1580049299",
           "part_uuid": "3b8d60da-aa4f-4b04-983e-8fe755944957",
           "process": {
             "id": 1117,

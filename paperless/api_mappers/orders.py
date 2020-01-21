@@ -29,6 +29,9 @@ class AddOnMapper(BaseMapper):
         field_keys = ['name', 'price', 'quantity']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
+        bool_keys = ['is_required']
+        for key in bool_keys:
+            mapped_result[key] = resource.get(key, False)
         return mapped_result
 
 
