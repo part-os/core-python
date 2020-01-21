@@ -24,13 +24,13 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(len(o.order_items), 3)
         # test assembly order item
         assmb_oi = o.order_items[0]
-        self.assertEqual(assmb_oi.id, 17008)
+        self.assertEqual(assmb_oi.id, 17135)
         self.assertEqual(len(assmb_oi.components), 8)
-        self.assertEqual((assmb_oi.quote_item_id), 27010)
+        self.assertEqual((assmb_oi.quote_item_id), 27122)
         # test single component order item
         standard_oi = o.order_items[1]
-        self.assertEqual(standard_oi.id, 17009)
-        self.assertEqual(standard_oi.root_component_id, 30747)
+        self.assertEqual(standard_oi.id, 17136)
+        self.assertEqual(standard_oi.root_component_id, 30880)
         self.assertEqual(len(standard_oi.components), 1)
         self.assertIsNone(standard_oi.add_on_fees)
         root_component = standard_oi.components[0]
@@ -57,10 +57,10 @@ class TestOrders(unittest.TestCase):
         oi = o.order_items[0]
         self.assertEqual(2020, oi.ships_on_dt.year)
         self.assertEqual(2, oi.ships_on_dt.month)
-        self.assertEqual(5, oi.ships_on_dt.day)
+        self.assertEqual(7, oi.ships_on_dt.day)
         self.assertEqual(2020, o.created_dt.year)
         self.assertEqual(1, o.created_dt.month)
-        self.assertEqual(17, o.created_dt.day)
+        self.assertEqual(21, o.created_dt.day)
 
     def test_ship_desc(self):
         from paperless.objects.orders import ShippingOption

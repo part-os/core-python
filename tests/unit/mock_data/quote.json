@@ -1,5 +1,5 @@
 {
-  "id": 19888,
+  "id": 19997,
   "number": 73,
   "sales_person": {
     "first_name": "Rob",
@@ -16,9 +16,9 @@
       "id": 1986,
       "notes": null,
       "metrics": {
-        "order_revenue_all_time": 4359.38,
-        "order_revenue_last_thirty_days": 4359.38,
-        "quotes_sent_all_time": 2,
+        "order_revenue_all_time": 9317.59,
+        "order_revenue_last_thirty_days": 4958.21,
+        "quotes_sent_all_time": 3,
         "quotes_sent_last_thirty_days": 2
       },
       "business_name": "Outside Firm"
@@ -29,14 +29,14 @@
   "private_notes": null,
   "quote_items": [
     {
-      "id": 27010,
+      "id": 27122,
       "type": "automatic",
       "root_component": {
-        "id": 30739,
+        "id": 30872,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=Ln%2Bj5sOBe0SoaMrGo3wBsaNqaxk%3D&Expires=1579709429",
-          "url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=vfU%2BTAVuo%2FyHqYAxcoNAbF3Pe5A%3D&Expires=1579709447",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=tNfz4v7Bejg5rQka%2Bafpj35zEfM%3D&Expires=1580064355",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=%2FhEMxK16hKheVOBImMjg8s%2F%2FAks%3D&Expires=1580064351",
           "supporting_files": []
         },
         "part_number": null,
@@ -45,7 +45,7 @@
         "type": "assembled",
         "quantities": [
           {
-            "id": 46149,
+            "id": 46289,
             "quantity": 1,
             "markup_1_price": "514.48",
             "markup_1_name": "Margin",
@@ -58,7 +58,7 @@
             "expedites": []
           },
           {
-            "id": 46150,
+            "id": 46290,
             "quantity": 5,
             "markup_1_price": "543.21",
             "markup_1_name": "Margin",
@@ -71,7 +71,7 @@
             "expedites": []
           },
           {
-            "id": 46151,
+            "id": 46291,
             "quantity": 10,
             "markup_1_price": "579.12",
             "markup_1_name": "Margin",
@@ -84,7 +84,7 @@
             "expedites": []
           },
           {
-            "id": 46152,
+            "id": 46292,
             "quantity": 25,
             "markup_1_price": "686.80",
             "markup_1_name": "Margin",
@@ -110,7 +110,7 @@
         "material_operations": [],
         "shop_operations": [
           {
-            "id": 53793,
+            "id": 53879,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -190,27 +190,27 @@
       "position": 1,
       "export_controlled": false,
       "component_ids": [
-        30746,
-        30745,
-        30744,
-        30743,
-        30742,
-        30741,
-        30740,
-        30739
+        30872,
+        30873,
+        30874,
+        30875,
+        30876,
+        30877,
+        30878,
+        30879
       ],
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     },
     {
-      "id": 27011,
+      "id": 27123,
       "type": "automatic",
       "root_component": {
-        "id": 30747,
+        "id": 30880,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=BxBPZs2ok7%2BNlFhXKzWofk9C%2ByI%3D&Expires=1579709429",
-          "url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJ5TJ7YUM6&Signature=YwMimvNIVA2Kgwn59h9BuwSLEBY%3D&Expires=1579709447",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=CkbqO9%2FLN5V%2BFYvZZ4mL2QNy8Ts%3D&Expires=1580064355",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=obpI0t3mts%2F8XyuufO2jKunfSW0%3D&Expires=1580064351",
           "supporting_files": []
         },
         "part_number": null,
@@ -219,7 +219,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 46181,
+            "id": 46321,
             "quantity": 1,
             "markup_1_price": "83.52",
             "markup_1_name": "Margin",
@@ -232,7 +232,7 @@
             "expedites": []
           },
           {
-            "id": 46182,
+            "id": 46322,
             "quantity": 5,
             "markup_1_price": "99.39",
             "markup_1_name": "Margin",
@@ -245,7 +245,7 @@
             "expedites": []
           },
           {
-            "id": 46183,
+            "id": 46323,
             "quantity": 10,
             "markup_1_price": "119.24",
             "markup_1_name": "Margin",
@@ -258,7 +258,7 @@
             "expedites": []
           },
           {
-            "id": 46184,
+            "id": 46324,
             "quantity": 25,
             "markup_1_price": "178.75",
             "markup_1_name": "Margin",
@@ -283,7 +283,7 @@
         },
         "material_operations": [
           {
-            "id": 53848,
+            "id": 53934,
             "category": "material",
             "cost": "0",
             "costing_variables": [
@@ -316,7 +316,7 @@
             "setup_time": null
           },
           {
-            "id": 53849,
+            "id": 53935,
             "category": "material",
             "cost": "0",
             "costing_variables": [
@@ -336,7 +336,7 @@
         ],
         "shop_operations": [
           {
-            "id": 53850,
+            "id": 53936,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -359,7 +359,7 @@
             "setup_time": 0.5
           },
           {
-            "id": 53851,
+            "id": 53937,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -382,7 +382,7 @@
             "setup_time": 2.0
           },
           {
-            "id": 53852,
+            "id": 53938,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -450,7 +450,7 @@
             "setup_time": 1.0
           },
           {
-            "id": 53853,
+            "id": 53939,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -483,7 +483,7 @@
             "setup_time": 0.25
           },
           {
-            "id": 53854,
+            "id": 53940,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -501,7 +501,7 @@
             "setup_time": null
           },
           {
-            "id": 53855,
+            "id": 53941,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -519,7 +519,7 @@
             "setup_time": null
           },
           {
-            "id": 53856,
+            "id": 53942,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -554,16 +554,16 @@
       "position": 2,
       "export_controlled": false,
       "component_ids": [
-        30747
+        30880
       ],
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     },
     {
-      "id": 27012,
+      "id": 27124,
       "type": "manual",
       "root_component": {
-        "id": 30748,
+        "id": 30881,
         "part": null,
         "part_number": null,
         "revision": null,
@@ -571,7 +571,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 46185,
+            "id": 46325,
             "quantity": 1,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -583,7 +583,7 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 18985,
+                "id": 19030,
                 "lead_time": 2,
                 "markup": 30.0,
                 "unit_price": "65.00",
@@ -592,7 +592,7 @@
             ]
           },
           {
-            "id": 46186,
+            "id": 46326,
             "quantity": 2,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -604,7 +604,7 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 18986,
+                "id": 19031,
                 "lead_time": 2,
                 "markup": 30.0,
                 "unit_price": "123.50",
@@ -624,18 +624,18 @@
       "position": 3,
       "export_controlled": false,
       "component_ids": [
-        30748
+        30881
       ],
       "private_notes": "This is a test manual line item.",
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     }
   ],
-  "status": "draft",
-  "sent_date": null,
-  "expired_date": "2020-02-16T16:10:59+00:00",
+  "status": "accepted",
+  "sent_date": "2020-01-21T18:49:00+00:00",
+  "expired_date": "2020-02-20T18:45:53+00:00",
   "quote_notes": "- Customers are responsible for ensuring that the properties and performance of the material selected meet the requirements of their application;\n- CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved;\n- The standard finish (or surface finish) for all parts will include deburring through sanding or bead blasting and support structure removal (additive parts);\n- The estimated arrival time is based on available capacity at the time of this quote. Quotes that are not executed same day are subject to change or delays. Reasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
   "export_controlled": false,
-  "digital_last_viewed_on": null,
+  "digital_last_viewed_on": "2020-01-21T18:53:20+00:00",
   "expired": false,
   "request_for_quote": null,
   "parent_quote": {
@@ -648,7 +648,7 @@
     "number": 14,
     "status": "pending"
   },
-  "authenticated_pdf_quote_url": null,
+  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/af6f5d36-04ff-4a02-9493-31ab22b9f3b1/Quote73.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=qBnh0eNz5WCQJ124FqaRYStfHxU%3D&Expires=1580064800",
   "is_unviewed_drafted_rfq": false,
-  "created": "2020-01-17T16:10:59+00:00"
+  "created": "2020-01-21T18:45:53+00:00"
 }

@@ -28,15 +28,15 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(company.business_name, 'Outside Firm')
         # test metrics
         metrics = company.metrics
-        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('4359.38'))
+        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('9317.59'))
         # test quote items
         quote_item = q.quote_items[0]
-        self.assertEqual(quote_item.id, 27010)
+        self.assertEqual(quote_item.id, 27122)
         self.assertEqual(quote_item.type, 'automatic')
-        self.assertEqual(quote_item.component_ids[0], 30746)
+        self.assertEqual(quote_item.component_ids[0], 30872)
         # test root component
         root_component = quote_item.root_component
-        self.assertEqual(root_component.id, 30739)
+        self.assertEqual(root_component.id, 30872)
         self.assertEqual(root_component.type, 'assembled')
         self.assertEqual(root_component.part.filename, 'small-sub-assembly.STEP')
         # test addons
