@@ -87,6 +87,14 @@ class Component:
 
 
 @attr.s(frozen=True)
+class AddOn:
+    is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+
+
+@attr.s(frozen=True)
 class OrderItem:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     components: List[Component] = attr.ib(converter=convert_iterable(Component))
@@ -105,6 +113,9 @@ class OrderItem:
     ships_on = attr.ib(validator=attr.validators.instance_of(str))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    base_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    add_on_fees: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
+    ordered_add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
 
     @property
     def ships_on_dt(self):

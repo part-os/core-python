@@ -22,6 +22,19 @@ class ComponentMapper(BaseMapper):
         return mapped_result
 
 
+class AddOnMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['name', 'price', 'quantity']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        bool_keys = ['is_required']
+        for key in bool_keys:
+            mapped_result[key] = resource.get(key, False)
+        return mapped_result
+
+
 class OrderItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -29,12 +42,13 @@ class OrderItemMapper(BaseMapper):
         mapped_result['components'] = map(ComponentMapper.map, resource['components'])
         field_keys = ['id', 'description', 'expedite_revenue', 'filename', 'lead_days', 'private_notes', 'public_notes',
                       'quantity', 'quantity_outstanding', 'quote_item_id', 'quote_item_type', 'root_component_id',
-                      'ships_on', 'total_price', 'unit_price']
+                      'ships_on', 'total_price', 'unit_price', 'base_price', 'add_on_fees']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['export_controlled']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
+        mapped_result['ordered_add_ons'] = map(AddOnMapper.map, resource['ordered_add_ons'])
         return mapped_result
 
 

@@ -72,7 +72,7 @@ class QuoteQuantityMapper(BaseMapper):
     def map(cls, resource):
         mapped_result = {}
         field_keys = ['id', 'quantity', 'markup_1_price', 'markup_1_name', 'markup_2_price', 'markup_2_name',
-                      'unit_price', 'total_price', 'lead_time']
+                      'unit_price', 'total_price', 'total_price_with_required_add_ons', 'lead_time']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         mapped_result['expedites'] = map(QuoteExpediteMapper.map, resource['expedites'])
@@ -122,6 +122,30 @@ class QuoteMaterialMapper(BaseMapper):
         return mapped_result
 
 
+class AddOnQuantityMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['manual_price', 'quantity']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
+class AddOnMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['name']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        bool_keys = ['is_required']
+        for key in bool_keys:
+            mapped_result[key] = resource.get(key, False)
+        mapped_result['quantities'] = map(AddOnQuantityMapper.map, resource['quantities'])
+        return mapped_result
+
+
 class QuoteRootComponentMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -134,9 +158,11 @@ class QuoteRootComponentMapper(BaseMapper):
             mapped_result[key] = resource.get(key, [])
         mapped_result['part'] = QuotePartMapper.map(resource['part']) if resource['part'] else None
         mapped_result['quantities'] = map(QuoteQuantityMapper.map, resource['quantities'])
-        mapped_result['operations'] = map(QuoteOperationMapper.map, resource['operations'])
+        mapped_result['shop_operations'] = map(QuoteOperationMapper.map, resource['shop_operations'])
+        mapped_result['material_operations'] = map(QuoteOperationMapper.map, resource['material_operations'])
         mapped_result['process'] = QuoteProcessMapper.map(resource['process']) if resource['process'] else None
         mapped_result['material'] = QuoteMaterialMapper.map(resource['material']) if resource['material'] else None
+        mapped_result['add_ons'] = map(AddOnMapper.map, resource['add_ons'])
         return mapped_result
 
 
@@ -157,6 +183,26 @@ class QuoteItemMapper(BaseMapper):
         return mapped_result
 
 
+class ParentQuoteMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'number', 'status']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
+class ParentSupplierOrderMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'number', 'status']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
 class QuoteDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -174,4 +220,6 @@ class QuoteDetailsMapper(BaseMapper):
         mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer'])
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
+        mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote'])
+        mapped_result['parent_supplier_order'] = ParentSupplierOrderMapper.map(resource['parent_supplier_order'])
         return mapped_result

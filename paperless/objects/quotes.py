@@ -41,6 +41,7 @@ class Quantity:
     markup_2_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    total_price_with_required_add_ons: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
     expedites: List[Expedite] = attr.ib(converter=convert_iterable(Expedite))
 
@@ -86,6 +87,19 @@ class Material:
 
 
 @attr.s(frozen=True)
+class AddOnQuantity:
+    manual_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+
+
+@attr.s(frozen=True)
+class AddOn:
+    is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
+
+
+@attr.s(frozen=True)
 class Component:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     part: Part = attr.ib(converter=convert_cls(Part))
@@ -94,11 +108,13 @@ class Component:
     description: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     type: str = attr.ib(validator=attr.validators.instance_of(str))
     quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
-    operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
+    shop_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
+    material_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
     finishes: List = attr.ib(validator=attr.validators.instance_of(list))
     process: Process = attr.ib(converter=convert_cls(Process))
     material: Material = attr.ib(converter=convert_cls(Material))
     material_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
 
 
 @attr.s(frozen=True)
@@ -145,6 +161,20 @@ class QuoteItem:
 
 
 @attr.s(frozen=True)
+class ParentQuote:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    number: int = attr.ib(validator=attr.validators.instance_of(int))
+    status: str = attr.ib(validator=attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
+class ParentSupplierOrder:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    number: int = attr.ib(validator=attr.validators.instance_of(int))
+    status: str = attr.ib(validator=attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
 class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
 
     _mapper = QuoteDetailsMapper
@@ -166,8 +196,12 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     digital_last_viewed_on: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     expired: bool = attr.ib(validator=attr.validators.instance_of(bool))
     request_for_quote: Optional[bool] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(bool)))
-    parent_quote: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    parent_supplier_order: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    parent_quote: Optional[ParentQuote] = \
+        attr.ib(converter=convert_cls(ParentQuote),
+                validator=attr.validators.optional(attr.validators.instance_of(ParentQuote)))
+    parent_supplier_order: Optional[ParentSupplierOrder] = \
+        attr.ib(converter=convert_cls(ParentSupplierOrder),
+                validator=attr.validators.optional(attr.validators.instance_of(ParentSupplierOrder)))
     authenticated_pdf_quote_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     is_unviewed_drafted_rfq: bool = attr.ib(validator=attr.validators.instance_of(bool))
     created: str = attr.ib(validator=attr.validators.instance_of(str))
