@@ -1,6 +1,6 @@
 {
-  "id": 19997,
-  "number": 73,
+  "id": 20948,
+  "number": 84,
   "sales_person": {
     "first_name": "Rob",
     "last_name": "Carrington",
@@ -16,10 +16,10 @@
       "id": 1986,
       "notes": null,
       "metrics": {
-        "order_revenue_all_time": 9317.59,
-        "order_revenue_last_thirty_days": 4958.21,
-        "quotes_sent_all_time": 3,
-        "quotes_sent_last_thirty_days": 2
+        "order_revenue_all_time": 18706.9,
+        "order_revenue_last_thirty_days": 14347.52,
+        "quotes_sent_all_time": 7,
+        "quotes_sent_last_thirty_days": 6
       },
       "business_name": "Outside Firm"
     }
@@ -29,14 +29,14 @@
   "private_notes": null,
   "quote_items": [
     {
-      "id": 27122,
+      "id": 28149,
       "type": "automatic",
       "root_component": {
-        "id": 30872,
+        "id": 32053,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=tNfz4v7Bejg5rQka%2Bafpj35zEfM%3D&Expires=1580064355",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=%2FhEMxK16hKheVOBImMjg8s%2F%2FAks%3D&Expires=1580064351",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=XQTmlNwV5%2BZdjH5JdgB8dirLiFA%3D&Expires=1580659664",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=8VhmnXtXQwBhTRlb%2FNVogPlm1SQ%3D&Expires=1580659667",
           "supporting_files": []
         },
         "part_number": null,
@@ -45,20 +45,20 @@
         "type": "assembled",
         "quantities": [
           {
-            "id": 46289,
+            "id": 47665,
             "quantity": 1,
-            "markup_1_price": "514.48",
+            "markup_1_price": "516.48",
             "markup_1_name": "Margin",
             "markup_2_price": "0.00",
             "markup_2_name": "N/A",
-            "unit_price": "3086.88",
-            "total_price": "3086.88",
-            "total_price_with_required_add_ons": "4086.88",
+            "unit_price": "3098.88",
+            "total_price": "3098.88",
+            "total_price_with_required_add_ons": "4098.88",
             "lead_time": 13,
             "expedites": []
           },
           {
-            "id": 46290,
+            "id": 47666,
             "quantity": 5,
             "markup_1_price": "543.21",
             "markup_1_name": "Margin",
@@ -71,7 +71,7 @@
             "expedites": []
           },
           {
-            "id": 46291,
+            "id": 47667,
             "quantity": 10,
             "markup_1_price": "579.12",
             "markup_1_name": "Margin",
@@ -84,7 +84,7 @@
             "expedites": []
           },
           {
-            "id": 46292,
+            "id": 47668,
             "quantity": 25,
             "markup_1_price": "686.80",
             "markup_1_name": "Margin",
@@ -110,7 +110,7 @@
         "material_operations": [],
         "shop_operations": [
           {
-            "id": 53879,
+            "id": 55226,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -133,6 +133,36 @@
             "is_finish": true,
             "name": "Chromate",
             "notes": null,
+            "quantities": [
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "150.00",
+                "manual_price": "160.00",
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 1
+              },
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 5
+              }
+            ],
             "position": 1,
             "runtime": null,
             "setup_time": null
@@ -190,27 +220,27 @@
       "position": 1,
       "export_controlled": false,
       "component_ids": [
-        30872,
-        30873,
-        30874,
-        30875,
-        30876,
-        30877,
-        30878,
-        30879
+        32060,
+        32059,
+        32058,
+        32057,
+        32056,
+        32055,
+        32054,
+        32053
       ],
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     },
     {
-      "id": 27123,
+      "id": 28150,
       "type": "automatic",
       "root_component": {
-        "id": 30880,
+        "id": 32061,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=CkbqO9%2FLN5V%2BFYvZZ4mL2QNy8Ts%3D&Expires=1580064355",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=obpI0t3mts%2F8XyuufO2jKunfSW0%3D&Expires=1580064351",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=KoNgmcIsH5W9XGXSVVcm6jop8gQ%3D&Expires=1580659664",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=VhzaL9fz3l6%2BkRAcHLaKOdfLlNE%3D&Expires=1580659713",
           "supporting_files": []
         },
         "part_number": null,
@@ -219,7 +249,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 46321,
+            "id": 47697,
             "quantity": 1,
             "markup_1_price": "83.52",
             "markup_1_name": "Margin",
@@ -232,7 +262,7 @@
             "expedites": []
           },
           {
-            "id": 46322,
+            "id": 47698,
             "quantity": 5,
             "markup_1_price": "99.39",
             "markup_1_name": "Margin",
@@ -245,7 +275,7 @@
             "expedites": []
           },
           {
-            "id": 46323,
+            "id": 47699,
             "quantity": 10,
             "markup_1_price": "119.24",
             "markup_1_name": "Margin",
@@ -258,7 +288,7 @@
             "expedites": []
           },
           {
-            "id": 46324,
+            "id": 47700,
             "quantity": 25,
             "markup_1_price": "178.75",
             "markup_1_name": "Margin",
@@ -283,7 +313,7 @@
         },
         "material_operations": [
           {
-            "id": 53934,
+            "id": 55281,
             "category": "material",
             "cost": "0",
             "costing_variables": [
@@ -311,12 +341,42 @@
             "is_finish": false,
             "name": "Aluminium 6061",
             "notes": null,
+            "quantities": [
+              {
+                "price": "151.25",
+                "manual_price": null,
+                "lead_time": null,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "60.50",
+                "manual_price": null,
+                "lead_time": null,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "30.25",
+                "manual_price": null,
+                "lead_time": null,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "6.05",
+                "manual_price": null,
+                "lead_time": null,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 1,
             "runtime": null,
             "setup_time": null
           },
           {
-            "id": 53935,
+            "id": 55282,
             "category": "material",
             "cost": "0",
             "costing_variables": [
@@ -329,6 +389,36 @@
             "is_finish": false,
             "name": "Material Markup",
             "notes": null,
+            "quantities": [
+              {
+                "price": "45.38",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "18.15",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "9.07",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "1.81",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 2,
             "runtime": null,
             "setup_time": null
@@ -336,7 +426,7 @@
         ],
         "shop_operations": [
           {
-            "id": 53936,
+            "id": 55283,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -354,12 +444,42 @@
             "is_finish": false,
             "name": "Order Processing",
             "notes": null,
+            "quantities": [
+              {
+                "price": "25.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "25.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "25.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "25.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 3,
             "runtime": null,
             "setup_time": 0.5
           },
           {
-            "id": 53937,
+            "id": 55284,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -377,12 +497,42 @@
             "is_finish": false,
             "name": "Programming",
             "notes": null,
+            "quantities": [
+              {
+                "price": "100.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "100.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "100.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "100.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 4,
             "runtime": null,
             "setup_time": 2.0
           },
           {
-            "id": 53938,
+            "id": 55285,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -445,12 +595,42 @@
             "is_finish": false,
             "name": "Milling With Estimates",
             "notes": null,
+            "quantities": [
+              {
+                "price": "335.42",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "179.17",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "127.08",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "85.42",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 5,
             "runtime": 0.08333333333333333,
             "setup_time": 1.0
           },
           {
-            "id": 53939,
+            "id": 55286,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -478,12 +658,42 @@
             "is_finish": false,
             "name": "Packaging",
             "notes": null,
+            "quantities": [
+              {
+                "price": "6.46",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "6.46",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "6.46",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "6.46",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 6,
             "runtime": 0.0083,
             "setup_time": 0.25
           },
           {
-            "id": 53940,
+            "id": 55287,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -496,12 +706,42 @@
             "is_finish": false,
             "name": "Machine Markup",
             "notes": null,
+            "quantities": [
+              {
+                "price": "13.02",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "5.21",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "2.60",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "0.52",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 7,
             "runtime": null,
             "setup_time": null
           },
           {
-            "id": 53941,
+            "id": 55288,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -514,12 +754,42 @@
             "is_finish": false,
             "name": "Labor Markup",
             "notes": null,
+            "quantities": [
+              {
+                "price": "67.33",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "51.71",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "46.50",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "42.33",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 8,
             "runtime": null,
             "setup_time": null
           },
           {
-            "id": 53942,
+            "id": 55289,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -542,6 +812,36 @@
             "is_finish": true,
             "name": "Chromate",
             "notes": null,
+            "quantities": [
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 25
+              },
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 10
+              },
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 5
+              },
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 1
+              }
+            ],
             "position": 9,
             "runtime": null,
             "setup_time": null
@@ -554,16 +854,16 @@
       "position": 2,
       "export_controlled": false,
       "component_ids": [
-        30880
+        32061
       ],
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     },
     {
-      "id": 27124,
+      "id": 28151,
       "type": "manual",
       "root_component": {
-        "id": 30881,
+        "id": 32062,
         "part": null,
         "part_number": null,
         "revision": null,
@@ -571,7 +871,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 46325,
+            "id": 47701,
             "quantity": 1,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -583,7 +883,7 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 19030,
+                "id": 19403,
                 "lead_time": 2,
                 "markup": 30.0,
                 "unit_price": "65.00",
@@ -592,7 +892,7 @@
             ]
           },
           {
-            "id": 46326,
+            "id": 47702,
             "quantity": 2,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -604,7 +904,7 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 19031,
+                "id": 19404,
                 "lead_time": 2,
                 "markup": 30.0,
                 "unit_price": "123.50",
@@ -624,31 +924,31 @@
       "position": 3,
       "export_controlled": false,
       "component_ids": [
-        30881
+        32062
       ],
       "private_notes": "This is a test manual line item.",
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     }
   ],
   "status": "accepted",
-  "sent_date": "2020-01-21T18:49:00+00:00",
-  "expired_date": "2020-02-20T18:45:53+00:00",
+  "sent_date": "2020-01-28T17:12:46+00:00",
+  "expired_date": "2020-02-27T17:11:40+00:00",
   "quote_notes": "- Customers are responsible for ensuring that the properties and performance of the material selected meet the requirements of their application;\n- CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved;\n- The standard finish (or surface finish) for all parts will include deburring through sanding or bead blasting and support structure removal (additive parts);\n- The estimated arrival time is based on available capacity at the time of this quote. Quotes that are not executed same day are subject to change or delays. Reasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
   "export_controlled": false,
-  "digital_last_viewed_on": "2020-01-21T18:53:20+00:00",
+  "digital_last_viewed_on": "2020-01-28T17:12:55+00:00",
   "expired": false,
   "request_for_quote": null,
   "parent_quote": {
-    "id": 18015,
-    "number": 67,
+    "id": 19997,
+    "number": 73,
     "status": "accepted"
   },
   "parent_supplier_order": {
-    "id": 9343,
-    "number": 14,
+    "id": 10616,
+    "number": 16,
     "status": "pending"
   },
-  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/af6f5d36-04ff-4a02-9493-31ab22b9f3b1/Quote73.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=qBnh0eNz5WCQJ124FqaRYStfHxU%3D&Expires=1580064800",
+  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/18a32048-1c3e-44e7-82c8-49750bddc6f1/Quote84.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=G7SUzgAnDDvcmn5BOrLRip9qidM%3D&Expires=1580663575",
   "is_unviewed_drafted_rfq": false,
-  "created": "2020-01-21T18:45:53+00:00"
+  "created": "2020-01-28T17:11:40+00:00"
 }

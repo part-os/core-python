@@ -54,6 +54,15 @@ class Operation:
         type: str = attr.ib(validator=attr.validators.instance_of(str))
         value = attr.ib()
 
+    @attr.s(frozen=True)
+    class OperationQuantity:
+        price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+        manual_price: Optional[Money] = attr.ib(converter=optional_convert(Money),
+                                                validator=attr.validators.optional(attr.validators.instance_of(Money)))
+        lead_time: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+        manual_lead_time: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+        quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     category: str = attr.ib(validator=attr.validators.in_(['operation', 'material']))
     cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
@@ -62,6 +71,7 @@ class Operation:
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     position: int = attr.ib(validator=attr.validators.instance_of(int))
+    quantities: List[OperationQuantity] = attr.ib(converter=convert_iterable(OperationQuantity))
     runtime: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
     setup_time: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
 
