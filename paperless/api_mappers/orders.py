@@ -16,7 +16,7 @@ class ComponentMapper(BaseMapper):
         list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files']
         for key in list_keys:
             mapped_result[key] = resource.get(key, [])
-        bool_keys = ['export_controlled']
+        bool_keys = ['export_controlled', 'is_root_component']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
         return mapped_result

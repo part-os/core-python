@@ -35,8 +35,8 @@
         "id": 32053,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=XQTmlNwV5%2BZdjH5JdgB8dirLiFA%3D&Expires=1580659664",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=8VhmnXtXQwBhTRlb%2FNVogPlm1SQ%3D&Expires=1580659667",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=DofpJzgRu0OPUDGfECSkG1EpS9s%3D&Expires=1580850776",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=vVDzcTWtOR2Fos0smVgTv8stHoM%3D&Expires=1580841802",
           "supporting_files": []
         },
         "part_number": null,
@@ -220,14 +220,14 @@
       "position": 1,
       "export_controlled": false,
       "component_ids": [
-        32060,
-        32059,
-        32058,
-        32057,
-        32056,
-        32055,
+        32053,
         32054,
-        32053
+        32055,
+        32056,
+        32057,
+        32058,
+        32059,
+        32060
       ],
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
@@ -239,8 +239,8 @@
         "id": 32061,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=KoNgmcIsH5W9XGXSVVcm6jop8gQ%3D&Expires=1580659664",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=VhzaL9fz3l6%2BkRAcHLaKOdfLlNE%3D&Expires=1580659713",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ybbpWm2iTnVZWA%2FVfIjUNSfFKps%3D&Expires=1580850776",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=SaTx9PgSwBNJYDBG%2F8ZjlYsM98o%3D&Expires=1580841802",
           "supporting_files": []
         },
         "part_number": null,
@@ -948,7 +948,7 @@
     "number": 16,
     "status": "pending"
   },
-  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/18a32048-1c3e-44e7-82c8-49750bddc6f1/Quote84.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=G7SUzgAnDDvcmn5BOrLRip9qidM%3D&Expires=1580663575",
+  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/18a32048-1c3e-44e7-82c8-49750bddc6f1/Quote84.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=dbPZq26Hnd1A1%2Bx5dLU6FLJCj44%3D&Expires=1580850776",
   "is_unviewed_drafted_rfq": false,
   "created": "2020-01-28T17:11:40+00:00"
 }
