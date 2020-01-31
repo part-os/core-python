@@ -132,6 +132,13 @@ class OrderItem:
     def ships_on_dt(self):
         return datetime.datetime.strptime(self.ships_on, DATE_FMT)
 
+    @property
+    def root_component(self):
+        try:
+            return [c for c in self.components if c.is_root_component][0]
+        except IndexError:
+            raise ValueError('Order item has no root component')
+
 
 @attr.s(frozen=True)
 class PaymentDetails:
