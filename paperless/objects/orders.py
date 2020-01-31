@@ -82,6 +82,7 @@ class Component:
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     finishes: List[str] = attr.ib(converter=convert_iterable(str))
     innate_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    is_root_component: bool = attr.ib(validator=attr.validators.instance_of(bool))
     make_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     material: Material = attr.ib(converter=convert_cls(Material))
     material_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
@@ -130,6 +131,13 @@ class OrderItem:
     @property
     def ships_on_dt(self):
         return datetime.datetime.strptime(self.ships_on, DATE_FMT)
+
+    @property
+    def root_component(self):
+        try:
+            return [c for c in self.components if c.is_root_component][0]
+        except IndexError:
+            raise ValueError('Order item has no root component')
 
 
 @attr.s(frozen=True)

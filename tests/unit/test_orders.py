@@ -33,7 +33,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(standard_oi.root_component_id, 32061)
         self.assertEqual(len(standard_oi.components), 1)
         self.assertIsNone(standard_oi.add_on_fees)
-        root_component = standard_oi.components[0]
+        root_component = standard_oi.root_component
         self.assertEqual(len(root_component.material_operations), 2)
         self.assertEqual(len(root_component.shop_operations), 7)
         finish_op = root_component.shop_operations[6]
