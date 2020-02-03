@@ -1,6 +1,6 @@
 import datetime
 from decimal import Decimal
-from typing import List, Optional
+from typing import List, Optional, NamedTuple, Generator
 
 import attr
 import dateutil.parser
@@ -105,6 +105,12 @@ class AddOn:
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
 
+class AssemblyComponent(NamedTuple):
+    component: Component
+    level: int
+    parent: Optional[Component]
+
+
 @attr.s(frozen=True)
 class OrderItem:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -138,6 +144,34 @@ class OrderItem:
             return [c for c in self.components if c.is_root_component][0]
         except IndexError:
             raise ValueError('Order item has no root component')
+
+    # todo make common after merging quote, order Component into a single class
+    def iterate_assembly(self) -> Generator[AssemblyComponent, None, None]:
+        """Traverse assembly components in depth-first search ordering.
+        Components are yielded as AssemblyComponent (namedtuple) objects,
+        containing the component itself as well as information about parent
+        and assembly level. The same component may appear twice in the tree
+        (commonly seen with hardware/fasteners)."""
+        components_by_id = {}
+        root_component = None
+        for component in self.components:
+            components_by_id[component.id] = component
+            if component.is_root_component:
+                root_component = component
+
+        def dfs(node_id, level=0, parent=None):
+            node = components_by_id[node_id]
+            yield AssemblyComponent(
+                component=node,
+                level=level,
+                parent=parent
+            )
+            for child_id in node.child_ids:
+                for y in dfs(child_id, level + 1, node):
+                    yield y
+
+        for y in dfs(root_component.id):
+            yield y
 
 
 @attr.s(frozen=True)

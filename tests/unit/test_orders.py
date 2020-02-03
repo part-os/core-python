@@ -100,3 +100,22 @@ class TestOrders(unittest.TestCase):
         self.assertIn('has been charged', summ)
         summ = so3.summary(dt, 'purchase_order')
         self.assertIn('bill customer', summ)
+
+    def test_assemblies(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_order_json)
+        o = Order.get(1)
+        oi = o.order_items[0]
+        assm = list(oi.iterate_assembly())
+        self.assertEqual(8, len(assm))
+        self.assertTrue(assm[0].component.is_root_component)
+        self.assertEqual(0, assm[0].level)
+        expected_order = [
+            32053,
+            32059, 32058, 32060,
+            32057, 32056, 32055, 32054
+        ]
+        self.assertEqual(
+            expected_order,
+            [c.component.id for c in assm]
+        )
+        self.assertEqual(2, assm[4].level)
