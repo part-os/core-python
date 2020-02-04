@@ -119,3 +119,4 @@ class TestOrders(unittest.TestCase):
             [c.component.id for c in assm]
         )
         self.assertEqual(2, assm[4].level)
+        self.assertEqual(4, assm[4].level_count)
