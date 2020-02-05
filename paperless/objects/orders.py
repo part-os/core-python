@@ -1,6 +1,7 @@
+import collections
 import datetime
 from decimal import Decimal
-from typing import List, Optional
+from typing import Generator, List, Optional, NamedTuple
 
 import attr
 import dateutil.parser
@@ -105,6 +106,23 @@ class AddOn:
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
 
+class AssemblyComponent(NamedTuple):
+    """A component with metadata describing its position in an assembly.
+
+    Attributes:
+        component   the `paperless.objects.orders.Component` instance
+        level       this component's depth in the assembly tree (0 is root)
+        parent      this component's parent component
+        level_index index of this component within its level
+        level_count count of components at this assembly level
+    """
+    component: Component
+    level: int  # assembly level (0 for root)
+    parent: Optional[Component]
+    level_index: int  # 0-based index of the current component within its level
+    level_count: int  # count of components at this assembly level
+
+
 @attr.s(frozen=True)
 class OrderItem:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -138,6 +156,50 @@ class OrderItem:
             return [c for c in self.components if c.is_root_component][0]
         except IndexError:
             raise ValueError('Order item has no root component')
+
+    # todo make common after merging quote, order Component into a single class
+    def iterate_assembly(self) -> Generator[AssemblyComponent, None, None]:
+        """Traverse assembly components in depth-first search ordering.
+        Components are yielded as AssemblyComponent (namedtuple) objects,
+        containing the component itself as well as information about parent
+        and assembly level. The same component will only be yielded once even
+        if appears twice in the assembly tree (commonly seen with
+        hardware/fasteners)."""
+        components_by_id = {}
+        root_component = None
+        for component in self.components:
+            components_by_id[component.id] = component
+            if component.is_root_component:
+                root_component = component
+        level_counter = collections.defaultdict(lambda: 0)
+        visited = set()
+
+        def dfs(node_id, level=0, parent=None):
+            if node_id in visited:
+                return
+            visited.add(node_id)
+            node = components_by_id[node_id]
+            level_index = level_counter[level]
+            level_counter[level] += 1
+            yield AssemblyComponent(
+                component=node,
+                level=level,
+                parent=parent,
+                level_index=level_index,
+                level_count=0
+            )
+            for child_id in node.child_ids:
+                for y in dfs(child_id, level + 1, node):
+                    yield y
+
+        for assm_comp in list(dfs(root_component.id)):
+            yield AssemblyComponent(
+                component=assm_comp.component,
+                level=assm_comp.level,
+                parent=assm_comp.parent,
+                level_index=assm_comp.level_index,
+                level_count=level_counter[assm_comp.level]
+            )
 
 
 @attr.s(frozen=True)

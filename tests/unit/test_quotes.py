@@ -69,6 +69,3 @@ class TestQuotes(unittest.TestCase):
         # test parent supplier order
         parent_supplier_order = q.parent_supplier_order
         self.assertEqual(parent_supplier_order.number, 16)
-
-
-

@@ -1,5 +1,6 @@
 import unittest
 import os
+import time
 from paperless.local import LocalStorage, DEFAULT_IMPLEMENTATION
 from paperless.objects.orders import Order, Operation
 
@@ -17,6 +18,8 @@ class TestLocalStorage(unittest.TestCase):
         self.assertIsNone(storage.get_last_processed(Order))
         storage.process(Order, 1, True)
         self.assertEqual(1, storage.get_last_processed(Order))
+        # last processed is by timestamp, so they need to be 1 sec apart
+        time.sleep(1.1)
         storage.process(Order, 2, True)
         self.assertEqual(2, storage.get_last_processed(Order))
         storage.process(Operation, 10, True)
