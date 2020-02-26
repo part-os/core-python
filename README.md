@@ -5,7 +5,9 @@ The [Paperless Parts](https://www.paperlessparts.com) Software Development Kit
 (SDK) enables developers to easily write custom event listeners that run when 
 objects are created in Paperless Parts. The most common use case is creating 
 orders and other records in an ERP system after an order is placed in Paperless 
-Parts.
+Parts. The SDK uses the 
+[Paperless Parts Open API](https://docs.paperlessparts.com) to access your 
+data.
 
 Prerequisites
 -------------
@@ -36,12 +38,16 @@ Authenticating the client
 -------------------------
 
 The SDK client is authenticated via an automatically generated token linked to 
-your Paperless Parts account. For instructions on how to obtain, revoke, and 
-re-create this token, please contact support@paperlessparts.com. You provide 
-this access token when instantiating your `PaperlessClient` object, as shown in 
-the example below. We recommend structuring your application to read this from
-a configuration file. Your access token should never be committed to your 
-version control system (like git).
+your Paperless Parts account. To generate, revoke, or re-generate this token, 
+go to Settings > Integrations > API Token. This token must be included in the 
+header of all requests using the key as follows:
+
+`Authorization`: `API-Token <api-token>` 
+
+The SDK handles this for you when you this access token when instantiating your 
+`PaperlessClient` object, as shown in the example below. We recommend 
+structuring your application to read this from a configuration file. Your access 
+token should never be committed to your version control system (like git).
 
 
 Writing custom listeners
