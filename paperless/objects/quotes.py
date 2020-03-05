@@ -68,6 +68,7 @@ class Operation:
     cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
     is_finish: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    is_outside_service: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     position: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -148,6 +149,7 @@ class Company:
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     metrics: Metrics = attr.ib(converter=convert_cls(Metrics))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    erp_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=True)

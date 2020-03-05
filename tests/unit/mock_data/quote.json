@@ -21,7 +21,8 @@
         "quotes_sent_all_time": 7,
         "quotes_sent_last_thirty_days": 6
       },
-      "business_name": "Outside Firm"
+      "business_name": "Outside Firm",
+      "erp_code": "OUTFIRM"
     }
   },
   "tax_rate": "0.000",
@@ -131,6 +132,7 @@
               }
             ],
             "is_finish": true,
+            "is_outside_service": true,
             "name": "Chromate",
             "notes": null,
             "quantities": [
@@ -339,6 +341,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Aluminium 6061",
             "notes": null,
             "quantities": [
@@ -387,6 +390,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Material Markup",
             "notes": null,
             "quantities": [
@@ -442,6 +446,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Order Processing",
             "notes": null,
             "quantities": [
@@ -495,6 +500,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Programming",
             "notes": null,
             "quantities": [
@@ -593,6 +599,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Milling With Estimates",
             "notes": null,
             "quantities": [
@@ -656,6 +663,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Packaging",
             "notes": null,
             "quantities": [
@@ -704,6 +712,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Machine Markup",
             "notes": null,
             "quantities": [
@@ -752,6 +761,7 @@
               }
             ],
             "is_finish": false,
+            "is_outside_service": false,
             "name": "Labor Markup",
             "notes": null,
             "quantities": [
@@ -810,6 +820,7 @@
               }
             ],
             "is_finish": true,
+            "is_outside_service": true,
             "name": "Chromate",
             "notes": null,
             "quantities": [

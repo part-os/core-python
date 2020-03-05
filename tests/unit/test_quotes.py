@@ -26,6 +26,7 @@ class TestQuotes(unittest.TestCase):
         # test company
         company = customer.company
         self.assertEqual(company.business_name, 'Outside Firm')
+        self.assertEqual(company.erp_code, 'OUTFIRM')
         # test metrics
         metrics = company.metrics
         self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('18706.90'))

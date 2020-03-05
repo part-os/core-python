@@ -67,7 +67,7 @@ class OrderCompanyMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id', 'business_name']
+        field_keys = ['id', 'business_name', 'erp_code']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
@@ -117,11 +117,10 @@ class OperationsMapper(BaseMapper):
     def map(cls, resource):
         costing_variables = map(CostingVariablesMapper.map, resource['costing_variables'])
         quantities = map(OperationQuantityMapper.map, resource['quantities'])
-        keys = ['id', 'category', 'cost', 'name', 'notes', 'position', 'runtime', 'setup_time']
+        keys = ['id', 'category', 'cost', 'is_finish', 'is_outside_service', 'name', 'notes', 'position', 'runtime', 'setup_time']
         mapped_result = {}
         for key in keys:
             mapped_result[key] = resource.get(key, None)
-        mapped_result['is_finish'] = resource.get('is_finish', False)
         mapped_result['costing_variables'] = costing_variables
         mapped_result['quantities'] = quantities
         return mapped_result
