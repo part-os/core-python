@@ -17,7 +17,7 @@ class TestQuotes(unittest.TestCase):
     def test_get_quote(self):
         self.client.get_resource = MagicMock(return_value=self.mock_quote_json)
         q = Quote.get(1)
-        self.assertEqual(q.number, 84)
+        self.assertEqual(q.number, 96)
         self.assertEqual(q.tax_rate, 0.)
         self.assertFalse(q.is_unviewed_drafted_rfq)
         # test customer
@@ -29,15 +29,15 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(company.erp_code, 'OUTFIRM')
         # test metrics
         metrics = company.metrics
-        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('18706.90'))
+        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('23976.54'))
         # test quote items
         quote_item = q.quote_items[0]
-        self.assertEqual(quote_item.id, 28149)
+        self.assertEqual(quote_item.id, 30157)
         self.assertEqual(quote_item.type, 'automatic')
-        self.assertEqual(quote_item.component_ids[0], 32053)
+        self.assertEqual(quote_item.component_ids[0], 34382)
         # test root component
         root_component = quote_item.root_component
-        self.assertEqual(root_component.id, 32053)
+        self.assertEqual(root_component.id, 34375)
         self.assertEqual(root_component.type, 'assembled')
         self.assertEqual(root_component.part.filename, 'small-sub-assembly.STEP')
         # test addons
@@ -66,7 +66,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(expedite.unit_price.dollars, 65.)
         # test parent quote
         parent_quote = q.parent_quote
-        self.assertEqual(parent_quote.number, 73)
+        self.assertEqual(parent_quote.number, 84)
         # test parent supplier order
         parent_supplier_order = q.parent_supplier_order
-        self.assertEqual(parent_supplier_order.number, 16)
+        self.assertEqual(parent_supplier_order.number, 22)

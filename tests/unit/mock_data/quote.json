@@ -1,6 +1,6 @@
 {
-  "id": 20948,
-  "number": 84,
+  "id": 22863,
+  "number": 96,
   "sales_person": {
     "first_name": "Rob",
     "last_name": "Carrington",
@@ -16,9 +16,9 @@
       "id": 1986,
       "notes": null,
       "metrics": {
-        "order_revenue_all_time": 18706.9,
-        "order_revenue_last_thirty_days": 14347.52,
-        "quotes_sent_all_time": 7,
+        "order_revenue_all_time": 23976.54,
+        "order_revenue_last_thirty_days": 19617.16,
+        "quotes_sent_all_time": 8,
         "quotes_sent_last_thirty_days": 6
       },
       "business_name": "Outside Firm",
@@ -30,14 +30,14 @@
   "private_notes": null,
   "quote_items": [
     {
-      "id": 28149,
+      "id": 30157,
       "type": "automatic",
       "root_component": {
-        "id": 32053,
+        "id": 34375,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=DofpJzgRu0OPUDGfECSkG1EpS9s%3D&Expires=1580850776",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=vVDzcTWtOR2Fos0smVgTv8stHoM%3D&Expires=1580841802",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=hwMIJK7p8r0W2FWZoBW9xxGR6jA%3D&Expires=1582119982",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=2HZx5sKXPqiBwl%2FxtQZoZtkLSfQ%3D&Expires=1582138827",
           "supporting_files": []
         },
         "part_number": null,
@@ -46,7 +46,7 @@
         "type": "assembled",
         "quantities": [
           {
-            "id": 47665,
+            "id": 50234,
             "quantity": 1,
             "markup_1_price": "516.48",
             "markup_1_name": "Margin",
@@ -59,7 +59,7 @@
             "expedites": []
           },
           {
-            "id": 47666,
+            "id": 50235,
             "quantity": 5,
             "markup_1_price": "543.21",
             "markup_1_name": "Margin",
@@ -72,7 +72,7 @@
             "expedites": []
           },
           {
-            "id": 47667,
+            "id": 50236,
             "quantity": 10,
             "markup_1_price": "579.12",
             "markup_1_name": "Margin",
@@ -85,7 +85,7 @@
             "expedites": []
           },
           {
-            "id": 47668,
+            "id": 50237,
             "quantity": 25,
             "markup_1_price": "686.80",
             "markup_1_name": "Margin",
@@ -111,7 +111,7 @@
         "material_operations": [],
         "shop_operations": [
           {
-            "id": 55226,
+            "id": 56571,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -152,17 +152,17 @@
               },
               {
                 "price": "150.00",
-                "manual_price": "160.00",
-                "lead_time": 3,
-                "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "150.00",
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
                 "quantity": 5
+              },
+              {
+                "price": "150.00",
+                "manual_price": "160.00",
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 1,
@@ -222,27 +222,27 @@
       "position": 1,
       "export_controlled": false,
       "component_ids": [
-        32053,
-        32054,
-        32055,
-        32056,
-        32057,
-        32058,
-        32059,
-        32060
+        34382,
+        34381,
+        34380,
+        34379,
+        34378,
+        34377,
+        34376,
+        34375
       ],
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     },
     {
-      "id": 28150,
+      "id": 30158,
       "type": "automatic",
       "root_component": {
-        "id": 32061,
+        "id": 34383,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ybbpWm2iTnVZWA%2FVfIjUNSfFKps%3D&Expires=1580850776",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=SaTx9PgSwBNJYDBG%2F8ZjlYsM98o%3D&Expires=1580841802",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=0%2FpX1lAYCXDx5M9jSSxpLLSEq6A%3D&Expires=1582119982",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=a6rJ7Ch9SaakOtegGg0mPjpedxg%3D&Expires=1582138827",
           "supporting_files": []
         },
         "part_number": null,
@@ -251,7 +251,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 47697,
+            "id": 50266,
             "quantity": 1,
             "markup_1_price": "83.52",
             "markup_1_name": "Margin",
@@ -264,7 +264,7 @@
             "expedites": []
           },
           {
-            "id": 47698,
+            "id": 50267,
             "quantity": 5,
             "markup_1_price": "99.39",
             "markup_1_name": "Margin",
@@ -277,7 +277,7 @@
             "expedites": []
           },
           {
-            "id": 47699,
+            "id": 50268,
             "quantity": 10,
             "markup_1_price": "119.24",
             "markup_1_name": "Margin",
@@ -290,7 +290,7 @@
             "expedites": []
           },
           {
-            "id": 47700,
+            "id": 50269,
             "quantity": 25,
             "markup_1_price": "178.75",
             "markup_1_name": "Margin",
@@ -315,7 +315,7 @@
         },
         "material_operations": [
           {
-            "id": 55281,
+            "id": 56626,
             "category": "material",
             "cost": "0",
             "costing_variables": [
@@ -379,7 +379,7 @@
             "setup_time": null
           },
           {
-            "id": 55282,
+            "id": 56627,
             "category": "material",
             "cost": "0",
             "costing_variables": [
@@ -430,7 +430,7 @@
         ],
         "shop_operations": [
           {
-            "id": 55283,
+            "id": 56628,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -484,7 +484,7 @@
             "setup_time": 0.5
           },
           {
-            "id": 55284,
+            "id": 56629,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -538,7 +538,7 @@
             "setup_time": 2.0
           },
           {
-            "id": 55285,
+            "id": 56630,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -637,7 +637,7 @@
             "setup_time": 1.0
           },
           {
-            "id": 55286,
+            "id": 56631,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -701,7 +701,7 @@
             "setup_time": 0.25
           },
           {
-            "id": 55287,
+            "id": 56632,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -750,7 +750,7 @@
             "setup_time": null
           },
           {
-            "id": 55288,
+            "id": 56633,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -799,7 +799,7 @@
             "setup_time": null
           },
           {
-            "id": 55289,
+            "id": 56634,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -865,16 +865,16 @@
       "position": 2,
       "export_controlled": false,
       "component_ids": [
-        32061
+        34383
       ],
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     },
     {
-      "id": 28151,
+      "id": 30159,
       "type": "manual",
       "root_component": {
-        "id": 32062,
+        "id": 34384,
         "part": null,
         "part_number": null,
         "revision": null,
@@ -882,7 +882,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 47701,
+            "id": 50270,
             "quantity": 1,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -894,7 +894,7 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 19403,
+                "id": 20110,
                 "lead_time": 2,
                 "markup": 30.0,
                 "unit_price": "65.00",
@@ -903,7 +903,7 @@
             ]
           },
           {
-            "id": 47702,
+            "id": 50271,
             "quantity": 2,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -915,7 +915,7 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 19404,
+                "id": 20111,
                 "lead_time": 2,
                 "markup": 30.0,
                 "unit_price": "123.50",
@@ -935,31 +935,31 @@
       "position": 3,
       "export_controlled": false,
       "component_ids": [
-        32062
+        34384
       ],
       "private_notes": "This is a test manual line item.",
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
     }
   ],
   "status": "accepted",
-  "sent_date": "2020-01-28T17:12:46+00:00",
-  "expired_date": "2020-02-27T17:11:40+00:00",
+  "sent_date": "2020-02-14T19:01:38+00:00",
+  "expired_date": "2020-03-15T19:00:33+00:00",
   "quote_notes": "- Customers are responsible for ensuring that the properties and performance of the material selected meet the requirements of their application;\n- CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved;\n- The standard finish (or surface finish) for all parts will include deburring through sanding or bead blasting and support structure removal (additive parts);\n- The estimated arrival time is based on available capacity at the time of this quote. Quotes that are not executed same day are subject to change or delays. Reasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
   "export_controlled": false,
-  "digital_last_viewed_on": "2020-01-28T17:12:55+00:00",
+  "digital_last_viewed_on": "2020-02-14T19:02:03+00:00",
   "expired": false,
   "request_for_quote": null,
   "parent_quote": {
-    "id": 19997,
-    "number": 73,
+    "id": 20948,
+    "number": 84,
     "status": "accepted"
   },
   "parent_supplier_order": {
-    "id": 10616,
-    "number": 16,
+    "id": 11108,
+    "number": 22,
     "status": "pending"
   },
-  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/18a32048-1c3e-44e7-82c8-49750bddc6f1/Quote84.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=dbPZq26Hnd1A1%2Bx5dLU6FLJCj44%3D&Expires=1580850776",
+  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/f96ceb5a-60d1-4e51-b399-c6a4e192dc58/Quote96.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=v5cDe2Kj4VSaSftzYXvCKsJD7z4%3D&Expires=1582138923",
   "is_unviewed_drafted_rfq": false,
-  "created": "2020-01-28T17:11:40+00:00"
+  "created": "2020-02-14T19:00:34+00:00"
 }
