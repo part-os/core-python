@@ -1,11 +1,15 @@
 import collections
 
 import attr
-from typing import List, Optional, NamedTuple, Generator
+from typing import List, Optional, NamedTuple, Generator, TYPE_CHECKING, Union
 
 from paperless.objects.common import Money
 from paperless.objects.utils import optional_convert, convert_iterable, \
     convert_cls
+
+if TYPE_CHECKING:
+    from paperless.objects.orders import OrderComponent
+    from paperless.objects.quotes import QuoteComponent
 
 
 @attr.s(frozen=True)
@@ -97,21 +101,22 @@ class AssemblyComponent(NamedTuple):
     """A component with metadata describing its position in an assembly.
 
     Attributes:
-        component   the `paperless.objects.orders.Component` instance
+        component   the `QuoteComponent` or `OrderComponent` instance
         level       this component's depth in the assembly tree (0 is root)
         parent      this component's parent component
         level_index index of this component within its level
         level_count count of components at this assembly level
     """
-    component: Component
+    component: Union['QuoteComponent', 'OrderComponent']
     level: int  # assembly level (0 for root)
-    parent: Optional[Component]
+    parent: Optional[Union['QuoteComponent', 'OrderComponent']]
     level_index: int  # 0-based index of the current component within its level
     level_count: int  # count of components at this assembly level
 
 
 class AssemblyMixin:
     """Add `iterate_assembly` method for use in OrderItems and QuoteItems."""
+
     def iterate_assembly(self) -> Generator[AssemblyComponent, None, None]:
         """Traverse assembly components in depth-first search ordering.
         Components are yielded as AssemblyComponent (namedtuple) objects,
