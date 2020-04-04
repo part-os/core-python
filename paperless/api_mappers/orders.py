@@ -28,7 +28,7 @@ class OrderComponentMapper(BaseMapper):
                       'part_number', 'part_uuid', 'revision', 'type']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
-        list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files']
+        list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files', 'children']
         for key in list_keys:
             mapped_result[key] = resource.get(key, [])
         bool_keys = ['export_controlled', 'is_root_component']

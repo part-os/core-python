@@ -65,7 +65,7 @@ class OrderItem(AssemblyMixin):
         except IndexError:
             raise ValueError('Order item has no root component')
 
-    def get_component(self, component_id):
+    def get_component(self, component_id: int) -> OrderComponent:
         for component in self.components:
             if component.id == component_id:
                 return component

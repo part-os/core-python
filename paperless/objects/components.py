@@ -76,9 +76,16 @@ class SupportingFile:
 
 
 @attr.s(frozen=True)
+class ChildComponent:
+    child_id = attr.ib(validator=attr.validators.instance_of(int))
+    quantity = attr.ib(validator=attr.validators.instance_of(int))
+
+
+@attr.s(frozen=True)
 class Component:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     child_ids: List[int] = attr.ib(converter=convert_iterable(int))
+    children: List[ChildComponent] = attr.ib(converter=convert_iterable(ChildComponent))
     description: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     finishes: List[str] = attr.ib(converter=convert_iterable(str))

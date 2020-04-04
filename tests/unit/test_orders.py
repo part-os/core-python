@@ -3,6 +3,7 @@ import json
 from decimal import Decimal
 from unittest.mock import MagicMock
 
+from paperless.objects.components import ChildComponent
 from paperless.objects.orders import Order, OrderComponent
 from paperless.client import PaperlessClient
 
@@ -144,8 +145,15 @@ class TestOrders(unittest.TestCase):
             if oc.part_number == 'AC-M6-2':
                 self.assertTrue(oc.is_hardware)
                 found_hardware = True
+                total_q = 0
                 for parent_id in oc.parent_ids:
-                    self.assertEqual('assembled', oi.get_component(parent_id).type)
+                    parent = oi.get_component(parent_id)
+                    self.assertEqual('assembled', parent.type)
+                    child: ChildComponent
+                    for child in parent.children:
+                        if child.child_id == oc.id:
+                            total_q += child.quantity
             else:
                 self.assertFalse(oc.is_hardware)
         self.assertTrue(found_hardware)
+        self.assertEqual(1, total_q)
