@@ -1,10 +1,10 @@
 {
-  "id": 22863,
-  "number": 96,
+  "id": 37066,
+  "number": 139,
   "sales_person": {
-    "first_name": "Rob",
-    "last_name": "Carrington",
-    "email": "rob.carrington@paperlessparts.com"
+    "first_name": "Scott",
+    "last_name": "Sawyer",
+    "email": "scott@paperlessparts.com"
   },
   "customer": {
     "id": 3545,
@@ -16,10 +16,10 @@
       "id": 1986,
       "notes": null,
       "metrics": {
-        "order_revenue_all_time": 23976.54,
-        "order_revenue_last_thirty_days": 19617.16,
-        "quotes_sent_all_time": 8,
-        "quotes_sent_last_thirty_days": 6
+        "order_revenue_all_time": 38511.91,
+        "order_revenue_last_thirty_days": 14535.37,
+        "quotes_sent_all_time": 9,
+        "quotes_sent_last_thirty_days": 1
       },
       "business_name": "Outside Firm",
       "erp_code": "OUTFIRM"
@@ -30,15 +30,19 @@
   "private_notes": null,
   "quote_items": [
     {
-      "id": 30157,
-      "type": "automatic",
       "root_component": {
-        "id": 34375,
+        "id": 49809,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=hwMIJK7p8r0W2FWZoBW9xxGR6jA%3D&Expires=1582119982",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=2HZx5sKXPqiBwl%2FxtQZoZtkLSfQ%3D&Expires=1582138827",
-          "supporting_files": []
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=sduMdnoKVBbGXsyw4XlOJu0YH3w%3D&Expires=1586452398",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=Irmc33fAJE5Me%2FGAf78lmxq%2F5%2BU%3D&Expires=1586452398",
+          "supporting_files": [
+            {
+              "filename": "top Drawing 1.pdf",
+              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=sV6Q1A8ofjrTIxjBwvVARk6qSBM%3D&Expires=1586452398",
+              "uuid": "b56903fe-bde6-4a45-a835-3deac13c8d8b"
+            }
+          ]
         },
         "part_number": null,
         "revision": null,
@@ -46,54 +50,54 @@
         "type": "assembled",
         "quantities": [
           {
-            "id": 50234,
+            "id": 67328,
             "quantity": 1,
-            "markup_1_price": "516.48",
+            "markup_1_price": "436.12",
             "markup_1_name": "Margin",
             "markup_2_price": "0.00",
             "markup_2_name": "N/A",
-            "unit_price": "3098.88",
-            "total_price": "3098.88",
-            "total_price_with_required_add_ons": "4098.88",
+            "unit_price": "2616.74",
+            "total_price": "2616.74",
+            "total_price_with_required_add_ons": "3616.74",
             "lead_time": 13,
             "expedites": []
           },
           {
-            "id": 50235,
+            "id": 67329,
             "quantity": 5,
-            "markup_1_price": "543.21",
+            "markup_1_price": "459.63",
             "markup_1_name": "Margin",
             "markup_2_price": "0.00",
             "markup_2_name": "N/A",
-            "unit_price": "651.85",
-            "total_price": "3259.25",
-            "total_price_with_required_add_ons": "4259.25",
+            "unit_price": "551.56",
+            "total_price": "2757.80",
+            "total_price_with_required_add_ons": "3757.80",
             "lead_time": 13,
             "expedites": []
           },
           {
-            "id": 50236,
+            "id": 67330,
             "quantity": 10,
-            "markup_1_price": "579.12",
+            "markup_1_price": "491.50",
             "markup_1_name": "Margin",
             "markup_2_price": "0.00",
             "markup_2_name": "N/A",
-            "unit_price": "347.47",
-            "total_price": "3474.70",
-            "total_price_with_required_add_ons": "4474.70",
+            "unit_price": "294.90",
+            "total_price": "2949.00",
+            "total_price_with_required_add_ons": "3949.00",
             "lead_time": 13,
             "expedites": []
           },
           {
-            "id": 50237,
+            "id": 67331,
             "quantity": 25,
-            "markup_1_price": "686.80",
+            "markup_1_price": "587.10",
             "markup_1_name": "Margin",
             "markup_2_price": "0.00",
             "markup_2_name": "N/A",
-            "unit_price": "164.83",
-            "total_price": "4120.75",
-            "total_price_with_required_add_ons": "5120.75",
+            "unit_price": "140.90",
+            "total_price": "3522.50",
+            "total_price_with_required_add_ons": "4522.50",
             "lead_time": 13,
             "expedites": []
           }
@@ -111,37 +115,44 @@
         "material_operations": [],
         "shop_operations": [
           {
-            "id": 56571,
+            "id": 62564,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Lot Charge",
                 "type": "currency",
-                "value": 150.0
+                "value": 150
               },
               {
                 "label": "Piece Price",
                 "type": "currency",
-                "value": 1.0
+                "value": 1
               },
               {
                 "label": "Added Lead Time",
                 "type": "number",
-                "value": 3.0
+                "value": 3
               }
             ],
             "is_finish": true,
-            "is_outside_service": true,
+            "is_outside_service": false,
             "name": "Chromate",
             "notes": null,
             "quantities": [
               {
                 "price": "150.00",
+                "manual_price": "160.00",
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 1
+              },
+              {
+                "price": "150.00",
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
               },
               {
                 "price": "150.00",
@@ -155,14 +166,7 @@
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 5
-              },
-              {
-                "price": "150.00",
-                "manual_price": "160.00",
-                "lead_time": 3,
-                "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 25
               }
             ],
             "position": 1,
@@ -217,32 +221,3614 @@
               }
             ]
           }
-        ]
+        ],
+        "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
-      "position": 1,
-      "export_controlled": false,
+      "id": 44771,
       "component_ids": [
-        34382,
-        34381,
-        34380,
-        34379,
-        34378,
-        34377,
-        34376,
-        34375
+        49813,
+        49816,
+        49815,
+        49814,
+        49812,
+        49811,
+        49810,
+        49809
       ],
+      "components": [
+        {
+          "id": 49816,
+          "child_ids": [
+            49813,
+            49812,
+            49811,
+            49810
+          ],
+          "children": [
+            {
+              "child_id": 49813,
+              "quantity": 1
+            },
+            {
+              "child_id": 49812,
+              "quantity": 1
+            },
+            {
+              "child_id": 49811,
+              "quantity": 1
+            },
+            {
+              "child_id": 49810,
+              "quantity": 1
+            }
+          ],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [],
+          "parent_ids": [
+            49809
+          ],
+          "part_name": "Subassembly <1>.step",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=z9WU1%2Fm1EOs9QF4zfcnQPYDGSuo%3D&Expires=1586452398",
+          "part_uuid": "8deb6257-56f8-4aaf-bebc-1707361bf2af",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [],
+          "supporting_files": [],
+          "type": "assembled",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67356,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "1212.64",
+              "total_price": "1212.64",
+              "total_price_with_required_add_ons": "1212.64",
+              "lead_time": 10,
+              "expedites": []
+            },
+            {
+              "id": 67357,
+              "quantity": 5,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "258.05",
+              "total_price": "1290.25",
+              "total_price_with_required_add_ons": "1290.25",
+              "lead_time": 10,
+              "expedites": []
+            },
+            {
+              "id": 67358,
+              "quantity": 10,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "138.72",
+              "total_price": "1387.20",
+              "total_price_with_required_add_ons": "1387.20",
+              "lead_time": 10,
+              "expedites": []
+            },
+            {
+              "id": 67359,
+              "quantity": 25,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "67.12",
+              "total_price": "1678.00",
+              "total_price_with_required_add_ons": "1678.00",
+              "lead_time": 10,
+              "expedites": []
+            }
+          ]
+        },
+        {
+          "id": 49815,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [
+            "Chromate"
+          ],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [
+            {
+              "id": 62610,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Cost Per Pound",
+                  "type": "currency",
+                  "value": 11
+                },
+                {
+                  "label": "Material Buffer (in)",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Pounds Per Part",
+                  "type": "number",
+                  "value": 0.3
+                },
+                {
+                  "label": "Material Unit Cost",
+                  "type": "currency",
+                  "value": 3.3
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Aluminium 6061",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "3.30",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "16.50",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "33.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "82.50",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62611,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 30
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Material Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.99",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "4.95",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "9.90",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "24.75",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 2,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "parent_ids": [
+            49809
+          ],
+          "part_name": "Bottom Block.step",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=aPO1iUqtEsuAC7LhVOUyRRyWi8Y%3D&Expires=1586452398",
+          "part_uuid": "f56acc3c-e75e-4735-a712-bf111182b437",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [
+            {
+              "id": 62612,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Order Processing",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 3,
+              "runtime": null,
+              "setup_time": 0.5
+            },
+            {
+              "id": 62613,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Programming",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 4,
+              "runtime": null,
+              "setup_time": 2
+            },
+            {
+              "id": 62614,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 75
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Crew",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Machine Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Efficiency",
+                  "type": "number",
+                  "value": 80
+                },
+                {
+                  "label": "Percent Attended",
+                  "type": "number",
+                  "value": 100
+                },
+                {
+                  "label": "Minimum Material Removal Rate",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Stock Buffer, in",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "Setup Time Per Setup",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.04944812607486251
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Milling With Estimates",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "81.18",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "105.91",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "136.81",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "229.53",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 5,
+              "runtime": 0.04944812607486251,
+              "setup_time": 1
+            },
+            {
+              "id": 62615,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.0083
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Packaging",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 6,
+              "runtime": 0.0083,
+              "setup_time": 0.25
+            },
+            {
+              "id": 62616,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 10
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Machine Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.31",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "1.55",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "3.09",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "7.73",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 7,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62617,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 20
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Labor Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "41.91",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "44.38",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "47.47",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "56.74",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 8,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62618,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Lot Charge",
+                  "type": "currency",
+                  "value": 150
+                },
+                {
+                  "label": "Piece Price",
+                  "type": "currency",
+                  "value": 1
+                },
+                {
+                  "label": "Added Lead Time",
+                  "type": "number",
+                  "value": 3
+                }
+              ],
+              "is_finish": true,
+              "is_outside_service": false,
+              "name": "Chromate",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 9,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "supporting_files": [],
+          "type": "manufactured",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67352,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "409.15",
+              "total_price": "409.15",
+              "total_price_with_required_add_ons": "409.15",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67353,
+              "quantity": 5,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "90.95",
+              "total_price": "454.75",
+              "total_price_with_required_add_ons": "454.75",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67354,
+              "quantity": 10,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "51.17",
+              "total_price": "511.70",
+              "total_price_with_required_add_ons": "511.70",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67355,
+              "quantity": 25,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "27.31",
+              "total_price": "682.75",
+              "total_price_with_required_add_ons": "682.75",
+              "lead_time": 13,
+              "expedites": []
+            }
+          ]
+        },
+        {
+          "id": 49814,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [
+            "Chromate"
+          ],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [
+            {
+              "id": 62601,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Cost Per Pound",
+                  "type": "currency",
+                  "value": 11
+                },
+                {
+                  "label": "Material Buffer (in)",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Pounds Per Part",
+                  "type": "number",
+                  "value": 0.01
+                },
+                {
+                  "label": "Material Unit Cost",
+                  "type": "currency",
+                  "value": 0.11
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Aluminium 6061",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.11",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.55",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "1.10",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "2.75",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62602,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 30
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Material Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.03",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.17",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.33",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.82",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 2,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "parent_ids": [
+            49809
+          ],
+          "part_name": "Seal.step",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=gFSEQ8XbsUIuMnuAi%2FwZELBtJco%3D&Expires=1586452398",
+          "part_uuid": "a9be1070-67d8-4a95-8c7d-54a5f6e58d4d",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [
+            {
+              "id": 62603,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Order Processing",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 3,
+              "runtime": null,
+              "setup_time": 0.5
+            },
+            {
+              "id": 62604,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Programming",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 4,
+              "runtime": null,
+              "setup_time": 2
+            },
+            {
+              "id": 62605,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 75
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Crew",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Machine Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Efficiency",
+                  "type": "number",
+                  "value": 80
+                },
+                {
+                  "label": "Percent Attended",
+                  "type": "number",
+                  "value": 100
+                },
+                {
+                  "label": "Minimum Material Removal Rate",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Stock Buffer, in",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "Setup Time Per Setup",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.006522301643529261
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Milling With Estimates",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "75.82",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "79.08",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "83.15",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "95.38",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 5,
+              "runtime": 0.006522301643529261,
+              "setup_time": 1
+            },
+            {
+              "id": 62606,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.0083
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Packaging",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 6,
+              "runtime": 0.0083,
+              "setup_time": 0.25
+            },
+            {
+              "id": 62607,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 10
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Machine Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.04",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.20",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.41",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "1.02",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 7,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62608,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 20
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Labor Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "41.37",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "41.70",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "42.11",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "43.33",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 8,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62609,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Lot Charge",
+                  "type": "currency",
+                  "value": 150
+                },
+                {
+                  "label": "Piece Price",
+                  "type": "currency",
+                  "value": 1
+                },
+                {
+                  "label": "Added Lead Time",
+                  "type": "number",
+                  "value": 3
+                }
+              ],
+              "is_finish": true,
+              "is_outside_service": false,
+              "name": "Chromate",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 9,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "supporting_files": [],
+          "type": "manufactured",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67348,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "398.83",
+              "total_price": "398.83",
+              "total_price_with_required_add_ons": "398.83",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67349,
+              "quantity": 5,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "80.63",
+              "total_price": "403.15",
+              "total_price_with_required_add_ons": "403.15",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67350,
+              "quantity": 10,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "40.86",
+              "total_price": "408.60",
+              "total_price_with_required_add_ons": "408.60",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67351,
+              "quantity": 25,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "16.99",
+              "total_price": "424.75",
+              "total_price_with_required_add_ons": "424.75",
+              "lead_time": 13,
+              "expedites": []
+            }
+          ]
+        },
+        {
+          "id": 49812,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [
+            "Chromate"
+          ],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [
+            {
+              "id": 62583,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Cost Per Pound",
+                  "type": "currency",
+                  "value": 11
+                },
+                {
+                  "label": "Material Buffer (in)",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Pounds Per Part",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Material Unit Cost",
+                  "type": "currency",
+                  "value": 0
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Aluminium 6061",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62584,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 30
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Material Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 2,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "parent_ids": [
+            49816
+          ],
+          "part_name": "O-Ring.step",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=OFwyKn5RDWDPFhks7z2tCrtfSes%3D&Expires=1586452399",
+          "part_uuid": "860b8958-9733-4bea-a6d2-3473d308a93d",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [
+            {
+              "id": 62585,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Order Processing",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 3,
+              "runtime": null,
+              "setup_time": 0.5
+            },
+            {
+              "id": 62586,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Programming",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 4,
+              "runtime": null,
+              "setup_time": 2
+            },
+            {
+              "id": 62587,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 75
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Crew",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Machine Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Efficiency",
+                  "type": "number",
+                  "value": 80
+                },
+                {
+                  "label": "Percent Attended",
+                  "type": "number",
+                  "value": 100
+                },
+                {
+                  "label": "Minimum Material Removal Rate",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Stock Buffer, in",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "Setup Time Per Setup",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.003162686584716232
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Milling With Estimates",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.40",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "1.98",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "3.95",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "9.88",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 5,
+              "runtime": 0.003162686584716232,
+              "setup_time": 0
+            },
+            {
+              "id": 62588,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.0083
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Packaging",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 6,
+              "runtime": 0.0083,
+              "setup_time": 0.25
+            },
+            {
+              "id": 62589,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 10
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Machine Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.02",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.10",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.20",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.49",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 7,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62590,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 20
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Labor Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "26.33",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "26.49",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "26.69",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "27.28",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 8,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62591,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Lot Charge",
+                  "type": "currency",
+                  "value": 150
+                },
+                {
+                  "label": "Piece Price",
+                  "type": "currency",
+                  "value": 1
+                },
+                {
+                  "label": "Added Lead Time",
+                  "type": "number",
+                  "value": 3
+                }
+              ],
+              "is_finish": true,
+              "is_outside_service": false,
+              "name": "Chromate",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 9,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "supporting_files": [],
+          "type": "manufactured",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67340,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "308.21",
+              "total_price": "308.21",
+              "total_price_with_required_add_ons": "308.21",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67341,
+              "quantity": 5,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "62.01",
+              "total_price": "310.05",
+              "total_price_with_required_add_ons": "310.05",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67342,
+              "quantity": 10,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "31.23",
+              "total_price": "312.30",
+              "total_price_with_required_add_ons": "312.30",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67343,
+              "quantity": 25,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "12.76",
+              "total_price": "319.00",
+              "total_price_with_required_add_ons": "319.00",
+              "lead_time": 13,
+              "expedites": []
+            }
+          ]
+        },
+        {
+          "id": 49811,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [
+            "Chromate"
+          ],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [
+            {
+              "id": 62574,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Cost Per Pound",
+                  "type": "currency",
+                  "value": 11
+                },
+                {
+                  "label": "Material Buffer (in)",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Pounds Per Part",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Material Unit Cost",
+                  "type": "currency",
+                  "value": 0
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Aluminium 6061",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62575,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 30
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Material Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 2,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "parent_ids": [
+            49816
+          ],
+          "part_name": "Plug.step",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ts47VykMGY5XkBvlMU0hypHWokQ%3D&Expires=1586452399",
+          "part_uuid": "a300d612-2209-41b2-b914-a33c960743db",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [
+            {
+              "id": 62576,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Order Processing",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 3,
+              "runtime": null,
+              "setup_time": 0.5
+            },
+            {
+              "id": 62577,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Programming",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 4,
+              "runtime": null,
+              "setup_time": 2
+            },
+            {
+              "id": 62578,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 75
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Crew",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Machine Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Efficiency",
+                  "type": "number",
+                  "value": 80
+                },
+                {
+                  "label": "Percent Attended",
+                  "type": "number",
+                  "value": 100
+                },
+                {
+                  "label": "Minimum Material Removal Rate",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Stock Buffer, in",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "Setup Time Per Setup",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.0025044932003325773
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Milling With Estimates",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "75.31",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "76.57",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "78.13",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "82.83",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 5,
+              "runtime": 0.0025044932003325773,
+              "setup_time": 1
+            },
+            {
+              "id": 62579,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.0083
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Packaging",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 6,
+              "runtime": 0.0083,
+              "setup_time": 0.25
+            },
+            {
+              "id": 62580,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 10
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Machine Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.02",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.08",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.16",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.39",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 7,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62581,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 20
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Labor Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "41.32",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "41.45",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "41.60",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "42.07",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 8,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62582,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Lot Charge",
+                  "type": "currency",
+                  "value": 150
+                },
+                {
+                  "label": "Piece Price",
+                  "type": "currency",
+                  "value": 1
+                },
+                {
+                  "label": "Added Lead Time",
+                  "type": "number",
+                  "value": 3
+                }
+              ],
+              "is_finish": true,
+              "is_outside_service": false,
+              "name": "Chromate",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 9,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "supporting_files": [],
+          "type": "manufactured",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67336,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "398.11",
+              "total_price": "398.11",
+              "total_price_with_required_add_ons": "398.11",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67337,
+              "quantity": 5,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "79.91",
+              "total_price": "399.55",
+              "total_price_with_required_add_ons": "399.55",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67338,
+              "quantity": 10,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "40.14",
+              "total_price": "401.40",
+              "total_price_with_required_add_ons": "401.40",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67339,
+              "quantity": 25,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "16.27",
+              "total_price": "406.75",
+              "total_price_with_required_add_ons": "406.75",
+              "lead_time": 13,
+              "expedites": []
+            }
+          ]
+        },
+        {
+          "id": 49810,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [
+            "Chromate"
+          ],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [
+            {
+              "id": 62565,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Cost Per Pound",
+                  "type": "currency",
+                  "value": 11
+                },
+                {
+                  "label": "Material Buffer (in)",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Pounds Per Part",
+                  "type": "number",
+                  "value": 0.6
+                },
+                {
+                  "label": "Material Unit Cost",
+                  "type": "currency",
+                  "value": 6.6
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Aluminium 6061",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.60",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "33.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "66.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "165.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62566,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 30
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Material Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "1.98",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "9.90",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "19.80",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "49.50",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 2,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "parent_ids": [
+            49816
+          ],
+          "part_name": "Top Block.step",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ULhMsa5TNdAlorGfrAUC6LV5B%2Fo%3D&Expires=1586452399",
+          "part_uuid": "cbe4fd08-c10a-4804-ae97-c647ce862040",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [
+            {
+              "id": 62567,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Order Processing",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 3,
+              "runtime": null,
+              "setup_time": 0.5
+            },
+            {
+              "id": 62568,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Programming",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 4,
+              "runtime": null,
+              "setup_time": 2
+            },
+            {
+              "id": 62569,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 75
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Crew",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Machine Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Efficiency",
+                  "type": "number",
+                  "value": 80
+                },
+                {
+                  "label": "Percent Attended",
+                  "type": "number",
+                  "value": 100
+                },
+                {
+                  "label": "Minimum Material Removal Rate",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Stock Buffer, in",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "Setup Time Per Setup",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.06306544367011963
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Milling With Estimates",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "157.88",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "189.42",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "228.83",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "347.08",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 5,
+              "runtime": 0.06306544367011963,
+              "setup_time": 2
+            },
+            {
+              "id": 62570,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.0083
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Packaging",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 6,
+              "runtime": 0.0083,
+              "setup_time": 0.25
+            },
+            {
+              "id": 62571,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 10
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Machine Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.39",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "1.97",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "3.94",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "9.85",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 7,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62572,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 20
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Labor Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "57.08",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "60.23",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "64.17",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "76.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 8,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62573,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Lot Charge",
+                  "type": "currency",
+                  "value": 150
+                },
+                {
+                  "label": "Piece Price",
+                  "type": "currency",
+                  "value": 1
+                },
+                {
+                  "label": "Added Lead Time",
+                  "type": "number",
+                  "value": 3
+                }
+              ],
+              "is_finish": true,
+              "is_outside_service": false,
+              "name": "Chromate",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 9,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "supporting_files": [],
+          "type": "manufactured",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67332,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "505.39",
+              "total_price": "505.39",
+              "total_price_with_required_add_ons": "505.39",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67333,
+              "quantity": 5,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "115.20",
+              "total_price": "576.00",
+              "total_price_with_required_add_ons": "576.00",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67334,
+              "quantity": 10,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "66.42",
+              "total_price": "664.20",
+              "total_price_with_required_add_ons": "664.20",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67335,
+              "quantity": 25,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "37.16",
+              "total_price": "929.00",
+              "total_price_with_required_add_ons": "929.00",
+              "lead_time": 13,
+              "expedites": []
+            }
+          ]
+        },
+        {
+          "id": 49809,
+          "child_ids": [
+            49815,
+            49814,
+            49816
+          ],
+          "children": [
+            {
+              "child_id": 49815,
+              "quantity": 1
+            },
+            {
+              "child_id": 49814,
+              "quantity": 1
+            },
+            {
+              "child_id": 49816,
+              "quantity": 1
+            }
+          ],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [
+            "Chromate"
+          ],
+          "innate_quantity": 1,
+          "is_root_component": true,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [],
+          "parent_ids": [],
+          "part_name": "small-sub-assembly.STEP",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=Irmc33fAJE5Me%2FGAf78lmxq%2F5%2BU%3D&Expires=1586452398",
+          "part_uuid": "ddab27ae-ff7b-4db2-be24-41002be6cb58",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [
+            {
+              "id": 62564,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Lot Charge",
+                  "type": "currency",
+                  "value": 150
+                },
+                {
+                  "label": "Piece Price",
+                  "type": "currency",
+                  "value": 1
+                },
+                {
+                  "label": "Added Lead Time",
+                  "type": "number",
+                  "value": 3
+                }
+              ],
+              "is_finish": true,
+              "is_outside_service": false,
+              "name": "Chromate",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "150.00",
+                  "manual_price": "160.00",
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "supporting_files": [
+            {
+              "filename": "top Drawing 1.pdf",
+              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=sV6Q1A8ofjrTIxjBwvVARk6qSBM%3D&Expires=1586452398"
+            }
+          ],
+          "type": "assembled",
+          "add_ons": [
+            {
+              "id": 70,
+              "is_required": true,
+              "name": "Non-Recurring Engineering",
+              "quantities": [
+                {
+                  "manual_price": "1000.00",
+                  "quantity": 1
+                },
+                {
+                  "manual_price": "1000.00",
+                  "quantity": 5
+                },
+                {
+                  "manual_price": "1000.00",
+                  "quantity": 10
+                },
+                {
+                  "manual_price": "1000.00",
+                  "quantity": 25
+                }
+              ]
+            },
+            {
+              "id": 71,
+              "is_required": false,
+              "name": "Non-Recurring Engineering",
+              "quantities": [
+                {
+                  "manual_price": "200.00",
+                  "quantity": 1
+                },
+                {
+                  "manual_price": "300.00",
+                  "quantity": 5
+                },
+                {
+                  "manual_price": "400.00",
+                  "quantity": 10
+                },
+                {
+                  "manual_price": "500.00",
+                  "quantity": 25
+                }
+              ]
+            }
+          ],
+          "quantities": [
+            {
+              "id": 67328,
+              "quantity": 1,
+              "markup_1_price": "436.12",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "2616.74",
+              "total_price": "2616.74",
+              "total_price_with_required_add_ons": "3616.74",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67329,
+              "quantity": 5,
+              "markup_1_price": "459.63",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "551.56",
+              "total_price": "2757.80",
+              "total_price_with_required_add_ons": "3757.80",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67330,
+              "quantity": 10,
+              "markup_1_price": "491.50",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "294.90",
+              "total_price": "2949.00",
+              "total_price_with_required_add_ons": "3949.00",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67331,
+              "quantity": 25,
+              "markup_1_price": "587.10",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "140.90",
+              "total_price": "3522.50",
+              "total_price_with_required_add_ons": "4522.50",
+              "lead_time": 13,
+              "expedites": []
+            }
+          ]
+        },
+        {
+          "id": 49813,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": null,
+          "material_operations": [],
+          "parent_ids": [
+            49816
+          ],
+          "part_name": "Fitting.step (AC-M6-2)",
+          "part_number": "AC-M6-2",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=6QIcgfyz8VYDwZXuzl%2F5S1c9pag%3D&Expires=1586452399",
+          "part_uuid": "a0b71d80-a16e-446e-8e7b-6977ff2c5e0c",
+          "process": null,
+          "revision": null,
+          "shop_operations": [],
+          "supporting_files": [],
+          "type": "purchased",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67344,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "0.93",
+              "total_price": "0.93",
+              "total_price_with_required_add_ons": "0.93",
+              "lead_time": 0,
+              "expedites": []
+            },
+            {
+              "id": 67345,
+              "quantity": 5,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "0.93",
+              "total_price": "4.66",
+              "total_price_with_required_add_ons": "4.66",
+              "lead_time": 0,
+              "expedites": []
+            },
+            {
+              "id": 67346,
+              "quantity": 10,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "0.93",
+              "total_price": "9.31",
+              "total_price_with_required_add_ons": "9.31",
+              "lead_time": 0,
+              "expedites": []
+            },
+            {
+              "id": 67347,
+              "quantity": 25,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "0.93",
+              "total_price": "23.28",
+              "total_price_with_required_add_ons": "23.28",
+              "lead_time": 0,
+              "expedites": []
+            }
+          ]
+        }
+      ],
+      "export_controlled": false,
+      "position": 1,
       "private_notes": null,
-      "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
+      "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
+      "root_component_id": 49809,
+      "type": "automatic"
     },
     {
-      "id": 30158,
-      "type": "automatic",
       "root_component": {
-        "id": 34383,
+        "id": 49817,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=0%2FpX1lAYCXDx5M9jSSxpLLSEq6A%3D&Expires=1582119982",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=a6rJ7Ch9SaakOtegGg0mPjpedxg%3D&Expires=1582138827",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=E6S7lDIb%2Blb5dRRmcz3a%2BBCgja8%3D&Expires=1586452399",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=yOSp43bkjMOn04MskAvT94leo6A%3D&Expires=1586452399",
           "supporting_files": []
         },
         "part_number": null,
@@ -251,7 +3837,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 50266,
+            "id": 67360,
             "quantity": 1,
             "markup_1_price": "83.52",
             "markup_1_name": "Margin",
@@ -264,7 +3850,7 @@
             "expedites": []
           },
           {
-            "id": 50267,
+            "id": 67361,
             "quantity": 5,
             "markup_1_price": "99.39",
             "markup_1_name": "Margin",
@@ -277,7 +3863,7 @@
             "expedites": []
           },
           {
-            "id": 50268,
+            "id": 67362,
             "quantity": 10,
             "markup_1_price": "119.24",
             "markup_1_name": "Margin",
@@ -290,7 +3876,7 @@
             "expedites": []
           },
           {
-            "id": 50269,
+            "id": 67363,
             "quantity": 25,
             "markup_1_price": "178.75",
             "markup_1_name": "Margin",
@@ -315,19 +3901,19 @@
         },
         "material_operations": [
           {
-            "id": 56626,
+            "id": 62619,
             "category": "material",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Cost Per Pound",
                 "type": "currency",
-                "value": 11.0
+                "value": 11
               },
               {
                 "label": "Material Buffer (in)",
                 "type": "number",
-                "value": 0.0
+                "value": 0
               },
               {
                 "label": "Pounds Per Part",
@@ -346,18 +3932,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "151.25",
+                "price": "6.05",
                 "manual_price": null,
                 "lead_time": null,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "60.50",
-                "manual_price": null,
-                "lead_time": null,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "30.25",
@@ -367,11 +3946,18 @@
                 "quantity": 5
               },
               {
-                "price": "6.05",
+                "price": "60.50",
                 "manual_price": null,
                 "lead_time": null,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "151.25",
+                "manual_price": null,
+                "lead_time": null,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 1,
@@ -379,14 +3965,14 @@
             "setup_time": null
           },
           {
-            "id": 56627,
+            "id": 62620,
             "category": "material",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Markup Percentage",
                 "type": "number",
-                "value": 30.0
+                "value": 30
               }
             ],
             "is_finish": false,
@@ -395,18 +3981,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "45.38",
+                "price": "1.81",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "18.15",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "9.07",
@@ -416,11 +3995,18 @@
                 "quantity": 5
               },
               {
-                "price": "1.81",
+                "price": "18.15",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "45.38",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 2,
@@ -430,7 +4016,7 @@
         ],
         "shop_operations": [
           {
-            "id": 56628,
+            "id": 62621,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -442,7 +4028,7 @@
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 50.0
+                "value": 50
               }
             ],
             "is_finish": false,
@@ -455,14 +4041,7 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "25.00",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "25.00",
@@ -476,7 +4055,14 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "25.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 3,
@@ -484,19 +4070,19 @@
             "setup_time": 0.5
           },
           {
-            "id": 56629,
+            "id": 62622,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "setup_time",
                 "type": "number",
-                "value": 2.0
+                "value": 2
               },
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 50.0
+                "value": 50
               }
             ],
             "is_finish": false,
@@ -509,14 +4095,7 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "100.00",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "100.00",
@@ -530,52 +4109,59 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "100.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 4,
             "runtime": null,
-            "setup_time": 2.0
+            "setup_time": 2
           },
           {
-            "id": 56630,
+            "id": 62623,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 75.0
+                "value": 75
               },
               {
                 "label": "Run Labor Rate",
                 "type": "currency",
-                "value": 50.0
+                "value": 50
               },
               {
                 "label": "Crew",
                 "type": "number",
-                "value": 1.0
+                "value": 1
               },
               {
                 "label": "Machine Rate",
                 "type": "currency",
-                "value": 50.0
+                "value": 50
               },
               {
                 "label": "Efficiency",
                 "type": "number",
-                "value": 80.0
+                "value": 80
               },
               {
                 "label": "Percent Attended",
                 "type": "number",
-                "value": 100.0
+                "value": 100
               },
               {
                 "label": "Minimum Material Removal Rate",
                 "type": "number",
-                "value": 1.0
+                "value": 1
               },
               {
                 "label": "Stock Buffer, in",
@@ -590,7 +4176,7 @@
               {
                 "label": "setup_time",
                 "type": "number",
-                "value": 1.0
+                "value": 1
               },
               {
                 "label": "runtime",
@@ -604,18 +4190,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "335.42",
+                "price": "85.42",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "179.17",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "127.08",
@@ -625,19 +4204,26 @@
                 "quantity": 5
               },
               {
-                "price": "85.42",
+                "price": "179.17",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "335.42",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 5,
             "runtime": 0.08333333333333333,
-            "setup_time": 1.0
+            "setup_time": 1
           },
           {
-            "id": 56631,
+            "id": 62624,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -654,12 +4240,12 @@
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 25.0
+                "value": 25
               },
               {
                 "label": "Run Labor Rate",
                 "type": "currency",
-                "value": 25.0
+                "value": 25
               }
             ],
             "is_finish": false,
@@ -672,14 +4258,7 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "6.46",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "6.46",
@@ -693,7 +4272,14 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "6.46",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 6,
@@ -701,14 +4287,14 @@
             "setup_time": 0.25
           },
           {
-            "id": 56632,
+            "id": 62625,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Markup Percentage",
                 "type": "number",
-                "value": 10.0
+                "value": 10
               }
             ],
             "is_finish": false,
@@ -717,18 +4303,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "13.02",
+                "price": "0.52",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "5.21",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "2.60",
@@ -738,11 +4317,18 @@
                 "quantity": 5
               },
               {
-                "price": "0.52",
+                "price": "5.21",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "13.02",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 7,
@@ -750,14 +4336,14 @@
             "setup_time": null
           },
           {
-            "id": 56633,
+            "id": 62626,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Markup Percentage",
                 "type": "number",
-                "value": 20.0
+                "value": 20
               }
             ],
             "is_finish": false,
@@ -766,18 +4352,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "67.33",
+                "price": "42.33",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "51.71",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "46.50",
@@ -787,11 +4366,18 @@
                 "quantity": 5
               },
               {
-                "price": "42.33",
+                "price": "51.71",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "67.33",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 8,
@@ -799,28 +4385,28 @@
             "setup_time": null
           },
           {
-            "id": 56634,
+            "id": 62627,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Lot Charge",
                 "type": "currency",
-                "value": 150.0
+                "value": 150
               },
               {
                 "label": "Piece Price",
                 "type": "currency",
-                "value": 1.0
+                "value": 1
               },
               {
                 "label": "Added Lead Time",
                 "type": "number",
-                "value": 3.0
+                "value": 3
               }
             ],
             "is_finish": true,
-            "is_outside_service": true,
+            "is_outside_service": false,
             "name": "Chromate",
             "notes": null,
             "quantities": [
@@ -829,14 +4415,7 @@
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 25
-              },
-              {
-                "price": "150.00",
-                "manual_price": null,
-                "lead_time": 3,
-                "manual_lead_time": null,
-                "quantity": 10
+                "quantity": 1
               },
               {
                 "price": "150.00",
@@ -850,7 +4429,14 @@
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 1
+                "quantity": 10
+              },
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 25
               }
             ],
             "position": 9,
@@ -860,21 +4446,657 @@
         ],
         "finishes": [],
         "material_notes": null,
-        "add_ons": []
+        "add_ons": [],
+        "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
-      "position": 2,
-      "export_controlled": false,
+      "id": 44772,
       "component_ids": [
-        34383
+        49817
       ],
+      "components": [
+        {
+          "id": 49817,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [
+            "Chromate"
+          ],
+          "innate_quantity": 1,
+          "is_root_component": true,
+          "material": {
+            "id": 2,
+            "display_name": null,
+            "family": "Aluminum",
+            "material_class": "Metal",
+            "name": "Aluminium 6061"
+          },
+          "material_operations": [
+            {
+              "id": 62619,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Cost Per Pound",
+                  "type": "currency",
+                  "value": 11
+                },
+                {
+                  "label": "Material Buffer (in)",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "label": "Pounds Per Part",
+                  "type": "number",
+                  "value": 0.55
+                },
+                {
+                  "label": "Material Unit Cost",
+                  "type": "currency",
+                  "value": 6.05
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Aluminium 6061",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.05",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "30.25",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "60.50",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "151.25",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62620,
+              "category": "material",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 30
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Material Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "1.81",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "9.07",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "18.15",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "45.38",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 2,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "parent_ids": [],
+          "part_name": "Counter_Sinks.STEP",
+          "part_number": null,
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=yOSp43bkjMOn04MskAvT94leo6A%3D&Expires=1586452399",
+          "part_uuid": "3b8d60da-aa4f-4b04-983e-8fe755944957",
+          "process": {
+            "id": 1117,
+            "external_name": null,
+            "name": "CNC Machining"
+          },
+          "revision": null,
+          "shop_operations": [
+            {
+              "id": 62621,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Order Processing",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 3,
+              "runtime": null,
+              "setup_time": 0.5
+            },
+            {
+              "id": 62622,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Programming",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 4,
+              "runtime": null,
+              "setup_time": 2
+            },
+            {
+              "id": 62623,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 75
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Crew",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Machine Rate",
+                  "type": "currency",
+                  "value": 50
+                },
+                {
+                  "label": "Efficiency",
+                  "type": "number",
+                  "value": 80
+                },
+                {
+                  "label": "Percent Attended",
+                  "type": "number",
+                  "value": 100
+                },
+                {
+                  "label": "Minimum Material Removal Rate",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "Stock Buffer, in",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "Setup Time Per Setup",
+                  "type": "number",
+                  "value": 0.5
+                },
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.08333333333333333
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Milling With Estimates",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "85.42",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "127.08",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "179.17",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "335.42",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 5,
+              "runtime": 0.08333333333333333,
+              "setup_time": 1
+            },
+            {
+              "id": 62624,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "setup_time",
+                  "type": "number",
+                  "value": 0.25
+                },
+                {
+                  "label": "runtime",
+                  "type": "number",
+                  "value": 0.0083
+                },
+                {
+                  "label": "Setup Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                },
+                {
+                  "label": "Run Labor Rate",
+                  "type": "currency",
+                  "value": 25
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Packaging",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 6,
+              "runtime": 0.0083,
+              "setup_time": 0.25
+            },
+            {
+              "id": 62625,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 10
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Machine Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.52",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "2.60",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "5.21",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "13.02",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 7,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62626,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Markup Percentage",
+                  "type": "number",
+                  "value": 20
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Labor Markup",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "42.33",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "46.50",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "51.71",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "67.33",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 8,
+              "runtime": null,
+              "setup_time": null
+            },
+            {
+              "id": 62627,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Lot Charge",
+                  "type": "currency",
+                  "value": 150
+                },
+                {
+                  "label": "Piece Price",
+                  "type": "currency",
+                  "value": 1
+                },
+                {
+                  "label": "Added Lead Time",
+                  "type": "number",
+                  "value": 3
+                }
+              ],
+              "is_finish": true,
+              "is_outside_service": false,
+              "name": "Chromate",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 9,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
+          "supporting_files": [],
+          "type": "manufactured",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67360,
+              "quantity": 1,
+              "markup_1_price": "83.52",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "501.11",
+              "total_price": "501.11",
+              "total_price_with_required_add_ons": "501.11",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67361,
+              "quantity": 5,
+              "markup_1_price": "99.39",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "119.27",
+              "total_price": "596.35",
+              "total_price_with_required_add_ons": "596.35",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67362,
+              "quantity": 10,
+              "markup_1_price": "119.24",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "71.54",
+              "total_price": "715.40",
+              "total_price_with_required_add_ons": "715.40",
+              "lead_time": 13,
+              "expedites": []
+            },
+            {
+              "id": 67363,
+              "quantity": 25,
+              "markup_1_price": "178.75",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "42.90",
+              "total_price": "1072.50",
+              "total_price_with_required_add_ons": "1072.50",
+              "lead_time": 13,
+              "expedites": []
+            }
+          ]
+        }
+      ],
+      "export_controlled": false,
+      "position": 2,
       "private_notes": null,
-      "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
+      "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
+      "root_component_id": 49817,
+      "type": "automatic"
     },
     {
-      "id": 30159,
-      "type": "manual",
       "root_component": {
-        "id": 34384,
+        "id": 49818,
         "part": null,
         "part_number": null,
         "revision": null,
@@ -882,7 +5104,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 50270,
+            "id": 67364,
             "quantity": 1,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -894,16 +5116,16 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 20110,
+                "id": 23372,
                 "lead_time": 2,
-                "markup": 30.0,
+                "markup": 30,
                 "unit_price": "65.00",
                 "total_price": "65.00"
               }
             ]
           },
           {
-            "id": 50271,
+            "id": 67365,
             "quantity": 2,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -915,9 +5137,9 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 20111,
+                "id": 23373,
                 "lead_time": 2,
-                "markup": 30.0,
+                "markup": 30,
                 "unit_price": "123.50",
                 "total_price": "247.00"
               }
@@ -930,36 +5152,108 @@
         "shop_operations": [],
         "finishes": [],
         "material_notes": null,
-        "add_ons": []
+        "add_ons": [],
+        "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
-      "position": 3,
-      "export_controlled": false,
+      "id": 44773,
       "component_ids": [
-        34384
+        49818
       ],
+      "components": [
+        {
+          "id": 49818,
+          "child_ids": [],
+          "children": [],
+          "description": "",
+          "export_controlled": false,
+          "finishes": [],
+          "innate_quantity": 1,
+          "is_root_component": true,
+          "material": null,
+          "material_operations": [],
+          "parent_ids": [],
+          "part_name": null,
+          "part_number": null,
+          "part_url": null,
+          "part_uuid": null,
+          "process": null,
+          "revision": null,
+          "shop_operations": [],
+          "supporting_files": [],
+          "type": "manufactured",
+          "add_ons": [],
+          "quantities": [
+            {
+              "id": 67364,
+              "quantity": 1,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "50.00",
+              "total_price": "50.00",
+              "total_price_with_required_add_ons": "50.00",
+              "lead_time": 1,
+              "expedites": [
+                {
+                  "id": 23372,
+                  "lead_time": 2,
+                  "markup": 30,
+                  "unit_price": "65.00",
+                  "total_price": "65.00"
+                }
+              ]
+            },
+            {
+              "id": 67365,
+              "quantity": 2,
+              "markup_1_price": "0.00",
+              "markup_1_name": "Margin",
+              "markup_2_price": "0.00",
+              "markup_2_name": "N/A",
+              "unit_price": "95.00",
+              "total_price": "190.00",
+              "total_price_with_required_add_ons": "190.00",
+              "lead_time": 1,
+              "expedites": [
+                {
+                  "id": 23373,
+                  "lead_time": 2,
+                  "markup": 30,
+                  "unit_price": "123.50",
+                  "total_price": "247.00"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "export_controlled": false,
+      "position": 3,
       "private_notes": "This is a test manual line item.",
-      "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required."
+      "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
+      "root_component_id": 49818,
+      "type": "manual"
     }
   ],
   "status": "accepted",
-  "sent_date": "2020-02-14T19:01:38+00:00",
-  "expired_date": "2020-03-15T19:00:33+00:00",
+  "sent_date": "2020-04-02T18:42:02+00:00",
+  "expired_date": "2020-05-02T18:37:36+00:00",
   "quote_notes": "- Customers are responsible for ensuring that the properties and performance of the material selected meet the requirements of their application;\n- CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved;\n- The standard finish (or surface finish) for all parts will include deburring through sanding or bead blasting and support structure removal (additive parts);\n- The estimated arrival time is based on available capacity at the time of this quote. Quotes that are not executed same day are subject to change or delays. Reasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
   "export_controlled": false,
-  "digital_last_viewed_on": "2020-02-14T19:02:03+00:00",
+  "digital_last_viewed_on": null,
   "expired": false,
   "request_for_quote": null,
   "parent_quote": {
-    "id": 20948,
-    "number": 84,
+    "id": 22863,
+    "number": 96,
     "status": "accepted"
   },
-  "parent_supplier_order": {
-    "id": 11108,
-    "number": 22,
-    "status": "pending"
-  },
-  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/f96ceb5a-60d1-4e51-b399-c6a4e192dc58/Quote96.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=v5cDe2Kj4VSaSftzYXvCKsJD7z4%3D&Expires=1582138923",
+  "parent_supplier_order": null,
+  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/90059380-8874-4173-a22f-73a95d14f6d6/Quote139.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=9YeqiJQS73Ra7m07%2F5tKEqemBvA%3D&Expires=1586452400",
   "is_unviewed_drafted_rfq": false,
-  "created": "2020-02-14T19:00:34+00:00"
+  "created": "2020-04-02T18:37:36+00:00",
+  "order_numbers": [
+    43
+  ]
 }

@@ -17,18 +17,15 @@ class TestOrders(unittest.TestCase):
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
-        self.assertEqual(o.number, 26)
+        self.assertEqual(o.number, 43)
         self.assertEqual('credit_card', o.payment_details.payment_type)
-        self.assertEqual('pending', o.status)
-        self.assertEqual(96, o.quote_number)
+        self.assertEqual('confirmed', o.status)
+        self.assertEqual(139, o.quote_number)
         self.assertEqual(len(o.order_items), 3)
         # test assembly order item
         assmb_oi = o.order_items[0]
-        self.assertEqual(assmb_oi.id, 18757)
         self.assertEqual(len(assmb_oi.components), 8)
-        self.assertEqual((assmb_oi.quote_item_id), 30157)
         assmb_root_component = assmb_oi.root_component
-        self.assertEqual(assmb_root_component.id, 34375)
         self.assertEqual(len(assmb_root_component.child_ids), 3)
         self.assertEqual(assmb_root_component.deliver_quantity, 5)
         self.assertIsNone(assmb_root_component.description)
@@ -50,8 +47,6 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(assmb_root_component.type, 'assembled')
         # test single component order item
         standard_oi = o.order_items[1]
-        self.assertEqual(standard_oi.id, 18758)
-        self.assertEqual(standard_oi.root_component_id, 34383)
         self.assertEqual(len(standard_oi.components), 1)
         self.assertIsNone(standard_oi.add_on_fees)
         root_component = standard_oi.root_component
@@ -66,7 +61,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(op_quantity.quantity, 25)
         # test add ons
         other_oi = o.order_items[0]
-        self.assertEqual(other_oi.base_price.dollars, Decimal('3259.25'))
+        self.assertEqual(other_oi.base_price.dollars, Decimal('2757.80'))
         add_on = other_oi.ordered_add_ons[0]
         self.assertEqual(add_on.quantity, 5)
         # test manual line item
@@ -79,11 +74,11 @@ class TestOrders(unittest.TestCase):
         o = Order.get(1)
         oi = o.order_items[0]
         self.assertEqual(2020, oi.ships_on_dt.year)
-        self.assertEqual(3, oi.ships_on_dt.month)
-        self.assertEqual(4, oi.ships_on_dt.day)
+        self.assertEqual(4, oi.ships_on_dt.month)
+        self.assertEqual(21, oi.ships_on_dt.day)
         self.assertEqual(2020, o.created_dt.year)
-        self.assertEqual(2, o.created_dt.month)
-        self.assertEqual(14, o.created_dt.day)
+        self.assertEqual(4, o.created_dt.month)
+        self.assertEqual(2, o.created_dt.day)
 
     def test_ship_desc(self):
         from paperless.objects.orders import ShippingOption
@@ -131,10 +126,7 @@ class TestOrders(unittest.TestCase):
         self.assertTrue(assm[0].component.is_root_component)
         self.assertEqual(0, assm[0].level)
         expected_order = [
-            34375,
-            34381, 34380, 34382,
-            34379, 34378, 34377, 34376
-        ]
+            49809, 49815, 49814, 49816, 49813, 49812, 49811, 49810]
         self.assertEqual(
             expected_order,
             [c.component.id for c in assm]

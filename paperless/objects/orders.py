@@ -73,6 +73,10 @@ class Process:
 class SupportingFile:
     filename: str = attr.ib(validator=attr.validators.instance_of(str))
     url: str = attr.ib(validator=attr.validators.instance_of(str))
+    uuid: Optional[str] = attr.ib(
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
 
 @attr.s(frozen=True)

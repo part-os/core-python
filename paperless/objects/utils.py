@@ -51,3 +51,7 @@ def tax_rate_validator(instance, attribute, value):
 
 def positive_number_validator(instance, attribute, value):
     return value >= 0
+
+
+def numeric_validator(instance, attribute, value):
+    return isinstance(value, int) or isinstance(value, float)

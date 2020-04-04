@@ -6,13 +6,17 @@ import attr
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 from .common import Money
-from .utils import convert_cls, optional_convert, convert_iterable
+from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
 
 
 @attr.s(frozen=True)
 class SupportingFile:
     filename: str = attr.ib(validator=attr.validators.instance_of(str))
     url: str = attr.ib(validator=attr.validators.instance_of(str))
+    uuid: Optional[str] = attr.ib(
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
 
 @attr.s(frozen=True)
@@ -26,7 +30,7 @@ class Part:
 class Expedite:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
-    markup: float = attr.ib(validator=attr.validators.instance_of(float))
+    markup: float = attr.ib(validator=numeric_validator)
     unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
 

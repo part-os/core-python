@@ -231,6 +231,9 @@ class QuoteDetailsMapper(BaseMapper):
         mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer'])
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
-        mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote'])
-        mapped_result['parent_supplier_order'] = ParentSupplierOrderMapper.map(resource['parent_supplier_order'])
+        if resource['parent_quote'] is not None:
+            mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote'])
+        if resource['parent_supplier_order'] is not None:
+            mapped_result['parent_supplier_order'] = \
+                ParentSupplierOrderMapper.map(resource['parent_supplier_order'])
         return mapped_result
