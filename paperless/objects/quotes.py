@@ -117,6 +117,11 @@ class QuoteItem(AssemblyMixin):
         except IndexError:
             raise ValueError('Order item has no root component')
 
+    def get_component(self, component_id):
+        for component in self.components:
+            if component.id == component_id:
+                return component
+
 
 @attr.s(frozen=True)
 class ParentQuote:

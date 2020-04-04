@@ -96,6 +96,10 @@ class Component:
     supporting_files: List[SupportingFile] = attr.ib(converter=convert_iterable(SupportingFile))
     type: str = attr.ib(validator=attr.validators.in_(['assembled', 'manufactured', 'purchased']))
 
+    @property
+    def is_hardware(self):
+        return self.type == 'purchased'
+
 
 class AssemblyComponent(NamedTuple):
     """A component with metadata describing its position in an assembly.

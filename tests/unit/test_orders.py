@@ -3,7 +3,7 @@ import json
 from decimal import Decimal
 from unittest.mock import MagicMock
 
-from paperless.objects.orders import Order
+from paperless.objects.orders import Order, OrderComponent
 from paperless.client import PaperlessClient
 
 
@@ -133,3 +133,19 @@ class TestOrders(unittest.TestCase):
         )
         self.assertEqual(2, assm[4].level)
         self.assertEqual(4, assm[4].level_count)
+
+    def test_hardware(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_order_json)
+        o = Order.get(1)
+        oi = o.order_items[0]
+        found_hardware = False
+        oc: OrderComponent
+        for oc in oi.components:
+            if oc.part_number == 'AC-M6-2':
+                self.assertTrue(oc.is_hardware)
+                found_hardware = True
+                for parent_id in oc.parent_ids:
+                    self.assertEqual('assembled', oi.get_component(parent_id).type)
+            else:
+                self.assertFalse(oc.is_hardware)
+        self.assertTrue(found_hardware)
