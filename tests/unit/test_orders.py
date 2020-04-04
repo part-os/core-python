@@ -140,12 +140,12 @@ class TestOrders(unittest.TestCase):
         o = Order.get(1)
         oi = o.order_items[0]
         found_hardware = False
+        total_q = 0
         oc: OrderComponent
         for oc in oi.components:
             if oc.part_number == 'AC-M6-2':
                 self.assertTrue(oc.is_hardware)
                 found_hardware = True
-                total_q = 0
                 for parent_id in oc.parent_ids:
                     parent = oi.get_component(parent_id)
                     self.assertEqual('assembled', parent.type)
