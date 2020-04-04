@@ -6,25 +6,23 @@ import attr
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 from .common import Money
+from .components import Component, AssemblyMixin
 from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
 
 
 @attr.s(frozen=True)
-class SupportingFile:
-    filename: str = attr.ib(validator=attr.validators.instance_of(str))
-    url: str = attr.ib(validator=attr.validators.instance_of(str))
-    uuid: Optional[str] = attr.ib(
-        default=None,
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
+class AddOnQuantity:
+    manual_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
 
 @attr.s(frozen=True)
-class Part:
-    filename: str = attr.ib(validator=attr.validators.instance_of(str))
-    thumbnail_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    supporting_files: List[SupportingFile] = attr.ib(converter=convert_iterable(SupportingFile))
+class AddOn:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
+
 
 @attr.s(frozen=True)
 class Expedite:
@@ -51,54 +49,9 @@ class Quantity:
 
 
 @attr.s(frozen=True)
-class Operation:
-    @attr.s(frozen=True)
-    class CostingVariable:
-        label: str = attr.ib(validator=attr.validators.instance_of(str))
-        type: str = attr.ib(validator=attr.validators.instance_of(str))
-        value = attr.ib()
-
-    @attr.s(frozen=True)
-    class OperationQuantity:
-        price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
-        manual_price: Optional[Money] = attr.ib(converter=optional_convert(Money),
-                                                validator=attr.validators.optional(attr.validators.instance_of(Money)))
-        lead_time: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
-        manual_lead_time: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
-        quantity: int = attr.ib(validator=attr.validators.instance_of(int))
-
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    category: str = attr.ib(validator=attr.validators.in_(['operation', 'material']))
-    cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
-    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
-    is_finish: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    is_outside_service: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
-    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    position: int = attr.ib(validator=attr.validators.instance_of(int))
-    quantities: List[OperationQuantity] = attr.ib(converter=convert_iterable(OperationQuantity))
-    runtime: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
-    setup_time: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
-
-    def get_variable(self, label):
-        """Return the value of the variable with the specified label or None if
-        that variable does not exist."""
-        return {cv.label: cv.value for cv in self.costing_variables}.get(
-            label, None)
-
-
-@attr.s(frozen=True)
-class Process:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
-    external_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-
-
-@attr.s(frozen=True)
-class Material:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
-    display_name: str = attr.ib(validator=attr.validators.instance_of(str))
+class QuoteComponent(Component):
+    add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
+    quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
 
 
 @attr.s(frozen=True)
@@ -112,24 +65,6 @@ class AddOn:
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
-
-
-@attr.s(frozen=True)
-class Component:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    part: Part = attr.ib(converter=convert_cls(Part))
-    part_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    description: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    type: str = attr.ib(validator=attr.validators.instance_of(str))
-    quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
-    shop_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
-    material_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
-    finishes: List = attr.ib(validator=attr.validators.instance_of(list))
-    process: Process = attr.ib(converter=convert_cls(Process))
-    material: Material = attr.ib(converter=convert_cls(Material))
-    material_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
 
 
 @attr.s(frozen=True)
@@ -167,13 +102,20 @@ class Customer:
 
 
 @attr.s(frozen=True)
-class QuoteItem:
+class QuoteItem(AssemblyMixin):
     id: int = attr.ib(validator=attr.validators.instance_of(int))
+    components: List[QuoteComponent] = attr.ib(converter=convert_iterable(QuoteComponent))
     type: str = attr.ib(validator=attr.validators.instance_of(str))
-    root_component: Component = attr.ib(converter=convert_cls(Component))
     position: int = attr.ib(validator=attr.validators.instance_of(int))
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     component_ids: List[int] = attr.ib(validator=attr.validators.instance_of(list))
+
+    @property
+    def root_component(self):
+        try:
+            return [c for c in self.components if c.is_root_component][0]
+        except IndexError:
+            raise ValueError('Order item has no root component')
 
 
 @attr.s(frozen=True)
