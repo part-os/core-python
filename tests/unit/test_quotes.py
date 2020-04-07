@@ -17,7 +17,7 @@ class TestQuotes(unittest.TestCase):
     def test_get_quote(self):
         self.client.get_resource = MagicMock(return_value=self.mock_quote_json)
         q = Quote.get(1)
-        self.assertEqual(q.number, 96)
+        self.assertEqual(q.number, 139)
         self.assertEqual(q.tax_rate, 0.)
         self.assertFalse(q.is_unviewed_drafted_rfq)
         # test customer
@@ -29,17 +29,15 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(company.erp_code, 'OUTFIRM')
         # test metrics
         metrics = company.metrics
-        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('23976.54'))
+        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('38511.91'))
         # test quote items
         quote_item = q.quote_items[0]
-        self.assertEqual(quote_item.id, 30157)
         self.assertEqual(quote_item.type, 'automatic')
-        self.assertEqual(quote_item.component_ids[0], 34382)
+        self.assertEqual(len(quote_item.component_ids), 8)
         # test root component
         root_component = quote_item.root_component
-        self.assertEqual(root_component.id, 34375)
         self.assertEqual(root_component.type, 'assembled')
-        self.assertEqual(root_component.part.filename, 'small-sub-assembly.STEP')
+        self.assertEqual(root_component.part_name, 'small-sub-assembly.STEP')
         # test addons
         add_on = root_component.add_ons[0]
         self.assertEqual(add_on.is_required, True)
@@ -48,8 +46,8 @@ class TestQuotes(unittest.TestCase):
         # test quantities
         quantity = root_component.quantities[0]
         self.assertEqual(quantity.quantity, 1)
-        self.assertEqual(quantity.unit_price.dollars, Decimal('3098.88'))
-        self.assertEqual(quantity.total_price_with_required_add_ons.dollars, Decimal('4098.88'))
+        self.assertEqual(quantity.unit_price.dollars, Decimal('2616.74'))
+        self.assertEqual(quantity.total_price_with_required_add_ons.dollars, Decimal('3616.74'))
         # test operations
         operation = root_component.shop_operations[0]
         self.assertEqual(operation.name, 'Chromate')
@@ -66,7 +64,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(expedite.unit_price.dollars, 65.)
         # test parent quote
         parent_quote = q.parent_quote
-        self.assertEqual(parent_quote.number, 84)
+        self.assertEqual(parent_quote.number, 96)
         # test parent supplier order
         parent_supplier_order = q.parent_supplier_order
-        self.assertEqual(parent_supplier_order.number, 22)
+        self.assertIsNone(parent_supplier_order)

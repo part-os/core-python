@@ -1,25 +1,6 @@
 from paperless.api_mappers import BaseMapper
-
-
-class ComponentMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        mapped_result['material'] = MaterialMapper.map(resource['material']) if resource['material'] else None
-        mapped_result['material_operations'] = map(OperationsMapper.map, resource['material_operations'])
-        mapped_result['process'] = ProcessMapper.map(resource['process']) if resource['process'] else None
-        mapped_result['shop_operations'] = map(OperationsMapper.map, resource['shop_operations'])
-        field_keys = ['id', 'deliver_quantity', 'innate_quantity', 'make_quantity', 'description', 'part_name',
-                      'part_number', 'part_uuid', 'revision', 'type']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files']
-        for key in list_keys:
-            mapped_result[key] = resource.get(key, [])
-        bool_keys = ['export_controlled', 'is_root_component']
-        for key in bool_keys:
-            mapped_result[key] = resource.get(key, False)
-        return mapped_result
+from paperless.api_mappers.components import MaterialMapper, OperationsMapper, \
+    ProcessMapper
 
 
 class AddOnMapper(BaseMapper):
@@ -35,11 +16,32 @@ class AddOnMapper(BaseMapper):
         return mapped_result
 
 
+class OrderComponentMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        mapped_result['material'] = MaterialMapper.map(resource['material']) if resource['material'] else None
+        mapped_result['material_operations'] = map(OperationsMapper.map, resource['material_operations'])
+        mapped_result['process'] = ProcessMapper.map(resource['process']) if resource['process'] else None
+        mapped_result['shop_operations'] = map(OperationsMapper.map, resource['shop_operations'])
+        field_keys = ['id', 'deliver_quantity', 'innate_quantity', 'make_quantity', 'description', 'part_name',
+                      'part_number', 'part_uuid', 'revision', 'type']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files', 'children']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
+        bool_keys = ['export_controlled', 'is_root_component']
+        for key in bool_keys:
+            mapped_result[key] = resource.get(key, False)
+        return mapped_result
+
+
 class OrderItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        mapped_result['components'] = map(ComponentMapper.map, resource['components'])
+        mapped_result['components'] = map(OrderComponentMapper.map, resource['components'])
         field_keys = ['id', 'description', 'expedite_revenue', 'filename', 'lead_days', 'private_notes', 'public_notes',
                       'quantity', 'quantity_outstanding', 'quote_item_id', 'quote_item_type', 'root_component_id',
                       'ships_on', 'total_price', 'unit_price', 'base_price', 'add_on_fees']
@@ -102,64 +104,10 @@ class OrderDetailsMapper(BaseMapper):
         return mapped_result
 
 
-class OperationQuantityMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        keys = ['price', 'manual_price', 'lead_time', 'manual_lead_time', 'quantity']
-        mapped_result = {}
-        for key in keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class OperationsMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        costing_variables = map(CostingVariablesMapper.map, resource['costing_variables'])
-        quantities = map(OperationQuantityMapper.map, resource['quantities'])
-        keys = ['id', 'category', 'cost', 'is_finish', 'is_outside_service', 'name', 'notes', 'position', 'runtime', 'setup_time']
-        mapped_result = {}
-        for key in keys:
-            mapped_result[key] = resource.get(key, None)
-        mapped_result['costing_variables'] = costing_variables
-        mapped_result['quantities'] = quantities
-        return mapped_result
-
-
-class MaterialMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        keys = ['id', 'display_name', 'family', 'material_class', 'name']
-        mapped_result = {}
-        for key in keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
 class OrderMinimumMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         return {'number': resource['number']}
-
-
-class CostingVariablesMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        keys = ['label', 'type', 'value']
-        mapped_result = {}
-        for key in keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class ProcessMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        keys = ['id', 'external_name', 'name']
-        mapped_result = {}
-        for key in keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
 
 
 class PaymentDetailsMapper(BaseMapper):
