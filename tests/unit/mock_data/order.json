@@ -1,6 +1,6 @@
 {
   "billing_info": {
-    "id": 5113,
+    "id": 5746,
     "address1": "1 Fake St",
     "address2": "",
     "business_name": "Outside Firm",
@@ -13,13 +13,13 @@
     "postal_code": "02215",
     "state": "MA"
   },
-  "created": "2020-02-14T19:03:29+00:00",
+  "created": "2020-04-02T18:47:14+00:00",
   "customer": {
     "id": 3545,
     "company": {
       "id": 1986,
       "business_name": "Outside Firm",
-      "erp_code": null
+      "erp_code": "OUTFIRM"
     },
     "email": "rob.carrington+outsidefirm@paperlessparts.com",
     "first_name": "Test",
@@ -27,27 +27,43 @@
     "phone": "",
     "phone_ext": ""
   },
-  "deliver_by": "2020-03-05T08:00:00Z",
-  "number": 26,
+  "deliver_by": "2020-04-22T08:00:00Z",
+  "number": 43,
   "order_items": [
     {
-      "id": 18757,
+      "id": 27487,
       "components": [
         {
-          "id": 34382,
+          "id": 49816,
           "child_ids": [
-            34379,
-            34378,
-            34377,
-            34376
+            49813,
+            49812,
+            49811,
+            49810
           ],
-          "deliver_quantity": 5,
+          "children": [
+            {
+              "child_id": 49813,
+              "quantity": 1
+            },
+            {
+              "child_id": 49812,
+              "quantity": 1
+            },
+            {
+              "child_id": 49811,
+              "quantity": 1
+            },
+            {
+              "child_id": 49810,
+              "quantity": 1
+            }
+          ],
           "description": null,
           "export_controlled": false,
           "finishes": [],
           "innate_quantity": 1,
           "is_root_component": false,
-          "make_quantity": 5,
           "material": {
             "id": 2,
             "display_name": null,
@@ -57,11 +73,11 @@
           },
           "material_operations": [],
           "parent_ids": [
-            34375
+            49809
           ],
           "part_name": "Subassembly <1>.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=pNLeFRo2VHTigEfZrl9sPZ3pM%2BA%3D&Expires=1584281768",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=z9WU1%2Fm1EOs9QF4zfcnQPYDGSuo%3D&Expires=1586452398",
           "part_uuid": "8deb6257-56f8-4aaf-bebc-1707361bf2af",
           "process": {
             "id": 1117,
@@ -71,12 +87,14 @@
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
-          "type": "assembled"
+          "type": "assembled",
+          "deliver_quantity": 5,
+          "make_quantity": 5
         },
         {
-          "id": 34381,
+          "id": 49815,
           "child_ids": [],
-          "deliver_quantity": 5,
+          "children": [],
           "description": null,
           "export_controlled": false,
           "finishes": [
@@ -84,7 +102,6 @@
           ],
           "innate_quantity": 1,
           "is_root_component": false,
-          "make_quantity": 5,
           "material": {
             "id": 2,
             "display_name": null,
@@ -94,19 +111,19 @@
           },
           "material_operations": [
             {
-              "id": 56617,
+              "id": 62610,
               "category": "material",
               "cost": "16.50",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11.0
+                  "value": 11
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -158,14 +175,14 @@
               "setup_time": null
             },
             {
-              "id": 56618,
+              "id": 62611,
               "category": "material",
               "cost": "4.95",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30.0
+                  "value": 30
                 }
               ],
               "is_finish": false,
@@ -208,11 +225,11 @@
             }
           ],
           "parent_ids": [
-            34375
+            49809
           ],
           "part_name": "Bottom Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=YF609EDb9DHlMv2NioowTOb5b1w%3D&Expires=1584281768",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=aPO1iUqtEsuAC7LhVOUyRRyWi8Y%3D&Expires=1586452398",
           "part_uuid": "f56acc3c-e75e-4735-a712-bf111182b437",
           "process": {
             "id": 1117,
@@ -222,7 +239,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 56619,
+              "id": 62612,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -234,7 +251,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -276,19 +293,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 56620,
+              "id": 62613,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2.0
+                  "value": 2
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -327,47 +344,47 @@
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2.0
+              "setup_time": 2
             },
             {
-              "id": 56621,
+              "id": 62614,
               "category": "operation",
               "cost": "105.91",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75.0
+                  "value": 75
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80.0
+                  "value": 80
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100.0
+                  "value": 100
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -382,7 +399,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "runtime",
@@ -426,10 +443,10 @@
               ],
               "position": 5,
               "runtime": 0.04944812607486251,
-              "setup_time": 1.0
+              "setup_time": 1
             },
             {
-              "id": 56622,
+              "id": 62615,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -446,12 +463,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 }
               ],
               "is_finish": false,
@@ -493,14 +510,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 56623,
+              "id": 62616,
               "category": "operation",
               "cost": "1.55",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10.0
+                  "value": 10
                 }
               ],
               "is_finish": false,
@@ -542,14 +559,14 @@
               "setup_time": null
             },
             {
-              "id": 56624,
+              "id": 62617,
               "category": "operation",
               "cost": "44.38",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20.0
+                  "value": 20
                 }
               ],
               "is_finish": false,
@@ -591,28 +608,28 @@
               "setup_time": null
             },
             {
-              "id": 56625,
+              "id": 62618,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150.0
+                  "value": 150
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3.0
+                  "value": 3
                 }
               ],
               "is_finish": true,
-              "is_outside_service": true,
+              "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
@@ -651,12 +668,14 @@
             }
           ],
           "supporting_files": [],
-          "type": "manufactured"
+          "type": "manufactured",
+          "deliver_quantity": 5,
+          "make_quantity": 5
         },
         {
-          "id": 34380,
+          "id": 49814,
           "child_ids": [],
-          "deliver_quantity": 5,
+          "children": [],
           "description": null,
           "export_controlled": false,
           "finishes": [
@@ -664,7 +683,6 @@
           ],
           "innate_quantity": 1,
           "is_root_component": false,
-          "make_quantity": 5,
           "material": {
             "id": 2,
             "display_name": null,
@@ -674,19 +692,19 @@
           },
           "material_operations": [
             {
-              "id": 56608,
+              "id": 62601,
               "category": "material",
               "cost": "0.55",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11.0
+                  "value": 11
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -738,14 +756,14 @@
               "setup_time": null
             },
             {
-              "id": 56609,
+              "id": 62602,
               "category": "material",
               "cost": "0.17",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30.0
+                  "value": 30
                 }
               ],
               "is_finish": false,
@@ -788,11 +806,11 @@
             }
           ],
           "parent_ids": [
-            34375
+            49809
           ],
           "part_name": "Seal.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=KmKVKrQOI33501QWCcWUg4ShVK0%3D&Expires=1584281768",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=gFSEQ8XbsUIuMnuAi%2FwZELBtJco%3D&Expires=1586452398",
           "part_uuid": "a9be1070-67d8-4a95-8c7d-54a5f6e58d4d",
           "process": {
             "id": 1117,
@@ -802,7 +820,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 56610,
+              "id": 62603,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -814,7 +832,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -856,19 +874,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 56611,
+              "id": 62604,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2.0
+                  "value": 2
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -907,47 +925,47 @@
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2.0
+              "setup_time": 2
             },
             {
-              "id": 56612,
+              "id": 62605,
               "category": "operation",
               "cost": "79.08",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75.0
+                  "value": 75
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80.0
+                  "value": 80
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100.0
+                  "value": 100
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -962,7 +980,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "runtime",
@@ -1006,10 +1024,10 @@
               ],
               "position": 5,
               "runtime": 0.006522301643529261,
-              "setup_time": 1.0
+              "setup_time": 1
             },
             {
-              "id": 56613,
+              "id": 62606,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -1026,12 +1044,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 }
               ],
               "is_finish": false,
@@ -1073,14 +1091,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 56614,
+              "id": 62607,
               "category": "operation",
               "cost": "0.20",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10.0
+                  "value": 10
                 }
               ],
               "is_finish": false,
@@ -1122,14 +1140,14 @@
               "setup_time": null
             },
             {
-              "id": 56615,
+              "id": 62608,
               "category": "operation",
               "cost": "41.70",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20.0
+                  "value": 20
                 }
               ],
               "is_finish": false,
@@ -1171,28 +1189,28 @@
               "setup_time": null
             },
             {
-              "id": 56616,
+              "id": 62609,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150.0
+                  "value": 150
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3.0
+                  "value": 3
                 }
               ],
               "is_finish": true,
-              "is_outside_service": true,
+              "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
@@ -1231,12 +1249,14 @@
             }
           ],
           "supporting_files": [],
-          "type": "manufactured"
+          "type": "manufactured",
+          "deliver_quantity": 5,
+          "make_quantity": 5
         },
         {
-          "id": 34379,
+          "id": 49812,
           "child_ids": [],
-          "deliver_quantity": 5,
+          "children": [],
           "description": null,
           "export_controlled": false,
           "finishes": [
@@ -1244,7 +1264,6 @@
           ],
           "innate_quantity": 1,
           "is_root_component": false,
-          "make_quantity": 5,
           "material": {
             "id": 2,
             "display_name": null,
@@ -1254,609 +1273,29 @@
           },
           "material_operations": [
             {
-              "id": 56599,
-              "category": "material",
-              "cost": "4.40",
-              "costing_variables": [
-                {
-                  "label": "Cost Per Pound",
-                  "type": "currency",
-                  "value": 11.0
-                },
-                {
-                  "label": "Material Buffer (in)",
-                  "type": "number",
-                  "value": 0.0
-                },
-                {
-                  "label": "Pounds Per Part",
-                  "type": "number",
-                  "value": 0.08
-                },
-                {
-                  "label": "Material Unit Cost",
-                  "type": "currency",
-                  "value": 0.88
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Aluminium 6061",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "22.00",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "8.80",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "4.40",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "0.88",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 1,
-              "runtime": null,
-              "setup_time": null
-            },
-            {
-              "id": 56600,
-              "category": "material",
-              "cost": "1.32",
-              "costing_variables": [
-                {
-                  "label": "Markup Percentage",
-                  "type": "number",
-                  "value": 30.0
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Material Markup",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "6.60",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "2.64",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "1.32",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "0.26",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 2,
-              "runtime": null,
-              "setup_time": null
-            }
-          ],
-          "parent_ids": [
-            34382
-          ],
-          "part_name": "Fitting.step",
-          "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=OvXFGQO8EkDgWFh5W0oy9KjF%2Fa8%3D&Expires=1584281769",
-          "part_uuid": "a0b71d80-a16e-446e-8e7b-6977ff2c5e0c",
-          "process": {
-            "id": 1117,
-            "external_name": null,
-            "name": "CNC Machining"
-          },
-          "revision": null,
-          "shop_operations": [
-            {
-              "id": 56601,
-              "category": "operation",
-              "cost": "25.00",
-              "costing_variables": [
-                {
-                  "label": "setup_time",
-                  "type": "number",
-                  "value": 0.5
-                },
-                {
-                  "label": "Setup Labor Rate",
-                  "type": "currency",
-                  "value": 50.0
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Order Processing",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 3,
-              "runtime": null,
-              "setup_time": 0.5
-            },
-            {
-              "id": 56602,
-              "category": "operation",
-              "cost": "100.00",
-              "costing_variables": [
-                {
-                  "label": "setup_time",
-                  "type": "number",
-                  "value": 2.0
-                },
-                {
-                  "label": "Setup Labor Rate",
-                  "type": "currency",
-                  "value": 50.0
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Programming",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 4,
-              "runtime": null,
-              "setup_time": 2.0
-            },
-            {
-              "id": 56603,
-              "category": "operation",
-              "cost": "91.61",
-              "costing_variables": [
-                {
-                  "label": "Setup Labor Rate",
-                  "type": "currency",
-                  "value": 75.0
-                },
-                {
-                  "label": "Run Labor Rate",
-                  "type": "currency",
-                  "value": 50.0
-                },
-                {
-                  "label": "Crew",
-                  "type": "number",
-                  "value": 1.0
-                },
-                {
-                  "label": "Machine Rate",
-                  "type": "currency",
-                  "value": 50.0
-                },
-                {
-                  "label": "Efficiency",
-                  "type": "number",
-                  "value": 80.0
-                },
-                {
-                  "label": "Percent Attended",
-                  "type": "number",
-                  "value": 100.0
-                },
-                {
-                  "label": "Minimum Material Removal Rate",
-                  "type": "number",
-                  "value": 1.0
-                },
-                {
-                  "label": "Stock Buffer, in",
-                  "type": "number",
-                  "value": 0.25
-                },
-                {
-                  "label": "Setup Time Per Setup",
-                  "type": "number",
-                  "value": 0.5
-                },
-                {
-                  "label": "setup_time",
-                  "type": "number",
-                  "value": 1.0
-                },
-                {
-                  "label": "runtime",
-                  "type": "number",
-                  "value": 0.026579978826736312
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Milling With Estimates",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "158.06",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "108.22",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "91.61",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "78.32",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 5,
-              "runtime": 0.026579978826736312,
-              "setup_time": 1.0
-            },
-            {
-              "id": 56604,
-              "category": "operation",
-              "cost": "6.46",
-              "costing_variables": [
-                {
-                  "label": "setup_time",
-                  "type": "number",
-                  "value": 0.25
-                },
-                {
-                  "label": "runtime",
-                  "type": "number",
-                  "value": 0.0083
-                },
-                {
-                  "label": "Setup Labor Rate",
-                  "type": "currency",
-                  "value": 25.0
-                },
-                {
-                  "label": "Run Labor Rate",
-                  "type": "currency",
-                  "value": 25.0
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Packaging",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 6,
-              "runtime": 0.0083,
-              "setup_time": 0.25
-            },
-            {
-              "id": 56605,
-              "category": "operation",
-              "cost": "0.83",
-              "costing_variables": [
-                {
-                  "label": "Markup Percentage",
-                  "type": "number",
-                  "value": 10.0
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Machine Markup",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "4.15",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "1.66",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "0.83",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "0.17",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 7,
-              "runtime": null,
-              "setup_time": null
-            },
-            {
-              "id": 56606,
-              "category": "operation",
-              "cost": "42.95",
-              "costing_variables": [
-                {
-                  "label": "Markup Percentage",
-                  "type": "number",
-                  "value": 20.0
-                }
-              ],
-              "is_finish": false,
-              "is_outside_service": false,
-              "name": "Labor Markup",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "49.60",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "44.61",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "42.95",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "41.62",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 8,
-              "runtime": null,
-              "setup_time": null
-            },
-            {
-              "id": 56607,
-              "category": "operation",
-              "cost": "150.00",
-              "costing_variables": [
-                {
-                  "label": "Lot Charge",
-                  "type": "currency",
-                  "value": 150.0
-                },
-                {
-                  "label": "Piece Price",
-                  "type": "currency",
-                  "value": 1.0
-                },
-                {
-                  "label": "Added Lead Time",
-                  "type": "number",
-                  "value": 3.0
-                }
-              ],
-              "is_finish": true,
-              "is_outside_service": true,
-              "name": "Chromate",
-              "notes": null,
-              "quantities": [
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 25
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 10
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 5
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                }
-              ],
-              "position": 9,
-              "runtime": null,
-              "setup_time": null
-            }
-          ],
-          "supporting_files": [],
-          "type": "manufactured"
-        },
-        {
-          "id": 34378,
-          "child_ids": [],
-          "deliver_quantity": 5,
-          "description": null,
-          "export_controlled": false,
-          "finishes": [
-            "Chromate"
-          ],
-          "innate_quantity": 1,
-          "is_root_component": false,
-          "make_quantity": 5,
-          "material": {
-            "id": 2,
-            "display_name": null,
-            "family": "Aluminum",
-            "material_class": "Metal",
-            "name": "Aluminium 6061"
-          },
-          "material_operations": [
-            {
-              "id": 56590,
+              "id": 62583,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11.0
+                  "value": 11
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Pounds Per Part",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Material Unit Cost",
                   "type": "currency",
-                  "value": 0.0
+                  "value": 0
                 }
               ],
               "is_finish": false,
@@ -1898,14 +1337,14 @@
               "setup_time": null
             },
             {
-              "id": 56591,
+              "id": 62584,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30.0
+                  "value": 30
                 }
               ],
               "is_finish": false,
@@ -1948,11 +1387,11 @@
             }
           ],
           "parent_ids": [
-            34382
+            49816
           ],
           "part_name": "O-Ring.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=FFtq0PIgGe4HblI9fuQ6nFEw504%3D&Expires=1584281769",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=OFwyKn5RDWDPFhks7z2tCrtfSes%3D&Expires=1586452399",
           "part_uuid": "860b8958-9733-4bea-a6d2-3473d308a93d",
           "process": {
             "id": 1117,
@@ -1962,7 +1401,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 56592,
+              "id": 62585,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -1974,7 +1413,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -2016,19 +1455,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 56593,
+              "id": 62586,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2.0
+                  "value": 2
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -2067,47 +1506,47 @@
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2.0
+              "setup_time": 2
             },
             {
-              "id": 56594,
+              "id": 62587,
               "category": "operation",
               "cost": "1.98",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75.0
+                  "value": 75
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80.0
+                  "value": 80
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100.0
+                  "value": 100
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -2122,7 +1561,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "runtime",
@@ -2166,10 +1605,10 @@
               ],
               "position": 5,
               "runtime": 0.003162686584716232,
-              "setup_time": 0.0
+              "setup_time": 0
             },
             {
-              "id": 56595,
+              "id": 62588,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -2186,12 +1625,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 }
               ],
               "is_finish": false,
@@ -2233,14 +1672,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 56596,
+              "id": 62589,
               "category": "operation",
               "cost": "0.10",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10.0
+                  "value": 10
                 }
               ],
               "is_finish": false,
@@ -2282,14 +1721,14 @@
               "setup_time": null
             },
             {
-              "id": 56597,
+              "id": 62590,
               "category": "operation",
               "cost": "26.49",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20.0
+                  "value": 20
                 }
               ],
               "is_finish": false,
@@ -2331,28 +1770,28 @@
               "setup_time": null
             },
             {
-              "id": 56598,
+              "id": 62591,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150.0
+                  "value": 150
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3.0
+                  "value": 3
                 }
               ],
               "is_finish": true,
-              "is_outside_service": true,
+              "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
@@ -2391,12 +1830,14 @@
             }
           ],
           "supporting_files": [],
-          "type": "manufactured"
+          "type": "manufactured",
+          "deliver_quantity": 5,
+          "make_quantity": 5
         },
         {
-          "id": 34377,
+          "id": 49811,
           "child_ids": [],
-          "deliver_quantity": 5,
+          "children": [],
           "description": null,
           "export_controlled": false,
           "finishes": [
@@ -2404,7 +1845,6 @@
           ],
           "innate_quantity": 1,
           "is_root_component": false,
-          "make_quantity": 5,
           "material": {
             "id": 2,
             "display_name": null,
@@ -2414,29 +1854,29 @@
           },
           "material_operations": [
             {
-              "id": 56581,
+              "id": 62574,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11.0
+                  "value": 11
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Pounds Per Part",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Material Unit Cost",
                   "type": "currency",
-                  "value": 0.0
+                  "value": 0
                 }
               ],
               "is_finish": false,
@@ -2478,14 +1918,14 @@
               "setup_time": null
             },
             {
-              "id": 56582,
+              "id": 62575,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30.0
+                  "value": 30
                 }
               ],
               "is_finish": false,
@@ -2528,11 +1968,11 @@
             }
           ],
           "parent_ids": [
-            34382
+            49816
           ],
           "part_name": "Plug.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=%2By3Vbw%2B2smS3u6hJYl8uPHkIZrw%3D&Expires=1584281769",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ts47VykMGY5XkBvlMU0hypHWokQ%3D&Expires=1586452399",
           "part_uuid": "a300d612-2209-41b2-b914-a33c960743db",
           "process": {
             "id": 1117,
@@ -2542,7 +1982,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 56583,
+              "id": 62576,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -2554,7 +1994,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -2596,19 +2036,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 56584,
+              "id": 62577,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2.0
+                  "value": 2
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -2647,47 +2087,47 @@
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2.0
+              "setup_time": 2
             },
             {
-              "id": 56585,
+              "id": 62578,
               "category": "operation",
               "cost": "76.57",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75.0
+                  "value": 75
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80.0
+                  "value": 80
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100.0
+                  "value": 100
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -2702,7 +2142,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "runtime",
@@ -2746,10 +2186,10 @@
               ],
               "position": 5,
               "runtime": 0.0025044932003325773,
-              "setup_time": 1.0
+              "setup_time": 1
             },
             {
-              "id": 56586,
+              "id": 62579,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -2766,12 +2206,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 }
               ],
               "is_finish": false,
@@ -2813,14 +2253,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 56587,
+              "id": 62580,
               "category": "operation",
               "cost": "0.08",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10.0
+                  "value": 10
                 }
               ],
               "is_finish": false,
@@ -2862,14 +2302,14 @@
               "setup_time": null
             },
             {
-              "id": 56588,
+              "id": 62581,
               "category": "operation",
               "cost": "41.45",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20.0
+                  "value": 20
                 }
               ],
               "is_finish": false,
@@ -2911,28 +2351,28 @@
               "setup_time": null
             },
             {
-              "id": 56589,
+              "id": 62582,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150.0
+                  "value": 150
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3.0
+                  "value": 3
                 }
               ],
               "is_finish": true,
-              "is_outside_service": true,
+              "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
@@ -2971,12 +2411,14 @@
             }
           ],
           "supporting_files": [],
-          "type": "manufactured"
+          "type": "manufactured",
+          "deliver_quantity": 5,
+          "make_quantity": 5
         },
         {
-          "id": 34376,
+          "id": 49810,
           "child_ids": [],
-          "deliver_quantity": 5,
+          "children": [],
           "description": null,
           "export_controlled": false,
           "finishes": [
@@ -2984,7 +2426,6 @@
           ],
           "innate_quantity": 1,
           "is_root_component": false,
-          "make_quantity": 5,
           "material": {
             "id": 2,
             "display_name": null,
@@ -2994,19 +2435,19 @@
           },
           "material_operations": [
             {
-              "id": 56572,
+              "id": 62565,
               "category": "material",
               "cost": "33.00",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11.0
+                  "value": 11
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -3058,14 +2499,14 @@
               "setup_time": null
             },
             {
-              "id": 56573,
+              "id": 62566,
               "category": "material",
               "cost": "9.90",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30.0
+                  "value": 30
                 }
               ],
               "is_finish": false,
@@ -3108,11 +2549,11 @@
             }
           ],
           "parent_ids": [
-            34382
+            49816
           ],
           "part_name": "Top Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=Sh8X77Fwfj2IUYXKiKr8IGen7sY%3D&Expires=1584281769",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ULhMsa5TNdAlorGfrAUC6LV5B%2Fo%3D&Expires=1586452399",
           "part_uuid": "cbe4fd08-c10a-4804-ae97-c647ce862040",
           "process": {
             "id": 1117,
@@ -3122,7 +2563,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 56574,
+              "id": 62567,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -3134,7 +2575,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -3176,19 +2617,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 56575,
+              "id": 62568,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2.0
+                  "value": 2
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -3227,47 +2668,47 @@
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2.0
+              "setup_time": 2
             },
             {
-              "id": 56576,
+              "id": 62569,
               "category": "operation",
               "cost": "189.42",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75.0
+                  "value": 75
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80.0
+                  "value": 80
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100.0
+                  "value": 100
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -3282,7 +2723,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2.0
+                  "value": 2
                 },
                 {
                   "label": "runtime",
@@ -3326,10 +2767,10 @@
               ],
               "position": 5,
               "runtime": 0.06306544367011963,
-              "setup_time": 2.0
+              "setup_time": 2
             },
             {
-              "id": 56577,
+              "id": 62570,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -3346,12 +2787,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 }
               ],
               "is_finish": false,
@@ -3393,14 +2834,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 56578,
+              "id": 62571,
               "category": "operation",
               "cost": "1.97",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10.0
+                  "value": 10
                 }
               ],
               "is_finish": false,
@@ -3442,14 +2883,14 @@
               "setup_time": null
             },
             {
-              "id": 56579,
+              "id": 62572,
               "category": "operation",
               "cost": "60.23",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20.0
+                  "value": 20
                 }
               ],
               "is_finish": false,
@@ -3491,28 +2932,28 @@
               "setup_time": null
             },
             {
-              "id": 56580,
+              "id": 62573,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150.0
+                  "value": 150
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3.0
+                  "value": 3
                 }
               ],
               "is_finish": true,
-              "is_outside_service": true,
+              "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
@@ -3551,16 +2992,31 @@
             }
           ],
           "supporting_files": [],
-          "type": "manufactured"
+          "type": "manufactured",
+          "deliver_quantity": 5,
+          "make_quantity": 5
         },
         {
-          "id": 34375,
+          "id": 49809,
           "child_ids": [
-            34381,
-            34380,
-            34382
+            49815,
+            49814,
+            49816
           ],
-          "deliver_quantity": 5,
+          "children": [
+            {
+              "child_id": 49815,
+              "quantity": 1
+            },
+            {
+              "child_id": 49814,
+              "quantity": 1
+            },
+            {
+              "child_id": 49816,
+              "quantity": 1
+            }
+          ],
           "description": null,
           "export_controlled": false,
           "finishes": [
@@ -3568,7 +3024,6 @@
           ],
           "innate_quantity": 1,
           "is_root_component": true,
-          "make_quantity": 5,
           "material": {
             "id": 2,
             "display_name": null,
@@ -3580,7 +3035,7 @@
           "parent_ids": [],
           "part_name": "small-sub-assembly.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=e2q7Gh8xUGILrdYARxTfWrVP9m0%3D&Expires=1584281769",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=Irmc33fAJE5Me%2FGAf78lmxq%2F5%2BU%3D&Expires=1586452398",
           "part_uuid": "ddab27ae-ff7b-4db2-be24-41002be6cb58",
           "process": {
             "id": 1117,
@@ -3590,28 +3045,28 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 56571,
+              "id": 62564,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150.0
+                  "value": 150
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3.0
+                  "value": 3
                 }
               ],
               "is_finish": true,
-              "is_outside_service": true,
+              "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
@@ -3652,10 +3107,38 @@
           "supporting_files": [
             {
               "filename": "top Drawing 1.pdf",
-              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=tIvR%2BLKSzK8UBIVPxlqdX3HnxwM%3D&Expires=1584281770"
+              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=sV6Q1A8ofjrTIxjBwvVARk6qSBM%3D&Expires=1586452398"
             }
           ],
-          "type": "assembled"
+          "type": "assembled",
+          "deliver_quantity": 5,
+          "make_quantity": 5
+        },
+        {
+          "id": 49813,
+          "child_ids": [],
+          "children": [],
+          "description": null,
+          "export_controlled": false,
+          "finishes": [],
+          "innate_quantity": 1,
+          "is_root_component": false,
+          "material": null,
+          "material_operations": [],
+          "parent_ids": [
+            49816
+          ],
+          "part_name": "Fitting.step (AC-M6-2)",
+          "part_number": "AC-M6-2",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=6QIcgfyz8VYDwZXuzl%2F5S1c9pag%3D&Expires=1586452399",
+          "part_uuid": "a0b71d80-a16e-446e-8e7b-6977ff2c5e0c",
+          "process": null,
+          "revision": null,
+          "shop_operations": [],
+          "supporting_files": [],
+          "type": "purchased",
+          "deliver_quantity": 5,
+          "make_quantity": 5
         }
       ],
       "description": null,
@@ -3663,30 +3146,32 @@
       "export_controlled": false,
       "filename": "small-sub-assembly.STEP",
       "lead_days": 13,
-      "markup_1_price": "543.21",
+      "markup_1_price": "459.63",
       "markup_1_name": "Margin",
       "markup_2_price": "0.00",
       "markup_2_name": "N/A",
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "quantity": 5,
-      "quantity_outstanding": 0,
-      "quote_item_id": 30157,
+      "quantity_outstanding": 5,
+      "quote_item_id": 44771,
       "quote_item_type": "automatic",
-      "root_component_id": 34375,
-      "ships_on": "2020-03-04",
-      "total_price": "4559.25",
-      "unit_price": "651.85",
-      "base_price": "3259.25",
+      "root_component_id": 49809,
+      "ships_on": "2020-04-21",
+      "total_price": "4057.80",
+      "unit_price": "551.56",
+      "base_price": "2757.80",
       "add_on_fees": "1300.00",
       "ordered_add_ons": [
         {
+          "id": 70,
           "is_required": true,
           "name": "Non-Recurring Engineering",
           "price": "1000.00",
           "quantity": 5
         },
         {
+          "id": 71,
           "is_required": false,
           "name": "Non-Recurring Engineering",
           "price": "300.00",
@@ -3695,12 +3180,12 @@
       ]
     },
     {
-      "id": 18758,
+      "id": 27488,
       "components": [
         {
-          "id": 34383,
+          "id": 49817,
           "child_ids": [],
-          "deliver_quantity": 1,
+          "children": [],
           "description": null,
           "export_controlled": false,
           "finishes": [
@@ -3708,7 +3193,6 @@
           ],
           "innate_quantity": 1,
           "is_root_component": true,
-          "make_quantity": 1,
           "material": {
             "id": 2,
             "display_name": null,
@@ -3718,19 +3202,19 @@
           },
           "material_operations": [
             {
-              "id": 56626,
+              "id": 62619,
               "category": "material",
               "cost": "6.05",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11.0
+                  "value": 11
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0.0
+                  "value": 0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -3782,14 +3266,14 @@
               "setup_time": null
             },
             {
-              "id": 56627,
+              "id": 62620,
               "category": "material",
               "cost": "1.81",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30.0
+                  "value": 30
                 }
               ],
               "is_finish": false,
@@ -3834,7 +3318,7 @@
           "parent_ids": [],
           "part_name": "Counter_Sinks.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=4HiBqon5DJp8TKMldemk2iP%2FoBQ%3D&Expires=1584281770",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=yOSp43bkjMOn04MskAvT94leo6A%3D&Expires=1586452399",
           "part_uuid": "3b8d60da-aa4f-4b04-983e-8fe755944957",
           "process": {
             "id": 1117,
@@ -3844,7 +3328,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 56628,
+              "id": 62621,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -3856,7 +3340,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -3898,19 +3382,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 56629,
+              "id": 62622,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2.0
+                  "value": 2
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 }
               ],
               "is_finish": false,
@@ -3949,47 +3433,47 @@
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2.0
+              "setup_time": 2
             },
             {
-              "id": 56630,
+              "id": 62623,
               "category": "operation",
               "cost": "85.42",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75.0
+                  "value": 75
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50.0
+                  "value": 50
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80.0
+                  "value": 80
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100.0
+                  "value": 100
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -4004,7 +3488,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "runtime",
@@ -4048,10 +3532,10 @@
               ],
               "position": 5,
               "runtime": 0.08333333333333333,
-              "setup_time": 1.0
+              "setup_time": 1
             },
             {
-              "id": 56631,
+              "id": 62624,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -4068,12 +3552,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25.0
+                  "value": 25
                 }
               ],
               "is_finish": false,
@@ -4115,14 +3599,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 56632,
+              "id": 62625,
               "category": "operation",
               "cost": "0.52",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10.0
+                  "value": 10
                 }
               ],
               "is_finish": false,
@@ -4164,14 +3648,14 @@
               "setup_time": null
             },
             {
-              "id": 56633,
+              "id": 62626,
               "category": "operation",
               "cost": "42.33",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20.0
+                  "value": 20
                 }
               ],
               "is_finish": false,
@@ -4213,28 +3697,28 @@
               "setup_time": null
             },
             {
-              "id": 56634,
+              "id": 62627,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150.0
+                  "value": 150
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1.0
+                  "value": 1
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3.0
+                  "value": 3
                 }
               ],
               "is_finish": true,
-              "is_outside_service": true,
+              "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
@@ -4273,7 +3757,9 @@
             }
           ],
           "supporting_files": [],
-          "type": "manufactured"
+          "type": "manufactured",
+          "deliver_quantity": 1,
+          "make_quantity": 1
         }
       ],
       "description": null,
@@ -4289,10 +3775,10 @@
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "quantity": 1,
       "quantity_outstanding": 1,
-      "quote_item_id": 30158,
+      "quote_item_id": 44772,
       "quote_item_type": "automatic",
-      "root_component_id": 34383,
-      "ships_on": "2020-03-04",
+      "root_component_id": 49817,
+      "ships_on": "2020-04-21",
       "total_price": "501.11",
       "unit_price": "501.11",
       "base_price": "501.11",
@@ -4300,18 +3786,17 @@
       "ordered_add_ons": []
     },
     {
-      "id": 18759,
+      "id": 27489,
       "components": [
         {
-          "id": 34384,
+          "id": 49818,
           "child_ids": [],
-          "deliver_quantity": 1,
+          "children": [],
           "description": "",
           "export_controlled": false,
           "finishes": [],
           "innate_quantity": 1,
           "is_root_component": true,
-          "make_quantity": 1,
           "material": null,
           "material_operations": [],
           "parent_ids": [],
@@ -4323,14 +3808,16 @@
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
-          "type": "manufactured"
+          "type": "manufactured",
+          "deliver_quantity": 1,
+          "make_quantity": 1
         }
       ],
       "description": "",
-      "expedite_revenue": null,
+      "expedite_revenue": "15.00",
       "export_controlled": false,
       "filename": null,
-      "lead_days": 1,
+      "lead_days": 2,
       "markup_1_price": "0.00",
       "markup_1_name": "Margin",
       "markup_2_price": "0.00",
@@ -4339,13 +3826,13 @@
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "quantity": 1,
       "quantity_outstanding": 1,
-      "quote_item_id": 30159,
+      "quote_item_id": 44773,
       "quote_item_type": "manual",
-      "root_component_id": 34384,
-      "ships_on": "2020-02-17",
-      "total_price": "50.00",
-      "unit_price": "50.00",
-      "base_price": "50.00",
+      "root_component_id": 49818,
+      "ships_on": "2020-04-06",
+      "total_price": "65.00",
+      "unit_price": "65.00",
+      "base_price": "65.00",
       "add_on_fees": null,
       "ordered_add_ons": []
     }
@@ -4353,38 +3840,23 @@
   "payment_details": {
     "card_brand": "Visa(4242)",
     "card_last4": "4242",
-    "net_payout": "5006.16",
+    "net_payout": "4523.61",
     "payment_type": "credit_card",
     "purchase_order_number": null,
     "purchasing_dept_contact_email": null,
     "purchasing_dept_contact_name": null,
-    "shipping_cost": "159.28",
-    "subtotal": "5110.36",
+    "shipping_cost": "137.78",
+    "subtotal": "4623.91",
     "tax_cost": "0.00",
     "tax_rate": "0.000",
     "payment_terms": null,
-    "total_price": "5269.64"
+    "total_price": "4761.69"
   },
   "private_notes": null,
-  "quote_number": 96,
-  "shipments": [
-    {
-      "id": 446,
-      "pickup_recipient": null,
-      "shipment_date": "2020-03-05 15:00:15.131000+00:00",
-      "shipment_items": [
-        {
-          "id": 700,
-          "order_item_id": 18757,
-          "quantity": 5
-        }
-      ],
-      "shipping_cost": "0.00",
-      "tracking_number": ""
-    }
-  ],
+  "quote_number": 139,
+  "shipments": [],
   "shipping_info": {
-    "id": 7994,
+    "id": 11004,
     "address1": "1 Fake St",
     "address2": "",
     "business_name": "Outside Firm",
@@ -4403,6 +3875,6 @@
     "shipping_method": "early_am_overnight",
     "type": "suppliers_shipping_account"
   },
-  "ships_on": "2020-03-04",
-  "status": "pending"
+  "ships_on": "2020-04-21",
+  "status": "confirmed"
 }

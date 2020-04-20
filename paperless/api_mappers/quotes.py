@@ -1,4 +1,6 @@
 from paperless.api_mappers import BaseMapper
+from paperless.api_mappers.components import MaterialMapper, OperationsMapper, \
+    ProcessMapper
 
 
 class QuoteMetricsMapper(BaseMapper):
@@ -190,7 +192,8 @@ class QuoteItemMapper(BaseMapper):
         bool_keys = ['export_controlled']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
-        mapped_result['root_component'] = QuoteRootComponentMapper.map(resource['root_component']) if resource['root_component'] else None
+        mapped_result['components'] = map(QuoteComponentMapper.map,
+                                          resource['components'])
         return mapped_result
 
 
@@ -231,6 +234,30 @@ class QuoteDetailsMapper(BaseMapper):
         mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer']) if resource['customer'] else None
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
-        mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote']) if resource['parent_quote'] else None
-        mapped_result['parent_supplier_order'] = ParentSupplierOrderMapper.map(resource['parent_supplier_order']) if resource['parent_supplier_order'] else None
+        if resource['parent_quote'] is not None:
+            mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote'])
+        if resource['parent_supplier_order'] is not None:
+            mapped_result['parent_supplier_order'] = \
+                ParentSupplierOrderMapper.map(resource['parent_supplier_order'])
+        return mapped_result
+
+
+class QuoteComponentMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        mapped_result['material'] = MaterialMapper.map(resource['material']) if resource['material'] else None
+        mapped_result['material_operations'] = map(OperationsMapper.map, resource['material_operations'])
+        mapped_result['process'] = ProcessMapper.map(resource['process']) if resource['process'] else None
+        mapped_result['shop_operations'] = map(OperationsMapper.map, resource['shop_operations'])
+        field_keys = ['id', 'innate_quantity', 'description', 'part_name',
+                      'part_number', 'part_uuid', 'revision', 'type']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files', 'add_ons', 'quantities', 'children']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
+        bool_keys = ['export_controlled', 'is_root_component']
+        for key in bool_keys:
+            mapped_result[key] = resource.get(key, False)
         return mapped_result

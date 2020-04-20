@@ -2,7 +2,8 @@ import unittest
 import os
 import time
 from paperless.local import LocalStorage, DEFAULT_IMPLEMENTATION
-from paperless.objects.orders import Order, Operation
+from paperless.objects.components import Operation
+from paperless.objects.orders import Order
 
 
 class TestLocalStorage(unittest.TestCase):
