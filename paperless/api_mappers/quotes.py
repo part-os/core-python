@@ -228,9 +228,9 @@ class QuoteDetailsMapper(BaseMapper):
         bool_keys = ['export_controlled', 'is_unviewed_drafted_rfq']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
-        mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer'])
+        mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer']) if resource['customer'] else None
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
-        mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote'])
-        mapped_result['parent_supplier_order'] = ParentSupplierOrderMapper.map(resource['parent_supplier_order'])
+        mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote']) if resource['parent_quote'] else None
+        mapped_result['parent_supplier_order'] = ParentSupplierOrderMapper.map(resource['parent_supplier_order']) if resource['parent_supplier_order'] else None
         return mapped_result
