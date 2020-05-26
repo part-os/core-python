@@ -1,18 +1,18 @@
 import csv
+import json
 
 from paperless.client import PaperlessClient
-from paperless.mixins import ToJSONMixin
 
 
-class BaseCustomTable(ToJSONMixin):
+class CustomTable:
     config = None
     data = None
 
-    def __init__(self, config_data=None, table_data=None):
-        if config_data is not None:
-            self.config = self.validate_config_data(config_data)
-        if table_data is not None:
-            self.data = self.validate_table_data(table_data)
+    def __init__(self, config=None, data=None):
+        if config is not None:
+            self.config = self.validate_config_data(config)
+        if data is not None:
+            self.data = self.validate_table_data(data)
 
     def validate_config_data(self, config):
         if not isinstance(config, list):
@@ -60,6 +60,9 @@ class BaseCustomTable(ToJSONMixin):
 
             self.data = self.validate_table_data(table_data)
 
+    def to_json(self, data):
+        return json.dumps(data)
+
     @classmethod
     def construct_patch_url(cls):
         return 'suppliers/public/custom_tables'
@@ -69,45 +72,67 @@ class BaseCustomTable(ToJSONMixin):
         Persists local changes of an existing Paperless Parts resource to Paperless.
         """
         client = PaperlessClient.get_instance()
-        data = self.to_json()
-        resp = client.update_resource(self.construct_patch_url(), table_primary_key, data=data)
-        resp_dict = self.from_json_to_dict(resp)
-        for key, val in resp_dict.items():
-            setattr(self, key, val)
+        data = self.to_json({'config': self.config, 'data': self.data})
+        resp_json = client.update_resource(self.construct_patch_url(), table_primary_key, data=data)
+        return resp_json
 
     @classmethod
-    def construct_get_url(cls):
-        return 'suppliers/public/custom_tables'
+    def construct_post_url(cls):
+        client = PaperlessClient.get_instance()
+        return 'suppliers/public/{}/custom_tables'.format(client.group_slug)
 
-    # TODO - define a from_json method
-    # @classmethod
-    # def get(cls, table_primary_key):
-    #     """
-    #     Retrieves the resource specified by the id.
-    #
-    #
-    #     :raise PaperlessNotFoundException: Raised when the requested id 404s aka is not found.
-    #     :param id: int
-    #     :return: resource
-    #     """
-    #     client = PaperlessClient.get_instance()
-    #     return cls.from_json(client.get_resource(
-    #         cls.construct_get_url(),
-    #         table_primary_key,
-    #         params=cls.construct_get_params())
-    #     )
+    def create(self, table_name):
+        """
+        Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
+        """
+        client = PaperlessClient.get_instance()
+        data = self.to_json({'name': table_name})
+        resp_json = client.create_resource(self.construct_post_url(), data=data)
+        return resp_json
+
+    @classmethod
+    def construct_download_csv_url(cls):
+        return 'suppliers/public/custom_tables/csv_download'
+
+    @classmethod
+    def download_csv(cls, table_primary_key, config=False, file_path=None):
+        """
+        Download a CSV of the table data. If config == True, download the config data for the table instead.
+        """
+        params = {'config': True} if config else None
+        if file_path is None:
+            file_path = f'table_{table_primary_key}_{"config" if config else "data"}.csv'
+        client = PaperlessClient.get_instance()
+        client.download_file(
+            cls.construct_download_csv_url(),
+            table_primary_key,
+            file_path,
+            params=params
+        )
 
     @classmethod
     def construct_list_url(cls):
         client = PaperlessClient.get_instance()
         return 'suppliers/public/{}/custom_tables'.format(client.group_slug)
 
-    # TODO - define a function for getting the list of tables
-    # @classmethod
-    # def get_new(cls, id=None):
-    #     client = PaperlessClient.get_instance()
-    #
-    #     return client.get_new_resources(
-    #         cls.construct_get_new_resources_url(),
-    #         params=cls.construct_get_new_params(id) if id else None
-    #     )
+    @classmethod
+    def get_list(cls):
+        client = PaperlessClient.get_instance()
+
+        return client.get_new_resources(
+            cls.construct_list_url(),
+            params=None
+        )
+
+    @classmethod
+    def construct_delete_url(cls):
+        return 'suppliers/public/custom_tables'
+
+    @classmethod
+    def delete(cls, table_primary_key):
+        client = PaperlessClient.get_instance()
+
+        return client.delete_resource(
+            cls.construct_delete_url(),
+            table_primary_key
+        )
