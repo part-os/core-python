@@ -175,3 +175,53 @@ class PaperlessClient(object):
                 message="Failed to update resource",
                 error_code=resp.status_code
             )
+
+    def delete_resource(self, resource_url, id):
+        """
+        """
+        headers = self.get_authenticated_headers()
+
+        req_url = '{}/{}/{}'.format(self.base_url, resource_url, id)
+
+        resp = requests.delete(
+            req_url,
+            headers=headers
+        )
+        if resp.status_code == 204:
+            return
+        else:
+            raise PaperlessException(
+                message="Failed to delete resource",
+                error_code=resp.status_code
+            )
+
+    def download_file(self, resource_url, id, file_path, params=None):
+        """
+            download the file resource specified by resource_url and id
+        """
+        headers = self.get_authenticated_headers()
+
+        req_url = "{}/{}/{}".format(self.base_url, resource_url, id)
+        resp = requests.get(
+            req_url,
+            headers=headers,
+            params=params
+        )
+
+        if resp.status_code == 200:
+            with open(file_path, 'wb') as f:
+                for chunk in resp.iter_content(1024):
+                    f.write(chunk)
+        elif resp.status_code == 404:
+            raise PaperlessNotFoundException(
+                message="Unable to locate object with id {} from url: {}".format(id, req_url)
+            )
+        elif resp.status_code == 401 and resp.json()['code'] == 'authentication_failed':
+            raise PaperlessAuthorizationException(
+                message="Not authorized to access url: {}".format(req_url)
+            )
+        else:
+            raise PaperlessException(
+                message="Failed to get resource with id {} from url: {}".format(id, req_url),
+                error_code=resp.status_code
+            )
