@@ -119,7 +119,7 @@ class PaperlessClient(object):
             return resp.json()
         elif resp.status_code == 404:
             raise PaperlessNotFoundException(
-                message="Unable to get new resources from url: {}".format(req_url)
+                message="Unable to get new resources from invalid url: {}".format(req_url)
             )
         elif resp.status_code == 401 and resp.json()['code'] == 'authentication_failed':
             raise PaperlessAuthorizationException(
@@ -146,6 +146,10 @@ class PaperlessClient(object):
 
         if resp.status_code == 201:
             return resp.json()
+        elif resp.status_code == 404:
+            raise PaperlessNotFoundException(
+                message="Unable to get create resource with invalid url: {}".format(req_url)
+            )
         else:
             raise PaperlessException(
                 message="Failed to create resource",
@@ -170,6 +174,10 @@ class PaperlessClient(object):
 
         if resp.status_code == 200:
             return resp.json()
+        elif resp.status_code == 404:
+            raise PaperlessNotFoundException(
+                message="Unable to locate object with id {} from url: {}".format(id, req_url)
+            )
         else:
             raise PaperlessException(
                 message="Failed to update resource",
@@ -189,6 +197,10 @@ class PaperlessClient(object):
         )
         if resp.status_code == 204:
             return
+        elif resp.status_code == 404:
+            raise PaperlessNotFoundException(
+                message="Unable to locate object with id {} from url: {}".format(id, req_url)
+            )
         else:
             raise PaperlessException(
                 message="Failed to delete resource",
