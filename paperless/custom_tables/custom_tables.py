@@ -67,13 +67,13 @@ class CustomTable:
     def construct_patch_url(cls):
         return 'suppliers/public/custom_tables'
 
-    def update(self, table_primary_key):
+    def update(self, table_name):
         """
         Persists local changes of an existing Paperless Parts resource to Paperless.
         """
         client = PaperlessClient.get_instance()
         data = self.to_json({'config': self.config, 'data': self.data})
-        resp_json = client.update_resource(self.construct_patch_url(), table_primary_key, data=data)
+        resp_json = client.update_resource(self.construct_patch_url(), table_name, data=data)
         return resp_json
 
     @classmethod
@@ -95,17 +95,17 @@ class CustomTable:
         return 'suppliers/public/custom_tables/csv_download'
 
     @classmethod
-    def download_csv(cls, table_primary_key, config=False, file_path=None):
+    def download_csv(cls, table_name, config=False, file_path=None):
         """
         Download a CSV of the table data. If config == True, download the config data for the table instead.
         """
         params = {'config': True} if config else None
         if file_path is None:
-            file_path = f'table_{table_primary_key}_{"config" if config else "data"}.csv'
+            file_path = f'table_{table_name}_{"config" if config else "data"}.csv'
         client = PaperlessClient.get_instance()
         client.download_file(
             cls.construct_download_csv_url(),
-            table_primary_key,
+            table_name,
             file_path,
             params=params
         )
@@ -129,10 +129,10 @@ class CustomTable:
         return 'suppliers/public/custom_tables'
 
     @classmethod
-    def delete(cls, table_primary_key):
+    def delete(cls, table_name):
         client = PaperlessClient.get_instance()
 
         return client.delete_resource(
             cls.construct_delete_url(),
-            table_primary_key
+            table_name
         )
