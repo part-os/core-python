@@ -28,6 +28,9 @@ class Operation:
         label: str = attr.ib(validator=attr.validators.instance_of(str))
         type: str = attr.ib(validator=attr.validators.instance_of(str))
         value = attr.ib()
+        # Note: The row field will only be not None if type == 'table', in which case it will be a dict with
+        # arbitrary keys and values
+        row = attr.ib()
 
     @attr.s(frozen=True)
     class OperationQuantity:

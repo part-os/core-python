@@ -53,6 +53,11 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(operation.name, 'Chromate')
         operation_quantity = operation.quantities[0]
         self.assertEqual(operation_quantity.price.dollars, 150)
+        # test table costing variables
+        costing_variable = operation.costing_variables[3]
+        self.assertEqual(costing_variable.type, 'table')
+        self.assertEqual(costing_variable.value, 5)
+        self.assertEqual(costing_variable.row, {"material_name":  "Aluminium 6061", "inventory": 5})
         # test process
         process = root_component.process
         self.assertEqual(process.name, 'CNC Machining')

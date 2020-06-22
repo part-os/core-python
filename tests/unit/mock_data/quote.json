@@ -3584,6 +3584,12 @@
                   "label": "Added Lead Time",
                   "type": "number",
                   "value": 3
+                },
+                {
+                  "label": "Inventory Lookup",
+                  "type": "table",
+                  "value": 5,
+                  "row": {"material_name":  "Aluminium 6061", "inventory": 5}
                 }
               ],
               "is_finish": true,
