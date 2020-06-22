@@ -1,10 +1,15 @@
 {
-  "id": 37066,
-  "number": 139,
+  "id": 55116,
+  "number": 194,
   "sales_person": {
     "first_name": "Scott",
     "last_name": "Sawyer",
     "email": "scott@paperlessparts.com"
+  },
+  "estimator": {
+    "first_name": "Rob",
+    "last_name": "Carrington",
+    "email": "rob.carrington@paperlessparts.com"
   },
   "customer": {
     "id": 3545,
@@ -16,14 +21,16 @@
       "id": 1986,
       "notes": null,
       "metrics": {
-        "order_revenue_all_time": 38511.91,
-        "order_revenue_last_thirty_days": 14535.37,
-        "quotes_sent_all_time": 9,
+        "order_revenue_all_time": 38246.19,
+        "order_revenue_last_thirty_days": 9507.96,
+        "quotes_sent_all_time": 10,
         "quotes_sent_last_thirty_days": 1
       },
       "business_name": "Outside Firm",
       "erp_code": "OUTFIRM"
-    }
+    },
+    "phone": "",
+    "phone_ext": ""
   },
   "tax_rate": "0.000",
   "tax_cost": "0.00",
@@ -31,15 +38,15 @@
   "quote_items": [
     {
       "root_component": {
-        "id": 49809,
+        "id": 69652,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=sduMdnoKVBbGXsyw4XlOJu0YH3w%3D&Expires=1586452398",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=Irmc33fAJE5Me%2FGAf78lmxq%2F5%2BU%3D&Expires=1586452398",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=XqsYyP8vmFgezmiyAR%2FmnhNAVLQ%3D&Expires=1593270679",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=tQm0HzmcupIIhg%2BQ3j7RBtpEzP8%3D&Expires=1593276903",
           "supporting_files": [
             {
               "filename": "top Drawing 1.pdf",
-              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=sV6Q1A8ofjrTIxjBwvVARk6qSBM%3D&Expires=1586452398",
+              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=5kZYsNEd2z93yrKblUoRQigCE5M%3D&Expires=1593270829",
               "uuid": "b56903fe-bde6-4a45-a835-3deac13c8d8b"
             }
           ]
@@ -50,7 +57,7 @@
         "type": "assembled",
         "quantities": [
           {
-            "id": 67328,
+            "id": 89554,
             "quantity": 1,
             "markup_1_price": "436.12",
             "markup_1_name": "Margin",
@@ -63,7 +70,7 @@
             "expedites": []
           },
           {
-            "id": 67329,
+            "id": 89555,
             "quantity": 5,
             "markup_1_price": "459.63",
             "markup_1_name": "Margin",
@@ -76,7 +83,7 @@
             "expedites": []
           },
           {
-            "id": 67330,
+            "id": 89556,
             "quantity": 10,
             "markup_1_price": "491.50",
             "markup_1_name": "Margin",
@@ -89,7 +96,7 @@
             "expedites": []
           },
           {
-            "id": 67331,
+            "id": 89557,
             "quantity": 25,
             "markup_1_price": "587.10",
             "markup_1_name": "Margin",
@@ -115,44 +122,49 @@
         "material_operations": [],
         "shop_operations": [
           {
-            "id": 62564,
+            "id": 72010,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Lot Charge",
                 "type": "currency",
-                "value": 150
+                "value": 150.0
               },
               {
                 "label": "Piece Price",
                 "type": "currency",
-                "value": 1
+                "value": 1.0
               },
               {
                 "label": "Added Lead Time",
                 "type": "number",
-                "value": 3
+                "value": 3.0
+              },
+              {
+                "label": "Material Selection",
+                "type": "table",
+                "value": "304-#4",
+                "row": {
+                  "length": 48.0,
+                  "diameter": 4.0,
+                  "material": "304-#4",
+                  "row_number": 3,
+                  "requires_prep": true
+                }
               }
             ],
-            "is_finish": true,
+            "is_finish": false,
             "is_outside_service": false,
             "name": "Chromate",
             "notes": null,
             "quantities": [
               {
                 "price": "150.00",
-                "manual_price": "160.00",
-                "lead_time": 3,
-                "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "150.00",
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "150.00",
@@ -166,7 +178,14 @@
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "150.00",
+                "manual_price": "160.00",
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 1,
@@ -224,41 +243,41 @@
         ],
         "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
-      "id": 44771,
+      "id": 63527,
       "component_ids": [
-        49813,
-        49816,
-        49815,
-        49814,
-        49812,
-        49811,
-        49810,
-        49809
+        69659,
+        69658,
+        69657,
+        69656,
+        69655,
+        69654,
+        69653,
+        69652
       ],
       "components": [
         {
-          "id": 49816,
+          "id": 69659,
           "child_ids": [
-            49813,
-            49812,
-            49811,
-            49810
+            69656,
+            69655,
+            69654,
+            69653
           ],
           "children": [
             {
-              "child_id": 49813,
+              "child_id": 69656,
               "quantity": 1
             },
             {
-              "child_id": 49812,
+              "child_id": 69655,
               "quantity": 1
             },
             {
-              "child_id": 49811,
+              "child_id": 69654,
               "quantity": 1
             },
             {
-              "child_id": 49810,
+              "child_id": 69653,
               "quantity": 1
             }
           ],
@@ -276,11 +295,11 @@
           },
           "material_operations": [],
           "parent_ids": [
-            49809
+            69652
           ],
           "part_name": "Subassembly <1>.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=z9WU1%2Fm1EOs9QF4zfcnQPYDGSuo%3D&Expires=1586452398",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=fFO0qXF%2Faiur4%2FwopW%2B4dzrOILg%3D&Expires=1593276921",
           "part_uuid": "8deb6257-56f8-4aaf-bebc-1707361bf2af",
           "process": {
             "id": 1117,
@@ -294,7 +313,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67356,
+              "id": 89582,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -307,7 +326,7 @@
               "expedites": []
             },
             {
-              "id": 67357,
+              "id": 89583,
               "quantity": 5,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -320,7 +339,7 @@
               "expedites": []
             },
             {
-              "id": 67358,
+              "id": 89584,
               "quantity": 10,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -333,7 +352,7 @@
               "expedites": []
             },
             {
-              "id": 67359,
+              "id": 89585,
               "quantity": 25,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -348,7 +367,7 @@
           ]
         },
         {
-          "id": 49815,
+          "id": 69658,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -367,19 +386,19 @@
           },
           "material_operations": [
             {
-              "id": 62610,
+              "id": 71992,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11
+                  "value": 11.0
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -398,18 +417,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "3.30",
+                  "price": "82.50",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "16.50",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "33.00",
@@ -419,11 +431,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "82.50",
+                  "price": "16.50",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "3.30",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -431,14 +450,14 @@
               "setup_time": null
             },
             {
-              "id": 62611,
+              "id": 71993,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30
+                  "value": 30.0
                 }
               ],
               "is_finish": false,
@@ -447,18 +466,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.99",
+                  "price": "24.75",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "4.95",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "9.90",
@@ -468,11 +480,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "24.75",
+                  "price": "4.95",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.99",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 2,
@@ -481,11 +500,11 @@
             }
           ],
           "parent_ids": [
-            49809
+            69652
           ],
           "part_name": "Bottom Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=aPO1iUqtEsuAC7LhVOUyRRyWi8Y%3D&Expires=1586452398",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=3NRdi%2BjwiuPXkmvYqDG9EphGmQk%3D&Expires=1593276921",
           "part_uuid": "f56acc3c-e75e-4735-a712-bf111182b437",
           "process": {
             "id": 1117,
@@ -495,7 +514,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 62612,
+              "id": 71994,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -507,7 +526,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -520,14 +539,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "25.00",
@@ -541,7 +553,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 3,
@@ -549,19 +568,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 62613,
+              "id": 71995,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2
+                  "value": 2.0
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -574,14 +593,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "100.00",
@@ -595,52 +607,59 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2
+              "setup_time": 2.0
             },
             {
-              "id": 62614,
+              "id": 71996,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75
+                  "value": 75.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80
+                  "value": 80.0
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100
+                  "value": 100.0
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -655,7 +674,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "runtime",
@@ -669,18 +688,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "81.18",
+                  "price": "229.53",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "105.91",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "136.81",
@@ -690,19 +702,26 @@
                   "quantity": 10
                 },
                 {
-                  "price": "229.53",
+                  "price": "105.91",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "81.18",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 5,
               "runtime": 0.04944812607486251,
-              "setup_time": 1
+              "setup_time": 1.0
             },
             {
-              "id": 62615,
+              "id": 71997,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -719,12 +738,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 }
               ],
               "is_finish": false,
@@ -737,14 +756,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "6.46",
@@ -758,7 +770,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 6,
@@ -766,14 +785,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 62616,
+              "id": 71998,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10
+                  "value": 10.0
                 }
               ],
               "is_finish": false,
@@ -782,18 +801,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.31",
+                  "price": "7.73",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "1.55",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "3.09",
@@ -803,11 +815,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "7.73",
+                  "price": "1.55",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.31",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 7,
@@ -815,14 +834,14 @@
               "setup_time": null
             },
             {
-              "id": 62617,
+              "id": 71999,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20
+                  "value": 20.0
                 }
               ],
               "is_finish": false,
@@ -831,18 +850,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "41.91",
+                  "price": "56.74",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "44.38",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "47.47",
@@ -852,11 +864,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "56.74",
+                  "price": "44.38",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "41.91",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 8,
@@ -864,24 +883,30 @@
               "setup_time": null
             },
             {
-              "id": 62618,
+              "id": 72000,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150
+                  "value": 150.0
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3
+                  "value": 3.0
+                },
+                {
+                  "label": "Material Selection",
+                  "type": "table",
+                  "value": null,
+                  "row": {}
                 }
               ],
               "is_finish": true,
@@ -894,14 +919,7 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "150.00",
@@ -915,7 +933,14 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 9,
@@ -928,7 +953,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67352,
+              "id": 89578,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -941,7 +966,7 @@
               "expedites": []
             },
             {
-              "id": 67353,
+              "id": 89579,
               "quantity": 5,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -954,7 +979,7 @@
               "expedites": []
             },
             {
-              "id": 67354,
+              "id": 89580,
               "quantity": 10,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -967,7 +992,7 @@
               "expedites": []
             },
             {
-              "id": 67355,
+              "id": 89581,
               "quantity": 25,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -982,7 +1007,7 @@
           ]
         },
         {
-          "id": 49814,
+          "id": 69657,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -1001,19 +1026,19 @@
           },
           "material_operations": [
             {
-              "id": 62601,
+              "id": 71983,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11
+                  "value": 11.0
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -1032,18 +1057,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.11",
+                  "price": "2.75",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.55",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "1.10",
@@ -1053,11 +1071,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "2.75",
+                  "price": "0.55",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.11",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -1065,14 +1090,14 @@
               "setup_time": null
             },
             {
-              "id": 62602,
+              "id": 71984,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30
+                  "value": 30.0
                 }
               ],
               "is_finish": false,
@@ -1081,18 +1106,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.03",
+                  "price": "0.82",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.17",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.33",
@@ -1102,11 +1120,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "0.82",
+                  "price": "0.17",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.03",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 2,
@@ -1115,11 +1140,11 @@
             }
           ],
           "parent_ids": [
-            49809
+            69652
           ],
           "part_name": "Seal.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=gFSEQ8XbsUIuMnuAi%2FwZELBtJco%3D&Expires=1586452398",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ulRZbDQEBDhhSj1zDmmV0j1eqk0%3D&Expires=1593276921",
           "part_uuid": "a9be1070-67d8-4a95-8c7d-54a5f6e58d4d",
           "process": {
             "id": 1117,
@@ -1129,7 +1154,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 62603,
+              "id": 71985,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -1141,7 +1166,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -1154,14 +1179,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "25.00",
@@ -1175,7 +1193,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 3,
@@ -1183,19 +1208,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 62604,
+              "id": 71986,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2
+                  "value": 2.0
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -1208,14 +1233,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "100.00",
@@ -1229,52 +1247,59 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2
+              "setup_time": 2.0
             },
             {
-              "id": 62605,
+              "id": 71987,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75
+                  "value": 75.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80
+                  "value": 80.0
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100
+                  "value": 100.0
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -1289,7 +1314,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "runtime",
@@ -1303,18 +1328,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "75.82",
+                  "price": "95.38",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "79.08",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "83.15",
@@ -1324,19 +1342,26 @@
                   "quantity": 10
                 },
                 {
-                  "price": "95.38",
+                  "price": "79.08",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "75.82",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 5,
               "runtime": 0.006522301643529261,
-              "setup_time": 1
+              "setup_time": 1.0
             },
             {
-              "id": 62606,
+              "id": 71988,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -1353,12 +1378,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 }
               ],
               "is_finish": false,
@@ -1371,14 +1396,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "6.46",
@@ -1392,7 +1410,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 6,
@@ -1400,14 +1425,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 62607,
+              "id": 71989,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10
+                  "value": 10.0
                 }
               ],
               "is_finish": false,
@@ -1416,18 +1441,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.04",
+                  "price": "1.02",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.20",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.41",
@@ -1437,11 +1455,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "1.02",
+                  "price": "0.20",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.04",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 7,
@@ -1449,14 +1474,14 @@
               "setup_time": null
             },
             {
-              "id": 62608,
+              "id": 71990,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20
+                  "value": 20.0
                 }
               ],
               "is_finish": false,
@@ -1465,18 +1490,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "41.37",
+                  "price": "43.33",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "41.70",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "42.11",
@@ -1486,11 +1504,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "43.33",
+                  "price": "41.70",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "41.37",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 8,
@@ -1498,24 +1523,30 @@
               "setup_time": null
             },
             {
-              "id": 62609,
+              "id": 71991,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150
+                  "value": 150.0
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3
+                  "value": 3.0
+                },
+                {
+                  "label": "Material Selection",
+                  "type": "table",
+                  "value": null,
+                  "row": {}
                 }
               ],
               "is_finish": true,
@@ -1528,14 +1559,7 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "150.00",
@@ -1549,7 +1573,14 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 9,
@@ -1562,7 +1593,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67348,
+              "id": 89574,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -1575,7 +1606,7 @@
               "expedites": []
             },
             {
-              "id": 67349,
+              "id": 89575,
               "quantity": 5,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -1588,7 +1619,7 @@
               "expedites": []
             },
             {
-              "id": 67350,
+              "id": 89576,
               "quantity": 10,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -1601,7 +1632,7 @@
               "expedites": []
             },
             {
-              "id": 67351,
+              "id": 89577,
               "quantity": 25,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -1616,7 +1647,7 @@
           ]
         },
         {
-          "id": 49812,
+          "id": 69655,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -1635,29 +1666,29 @@
           },
           "material_operations": [
             {
-              "id": 62583,
+              "id": 71974,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11
+                  "value": 11.0
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Pounds Per Part",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Material Unit Cost",
                   "type": "currency",
-                  "value": 0
+                  "value": 0.0
                 }
               ],
               "is_finish": false,
@@ -1670,14 +1701,7 @@
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.00",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.00",
@@ -1691,7 +1715,14 @@
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -1699,14 +1730,14 @@
               "setup_time": null
             },
             {
-              "id": 62584,
+              "id": 71975,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30
+                  "value": 30.0
                 }
               ],
               "is_finish": false,
@@ -1719,14 +1750,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.00",
@@ -1740,7 +1764,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 2,
@@ -1749,11 +1780,11 @@
             }
           ],
           "parent_ids": [
-            49816
+            69659
           ],
           "part_name": "O-Ring.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=OFwyKn5RDWDPFhks7z2tCrtfSes%3D&Expires=1586452399",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=pOgpNILcqZfTlstHEiTJt375%2BgQ%3D&Expires=1593276921",
           "part_uuid": "860b8958-9733-4bea-a6d2-3473d308a93d",
           "process": {
             "id": 1117,
@@ -1763,7 +1794,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 62585,
+              "id": 71976,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -1775,7 +1806,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -1788,14 +1819,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "25.00",
@@ -1809,7 +1833,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 3,
@@ -1817,19 +1848,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 62586,
+              "id": 71977,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2
+                  "value": 2.0
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -1842,14 +1873,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "100.00",
@@ -1863,52 +1887,59 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2
+              "setup_time": 2.0
             },
             {
-              "id": 62587,
+              "id": 71978,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75
+                  "value": 75.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80
+                  "value": 80.0
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100
+                  "value": 100.0
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -1923,7 +1954,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "runtime",
@@ -1937,18 +1968,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.40",
+                  "price": "9.88",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "1.98",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "3.95",
@@ -1958,19 +1982,26 @@
                   "quantity": 10
                 },
                 {
-                  "price": "9.88",
+                  "price": "1.98",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.40",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 5,
               "runtime": 0.003162686584716232,
-              "setup_time": 0
+              "setup_time": 0.0
             },
             {
-              "id": 62588,
+              "id": 71979,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -1987,12 +2018,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 }
               ],
               "is_finish": false,
@@ -2005,14 +2036,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "6.46",
@@ -2026,7 +2050,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 6,
@@ -2034,14 +2065,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 62589,
+              "id": 71980,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10
+                  "value": 10.0
                 }
               ],
               "is_finish": false,
@@ -2050,18 +2081,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.02",
+                  "price": "0.49",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.10",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.20",
@@ -2071,11 +2095,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "0.49",
+                  "price": "0.10",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.02",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 7,
@@ -2083,14 +2114,14 @@
               "setup_time": null
             },
             {
-              "id": 62590,
+              "id": 71981,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20
+                  "value": 20.0
                 }
               ],
               "is_finish": false,
@@ -2099,18 +2130,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "26.33",
+                  "price": "27.28",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "26.49",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "26.69",
@@ -2120,11 +2144,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "27.28",
+                  "price": "26.49",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "26.33",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 8,
@@ -2132,24 +2163,30 @@
               "setup_time": null
             },
             {
-              "id": 62591,
+              "id": 71982,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150
+                  "value": 150.0
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3
+                  "value": 3.0
+                },
+                {
+                  "label": "Material Selection",
+                  "type": "table",
+                  "value": null,
+                  "row": {}
                 }
               ],
               "is_finish": true,
@@ -2162,14 +2199,7 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "150.00",
@@ -2183,7 +2213,14 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 9,
@@ -2196,7 +2233,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67340,
+              "id": 89566,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2209,7 +2246,7 @@
               "expedites": []
             },
             {
-              "id": 67341,
+              "id": 89567,
               "quantity": 5,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2222,7 +2259,7 @@
               "expedites": []
             },
             {
-              "id": 67342,
+              "id": 89568,
               "quantity": 10,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2235,7 +2272,7 @@
               "expedites": []
             },
             {
-              "id": 67343,
+              "id": 89569,
               "quantity": 25,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2250,7 +2287,7 @@
           ]
         },
         {
-          "id": 49811,
+          "id": 69654,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -2269,29 +2306,29 @@
           },
           "material_operations": [
             {
-              "id": 62574,
+              "id": 71965,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11
+                  "value": 11.0
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Pounds Per Part",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Material Unit Cost",
                   "type": "currency",
-                  "value": 0
+                  "value": 0.0
                 }
               ],
               "is_finish": false,
@@ -2304,14 +2341,7 @@
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.00",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.00",
@@ -2325,7 +2355,14 @@
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -2333,14 +2370,14 @@
               "setup_time": null
             },
             {
-              "id": 62575,
+              "id": 71966,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30
+                  "value": 30.0
                 }
               ],
               "is_finish": false,
@@ -2353,14 +2390,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.00",
@@ -2374,7 +2404,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 2,
@@ -2383,11 +2420,11 @@
             }
           ],
           "parent_ids": [
-            49816
+            69659
           ],
           "part_name": "Plug.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ts47VykMGY5XkBvlMU0hypHWokQ%3D&Expires=1586452399",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=oLLK5ZnrK2yTfS14sPemPbn4INI%3D&Expires=1593276922",
           "part_uuid": "a300d612-2209-41b2-b914-a33c960743db",
           "process": {
             "id": 1117,
@@ -2397,7 +2434,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 62576,
+              "id": 71967,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -2409,7 +2446,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -2422,14 +2459,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "25.00",
@@ -2443,7 +2473,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 3,
@@ -2451,19 +2488,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 62577,
+              "id": 71968,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2
+                  "value": 2.0
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -2476,14 +2513,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "100.00",
@@ -2497,52 +2527,59 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2
+              "setup_time": 2.0
             },
             {
-              "id": 62578,
+              "id": 71969,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75
+                  "value": 75.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80
+                  "value": 80.0
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100
+                  "value": 100.0
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -2557,7 +2594,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "runtime",
@@ -2571,18 +2608,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "75.31",
+                  "price": "82.83",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "76.57",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "78.13",
@@ -2592,19 +2622,26 @@
                   "quantity": 10
                 },
                 {
-                  "price": "82.83",
+                  "price": "76.57",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "75.31",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 5,
               "runtime": 0.0025044932003325773,
-              "setup_time": 1
+              "setup_time": 1.0
             },
             {
-              "id": 62579,
+              "id": 71970,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -2621,12 +2658,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 }
               ],
               "is_finish": false,
@@ -2639,14 +2676,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "6.46",
@@ -2660,7 +2690,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 6,
@@ -2668,14 +2705,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 62580,
+              "id": 71971,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10
+                  "value": 10.0
                 }
               ],
               "is_finish": false,
@@ -2684,18 +2721,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.02",
+                  "price": "0.39",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "0.08",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "0.16",
@@ -2705,11 +2735,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "0.39",
+                  "price": "0.08",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.02",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 7,
@@ -2717,14 +2754,14 @@
               "setup_time": null
             },
             {
-              "id": 62581,
+              "id": 71972,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20
+                  "value": 20.0
                 }
               ],
               "is_finish": false,
@@ -2733,18 +2770,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "41.32",
+                  "price": "42.07",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "41.45",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "41.60",
@@ -2754,11 +2784,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "42.07",
+                  "price": "41.45",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "41.32",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 8,
@@ -2766,24 +2803,30 @@
               "setup_time": null
             },
             {
-              "id": 62582,
+              "id": 71973,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150
+                  "value": 150.0
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3
+                  "value": 3.0
+                },
+                {
+                  "label": "Material Selection",
+                  "type": "table",
+                  "value": null,
+                  "row": {}
                 }
               ],
               "is_finish": true,
@@ -2796,14 +2839,7 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "150.00",
@@ -2817,7 +2853,14 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 9,
@@ -2830,7 +2873,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67336,
+              "id": 89562,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2843,7 +2886,7 @@
               "expedites": []
             },
             {
-              "id": 67337,
+              "id": 89563,
               "quantity": 5,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2856,7 +2899,7 @@
               "expedites": []
             },
             {
-              "id": 67338,
+              "id": 89564,
               "quantity": 10,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2869,7 +2912,7 @@
               "expedites": []
             },
             {
-              "id": 67339,
+              "id": 89565,
               "quantity": 25,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -2884,7 +2927,7 @@
           ]
         },
         {
-          "id": 49810,
+          "id": 69653,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -2903,19 +2946,19 @@
           },
           "material_operations": [
             {
-              "id": 62565,
+              "id": 71956,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11
+                  "value": 11.0
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -2934,18 +2977,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "6.60",
+                  "price": "165.00",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "33.00",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "66.00",
@@ -2955,11 +2991,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "165.00",
+                  "price": "33.00",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.60",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -2967,14 +3010,14 @@
               "setup_time": null
             },
             {
-              "id": 62566,
+              "id": 71957,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30
+                  "value": 30.0
                 }
               ],
               "is_finish": false,
@@ -2983,18 +3026,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "1.98",
+                  "price": "49.50",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "9.90",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "19.80",
@@ -3004,11 +3040,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "49.50",
+                  "price": "9.90",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "1.98",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 2,
@@ -3017,11 +3060,11 @@
             }
           ],
           "parent_ids": [
-            49816
+            69659
           ],
           "part_name": "Top Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ULhMsa5TNdAlorGfrAUC6LV5B%2Fo%3D&Expires=1586452399",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=LVo0Ezba83X8kQrnilq1ABQD4pc%3D&Expires=1593276922",
           "part_uuid": "cbe4fd08-c10a-4804-ae97-c647ce862040",
           "process": {
             "id": 1117,
@@ -3031,7 +3074,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 62567,
+              "id": 71958,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -3043,7 +3086,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -3056,14 +3099,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "25.00",
@@ -3077,7 +3113,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 3,
@@ -3085,19 +3128,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 62568,
+              "id": 71959,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2
+                  "value": 2.0
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -3110,14 +3153,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "100.00",
@@ -3131,52 +3167,59 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2
+              "setup_time": 2.0
             },
             {
-              "id": 62569,
+              "id": 71960,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75
+                  "value": 75.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80
+                  "value": 80.0
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100
+                  "value": 100.0
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -3191,7 +3234,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2
+                  "value": 2.0
                 },
                 {
                   "label": "runtime",
@@ -3205,18 +3248,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "157.88",
+                  "price": "347.08",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "189.42",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "228.83",
@@ -3226,19 +3262,26 @@
                   "quantity": 10
                 },
                 {
-                  "price": "347.08",
+                  "price": "189.42",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "157.88",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 5,
               "runtime": 0.06306544367011963,
-              "setup_time": 2
+              "setup_time": 2.0
             },
             {
-              "id": 62570,
+              "id": 71961,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -3255,12 +3298,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 }
               ],
               "is_finish": false,
@@ -3273,14 +3316,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "6.46",
@@ -3294,7 +3330,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 6,
@@ -3302,14 +3345,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 62571,
+              "id": 71962,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10
+                  "value": 10.0
                 }
               ],
               "is_finish": false,
@@ -3318,18 +3361,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.39",
+                  "price": "9.85",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "1.97",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "3.94",
@@ -3339,11 +3375,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "9.85",
+                  "price": "1.97",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.39",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 7,
@@ -3351,14 +3394,14 @@
               "setup_time": null
             },
             {
-              "id": 62572,
+              "id": 71963,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20
+                  "value": 20.0
                 }
               ],
               "is_finish": false,
@@ -3367,18 +3410,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "57.08",
+                  "price": "76.00",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "60.23",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "64.17",
@@ -3388,11 +3424,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "76.00",
+                  "price": "60.23",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "57.08",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 8,
@@ -3400,24 +3443,30 @@
               "setup_time": null
             },
             {
-              "id": 62573,
+              "id": 71964,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150
+                  "value": 150.0
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3
+                  "value": 3.0
+                },
+                {
+                  "label": "Material Selection",
+                  "type": "table",
+                  "value": null,
+                  "row": {}
                 }
               ],
               "is_finish": true,
@@ -3430,14 +3479,7 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "150.00",
@@ -3451,7 +3493,14 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 9,
@@ -3464,7 +3513,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67332,
+              "id": 89558,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3477,7 +3526,7 @@
               "expedites": []
             },
             {
-              "id": 67333,
+              "id": 89559,
               "quantity": 5,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3490,7 +3539,7 @@
               "expedites": []
             },
             {
-              "id": 67334,
+              "id": 89560,
               "quantity": 10,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3503,7 +3552,7 @@
               "expedites": []
             },
             {
-              "id": 67335,
+              "id": 89561,
               "quantity": 25,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3518,31 +3567,29 @@
           ]
         },
         {
-          "id": 49809,
+          "id": 69652,
           "child_ids": [
-            49815,
-            49814,
-            49816
+            69658,
+            69657,
+            69659
           ],
           "children": [
             {
-              "child_id": 49815,
+              "child_id": 69658,
               "quantity": 1
             },
             {
-              "child_id": 49814,
+              "child_id": 69657,
               "quantity": 1
             },
             {
-              "child_id": 49816,
+              "child_id": 69659,
               "quantity": 1
             }
           ],
           "description": null,
           "export_controlled": false,
-          "finishes": [
-            "Chromate"
-          ],
+          "finishes": [],
           "innate_quantity": 1,
           "is_root_component": true,
           "material": {
@@ -3556,7 +3603,7 @@
           "parent_ids": [],
           "part_name": "small-sub-assembly.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=Irmc33fAJE5Me%2FGAf78lmxq%2F5%2BU%3D&Expires=1586452398",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=tQm0HzmcupIIhg%2BQ3j7RBtpEzP8%3D&Expires=1593276903",
           "part_uuid": "ddab27ae-ff7b-4db2-be24-41002be6cb58",
           "process": {
             "id": 1117,
@@ -3566,50 +3613,49 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 62564,
+              "id": 72010,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150
+                  "value": 150.0
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3
+                  "value": 3.0
                 },
                 {
-                  "label": "Inventory Lookup",
+                  "label": "Material Selection",
                   "type": "table",
-                  "value": 5,
-                  "row": {"material_name":  "Aluminium 6061", "inventory": 5}
+                  "value": "304-#4",
+                  "row": {
+                    "length": 48.0,
+                    "diameter": 4.0,
+                    "material": "304-#4",
+                    "row_number": 3,
+                    "requires_prep": true
+                  }
                 }
               ],
-              "is_finish": true,
+              "is_finish": false,
               "is_outside_service": false,
               "name": "Chromate",
               "notes": null,
               "quantities": [
                 {
                   "price": "150.00",
-                  "manual_price": "160.00",
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "150.00",
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "150.00",
@@ -3623,7 +3669,14 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": "160.00",
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -3634,13 +3687,13 @@
           "supporting_files": [
             {
               "filename": "top Drawing 1.pdf",
-              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=sV6Q1A8ofjrTIxjBwvVARk6qSBM%3D&Expires=1586452398"
+              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=5kZYsNEd2z93yrKblUoRQigCE5M%3D&Expires=1593270829"
             }
           ],
           "type": "assembled",
           "add_ons": [
             {
-              "id": 70,
+              "id": 145,
               "is_required": true,
               "name": "Non-Recurring Engineering",
               "quantities": [
@@ -3663,7 +3716,7 @@
               ]
             },
             {
-              "id": 71,
+              "id": 146,
               "is_required": false,
               "name": "Non-Recurring Engineering",
               "quantities": [
@@ -3688,7 +3741,7 @@
           ],
           "quantities": [
             {
-              "id": 67328,
+              "id": 89554,
               "quantity": 1,
               "markup_1_price": "436.12",
               "markup_1_name": "Margin",
@@ -3701,7 +3754,7 @@
               "expedites": []
             },
             {
-              "id": 67329,
+              "id": 89555,
               "quantity": 5,
               "markup_1_price": "459.63",
               "markup_1_name": "Margin",
@@ -3714,7 +3767,7 @@
               "expedites": []
             },
             {
-              "id": 67330,
+              "id": 89556,
               "quantity": 10,
               "markup_1_price": "491.50",
               "markup_1_name": "Margin",
@@ -3727,7 +3780,7 @@
               "expedites": []
             },
             {
-              "id": 67331,
+              "id": 89557,
               "quantity": 25,
               "markup_1_price": "587.10",
               "markup_1_name": "Margin",
@@ -3742,7 +3795,7 @@
           ]
         },
         {
-          "id": 49813,
+          "id": 69656,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -3753,11 +3806,11 @@
           "material": null,
           "material_operations": [],
           "parent_ids": [
-            49816
+            69659
           ],
           "part_name": "Fitting.step (AC-M6-2)",
           "part_number": "AC-M6-2",
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=6QIcgfyz8VYDwZXuzl%2F5S1c9pag%3D&Expires=1586452399",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=aK%2FFeuqaASpCvPg%2BcVkY5rWpk1s%3D&Expires=1593276922",
           "part_uuid": "a0b71d80-a16e-446e-8e7b-6977ff2c5e0c",
           "process": null,
           "revision": null,
@@ -3767,7 +3820,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67344,
+              "id": 89570,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3780,7 +3833,7 @@
               "expedites": []
             },
             {
-              "id": 67345,
+              "id": 89571,
               "quantity": 5,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3793,7 +3846,7 @@
               "expedites": []
             },
             {
-              "id": 67346,
+              "id": 89572,
               "quantity": 10,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3806,7 +3859,7 @@
               "expedites": []
             },
             {
-              "id": 67347,
+              "id": 89573,
               "quantity": 25,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -3825,16 +3878,16 @@
       "position": 1,
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-      "root_component_id": 49809,
+      "root_component_id": 69652,
       "type": "automatic"
     },
     {
       "root_component": {
-        "id": 49817,
+        "id": 69660,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=E6S7lDIb%2Blb5dRRmcz3a%2BBCgja8%3D&Expires=1586452399",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=yOSp43bkjMOn04MskAvT94leo6A%3D&Expires=1586452399",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=QKaom6vDLpT8Q%2B3fEfKn9%2Fir%2Bks%3D&Expires=1593270679",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=2f5WzWuQyjlKwKoWo4tjP0h4kRE%3D&Expires=1593271246",
           "supporting_files": []
         },
         "part_number": null,
@@ -3843,7 +3896,7 @@
         "type": "manufactured",
         "quantities": [
           {
-            "id": 67360,
+            "id": 89586,
             "quantity": 1,
             "markup_1_price": "83.52",
             "markup_1_name": "Margin",
@@ -3856,7 +3909,7 @@
             "expedites": []
           },
           {
-            "id": 67361,
+            "id": 89587,
             "quantity": 5,
             "markup_1_price": "99.39",
             "markup_1_name": "Margin",
@@ -3869,7 +3922,7 @@
             "expedites": []
           },
           {
-            "id": 67362,
+            "id": 89588,
             "quantity": 10,
             "markup_1_price": "119.24",
             "markup_1_name": "Margin",
@@ -3882,7 +3935,7 @@
             "expedites": []
           },
           {
-            "id": 67363,
+            "id": 89589,
             "quantity": 25,
             "markup_1_price": "178.75",
             "markup_1_name": "Margin",
@@ -3907,19 +3960,19 @@
         },
         "material_operations": [
           {
-            "id": 62619,
+            "id": 72001,
             "category": "material",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Cost Per Pound",
                 "type": "currency",
-                "value": 11
+                "value": 11.0
               },
               {
                 "label": "Material Buffer (in)",
                 "type": "number",
-                "value": 0
+                "value": 0.0
               },
               {
                 "label": "Pounds Per Part",
@@ -3938,18 +3991,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "6.05",
+                "price": "151.25",
                 "manual_price": null,
                 "lead_time": null,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "30.25",
-                "manual_price": null,
-                "lead_time": null,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "60.50",
@@ -3959,11 +4005,18 @@
                 "quantity": 10
               },
               {
-                "price": "151.25",
+                "price": "30.25",
                 "manual_price": null,
                 "lead_time": null,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "6.05",
+                "manual_price": null,
+                "lead_time": null,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 1,
@@ -3971,14 +4024,14 @@
             "setup_time": null
           },
           {
-            "id": 62620,
+            "id": 72002,
             "category": "material",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Markup Percentage",
                 "type": "number",
-                "value": 30
+                "value": 30.0
               }
             ],
             "is_finish": false,
@@ -3987,18 +4040,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "1.81",
+                "price": "45.38",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "9.07",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "18.15",
@@ -4008,11 +4054,18 @@
                 "quantity": 10
               },
               {
-                "price": "45.38",
+                "price": "9.07",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "1.81",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 2,
@@ -4022,7 +4075,7 @@
         ],
         "shop_operations": [
           {
-            "id": 62621,
+            "id": 72003,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -4034,7 +4087,7 @@
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 50
+                "value": 50.0
               }
             ],
             "is_finish": false,
@@ -4047,14 +4100,7 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "25.00",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "25.00",
@@ -4068,7 +4114,14 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "25.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 3,
@@ -4076,19 +4129,19 @@
             "setup_time": 0.5
           },
           {
-            "id": 62622,
+            "id": 72004,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "setup_time",
                 "type": "number",
-                "value": 2
+                "value": 2.0
               },
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 50
+                "value": 50.0
               }
             ],
             "is_finish": false,
@@ -4101,14 +4154,7 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "100.00",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "100.00",
@@ -4122,52 +4168,59 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "100.00",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 4,
             "runtime": null,
-            "setup_time": 2
+            "setup_time": 2.0
           },
           {
-            "id": 62623,
+            "id": 72005,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 75
+                "value": 75.0
               },
               {
                 "label": "Run Labor Rate",
                 "type": "currency",
-                "value": 50
+                "value": 50.0
               },
               {
                 "label": "Crew",
                 "type": "number",
-                "value": 1
+                "value": 1.0
               },
               {
                 "label": "Machine Rate",
                 "type": "currency",
-                "value": 50
+                "value": 50.0
               },
               {
                 "label": "Efficiency",
                 "type": "number",
-                "value": 80
+                "value": 80.0
               },
               {
                 "label": "Percent Attended",
                 "type": "number",
-                "value": 100
+                "value": 100.0
               },
               {
                 "label": "Minimum Material Removal Rate",
                 "type": "number",
-                "value": 1
+                "value": 1.0
               },
               {
                 "label": "Stock Buffer, in",
@@ -4182,7 +4235,7 @@
               {
                 "label": "setup_time",
                 "type": "number",
-                "value": 1
+                "value": 1.0
               },
               {
                 "label": "runtime",
@@ -4196,18 +4249,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "85.42",
+                "price": "335.42",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "127.08",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "179.17",
@@ -4217,19 +4263,26 @@
                 "quantity": 10
               },
               {
-                "price": "335.42",
+                "price": "127.08",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "85.42",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 5,
             "runtime": 0.08333333333333333,
-            "setup_time": 1
+            "setup_time": 1.0
           },
           {
-            "id": 62624,
+            "id": 72006,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
@@ -4246,12 +4299,12 @@
               {
                 "label": "Setup Labor Rate",
                 "type": "currency",
-                "value": 25
+                "value": 25.0
               },
               {
                 "label": "Run Labor Rate",
                 "type": "currency",
-                "value": 25
+                "value": 25.0
               }
             ],
             "is_finish": false,
@@ -4264,14 +4317,7 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "6.46",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "6.46",
@@ -4285,7 +4331,14 @@
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "6.46",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 6,
@@ -4293,14 +4346,14 @@
             "setup_time": 0.25
           },
           {
-            "id": 62625,
+            "id": 72007,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Markup Percentage",
                 "type": "number",
-                "value": 10
+                "value": 10.0
               }
             ],
             "is_finish": false,
@@ -4309,18 +4362,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "0.52",
+                "price": "13.02",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "2.60",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "5.21",
@@ -4330,11 +4376,18 @@
                 "quantity": 10
               },
               {
-                "price": "13.02",
+                "price": "2.60",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "0.52",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 7,
@@ -4342,14 +4395,14 @@
             "setup_time": null
           },
           {
-            "id": 62626,
+            "id": 72008,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Markup Percentage",
                 "type": "number",
-                "value": 20
+                "value": 20.0
               }
             ],
             "is_finish": false,
@@ -4358,18 +4411,11 @@
             "notes": null,
             "quantities": [
               {
-                "price": "42.33",
+                "price": "67.33",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "46.50",
-                "manual_price": null,
-                "lead_time": 0,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "51.71",
@@ -4379,11 +4425,18 @@
                 "quantity": 10
               },
               {
-                "price": "67.33",
+                "price": "46.50",
                 "manual_price": null,
                 "lead_time": 0,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "42.33",
+                "manual_price": null,
+                "lead_time": 0,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 8,
@@ -4391,24 +4444,30 @@
             "setup_time": null
           },
           {
-            "id": 62627,
+            "id": 72009,
             "category": "operation",
             "cost": "0",
             "costing_variables": [
               {
                 "label": "Lot Charge",
                 "type": "currency",
-                "value": 150
+                "value": 150.0
               },
               {
                 "label": "Piece Price",
                 "type": "currency",
-                "value": 1
+                "value": 1.0
               },
               {
                 "label": "Added Lead Time",
                 "type": "number",
-                "value": 3
+                "value": 3.0
+              },
+              {
+                "label": "Material Selection",
+                "type": "table",
+                "value": null,
+                "row": {}
               }
             ],
             "is_finish": true,
@@ -4421,14 +4480,7 @@
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 1
-              },
-              {
-                "price": "150.00",
-                "manual_price": null,
-                "lead_time": 3,
-                "manual_lead_time": null,
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "price": "150.00",
@@ -4442,7 +4494,14 @@
                 "manual_price": null,
                 "lead_time": 3,
                 "manual_lead_time": null,
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "price": "150.00",
+                "manual_price": null,
+                "lead_time": 3,
+                "manual_lead_time": null,
+                "quantity": 1
               }
             ],
             "position": 9,
@@ -4455,13 +4514,13 @@
         "add_ons": [],
         "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
-      "id": 44772,
+      "id": 63528,
       "component_ids": [
-        49817
+        69660
       ],
       "components": [
         {
-          "id": 49817,
+          "id": 69660,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -4480,19 +4539,19 @@
           },
           "material_operations": [
             {
-              "id": 62619,
+              "id": 72001,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Cost Per Pound",
                   "type": "currency",
-                  "value": 11
+                  "value": 11.0
                 },
                 {
                   "label": "Material Buffer (in)",
                   "type": "number",
-                  "value": 0
+                  "value": 0.0
                 },
                 {
                   "label": "Pounds Per Part",
@@ -4511,18 +4570,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "6.05",
+                  "price": "151.25",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "30.25",
-                  "manual_price": null,
-                  "lead_time": null,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "60.50",
@@ -4532,11 +4584,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "151.25",
+                  "price": "30.25",
                   "manual_price": null,
                   "lead_time": null,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.05",
+                  "manual_price": null,
+                  "lead_time": null,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -4544,14 +4603,14 @@
               "setup_time": null
             },
             {
-              "id": 62620,
+              "id": 72002,
               "category": "material",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 30
+                  "value": 30.0
                 }
               ],
               "is_finish": false,
@@ -4560,18 +4619,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "1.81",
+                  "price": "45.38",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "9.07",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "18.15",
@@ -4581,11 +4633,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "45.38",
+                  "price": "9.07",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "1.81",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 2,
@@ -4596,7 +4655,7 @@
           "parent_ids": [],
           "part_name": "Counter_Sinks.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=yOSp43bkjMOn04MskAvT94leo6A%3D&Expires=1586452399",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=2f5WzWuQyjlKwKoWo4tjP0h4kRE%3D&Expires=1593271246",
           "part_uuid": "3b8d60da-aa4f-4b04-983e-8fe755944957",
           "process": {
             "id": 1117,
@@ -4606,7 +4665,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 62621,
+              "id": 72003,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -4618,7 +4677,7 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -4631,14 +4690,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "25.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "25.00",
@@ -4652,7 +4704,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "25.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 3,
@@ -4660,19 +4719,19 @@
               "setup_time": 0.5
             },
             {
-              "id": 62622,
+              "id": 72004,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 2
+                  "value": 2.0
                 },
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 }
               ],
               "is_finish": false,
@@ -4685,14 +4744,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "100.00",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "100.00",
@@ -4706,52 +4758,59 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "100.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 4,
               "runtime": null,
-              "setup_time": 2
+              "setup_time": 2.0
             },
             {
-              "id": 62623,
+              "id": 72005,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 75
+                  "value": 75.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Crew",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Machine Rate",
                   "type": "currency",
-                  "value": 50
+                  "value": 50.0
                 },
                 {
                   "label": "Efficiency",
                   "type": "number",
-                  "value": 80
+                  "value": 80.0
                 },
                 {
                   "label": "Percent Attended",
                   "type": "number",
-                  "value": 100
+                  "value": 100.0
                 },
                 {
                   "label": "Minimum Material Removal Rate",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Stock Buffer, in",
@@ -4766,7 +4825,7 @@
                 {
                   "label": "setup_time",
                   "type": "number",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "runtime",
@@ -4780,18 +4839,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "85.42",
+                  "price": "335.42",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "127.08",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "179.17",
@@ -4801,19 +4853,26 @@
                   "quantity": 10
                 },
                 {
-                  "price": "335.42",
+                  "price": "127.08",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "85.42",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 5,
               "runtime": 0.08333333333333333,
-              "setup_time": 1
+              "setup_time": 1.0
             },
             {
-              "id": 62624,
+              "id": 72006,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
@@ -4830,12 +4889,12 @@
                 {
                   "label": "Setup Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 },
                 {
                   "label": "Run Labor Rate",
                   "type": "currency",
-                  "value": 25
+                  "value": 25.0
                 }
               ],
               "is_finish": false,
@@ -4848,14 +4907,7 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "6.46",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "6.46",
@@ -4869,7 +4921,14 @@
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "6.46",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 6,
@@ -4877,14 +4936,14 @@
               "setup_time": 0.25
             },
             {
-              "id": 62625,
+              "id": 72007,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 10
+                  "value": 10.0
                 }
               ],
               "is_finish": false,
@@ -4893,18 +4952,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "0.52",
+                  "price": "13.02",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "2.60",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "5.21",
@@ -4914,11 +4966,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "13.02",
+                  "price": "2.60",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "0.52",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 7,
@@ -4926,14 +4985,14 @@
               "setup_time": null
             },
             {
-              "id": 62626,
+              "id": 72008,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
                   "type": "number",
-                  "value": 20
+                  "value": 20.0
                 }
               ],
               "is_finish": false,
@@ -4942,18 +5001,11 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "42.33",
+                  "price": "67.33",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "46.50",
-                  "manual_price": null,
-                  "lead_time": 0,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "51.71",
@@ -4963,11 +5015,18 @@
                   "quantity": 10
                 },
                 {
-                  "price": "67.33",
+                  "price": "46.50",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "42.33",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 8,
@@ -4975,24 +5034,30 @@
               "setup_time": null
             },
             {
-              "id": 62627,
+              "id": 72009,
               "category": "operation",
               "cost": "0",
               "costing_variables": [
                 {
                   "label": "Lot Charge",
                   "type": "currency",
-                  "value": 150
+                  "value": 150.0
                 },
                 {
                   "label": "Piece Price",
                   "type": "currency",
-                  "value": 1
+                  "value": 1.0
                 },
                 {
                   "label": "Added Lead Time",
                   "type": "number",
-                  "value": 3
+                  "value": 3.0
+                },
+                {
+                  "label": "Material Selection",
+                  "type": "table",
+                  "value": null,
+                  "row": {}
                 }
               ],
               "is_finish": true,
@@ -5005,14 +5070,7 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 1
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": null,
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "price": "150.00",
@@ -5026,7 +5084,14 @@
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "price": "150.00",
+                  "manual_price": null,
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
                 }
               ],
               "position": 9,
@@ -5039,7 +5104,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67360,
+              "id": 89586,
               "quantity": 1,
               "markup_1_price": "83.52",
               "markup_1_name": "Margin",
@@ -5052,7 +5117,7 @@
               "expedites": []
             },
             {
-              "id": 67361,
+              "id": 89587,
               "quantity": 5,
               "markup_1_price": "99.39",
               "markup_1_name": "Margin",
@@ -5065,7 +5130,7 @@
               "expedites": []
             },
             {
-              "id": 67362,
+              "id": 89588,
               "quantity": 10,
               "markup_1_price": "119.24",
               "markup_1_name": "Margin",
@@ -5078,7 +5143,7 @@
               "expedites": []
             },
             {
-              "id": 67363,
+              "id": 89589,
               "quantity": 25,
               "markup_1_price": "178.75",
               "markup_1_name": "Margin",
@@ -5097,20 +5162,25 @@
       "position": 2,
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-      "root_component_id": 49817,
+      "root_component_id": 69660,
       "type": "automatic"
     },
     {
       "root_component": {
-        "id": 49818,
-        "part": null,
+        "id": 69661,
+        "part": {
+          "filename": "",
+          "thumbnail_url": null,
+          "url": null,
+          "supporting_files": []
+        },
         "part_number": null,
         "revision": null,
         "description": "",
         "type": "manufactured",
         "quantities": [
           {
-            "id": 67364,
+            "id": 89590,
             "quantity": 1,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -5122,16 +5192,16 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 23372,
+                "id": 26411,
                 "lead_time": 2,
-                "markup": 30,
+                "markup": 30.0,
                 "unit_price": "65.00",
                 "total_price": "65.00"
               }
             ]
           },
           {
-            "id": 67365,
+            "id": 89591,
             "quantity": 2,
             "markup_1_price": "0.00",
             "markup_1_name": "Margin",
@@ -5143,9 +5213,9 @@
             "lead_time": 1,
             "expedites": [
               {
-                "id": 23373,
+                "id": 26412,
                 "lead_time": 2,
-                "markup": 30,
+                "markup": 30.0,
                 "unit_price": "123.50",
                 "total_price": "247.00"
               }
@@ -5161,13 +5231,13 @@
         "add_ons": [],
         "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
-      "id": 44773,
+      "id": 63529,
       "component_ids": [
-        49818
+        69661
       ],
       "components": [
         {
-          "id": 49818,
+          "id": 69661,
           "child_ids": [],
           "children": [],
           "description": "",
@@ -5178,10 +5248,10 @@
           "material": null,
           "material_operations": [],
           "parent_ids": [],
-          "part_name": null,
+          "part_name": "",
           "part_number": null,
           "part_url": null,
-          "part_uuid": null,
+          "part_uuid": "8518573c-73fd-41db-8360-28f783b4fa97",
           "process": null,
           "revision": null,
           "shop_operations": [],
@@ -5190,7 +5260,7 @@
           "add_ons": [],
           "quantities": [
             {
-              "id": 67364,
+              "id": 89590,
               "quantity": 1,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -5202,16 +5272,16 @@
               "lead_time": 1,
               "expedites": [
                 {
-                  "id": 23372,
+                  "id": 26411,
                   "lead_time": 2,
-                  "markup": 30,
+                  "markup": 30.0,
                   "unit_price": "65.00",
                   "total_price": "65.00"
                 }
               ]
             },
             {
-              "id": 67365,
+              "id": 89591,
               "quantity": 2,
               "markup_1_price": "0.00",
               "markup_1_name": "Margin",
@@ -5223,9 +5293,9 @@
               "lead_time": 1,
               "expedites": [
                 {
-                  "id": 23373,
+                  "id": 26412,
                   "lead_time": 2,
-                  "markup": 30,
+                  "markup": 30.0,
                   "unit_price": "123.50",
                   "total_price": "247.00"
                 }
@@ -5238,28 +5308,29 @@
       "position": 3,
       "private_notes": "This is a test manual line item.",
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
-      "root_component_id": 49818,
-      "type": "manual"
+      "root_component_id": 69661,
+      "type": "automatic"
     }
   ],
   "status": "accepted",
-  "sent_date": "2020-04-02T18:42:02+00:00",
-  "expired_date": "2020-05-02T18:37:36+00:00",
+  "sent_date": null,
+  "expired_date": "2020-07-22T17:01:40+00:00",
   "quote_notes": "- Customers are responsible for ensuring that the properties and performance of the material selected meet the requirements of their application;\n- CNC Machined Part Tolerances of +/- 0.005inch (0.13mm) are expected and generally achieved;\n- The standard finish (or surface finish) for all parts will include deburring through sanding or bead blasting and support structure removal (additive parts);\n- The estimated arrival time is based on available capacity at the time of this quote. Quotes that are not executed same day are subject to change or delays. Reasonable efforts will be made to deliver within or as close to the estimate as possible, however there is no assurance that any estimated delivery date will be met.",
   "export_controlled": false,
   "digital_last_viewed_on": null,
   "expired": false,
   "request_for_quote": null,
   "parent_quote": {
-    "id": 22863,
-    "number": 96,
+    "id": 55010,
+    "number": 192,
     "status": "accepted"
   },
   "parent_supplier_order": null,
-  "authenticated_pdf_quote_url": "https://s3.amazonaws.com/invoices.dev.paperlessparts.com/quote-pdf/90059380-8874-4173-a22f-73a95d14f6d6/Quote139.pdf?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=9YeqiJQS73Ra7m07%2F5tKEqemBvA%3D&Expires=1586452400",
+  "authenticated_pdf_quote_url": null,
   "is_unviewed_drafted_rfq": false,
-  "created": "2020-04-02T18:37:36+00:00",
+  "created": "2020-06-22T17:01:40+00:00",
   "order_numbers": [
-    43
-  ]
+    72
+  ],
+  "revision_number": null
 }

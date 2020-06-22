@@ -17,7 +17,7 @@ class TestQuotes(unittest.TestCase):
     def test_get_quote(self):
         self.client.get_resource = MagicMock(return_value=self.mock_quote_json)
         q = Quote.get(1)
-        self.assertEqual(q.number, 139)
+        self.assertEqual(q.number, 194)
         self.assertEqual(q.tax_rate, 0.)
         self.assertFalse(q.is_unviewed_drafted_rfq)
         # test customer
@@ -29,7 +29,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(company.erp_code, 'OUTFIRM')
         # test metrics
         metrics = company.metrics
-        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('38511.91'))
+        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('38246.19'))
         # test quote items
         quote_item = q.quote_items[0]
         self.assertEqual(quote_item.type, 'automatic')
@@ -56,8 +56,8 @@ class TestQuotes(unittest.TestCase):
         # test table costing variables
         costing_variable = operation.costing_variables[3]
         self.assertEqual(costing_variable.type, 'table')
-        self.assertEqual(costing_variable.value, 5)
-        self.assertEqual(costing_variable.row, {"material_name":  "Aluminium 6061", "inventory": 5})
+        self.assertEqual(costing_variable.value, '304-#4')
+        self.assertEqual(costing_variable.row, {'diameter': 4.0, 'length': 48.0, 'material': '304-#4', 'requires_prep': True, 'row_number': 3})
         # test process
         process = root_component.process
         self.assertEqual(process.name, 'CNC Machining')
@@ -69,7 +69,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(expedite.unit_price.dollars, 65.)
         # test parent quote
         parent_quote = q.parent_quote
-        self.assertEqual(parent_quote.number, 96)
+        self.assertEqual(parent_quote.number, 192)
         # test parent supplier order
         parent_supplier_order = q.parent_supplier_order
         self.assertIsNone(parent_supplier_order)
