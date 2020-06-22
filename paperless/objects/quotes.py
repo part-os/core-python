@@ -145,6 +145,7 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     sales_person: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
+    estimator: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
     customer: Customer = attr.ib(converter=convert_cls(Customer))
     tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal),
                                           validator=attr.validators.optional(attr.validators.instance_of(Decimal)))

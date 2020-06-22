@@ -23,6 +23,12 @@ class TestOrders(unittest.TestCase):
         self.assertEqual('pending', o.status)
         self.assertEqual(194, o.quote_number)
         self.assertEqual(len(o.order_items), 3)
+        # test salesperson
+        sales_person = o.sales_person
+        self.assertEqual(sales_person.first_name, 'Rob')
+        # test estimator
+        estimator = o.estimator
+        self.assertEqual(estimator.first_name, 'Rob')
         # test assembly order item
         assmb_oi = o.order_items[0]
         self.assertEqual(len(assmb_oi.components), 8)

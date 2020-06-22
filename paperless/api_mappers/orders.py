@@ -1,6 +1,7 @@
 from paperless.api_mappers import BaseMapper
 from paperless.api_mappers.components import MaterialMapper, OperationsMapper, \
     ProcessMapper
+from paperless.api_mappers.quotes import QuoteSalesPersonMapper
 
 
 class AddOnMapper(BaseMapper):
@@ -92,6 +93,8 @@ class OrderDetailsMapper(BaseMapper):
         mapped_result = {}
         mapped_result['billing_info'] = OrderAddressInfoMapper.map(resource['billing_info'])
         mapped_result['customer'] = OrderCustomerMapper.map(resource['customer'])
+        mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
+        mapped_result['estimator'] = QuoteSalesPersonMapper.map(resource['estimator'])
         mapped_result['order_items'] = map(OrderItemMapper.map, resource['order_items'])
         mapped_result['payment_details'] = PaymentDetailsMapper.map(resource['payment_details'])
         mapped_result['shipments'] = map(ShipmentsMapper.map, resource['shipments'])
