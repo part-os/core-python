@@ -74,7 +74,7 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
 
     @classmethod
     def construct_list_url(cls):
-        return 'companies/public/new'  # TODO - remove the /new
+        return 'companies/public'
 
 
 @attr.s(frozen=False)
@@ -85,7 +85,7 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
 
     billing_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    created: str = attr.ib(validator=attr.validators.instance_of(str))  # TODO - should we convert to datetime?
+    created: str = attr.ib(validator=attr.validators.instance_of(str))
     credit_line: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     erp_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     id: int = attr.ib(validator=attr.validators.instance_of(int))
