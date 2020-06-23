@@ -149,7 +149,7 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     customer: Customer = attr.ib(converter=convert_cls(Customer))
     tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal),
                                           validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
-    tax_cost: Optional[Money] = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
+    tax_cost: Optional[Money] = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))  # TODO - use optional_convert here
     private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     quote_items: List[QuoteItem] = attr.ib(converter=convert_iterable(QuoteItem))
     status: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))

@@ -179,6 +179,7 @@ class PaperlessClient(object):
                 message="Unable to locate object with id {} from url: {}".format(id, req_url)
             )
         else:
+            print(resp.content)
             raise PaperlessException(
                 message="Failed to update resource",
                 error_code=resp.status_code

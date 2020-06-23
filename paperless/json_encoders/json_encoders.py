@@ -1,13 +1,11 @@
 import json
 from typing import List
 
+from paperless.json_encoders import BaseJSONEncoder
+
+
 def select_keys(resource, keys: List[str]):
     return {k: getattr(resource, k, None) for k in keys}
-
-
-class BaseJSONEncoder(object):
-    def encode(self, resource):
-        raise NotImplementedError
 
 
 class AddressEncoder(BaseJSONEncoder):
