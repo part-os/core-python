@@ -1,4 +1,6 @@
 import attr
+import urllib.parse as urlparse
+from urllib.parse import parse_qs
 
 from .api_mappers import BaseMapper
 from .json_encoders import BaseJSONEncoder
@@ -129,6 +131,44 @@ class ListMixin(object):
             return [cls.from_json(resource) for resource in resource_list]
 
 
+class PaginatedListMixin(ListMixin):
+
+    @classmethod
+    def parse_list_response(cls, results):
+        """
+        An optional overridable method in case your list resources come back in a format other than a json list representation of itself.
+
+        For instance, maybe your list endpoint returns an object including pagination instructions as well as the resource list. You would use this method to strip down to just the resource list.
+
+        :return: json list of your resource
+        """
+        return results['results']
+
+    @classmethod
+    def list(cls, params=None, pages=None):
+        """
+        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+
+        :param params: dict of params for your list request
+        :param pages: iterable of ints describing the indices of the pages you want (starting from 1)
+        :return: [resource]
+        """
+        client = PaperlessClient.get_instance()
+        response = client.get_resource_list(cls.construct_list_url(), params=params)
+        resource_list = cls.parse_list_response(response)
+        while response['next'] is not None:
+            next_url = response['next']
+            next_query_params = parse_qs(urlparse.urlparse(next_url).query)
+            if params is not None:
+                next_query_params = {**next_query_params, **params}
+            response = client.get_resource_list(cls.construct_list_url(), params=next_query_params)
+            resource_list.extend(cls.parse_list_response(response))
+        if cls._list_object_representation:
+            return [cls._list_object_representation.from_json(resource) for resource in resource_list]
+        else:
+            return [cls.from_json(resource) for resource in resource_list]
+
+
 class ToDictMixin(object):
     """
     Returns a dict representation of itself.
@@ -154,11 +194,6 @@ class ToJSONMixin(object):
 class CreateMixin(object):
     @classmethod
     def construct_post_url(cls):
-        """
-        Constructs a url to be used for placing post requests too.
-
-        :return: string url
-        """
         raise NotImplementedError
 
     def create(self):
@@ -177,11 +212,6 @@ class UpdateMixin(object):
     _primary_key = 'id'
 
     def construct_patch_url(cls):
-        """
-        Constructs a url to be used for placing past requests too.
-
-        :return: string url
-        """
         raise NotImplementedError
 
     def update(self):
@@ -195,3 +225,18 @@ class UpdateMixin(object):
         resp_dict = self.from_json_to_dict(resp)
         for key, val in resp_dict.items():
             setattr(self, key, val)
+
+
+class DeleteMixin(object):
+    _primary_key = 'id'
+
+    def construct_delete_url(cls):
+        raise NotImplementedError
+
+    def delete(self):
+        """
+        Deletes the resource from Paperless Parts.
+        """
+        client = PaperlessClient.get_instance()
+        primary_key = getattr(self, self._primary_key)
+        client.delete_resource(self.construct_delete_url(), primary_key)
