@@ -233,7 +233,7 @@ class QuoteDetailsMapper(BaseMapper):
             mapped_result[key] = resource.get(key, False)
         mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer']) if resource['customer'] else None
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
-        mapped_result['estimator'] = QuoteSalesPersonMapper.map(resource['estimator'])
+        mapped_result['estimator'] = QuoteSalesPersonMapper.map(resource['estimator']) if resource['estimator'] else None
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
         if resource['parent_quote'] is not None:
             mapped_result['parent_quote'] = ParentQuoteMapper.map(resource['parent_quote'])
