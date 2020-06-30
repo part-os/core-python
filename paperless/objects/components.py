@@ -97,6 +97,7 @@ class Component:
     material: Material = attr.ib(converter=convert_cls(Material))
     material_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
     parent_ids: List[int] = attr.ib(converter=convert_iterable(int))
+    part_custom_attrs: Optional[list] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(list)))
     part_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     part_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     part_uuid: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))

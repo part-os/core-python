@@ -159,26 +159,6 @@ class AddOnMapper(BaseMapper):
         return mapped_result
 
 
-class QuoteRootComponentMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['id', 'part_number', 'revision', 'description', 'type', 'material_notes']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        list_keys = ['finishes']
-        for key in list_keys:
-            mapped_result[key] = resource.get(key, [])
-        mapped_result['part'] = QuotePartMapper.map(resource['part']) if resource['part'] else None
-        mapped_result['quantities'] = map(QuoteQuantityMapper.map, resource['quantities'])
-        mapped_result['shop_operations'] = map(QuoteOperationMapper.map, resource['shop_operations'])
-        mapped_result['material_operations'] = map(QuoteOperationMapper.map, resource['material_operations'])
-        mapped_result['process'] = QuoteProcessMapper.map(resource['process']) if resource['process'] else None
-        mapped_result['material'] = QuoteMaterialMapper.map(resource['material']) if resource['material'] else None
-        mapped_result['add_ons'] = map(AddOnMapper.map, resource['add_ons'])
-        return mapped_result
-
-
 class QuoteItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -251,8 +231,9 @@ class QuoteComponentMapper(BaseMapper):
         mapped_result['material_operations'] = map(OperationsMapper.map, resource['material_operations'])
         mapped_result['process'] = ProcessMapper.map(resource['process']) if resource['process'] else None
         mapped_result['shop_operations'] = map(OperationsMapper.map, resource['shop_operations'])
-        field_keys = ['id', 'innate_quantity', 'description', 'part_name',
-                      'part_number', 'part_uuid', 'revision', 'type']
+        field_keys = ['id', 'innate_quantity', 'description',
+                      'part_custom_attrs', 'part_name', 'part_number',
+                      'part_uuid', 'revision', 'type']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files', 'add_ons', 'quantities', 'children']

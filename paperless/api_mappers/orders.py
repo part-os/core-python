@@ -25,8 +25,8 @@ class OrderComponentMapper(BaseMapper):
         mapped_result['material_operations'] = map(OperationsMapper.map, resource['material_operations'])
         mapped_result['process'] = ProcessMapper.map(resource['process']) if resource['process'] else None
         mapped_result['shop_operations'] = map(OperationsMapper.map, resource['shop_operations'])
-        field_keys = ['id', 'deliver_quantity', 'innate_quantity', 'make_quantity', 'description', 'part_name',
-                      'part_number', 'part_uuid', 'revision', 'type']
+        field_keys = ['id', 'deliver_quantity', 'innate_quantity', 'make_quantity', 'description',
+                      'part_custom_attrs', 'part_name', 'part_number', 'part_uuid', 'revision', 'type']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files', 'children']
