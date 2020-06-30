@@ -70,7 +70,7 @@ class OrderCompanyMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id', 'business_name', 'erp_code']
+        field_keys = ['id', 'business_name', 'erp_code', 'notes']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
@@ -81,7 +81,7 @@ class OrderCustomerMapper(BaseMapper):
     def map(cls, resource):
         mapped_result = {}
         mapped_result['company'] = OrderCompanyMapper.map(resource['company']) if resource['company'] else None
-        field_keys = ['id', 'email', 'first_name', 'last_name', 'phone', 'phone_ext']
+        field_keys = ['id', 'email', 'first_name', 'last_name', 'phone', 'phone_ext', 'notes']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result

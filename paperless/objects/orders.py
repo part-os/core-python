@@ -154,7 +154,10 @@ class OrderShipment:
 class OrderCompany:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    erp_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    erp_code: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)))
+    notes: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=True)
@@ -166,6 +169,8 @@ class OrderCustomer:
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
     phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    notes: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=True)
