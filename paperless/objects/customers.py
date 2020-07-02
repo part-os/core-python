@@ -44,10 +44,10 @@ class State:
 class Address:
     country: Country = attr.ib(converter=convert_cls(Country))
     state: State = attr.ib(converter=convert_cls(State))
-    city: str = attr.ib(validator=attr.validators.instance_of(str))
-    address1: str = attr.ib(validator=attr.validators.instance_of(str))
-    address2: str = attr.ib(validator=attr.validators.instance_of(str))
-    postal_code: str = attr.ib(validator=attr.validators.instance_of(str))
+    city: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    address1: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    address2: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    postal_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=False)

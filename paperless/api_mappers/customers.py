@@ -38,8 +38,14 @@ class AddressMapper(BaseMapper):
         field_keys = ['city', 'address1', 'address2', 'postal_code']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
-        mapped_result['country'] = CountryMapper.map(resource['country'])
-        mapped_result['state'] = StateMapper.map(resource['state'])
+        if resource['country'] is not None:
+            mapped_result['country'] = CountryMapper.map(resource['country'])
+        else:
+            mapped_result['country'] = None
+        if resource['state'] is not None:
+            mapped_result['state'] = StateMapper.map(resource['state'])
+        else:
+            mapped_result['state'] = None
         return mapped_result
 
 
