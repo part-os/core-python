@@ -58,6 +58,7 @@ class TestQuotes(unittest.TestCase):
         # test operations
         operation = root_component.shop_operations[0]
         self.assertEqual(operation.name, 'Chromate')
+        self.assertEqual(operation.operation_definition_name, 'Chromate')
         operation_quantity = operation.quantities[0]
         self.assertEqual(operation_quantity.price.dollars, 150)
         # test table costing variables

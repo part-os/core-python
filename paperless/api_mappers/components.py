@@ -36,7 +36,7 @@ class OperationsMapper(BaseMapper):
     def map(cls, resource):
         costing_variables = map(CostingVariablesMapper.map, resource['costing_variables'])
         quantities = map(OperationQuantityMapper.map, resource['quantities'])
-        keys = ['id', 'category', 'cost', 'is_finish', 'is_outside_service', 'name', 'notes', 'position', 'runtime', 'setup_time']
+        keys = ['id', 'category', 'cost', 'is_finish', 'is_outside_service', 'name', 'operation_definition_name', 'notes', 'position', 'runtime', 'setup_time']
         mapped_result = {}
         for key in keys:
             mapped_result[key] = resource.get(key, None)

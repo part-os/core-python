@@ -61,6 +61,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(len(root_component.shop_operations), 7)
         finish_op = root_component.shop_operations[6]
         self.assertEqual(finish_op.name, 'Chromate')
+        self.assertEqual(finish_op.operation_definition_name, 'Chromate')
         self.assertEqual(finish_op.cost.dollars, 150.)
         self.assertIsNone(finish_op.setup_time)
         self.assertIsNone(finish_op.get_variable('bad name'))
