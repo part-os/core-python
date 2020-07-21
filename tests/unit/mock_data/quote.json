@@ -22,9 +22,9 @@
       "notes": null,
       "metrics": {
         "order_revenue_all_time": 38246.19,
-        "order_revenue_last_thirty_days": 9507.96,
+        "order_revenue_last_thirty_days": 8926.08,
         "quotes_sent_all_time": 10,
-        "quotes_sent_last_thirty_days": 1
+        "quotes_sent_last_thirty_days": 0
       },
       "business_name": "Outside Firm",
       "erp_code": "OUTFIRM"
@@ -41,12 +41,12 @@
         "id": 69652,
         "part": {
           "filename": "small-sub-assembly.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=XqsYyP8vmFgezmiyAR%2FmnhNAVLQ%3D&Expires=1593270679",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=tQm0HzmcupIIhg%2BQ3j7RBtpEzP8%3D&Expires=1593276903",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=kXb0D2p%2BG%2FCzfDAF0DrhO7yKvs4%3D&Expires=1595768813",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=LO%2BAYhBbGjcMVIBHIQl57qV8QWE%3D&Expires=1595768534",
           "supporting_files": [
             {
               "filename": "top Drawing 1.pdf",
-              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=5kZYsNEd2z93yrKblUoRQigCE5M%3D&Expires=1593270829",
+              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=n%2BA2lDay1KiOrV4%2FRcuah%2FjD0l4%3D&Expires=1595768534",
               "uuid": "b56903fe-bde6-4a45-a835-3deac13c8d8b"
             }
           ]
@@ -157,6 +157,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Chromate",
+            "operation_definition_name": "Chromate",
             "notes": null,
             "quantities": [
               {
@@ -202,11 +203,7 @@
             "quantities": [
               {
                 "manual_price": "1000.00",
-                "quantity": 1
-              },
-              {
-                "manual_price": "1000.00",
-                "quantity": 5
+                "quantity": 25
               },
               {
                 "manual_price": "1000.00",
@@ -214,7 +211,11 @@
               },
               {
                 "manual_price": "1000.00",
-                "quantity": 25
+                "quantity": 5
+              },
+              {
+                "manual_price": "1000.00",
+                "quantity": 1
               }
             ]
           },
@@ -223,20 +224,20 @@
             "name": "Non-Recurring Engineering",
             "quantities": [
               {
-                "manual_price": "200.00",
-                "quantity": 1
-              },
-              {
-                "manual_price": "300.00",
-                "quantity": 5
+                "manual_price": "500.00",
+                "quantity": 25
               },
               {
                 "manual_price": "400.00",
                 "quantity": 10
               },
               {
-                "manual_price": "500.00",
-                "quantity": 25
+                "manual_price": "300.00",
+                "quantity": 5
+              },
+              {
+                "manual_price": "200.00",
+                "quantity": 1
               }
             ]
           }
@@ -245,10 +246,10 @@
       },
       "id": 63527,
       "component_ids": [
+        69656,
         69659,
         69658,
         69657,
-        69656,
         69655,
         69654,
         69653,
@@ -290,10 +291,10 @@
           },
           "material_operations": [],
           "parent_ids": [],
-          "part_custom_attrs": null,
+          "part_custom_attrs": [],
           "part_name": "small-sub-assembly.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=tQm0HzmcupIIhg%2BQ3j7RBtpEzP8%3D&Expires=1593276903",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=LO%2BAYhBbGjcMVIBHIQl57qV8QWE%3D&Expires=1595768534",
           "part_uuid": "ddab27ae-ff7b-4db2-be24-41002be6cb58",
           "process": {
             "id": 1117,
@@ -338,6 +339,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Chromate",
+              "operation_definition_name": "Chromate",
               "notes": null,
               "quantities": [
                 {
@@ -377,7 +379,7 @@
           "supporting_files": [
             {
               "filename": "top Drawing 1.pdf",
-              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=5kZYsNEd2z93yrKblUoRQigCE5M%3D&Expires=1593270829"
+              "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=n%2BA2lDay1KiOrV4%2FRcuah%2FjD0l4%3D&Expires=1595768534"
             }
           ],
           "type": "assembled",
@@ -389,11 +391,7 @@
               "quantities": [
                 {
                   "manual_price": "1000.00",
-                  "quantity": 1
-                },
-                {
-                  "manual_price": "1000.00",
-                  "quantity": 5
+                  "quantity": 25
                 },
                 {
                   "manual_price": "1000.00",
@@ -401,7 +399,11 @@
                 },
                 {
                   "manual_price": "1000.00",
-                  "quantity": 25
+                  "quantity": 5
+                },
+                {
+                  "manual_price": "1000.00",
+                  "quantity": 1
                 }
               ]
             },
@@ -411,20 +413,20 @@
               "name": "Non-Recurring Engineering",
               "quantities": [
                 {
-                  "manual_price": "200.00",
-                  "quantity": 1
-                },
-                {
-                  "manual_price": "300.00",
-                  "quantity": 5
+                  "manual_price": "500.00",
+                  "quantity": 25
                 },
                 {
                   "manual_price": "400.00",
                   "quantity": 10
                 },
                 {
-                  "manual_price": "500.00",
-                  "quantity": 25
+                  "manual_price": "300.00",
+                  "quantity": 5
+                },
+                {
+                  "manual_price": "200.00",
+                  "quantity": 1
                 }
               ]
             }
@@ -532,6 +534,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Aluminium 6061",
+              "operation_definition_name": "Material By Pound (Rectangular Bar)",
               "notes": null,
               "quantities": [
                 {
@@ -581,6 +584,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Material Markup",
+              "operation_definition_name": "Material Markup",
               "notes": null,
               "quantities": [
                 {
@@ -620,10 +624,10 @@
           "parent_ids": [
             69659
           ],
-          "part_name": "Top Block.step",
           "part_custom_attrs": null,
+          "part_name": "Top Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=LVo0Ezba83X8kQrnilq1ABQD4pc%3D&Expires=1593276922",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=bCnd4ax7QryRqGl4EYRze9R2068%3D&Expires=1595768534",
           "part_uuid": "cbe4fd08-c10a-4804-ae97-c647ce862040",
           "process": {
             "id": 1117,
@@ -651,6 +655,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Order Processing",
+              "operation_definition_name": "Order Processing",
               "notes": null,
               "quantities": [
                 {
@@ -705,6 +710,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Programming",
+              "operation_definition_name": "Programming",
               "notes": null,
               "quantities": [
                 {
@@ -804,6 +810,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Milling With Estimates",
+              "operation_definition_name": "Milling With Estimates",
               "notes": null,
               "quantities": [
                 {
@@ -868,6 +875,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Packaging",
+              "operation_definition_name": "Packaging",
               "notes": null,
               "quantities": [
                 {
@@ -917,6 +925,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Machine Markup",
+              "operation_definition_name": "Machine Markup",
               "notes": null,
               "quantities": [
                 {
@@ -966,6 +975,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Labor Markup",
+              "operation_definition_name": "Labor Markup",
               "notes": null,
               "quantities": [
                 {
@@ -1031,6 +1041,7 @@
               "is_finish": true,
               "is_outside_service": false,
               "name": "Chromate",
+              "operation_definition_name": "Chromate",
               "notes": null,
               "quantities": [
                 {
@@ -1173,6 +1184,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Aluminium 6061",
+              "operation_definition_name": "Material By Pound (Rectangular Bar)",
               "notes": null,
               "quantities": [
                 {
@@ -1222,6 +1234,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Material Markup",
+              "operation_definition_name": "Material Markup",
               "notes": null,
               "quantities": [
                 {
@@ -1261,10 +1274,10 @@
           "parent_ids": [
             69659
           ],
-          "part_name": "Plug.step",
           "part_custom_attrs": null,
+          "part_name": "Plug.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=oLLK5ZnrK2yTfS14sPemPbn4INI%3D&Expires=1593276922",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=7s6FcDY3e4o9swsEyb5FVJ2l6Zg%3D&Expires=1595768534",
           "part_uuid": "a300d612-2209-41b2-b914-a33c960743db",
           "process": {
             "id": 1117,
@@ -1292,6 +1305,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Order Processing",
+              "operation_definition_name": "Order Processing",
               "notes": null,
               "quantities": [
                 {
@@ -1346,6 +1360,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Programming",
+              "operation_definition_name": "Programming",
               "notes": null,
               "quantities": [
                 {
@@ -1445,6 +1460,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Milling With Estimates",
+              "operation_definition_name": "Milling With Estimates",
               "notes": null,
               "quantities": [
                 {
@@ -1509,6 +1525,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Packaging",
+              "operation_definition_name": "Packaging",
               "notes": null,
               "quantities": [
                 {
@@ -1558,6 +1575,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Machine Markup",
+              "operation_definition_name": "Machine Markup",
               "notes": null,
               "quantities": [
                 {
@@ -1607,6 +1625,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Labor Markup",
+              "operation_definition_name": "Labor Markup",
               "notes": null,
               "quantities": [
                 {
@@ -1672,6 +1691,7 @@
               "is_finish": true,
               "is_outside_service": false,
               "name": "Chromate",
+              "operation_definition_name": "Chromate",
               "notes": null,
               "quantities": [
                 {
@@ -1814,6 +1834,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Aluminium 6061",
+              "operation_definition_name": "Material By Pound (Rectangular Bar)",
               "notes": null,
               "quantities": [
                 {
@@ -1863,6 +1884,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Material Markup",
+              "operation_definition_name": "Material Markup",
               "notes": null,
               "quantities": [
                 {
@@ -1902,10 +1924,10 @@
           "parent_ids": [
             69659
           ],
-          "part_name": "O-Ring.step",
           "part_custom_attrs": null,
+          "part_name": "O-Ring.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=pOgpNILcqZfTlstHEiTJt375%2BgQ%3D&Expires=1593276921",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=nKZKM4MApeHLGDcQS6kS4K29P4Q%3D&Expires=1595768535",
           "part_uuid": "860b8958-9733-4bea-a6d2-3473d308a93d",
           "process": {
             "id": 1117,
@@ -1933,6 +1955,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Order Processing",
+              "operation_definition_name": "Order Processing",
               "notes": null,
               "quantities": [
                 {
@@ -1987,6 +2010,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Programming",
+              "operation_definition_name": "Programming",
               "notes": null,
               "quantities": [
                 {
@@ -2086,6 +2110,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Milling With Estimates",
+              "operation_definition_name": "Milling With Estimates",
               "notes": null,
               "quantities": [
                 {
@@ -2150,6 +2175,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Packaging",
+              "operation_definition_name": "Packaging",
               "notes": null,
               "quantities": [
                 {
@@ -2199,6 +2225,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Machine Markup",
+              "operation_definition_name": "Machine Markup",
               "notes": null,
               "quantities": [
                 {
@@ -2248,6 +2275,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Labor Markup",
+              "operation_definition_name": "Labor Markup",
               "notes": null,
               "quantities": [
                 {
@@ -2313,6 +2341,7 @@
               "is_finish": true,
               "is_outside_service": false,
               "name": "Chromate",
+              "operation_definition_name": "Chromate",
               "notes": null,
               "quantities": [
                 {
@@ -2455,6 +2484,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Aluminium 6061",
+              "operation_definition_name": "Material By Pound (Rectangular Bar)",
               "notes": null,
               "quantities": [
                 {
@@ -2504,6 +2534,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Material Markup",
+              "operation_definition_name": "Material Markup",
               "notes": null,
               "quantities": [
                 {
@@ -2543,10 +2574,10 @@
           "parent_ids": [
             69652
           ],
-          "part_name": "Seal.step",
           "part_custom_attrs": null,
+          "part_name": "Seal.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=ulRZbDQEBDhhSj1zDmmV0j1eqk0%3D&Expires=1593276921",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=G%2BI3qLL4l1KlxNyvzBfKJaJG5Kc%3D&Expires=1595768535",
           "part_uuid": "a9be1070-67d8-4a95-8c7d-54a5f6e58d4d",
           "process": {
             "id": 1117,
@@ -2574,6 +2605,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Order Processing",
+              "operation_definition_name": "Order Processing",
               "notes": null,
               "quantities": [
                 {
@@ -2628,6 +2660,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Programming",
+              "operation_definition_name": "Programming",
               "notes": null,
               "quantities": [
                 {
@@ -2727,6 +2760,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Milling With Estimates",
+              "operation_definition_name": "Milling With Estimates",
               "notes": null,
               "quantities": [
                 {
@@ -2791,6 +2825,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Packaging",
+              "operation_definition_name": "Packaging",
               "notes": null,
               "quantities": [
                 {
@@ -2840,6 +2875,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Machine Markup",
+              "operation_definition_name": "Machine Markup",
               "notes": null,
               "quantities": [
                 {
@@ -2889,6 +2925,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Labor Markup",
+              "operation_definition_name": "Labor Markup",
               "notes": null,
               "quantities": [
                 {
@@ -2954,6 +2991,7 @@
               "is_finish": true,
               "is_outside_service": false,
               "name": "Chromate",
+              "operation_definition_name": "Chromate",
               "notes": null,
               "quantities": [
                 {
@@ -3096,6 +3134,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Aluminium 6061",
+              "operation_definition_name": "Material By Pound (Rectangular Bar)",
               "notes": null,
               "quantities": [
                 {
@@ -3145,6 +3184,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Material Markup",
+              "operation_definition_name": "Material Markup",
               "notes": null,
               "quantities": [
                 {
@@ -3184,10 +3224,10 @@
           "parent_ids": [
             69652
           ],
-          "part_name": "Bottom Block.step",
           "part_custom_attrs": null,
+          "part_name": "Bottom Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=3NRdi%2BjwiuPXkmvYqDG9EphGmQk%3D&Expires=1593276921",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=VyBAeP%2FT5r6H9O2ndaoo9swWg%2FE%3D&Expires=1595768535",
           "part_uuid": "f56acc3c-e75e-4735-a712-bf111182b437",
           "process": {
             "id": 1117,
@@ -3215,6 +3255,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Order Processing",
+              "operation_definition_name": "Order Processing",
               "notes": null,
               "quantities": [
                 {
@@ -3269,6 +3310,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Programming",
+              "operation_definition_name": "Programming",
               "notes": null,
               "quantities": [
                 {
@@ -3368,6 +3410,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Milling With Estimates",
+              "operation_definition_name": "Milling With Estimates",
               "notes": null,
               "quantities": [
                 {
@@ -3432,6 +3475,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Packaging",
+              "operation_definition_name": "Packaging",
               "notes": null,
               "quantities": [
                 {
@@ -3481,6 +3525,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Machine Markup",
+              "operation_definition_name": "Machine Markup",
               "notes": null,
               "quantities": [
                 {
@@ -3530,6 +3575,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Labor Markup",
+              "operation_definition_name": "Labor Markup",
               "notes": null,
               "quantities": [
                 {
@@ -3595,6 +3641,7 @@
               "is_finish": true,
               "is_outside_service": false,
               "name": "Chromate",
+              "operation_definition_name": "Chromate",
               "notes": null,
               "quantities": [
                 {
@@ -3731,10 +3778,10 @@
           "parent_ids": [
             69652
           ],
-          "part_name": "Subassembly <1>.step",
           "part_custom_attrs": null,
+          "part_name": "Subassembly <1>.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=fFO0qXF%2Faiur4%2FwopW%2B4dzrOILg%3D&Expires=1593276921",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=dAcdN8numMZeaXxtWrLZfDr3fXE%3D&Expires=1595768535",
           "part_uuid": "8deb6257-56f8-4aaf-bebc-1707361bf2af",
           "process": {
             "id": 1117,
@@ -3815,14 +3862,69 @@
           "parent_ids": [
             69659
           ],
-          "part_name": "Fitting.step (AC-M6-2)",
           "part_custom_attrs": null,
+          "part_name": "Fitting.step (AC-M6-2)",
           "part_number": "AC-M6-2",
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=aK%2FFeuqaASpCvPg%2BcVkY5rWpk1s%3D&Expires=1593276922",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=f0KpbHnCSwIgsOgMcI7844b6CiI%3D&Expires=1595768535",
           "part_uuid": "a0b71d80-a16e-446e-8e7b-6977ff2c5e0c",
-          "process": null,
+          "process": {
+            "id": 27258,
+            "external_name": null,
+            "name": "Purchased Components"
+          },
           "revision": null,
-          "shop_operations": [],
+          "shop_operations": [
+            {
+              "id": 73161,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "piece_price",
+                  "type": "currency",
+                  "value": 0.931
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "PC Piece Price",
+              "operation_definition_name": "PC Piece Price",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "23.28",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                },
+                {
+                  "price": "9.31",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "4.66",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.93",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                }
+              ],
+              "position": 1,
+              "runtime": null,
+              "setup_time": null
+            }
+          ],
           "supporting_files": [],
           "type": "purchased",
           "add_ons": [],
@@ -3894,8 +3996,8 @@
         "id": 69660,
         "part": {
           "filename": "Counter_Sinks.STEP",
-          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=QKaom6vDLpT8Q%2B3fEfKn9%2Fir%2Bks%3D&Expires=1593270679",
-          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=2f5WzWuQyjlKwKoWo4tjP0h4kRE%3D&Expires=1593271246",
+          "thumbnail_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/f50d4525370960c3b3402ba8dfd3418afd75bd25.png?AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=8QOr8UEguy%2FFHJCcgc%2Fpfp7Fsyc%3D&Expires=1595768814",
+          "url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=hYjvgW0UBJzLHcoaxmvHh4rSNMM%3D&Expires=1595768536",
           "supporting_files": []
         },
         "part_number": null,
@@ -3996,6 +4098,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Aluminium 6061",
+            "operation_definition_name": "Material By Pound (Rectangular Bar)",
             "notes": null,
             "quantities": [
               {
@@ -4045,6 +4148,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Material Markup",
+            "operation_definition_name": "Material Markup",
             "notes": null,
             "quantities": [
               {
@@ -4101,6 +4205,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Order Processing",
+            "operation_definition_name": "Order Processing",
             "notes": null,
             "quantities": [
               {
@@ -4155,6 +4260,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Programming",
+            "operation_definition_name": "Programming",
             "notes": null,
             "quantities": [
               {
@@ -4254,6 +4360,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Milling With Estimates",
+            "operation_definition_name": "Milling With Estimates",
             "notes": null,
             "quantities": [
               {
@@ -4318,6 +4425,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Packaging",
+            "operation_definition_name": "Packaging",
             "notes": null,
             "quantities": [
               {
@@ -4367,6 +4475,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Machine Markup",
+            "operation_definition_name": "Machine Markup",
             "notes": null,
             "quantities": [
               {
@@ -4416,6 +4525,7 @@
             "is_finish": false,
             "is_outside_service": false,
             "name": "Labor Markup",
+            "operation_definition_name": "Labor Markup",
             "notes": null,
             "quantities": [
               {
@@ -4481,6 +4591,7 @@
             "is_finish": true,
             "is_outside_service": false,
             "name": "Chromate",
+            "operation_definition_name": "Chromate",
             "notes": null,
             "quantities": [
               {
@@ -4575,6 +4686,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Aluminium 6061",
+              "operation_definition_name": "Material By Pound (Rectangular Bar)",
               "notes": null,
               "quantities": [
                 {
@@ -4624,6 +4736,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Material Markup",
+              "operation_definition_name": "Material Markup",
               "notes": null,
               "quantities": [
                 {
@@ -4661,10 +4774,10 @@
             }
           ],
           "parent_ids": [],
+          "part_custom_attrs": [],
           "part_name": "Counter_Sinks.STEP",
-          "part_custom_attrs": null,
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=2f5WzWuQyjlKwKoWo4tjP0h4kRE%3D&Expires=1593271246",
+          "part_url": "https://s3.amazonaws.com/parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAWIX672CJXCXFOOMP&Signature=hYjvgW0UBJzLHcoaxmvHh4rSNMM%3D&Expires=1595768536",
           "part_uuid": "3b8d60da-aa4f-4b04-983e-8fe755944957",
           "process": {
             "id": 1117,
@@ -4692,6 +4805,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Order Processing",
+              "operation_definition_name": "Order Processing",
               "notes": null,
               "quantities": [
                 {
@@ -4746,6 +4860,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Programming",
+              "operation_definition_name": "Programming",
               "notes": null,
               "quantities": [
                 {
@@ -4845,6 +4960,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Milling With Estimates",
+              "operation_definition_name": "Milling With Estimates",
               "notes": null,
               "quantities": [
                 {
@@ -4909,6 +5025,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Packaging",
+              "operation_definition_name": "Packaging",
               "notes": null,
               "quantities": [
                 {
@@ -4958,6 +5075,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Machine Markup",
+              "operation_definition_name": "Machine Markup",
               "notes": null,
               "quantities": [
                 {
@@ -5007,6 +5125,7 @@
               "is_finish": false,
               "is_outside_service": false,
               "name": "Labor Markup",
+              "operation_definition_name": "Labor Markup",
               "notes": null,
               "quantities": [
                 {
@@ -5072,6 +5191,7 @@
               "is_finish": true,
               "is_outside_service": false,
               "name": "Chromate",
+              "operation_definition_name": "Chromate",
               "notes": null,
               "quantities": [
                 {
@@ -5257,8 +5377,8 @@
           "material": null,
           "material_operations": [],
           "parent_ids": [],
+          "part_custom_attrs": [],
           "part_name": "",
-          "part_custom_attrs": null,
           "part_number": null,
           "part_url": null,
           "part_uuid": "8518573c-73fd-41db-8360-28f783b4fa97",

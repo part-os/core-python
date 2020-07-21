@@ -44,7 +44,7 @@ class TestQuotes(unittest.TestCase):
         root_component = quote_item.root_component
         self.assertEqual(root_component.type, 'assembled')
         self.assertEqual(root_component.part_name, 'small-sub-assembly.STEP')
-        self.assertIsNone(root_component.part_custom_attrs)
+        self.assertFalse(root_component.part_custom_attrs)  # Note - this could either be None or a list, this confirms it is either None or an empty list
         # test addons
         add_on = root_component.add_ons[0]
         self.assertEqual(add_on.is_required, True)
