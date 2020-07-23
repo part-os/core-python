@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Tuple
 import logging
 from .local import LocalStorage
 from .exceptions import PaperlessNotFoundException
@@ -125,39 +125,43 @@ class QuoteListener(BaseListener):
     resource_type = Quote
 
     def __init__(self, filename=LOCAL_STORAGE_PATH,
-                 last_record_id: Optional[int] = None):
+                 last_record_id: Optional[int] = None,
+                 last_record_revision: Optional[int] = None):
         super().__init__(filename, last_record_id)
-        self._most_recent_quote = last_record_id
+        self._most_recent_quote: Tuple[Optional[int], Optional[int]] = (last_record_id, last_record_revision)
 
     def get_default_last_record_id(self):
         """
-        Loads the order list by descending order number order and returns the newest orders number.
+        Loads the quote list by ascending sent_date order and returns the newest quote's number and revision.
 
         :return: the order number of the newest order, or 0 if it is None
         """
-        if self._most_recent_quote is not None:
+        most_recent_quote_number, most_recent_quote_revision = self._most_recent_quote
+
+        if most_recent_quote_number is not None:  # If the supplied quote number is not None, use the (quote_number, revision) pair regardless of whether revision is None
             return self._most_recent_quote
         else:
             quotes_list = Quote.get_new()
             try:
-                self._most_recent_quote = quotes_list[-1]
+                most_recent_quote_result = quotes_list[-1]
+                self._most_recent_quote = (most_recent_quote_result['quote'], most_recent_quote_result['revision'])
             except IndexError:
-                # Default to 0 if there are no quotes.
+                # Default to 0 with revision None if there are no quotes.
                 # This will not work for suppliers with no quotes and
-                # a configured starting order number that is greater than 1.
+                # a configured starting quote number that is greater than 1.
                 # In that case, you MUST specify a default_last_record_id.
-                self._most_recent_quote = 0
+                self._most_recent_quote = (0, None)
             return self._most_recent_quote
 
     def get_resource_unique_identifier(self, resource):
-        return resource.number
+        return resource.number, resource.revision
 
     def get_new_resource(self):
         try:
-            new_quotes = Quote.get_new(self.get_last_resource_processed())
+            new_quotes = Quote.get_new(*self.get_last_resource_processed())
             if new_quotes:
-                first_new_quote = new_quotes[0]
-                return Quote.get(first_new_quote)
+                (first_new_quote_number, first_new_quote_revision) = new_quotes[0]
+                return Quote.get(first_new_quote_number, first_new_quote_revision)
             else:
                 return None
         except PaperlessNotFoundException:

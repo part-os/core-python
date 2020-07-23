@@ -4,6 +4,7 @@ from typing import Optional, List
 import attr
 
 from paperless.api_mappers.quotes import QuoteDetailsMapper
+from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 from .common import Money
 from .components import Component, AssemblyMixin
@@ -138,7 +139,7 @@ class ParentSupplierOrder:
 
 
 @attr.s(frozen=True)
-class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
+class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin here because quotes are identified uniquely by (number, revision) pairs
 
     _mapper = QuoteDetailsMapper
 
@@ -175,9 +176,43 @@ class Quote(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
         return 'quotes/public'
 
     @classmethod
-    def construct_get_new_resources_url(cls):
-        return 'quotes/public/new_sent'
+    def construct_get_params(cls, revision):
+        """
+        Optional method to define query params to send along GET request
+
+        :return None or params dict
+        """
+        return {'revision': revision}
 
     @classmethod
-    def construct_get_new_params(cls, id):
-        return {'last_quote': id}
+    def get(cls, id, revision=None):
+        """
+        Retrieves the resource specified by the id and revision.
+        :raise PaperlessNotFoundException: Raised when the requested id 404s aka is not found.
+        :param id: int
+        :param revision: Optional[int]
+        :return: resource
+        """
+        client = PaperlessClient.get_instance()
+        return cls.from_json(client.get_resource(
+            cls.construct_get_url(),
+            id,
+            params=cls.construct_get_params(revision))
+        )
+
+    @classmethod
+    def construct_get_new_resources_url(cls):
+        return 'quotes/public/new'
+
+    @classmethod
+    def construct_get_new_params(cls, id, revision):
+        return {'last_quote': id, 'revision': revision}
+
+    @classmethod
+    def get_new(cls, id=None, revision=None):
+        client = PaperlessClient.get_instance()
+
+        return client.get_new_resources(
+            cls.construct_get_new_resources_url(),
+            params=cls.construct_get_new_params(id, revision) if id else None
+        )
