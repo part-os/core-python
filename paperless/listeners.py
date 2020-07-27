@@ -41,6 +41,7 @@ class BaseListener:
 
     def listen(self):
         resource = self.get_new_resource()
+        print(f'resource: {resource}')
         while resource is not None:
             try:
                 success = self.on_event(resource)
@@ -154,13 +155,18 @@ class QuoteListener(BaseListener):
             return self._most_recent_quote
 
     def get_resource_unique_identifier(self, resource):
-        return resource.number, resource.revision
+        return {'id': resource.number, 'revision': resource.revision_number}
 
     def get_new_resource(self):
         try:
-            new_quotes = Quote.get_new(*self.get_last_resource_processed())
+            last_resource_processed = self.get_last_resource_processed()
+            resource_id = last_resource_processed['id']
+            resource_revision = last_resource_processed['revision']
+            new_quotes = Quote.get_new(id=resource_id, revision=resource_revision)
+            print(f'new_quotes: {new_quotes}')
             if new_quotes:
-                (first_new_quote_number, first_new_quote_revision) = new_quotes[0]
+                first_new_quote_number = new_quotes[0]['quote']
+                first_new_quote_revision = new_quotes[0]['revision']
                 return Quote.get(first_new_quote_number, first_new_quote_revision)
             else:
                 return None
