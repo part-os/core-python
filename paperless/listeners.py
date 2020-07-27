@@ -41,7 +41,6 @@ class BaseListener:
 
     def listen(self):
         resource = self.get_new_resource()
-        print(f'resource: {resource}')
         while resource is not None:
             try:
                 success = self.on_event(resource)
@@ -163,7 +162,6 @@ class QuoteListener(BaseListener):
             resource_id = last_resource_processed['id']
             resource_revision = last_resource_processed['revision']
             new_quotes = Quote.get_new(id=resource_id, revision=resource_revision)
-            print(f'new_quotes: {new_quotes}')
             if new_quotes:
                 first_new_quote_number = new_quotes[0]['quote']
                 first_new_quote_revision = new_quotes[0]['revision']
