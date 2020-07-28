@@ -13,13 +13,12 @@ from .utils import convert_cls, optional_convert, convert_iterable, numeric_vali
 
 @attr.s(frozen=True)
 class AddOnQuantity:
-    manual_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    manual_price: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
 
 @attr.s(frozen=True)
 class AddOn:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
@@ -38,9 +37,9 @@ class Expedite:
 class Quantity:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
-    markup_1_price: Optional[Money] = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
+    markup_1_price: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     markup_1_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    markup_2_price: Optional[Money] = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
+    markup_2_price: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     markup_2_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     unit_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
@@ -151,7 +150,7 @@ class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin he
     customer: Customer = attr.ib(converter=convert_cls(Customer))
     tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal),
                                           validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
-    tax_cost: Optional[Money] = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))  # TODO - use optional_convert here
+    tax_cost: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     quote_items: List[QuoteItem] = attr.ib(converter=convert_iterable(QuoteItem))
     status: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
