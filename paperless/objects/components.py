@@ -48,7 +48,7 @@ class Operation:
     is_finish: bool = attr.ib(validator=attr.validators.instance_of(bool))
     is_outside_service: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
-    operation_definition_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    operation_definition_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     position: int = attr.ib(validator=attr.validators.instance_of(int))
     quantities: List[OperationQuantity] = attr.ib(converter=convert_iterable(OperationQuantity))
