@@ -53,11 +53,11 @@ class Address:
 @attr.s(frozen=False)
 class AddressInfo:
     address: Address = attr.ib(converter=convert_cls(Address))
-    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    phone: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    phone_ext: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    first_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    last_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=False)
