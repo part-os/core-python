@@ -21,7 +21,7 @@ class PaymentTerms(FromJSONMixin, ToJSONMixin, ListMixin):
 
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     label: str = attr.ib(validator=attr.validators.instance_of(str))
-    period: int = attr.ib(validator=attr.validators.instance_of(int))
+    period: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
 
     @classmethod
     def construct_list_url(cls):
