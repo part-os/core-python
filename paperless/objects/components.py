@@ -34,7 +34,8 @@ class Operation:
 
     @attr.s(frozen=True)
     class OperationQuantity:
-        price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+        price: Optional[Money] = attr.ib(converter=optional_convert(Money),
+                                         validator=attr.validators.optional(attr.validators.instance_of(Money)))
         manual_price: Optional[Money] = attr.ib(converter=optional_convert(Money),
                                                 validator=attr.validators.optional(attr.validators.instance_of(Money)))
         lead_time: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
