@@ -27,7 +27,7 @@ class FromJSONMixin(object):
             return resource
 
     @classmethod
-    def from_json(cls, resource):
+    def from_json(cls, resource: dict):
         try:
             d = dict()
             cls_attrs = [a.name for a in attr.fields(cls)]

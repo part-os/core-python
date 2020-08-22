@@ -18,6 +18,16 @@ class PaymentTermsEncoder(BaseJSONEncoder):
             return data
 
 
+class MoneyEncoder(BaseJSONEncoder):
+    @classmethod
+    def encode(cls, resource, json_dumps=True):
+        data = float(resource.dollars)
+        if json_dumps:
+            return json.dumps(data)
+        else:
+            return data
+
+
 class CountryEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
@@ -96,13 +106,19 @@ class CompanyEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['business_name', 'created', 'credit_line', 'erp_code', 'id', 'notes',
+        field_keys = ['business_name', 'created', 'erp_code', 'id', 'notes',
                       'phone', 'phone_ext', 'slug', 'tax_rate', 'url']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
         boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
         for key in boolean_keys:
             data[key] = getattr(resource, key, False)
+
+        credit_line = getattr(resource, 'credit_line', None)
+        if credit_line is not None:
+            data['credit_line'] = MoneyEncoder.encode(credit_line, json_dumps=False)
+        else:
+            data['credit_line'] = None
             
         billing_info = getattr(resource, 'billing_info', None)
         if billing_info is not None:
