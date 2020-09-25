@@ -93,7 +93,7 @@ class OrderDetailsMapper(BaseMapper):
         mapped_result = {}
         mapped_result['billing_info'] = OrderAddressInfoMapper.map(resource['billing_info'])
         mapped_result['customer'] = OrderCustomerMapper.map(resource['customer'])
-        mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person'])
+        mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person']) if resource['sales_person'] else None
         mapped_result['estimator'] = QuoteSalesPersonMapper.map(resource['estimator']) if resource['estimator'] else None
         mapped_result['order_items'] = map(OrderItemMapper.map, resource['order_items'])
         mapped_result['payment_details'] = PaymentDetailsMapper.map(resource['payment_details'])
