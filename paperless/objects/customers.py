@@ -31,35 +31,18 @@ class PaymentTerms(FromJSONMixin, ToJSONMixin, ListMixin):
 
 
 @attr.s(frozen=False)
-class Country:
-    abbr: str = attr.ib(validator=attr.validators.instance_of(str))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
-
-
-@attr.s(frozen=False)
-class State:
-    abbr: str = attr.ib(validator=attr.validators.instance_of(str))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
-
-
-@attr.s(frozen=False)
-class Address:
-    country: Country = attr.ib(converter=convert_cls(Country))
-    state: State = attr.ib(converter=convert_cls(State))
-    city: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    address1: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    address2: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    postal_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-
-
-@attr.s(frozen=False)
 class AddressInfo:
-    address: Address = attr.ib(converter=convert_cls(Address))
+    address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    address2: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    country: str = attr.ib(validator=attr.validators.instance_of(str))
     first_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     last_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    state: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
 @attr.s(frozen=False)
@@ -92,7 +75,10 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     erp_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    payment_terms: Optional[PaymentTerms] = attr.ib(converter=optional_convert(convert_cls(PaymentTerms)))
+    payment_terms: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)))
+    payment_terms_period: Optional[int] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(int)))
     phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     purchase_orders_enabled: bool = attr.ib(validator=attr.validators.instance_of(bool))
@@ -115,7 +101,7 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     _mapper = CustomerMapper
     _json_encoder = CustomerEncoder
 
-    # billing_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
+    billing_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
     company_erp_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     company_id: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -131,7 +117,7 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     purchase_orders_enabled: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    # shipping_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
+    shipping_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
     tax_exempt: bool = attr.ib(validator=attr.validators.instance_of(bool))
     tax_rate: Optional[float] = attr.ib(validator=attr.validators.optional(numeric_validator))
     url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))

@@ -106,8 +106,9 @@ class CompanyEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['business_name', 'created', 'erp_code', 'id', 'notes',
-                      'phone', 'phone_ext', 'slug', 'tax_rate', 'url']
+        field_keys = ['business_name', 'credit_line', 'erp_code', 'notes',
+                      'payment_terms', 'payment_terms_period', 'phone', 'phone_ext',
+                      'tax_rate', 'slug', 'url']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
         boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
@@ -119,24 +120,6 @@ class CompanyEncoder(BaseJSONEncoder):
             data['credit_line'] = MoneyEncoder.encode(credit_line, json_dumps=False)
         else:
             data['credit_line'] = None
-            
-        billing_info = getattr(resource, 'billing_info', None)
-        if billing_info is not None:
-            data['billing_info'] = AddressInfoEncoder.encode(billing_info, json_dumps=False)
-        else:
-            data['bililng_info'] = None
-
-        payment_terms = getattr(resource, 'payment_terms', None)
-        if payment_terms is not None:
-            data['payment_terms'] = PaymentTermsEncoder.encode(payment_terms, json_dumps=False)
-        else:
-            data['payment_terms'] = None
-
-        shipping_info = getattr(resource, 'shipping_info', None)
-        if shipping_info is not None:
-            data['shipping_info'] = AddressInfoEncoder.encode(shipping_info, json_dumps=False)
-        else:
-            data['bililng_info'] = None
 
         if json_dumps:
             return json.dumps(data)
@@ -149,7 +132,7 @@ class CustomerEncoder(BaseJSONEncoder):
         data = {}
         field_keys = ['company_id', 'credit_line', 'email', 'first_name', 'last_name',
                       'notes', 'payment_terms', 'payment_terms_period', 'phone', 'phone_ext',
-                      'purchase_orders_enabled', 'sales_person', 'tax_exempt', 'tax_rate']
+                      'purchase_orders_enabled', 'salesperson', 'tax_exempt', 'tax_rate', 'url']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
         boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
@@ -162,6 +145,6 @@ class CustomerEncoder(BaseJSONEncoder):
             data['credit_line'] = None
 
         if json_dumps:
-            return json_dumps(data)
+            return json.dumps(data)
         else:
             return data
