@@ -59,6 +59,23 @@ class AddressInfoMapper(BaseMapper):
         mapped_result['address'] = AddressMapper.map(resource['address'])
         return mapped_result
 
+class CustomerMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['business_name',  'company_erp_code', 'company_id', 'created',
+                      'credit_line', 'email', 'first_name', 'id', 'last_name', 'notes',
+                      'payment_terms', 'payment_terms_period', 'phone', 'phone_ext',
+                      'purchase_orders_enabled', 'tax_exempt', 'tax_rate', 'url']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
+        for key in boolean_keys:
+            mapped_result[key] = resource.get(key, False)
+        # mapped_result['billing_info'] = AddressInfoMapper.map(resource['billing_info']) if resource['billing_info'] else None
+        # mapped_result['shipping_info'] = AddressInfoMapper.map(resource['shipping_info']) if resource['shipping_info'] else None
+        return mapped_result
+
 
 class CompanyMapper(BaseMapper):
     @classmethod

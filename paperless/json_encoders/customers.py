@@ -142,3 +142,26 @@ class CompanyEncoder(BaseJSONEncoder):
             return json.dumps(data)
         else:
             return data
+
+class CustomerEncoder(BaseJSONEncoder):
+    @classmethod
+    def encode(cls, resource, json_dumps=True):
+        data = {}
+        field_keys = ['company_id', 'credit_line', 'email', 'first_name', 'last_name',
+                      'notes', 'payment_terms', 'payment_terms_period', 'phone', 'phone_ext',
+                      'purchase_orders_enabled', 'sales_person', 'tax_exempt', 'tax_rate']
+        for key in field_keys:
+            data[key] = getattr(resource, key, None)
+        boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
+        for key in boolean_keys:
+            data[key] = getattr(resource, key, False)
+        credit_line = getattr(resource, 'credit_line', None)
+        if credit_line is not None:
+            data['credit_line'] = MoneyEncoder.encode(credit_line, json_dumps=False)
+        else:
+            data['credit_line'] = None
+
+        if json_dumps:
+            return json_dumps(data)
+        else:
+            return data
