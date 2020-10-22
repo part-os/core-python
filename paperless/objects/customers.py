@@ -15,6 +15,8 @@ from .common import Money
 from .components import Component, AssemblyMixin
 from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
 
+_NO_UPDATE = object()
+
 
 @attr.s(frozen=False)
 class AddressInfo:
@@ -47,6 +49,20 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
     def construct_list_url(cls):
         return 'companies/public'
 
+    def filter(self, erp_code=None):
+        client = PaperlessClient.get_instance()
+        params = {}
+        if erp_code is not None:
+            params['erp_code'] = erp_code
+        resp_json = client.get_resource_list(self.construct_list_url(), params=params)
+        return resp_json
+
+    def search(self, search_term):
+        client = PaperlessClient.get_instance()
+        params = {'search': search_term}
+        resp_json = client.get_resource_list(self.construct_list_url(), params=params)
+        return resp_json
+
 
 @attr.s(frozen=False)
 class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
@@ -78,8 +94,10 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     def construct_get_url(cls):
         return 'companies/public'
 
+    @classmethod
     def construct_patch_url(cls):
-        return 'companies/public'
+        return 'companies/public/'
+
 
 
 @attr.s(frozen=False)
@@ -101,7 +119,26 @@ class CustomerList(FromJSONMixin, PaginatedListMixin):
 
     @classmethod
     def construct_list_url(cls):
-        return 'companies/public'
+        return 'customers/public'
+
+    @classmethod
+    def filter(cls, company_erp_code=None, company_id=None):
+        client = PaperlessClient.get_instance()
+        params = {}
+        if company_erp_code is not None:
+            params['company_erp_code'] = company_erp_code
+        if company_id is not None:
+            params['company_id'] = company_id
+        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
+        return resp_json
+
+    @classmethod
+    def search(cls, search_term):
+        client = PaperlessClient.get_instance()
+        params = {'search': search_term}
+        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
+        return resp_json
+
 
 
 @attr.s(frozen=False)

@@ -142,7 +142,10 @@ class PaginatedListMixin(ListMixin):
 
         :return: json list of your resource
         """
-        return results['results']
+        print('resulttttss:', results)
+
+
+        return []
 
     @classmethod
     def list(cls, params=None, pages=None):
@@ -221,6 +224,7 @@ class UpdateMixin(object):
         client = PaperlessClient.get_instance()
         primary_key = getattr(self, self._primary_key)
         data = self.to_json()
+        print('data:', data)
         resp = client.update_resource(self.construct_patch_url(), primary_key, data=data)
         resp_dict = self.from_json_to_dict(resp)
         for key, val in resp_dict.items():
