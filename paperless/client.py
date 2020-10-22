@@ -144,8 +144,6 @@ class PaperlessClient(object):
             data=data
         )
 
-        print('resp:', resp.json())
-
         if resp.status_code == 201:
             return resp.json()
         elif resp.status_code == 404:
