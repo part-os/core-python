@@ -15,19 +15,19 @@ from .components import Component, AssemblyMixin
 from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
 
 
-@attr.s(frozen=False)
-class PaymentTerms(FromJSONMixin, ToJSONMixin, ListMixin):
-
-    _mapper = PaymentTermsDetailsMapper
-    _json_encoder = PaymentTermsEncoder
-
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    label: str = attr.ib(validator=attr.validators.instance_of(str))
-    period: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
-
-    @classmethod
-    def construct_list_url(cls):
-        return 'customers/public/payment_terms'
+# @attr.s(frozen=False)
+# class PaymentTerms(FromJSONMixin, ToJSONMixin, ListMixin):
+#
+#     _mapper = PaymentTermsDetailsMapper
+#     _json_encoder = PaymentTermsEncoder
+#
+#     id: int = attr.ib(validator=attr.validators.instance_of(int))
+#     label: str = attr.ib(validator=attr.validators.instance_of(str))
+#     period: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+#
+#     @classmethod
+#     def construct_list_url(cls):
+#         return 'customers/public/payment_terms'
 
 
 @attr.s(frozen=False)
