@@ -39,6 +39,20 @@ class CustomerMapper(BaseMapper):
         return mapped_result
 
 
+class CustomerListMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = [
+            'business_name', 'company_erp_code', 'company_id', 'created',
+              'email', 'first_name', 'id', 'last_name', 'phone', 'phone_ext',
+            'win_rate'
+        ]
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
 class CompanyMapper(BaseMapper):
     @classmethod
     def map(cls, resource):

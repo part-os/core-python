@@ -8,7 +8,7 @@ from unittest.mock import MagicMock
 #test customer created has a new id
 #test primary key is number
 from paperless.objects.common import Money
-from paperless.objects.customers import Customer, Company
+from paperless.objects.customers import Customer, Company, CustomerList, CompanyList
 
 
 class TestCustomer(unittest.TestCase):
@@ -83,6 +83,45 @@ class TestCustomer(unittest.TestCase):
             "url": "https://www.paperlessparts.com",
         }
         self.assertEqual(c.to_json(), json.dumps(expected_customer_json))
+
+
+class TestCustomerList(unittest.TestCase):
+    def setUp(self):
+        self.client  = PaperlessClient()
+        with open('tests/unit/mock_data/customer_list.json') as data_file:
+            self.mock_customer_list_json = json.load(data_file)
+
+    def test_get_customer_list(self):
+        self.client.get_resource_list = MagicMock(return_value=self.mock_customer_list_json)
+        c = CustomerList.list()
+        self.assertEqual(len(c), 5)
+        self.assertEqual(c[2].business_name, "Paperless")
+        self.assertEqual(c[2].company_erp_code, None)
+        self.assertEqual(c[2].created, "2020-09-18T14:45:56+00:00")
+        self.assertEqual(c[2].email, "support+3@paperlessparts.com")
+        self.assertEqual(c[2].first_name, "Ryan")
+        self.assertEqual(c[2].last_name, "Ryanson")
+        self.assertEqual(c[2].phone, "9785555555")
+        self.assertEqual(c[2].phone_ext, "")
+        self.assertEqual(c[2].win_rate, 0)
+
+
+class TestCustomerList(unittest.TestCase):
+    def setUp(self):
+        self.client = PaperlessClient()
+        with open('tests/unit/mock_data/company_list.json') as data_file:
+            self.mock_company_list_json = json.load(data_file)
+
+    def test_get_company_list(self):
+        self.client.get_resource_list = MagicMock(return_value=self.mock_company_list_json)
+        c = CompanyList.list()
+        self.assertEqual(len(c), 3)
+        self.assertEqual(c[1].business_name, "ACME Machining")
+        self.assertEqual(c[1].erp_code, "AMC")
+        self.assertEqual(c[1].phone, "6175555555")
+        self.assertEqual(c[1].phone_ext, "12")
+        self.assertEqual(c[1].slug, "acme-machining")
+
 
 
 class TestCompany(unittest.TestCase):
