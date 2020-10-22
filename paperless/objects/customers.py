@@ -24,13 +24,13 @@ class AddressInfo:
     address2: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    country: str = attr.ib(validator=attr.validators.instance_of(str))
+    country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     first_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     last_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    state: str = attr.ib(validator=attr.validators.instance_of(str))
+    state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 @attr.s(frozen=False)
@@ -98,6 +98,10 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     def construct_patch_url(cls):
         return 'companies/public/'
 
+    @classmethod
+    def list(cls):
+        return CompanyList.list()
+
 
 
 @attr.s(frozen=False)
@@ -105,8 +109,8 @@ class CustomerList(FromJSONMixin, PaginatedListMixin):
 
     _mapper = CustomerListMapper
 
-    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    company_id: int = attr.ib(validator=attr.validators.instance_of(int))
+    business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    company_id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     company_erp_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     created: str = attr.ib(validator=attr.validators.instance_of(str))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -147,9 +151,9 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     _json_encoder = CustomerEncoder
 
     billing_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
-    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     company_erp_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    company_id: int = attr.ib(validator=attr.validators.instance_of(int))
+    company_id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     created: str = attr.ib(validator=attr.validators.instance_of(str))
     credit_line: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -171,5 +175,10 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     def construct_get_url(cls):
         return 'customers/public'
 
+    @classmethod
     def construct_patch_url(cls):
         return 'customers/public'
+
+    @classmethod
+    def list(cls):
+        return CustomerList.list()
