@@ -9,8 +9,9 @@ from paperless.api_mappers.customers import PaymentTermsDetailsMapper, \
 from paperless.client import PaperlessClient
 from paperless.json_encoders.customers import PaymentTermsEncoder, CompanyEncoder, \
     CustomerEncoder, AddressEncoder
-from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, CreateMixin, PaginatedListMixin, \
-    UpdateMixin, ToJSONMixin
+from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, \
+    CreateMixin, PaginatedListMixin, \
+    UpdateMixin, ToJSONMixin, DeleteMixin
 from .common import Money
 from .components import Component, AssemblyMixin
 from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
@@ -70,7 +71,7 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
 
 
 @attr.s(frozen=False)
-class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin):
+class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
 
     _mapper = CompanyMapper
     _json_encoder = CompanyEncoder
@@ -95,7 +96,9 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin):
     created = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     tax_exempt: bool = attr.ib(default=False, validator=attr.validators.instance_of(bool))
 
-
+    @classmethod
+    def construct_delete_url(cls):
+        return 'customers/public'
 
     @classmethod
     def construct_get_url(cls):
@@ -176,8 +179,8 @@ class CustomerList(FromJSONMixin, PaginatedListMixin):
 
 
 
-@attr.s(frozen=False, init=True)
-class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin):
+@attr.s(frozen=False)
+class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
     _mapper = CustomerMapper
     _json_encoder = CustomerEncoder
 
@@ -200,8 +203,11 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin):
     tax_exempt: bool = attr.ib(validator=attr.validators.instance_of(bool))
     tax_rate: Optional[float] = attr.ib(validator=attr.validators.optional(numeric_validator))
     url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    created = attr.ib(init=False, default=attr.NOTHING, validator=attr.validators.optional(attr.validators.instance_of(str)))
+    created = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
+    @classmethod
+    def construct_delete_url(cls):
+        return 'customers/public'
 
     @classmethod
     def construct_get_url(cls):
