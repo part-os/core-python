@@ -36,6 +36,7 @@ class FromJSONMixin(object):
                     d[k] = v
         except attr.exceptions.NotAnAttrsClassError:
             d = resource
+        print(cls.from_json_to_dict(d))
         return cls(**cls.from_json_to_dict(d))
 
 

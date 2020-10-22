@@ -70,17 +70,16 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
 
 
 @attr.s(frozen=False)
-class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
+class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin):
 
     _mapper = CompanyMapper
     _json_encoder = CompanyEncoder
 
     billing_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    created: str = attr.ib(validator=attr.validators.instance_of(str))
     credit_line: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     erp_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    id = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     payment_terms: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str)))
@@ -91,9 +90,12 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     purchase_orders_enabled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     shipping_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
     slug: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    tax_exempt: bool = attr.ib(validator=attr.validators.instance_of(bool))
     tax_rate: Optional[float] = attr.ib(validator=attr.validators.optional(numeric_validator))
     url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    created = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    tax_exempt: bool = attr.ib(default=False, validator=attr.validators.instance_of(bool))
+
+
 
     @classmethod
     def construct_get_url(cls):
@@ -174,8 +176,8 @@ class CustomerList(FromJSONMixin, PaginatedListMixin):
 
 
 
-@attr.s(frozen=False)
-class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
+@attr.s(frozen=False, init=True)
+class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin):
     _mapper = CustomerMapper
     _json_encoder = CustomerEncoder
 
@@ -183,7 +185,6 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     company_erp_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     company_id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
-    created: str = attr.ib(validator=attr.validators.instance_of(str))
     credit_line: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -199,6 +200,8 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     tax_exempt: bool = attr.ib(validator=attr.validators.instance_of(bool))
     tax_rate: Optional[float] = attr.ib(validator=attr.validators.optional(numeric_validator))
     url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    created = attr.ib(init=False, default=attr.NOTHING, validator=attr.validators.optional(attr.validators.instance_of(str)))
+
 
     @classmethod
     def construct_get_url(cls):
