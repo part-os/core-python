@@ -60,21 +60,10 @@ class AddressEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['city', 'address1', 'address2', 'postal_code']
+        field_keys = ['address1', 'address2', 'city', 'country', 'first_name',
+                      'last_name', 'phone', 'phone_ext', 'postal_code', 'state']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
-            
-        country = getattr(resource, 'country', None)
-        if country is not None:
-            data['country'] = CountryEncoder.encode(country, json_dumps=False)
-        else:
-            data['country'] = None
-            
-        state = getattr(resource, 'state', None)
-        if state is not None:
-            data['state'] = StateEncoder.encode(state, json_dumps=False)
-        else:
-            data['state'] = None
 
         if json_dumps:
             return json.dumps(data)

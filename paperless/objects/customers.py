@@ -8,7 +8,7 @@ from paperless.api_mappers.customers import PaymentTermsDetailsMapper, \
     CompanyListMapper, CompanyMapper, CustomerMapper, CustomerListMapper
 from paperless.client import PaperlessClient
 from paperless.json_encoders.customers import PaymentTermsEncoder, CompanyEncoder, \
-    CustomerEncoder
+    CustomerEncoder, AddressEncoder
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, CreateMixin, PaginatedListMixin, \
     UpdateMixin, ToJSONMixin
 from .common import Money
@@ -19,7 +19,10 @@ _NO_UPDATE = object()
 
 
 @attr.s(frozen=False)
-class AddressInfo:
+class AddressInfo(FromJSONMixin,ToJSONMixin):
+
+    _json_encoder = AddressEncoder
+
     address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     address2: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
@@ -49,7 +52,8 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
     def construct_list_url(cls):
         return 'companies/public'
 
-    def filter(self, erp_code=None):
+    @classmethod
+    def filter(cls, erp_code=None):
         client = PaperlessClient.get_instance()
         params = {}
         if erp_code is not None:
@@ -57,7 +61,8 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
         resp_json = client.get_resource_list(self.construct_list_url(), params=params)
         return resp_json
 
-    def search(self, search_term):
+    @classmethod
+    def search(cls, search_term):
         client = PaperlessClient.get_instance()
         params = {'search': search_term}
         resp_json = client.get_resource_list(self.construct_list_url(), params=params)
@@ -96,11 +101,35 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
 
     @classmethod
     def construct_patch_url(cls):
-        return 'companies/public/'
+        return 'companies/public'
+
+    @classmethod
+    def construct_post_url(cls):
+        return 'companies/public'
 
     @classmethod
     def list(cls):
         return CompanyList.list()
+
+    @classmethod
+    def filter(cls, erp_code=None):
+        return CompanyList.filter(erp_code=erp_code)
+
+    @classmethod
+    def search(cls, search_term):
+        return CompanyList.search(search_term)
+
+    def set_billing_info(self, billing_info):
+        data = billing_info.to_json()
+        client = PaperlessClient.get_instance()
+        resp_json = client.create_resource(f'{self.construct_post_url()}/{self.id}/billing', data=data)
+        return AddressInfo.from_json(resp_json)
+
+    def set_shipping_info(self, shipping_info):
+        data = shipping_info.to_json()
+        client = PaperlessClient.get_instance()
+        resp_json = client.create_resource(f'{self.construct_post_url()}/{self.id}/shipping', data=data)
+        return AddressInfo.from_json(resp_json)
 
 
 
@@ -180,5 +209,32 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
         return 'customers/public'
 
     @classmethod
+    def construct_post_url(cls):
+        return 'customers/public'
+
+    @classmethod
     def list(cls):
         return CustomerList.list()
+
+    @classmethod
+    def filter(cls, company_erp_code=None, company_id=None):
+        return CustomerList.filter(company_erp_code=company_erp_code,
+                                   company_id=company_id)
+
+    @classmethod
+    def search(cls, search_term):
+        return CustomerList.search(search_term)
+
+
+    def set_billing_info(self, billing_info):
+        data = billing_info.to_json()
+        client = PaperlessClient.get_instance()
+        resp_json = client.create_resource(f'{self.construct_post_url()}/{self.id}/billing', data=data)
+        return AddressInfo.from_json(resp_json)
+
+    def set_shipping_info(self, shipping_info):
+        data = shipping_info.to_json()
+        client = PaperlessClient.get_instance()
+        resp_json = client.create_resource(f'{self.construct_post_url()}/{self.id}/shipping', data=data)
+        return AddressInfo.from_json(resp_json)
+
