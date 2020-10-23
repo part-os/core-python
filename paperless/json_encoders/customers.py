@@ -148,4 +148,4 @@ class CustomerEncoder(BaseJSONEncoder):
         if json_dumps:
             return json.dumps(filtered_data)
         else:
-            return data
+            return filtered_data
