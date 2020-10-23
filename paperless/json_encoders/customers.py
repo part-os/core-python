@@ -2,6 +2,7 @@ import json
 from typing import List
 
 from paperless.json_encoders import BaseJSONEncoder
+from paperless.objects.utils import NO_UPDATE
 
 
 class PaymentTermsEncoder(BaseJSONEncoder):
@@ -105,15 +106,20 @@ class CompanyEncoder(BaseJSONEncoder):
             data[key] = getattr(resource, key, False)
 
         credit_line = getattr(resource, 'credit_line', None)
-        if credit_line is not None:
+        if credit_line is not None and credit_line is not NO_UPDATE:
             data['credit_line'] = MoneyEncoder.encode(credit_line, json_dumps=False)
         else:
-            data['credit_line'] = None
+            data['credit_line'] = credit_line
+
+        filtered_data = {}
+        for key in data:
+            if data[key] is not NO_UPDATE:
+                filtered_data[key] = data[key]
 
         if json_dumps:
-            return json.dumps(data)
+            return json.dumps(filtered_data)
         else:
-            return data
+            return filtered_data
 
 class CustomerEncoder(BaseJSONEncoder):
     @classmethod

@@ -14,9 +14,8 @@ from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, \
     UpdateMixin, ToJSONMixin, DeleteMixin
 from .common import Money
 from .components import Component, AssemblyMixin
-from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
-
-_NO_UPDATE = object()
+from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator, \
+    NO_UPDATE
 
 
 @attr.s(frozen=False)
@@ -76,25 +75,27 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, D
     _mapper = CompanyMapper
     _json_encoder = CompanyEncoder
 
-    billing_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    credit_line: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
-    erp_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    id = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
-    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    payment_terms: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str)))
-    payment_terms_period: Optional[int] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(int)))
-    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    purchase_orders_enabled: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    shipping_info: Optional[AddressInfo] = attr.ib(converter=optional_convert(convert_cls(AddressInfo)))
-    slug: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    tax_rate: Optional[float] = attr.ib(validator=attr.validators.optional(numeric_validator))
-    url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    created = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    tax_exempt: bool = attr.ib(default=False, validator=attr.validators.instance_of(bool))
+
+    # not required for instantiation
+    created = attr.ib(default=NO_UPDATE, validator=(attr.validators.instance_of((str, object))))
+    id = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((int, object)))
+    credit_line = attr.ib(default=NO_UPDATE, converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of((Money, object))))
+    erp_code = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    notes = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    phone = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    phone_ext = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    payment_terms = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    payment_terms_period = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((int, object))))
+    purchase_orders_enabled= attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((bool, object)))
+    billing_info = attr.ib(default=NO_UPDATE, converter=optional_convert(convert_cls(AddressInfo)))
+    shipping_info = attr.ib(default=NO_UPDATE, converter=optional_convert(convert_cls(AddressInfo)))
+    slug = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    tax_exempt = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((bool, object)))
+    tax_rate = attr.ib(default=attr.NOTHING, validator=attr.validators.optional(attr.validators.instance_of((int, float, object))))
+    url = attr.ib(default=attr.NOTHING, validator=attr.validators.optional(attr.validators.instance_of((str, type(attr.NOTHING)))))
+
+
 
     @classmethod
     def construct_delete_url(cls):
