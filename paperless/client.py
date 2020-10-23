@@ -144,8 +144,6 @@ class PaperlessClient(object):
             data=data
         )
 
-        print(resp.json())
-
         if resp.status_code == 201:
             return resp.json()
         elif resp.status_code == 404:
@@ -181,7 +179,6 @@ class PaperlessClient(object):
                 message="Unable to locate object with id {} from url: {}".format(id, req_url)
             )
         else:
-            print(resp.content)
             raise PaperlessException(
                 message="Failed to update resource",
                 error_code=resp.status_code
