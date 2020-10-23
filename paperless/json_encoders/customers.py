@@ -133,13 +133,19 @@ class CustomerEncoder(BaseJSONEncoder):
         boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
         for key in boolean_keys:
             data[key] = getattr(resource, key, False)
+
         credit_line = getattr(resource, 'credit_line', None)
-        if credit_line is not None:
+        if credit_line is not None and credit_line is not NO_UPDATE:
             data['credit_line'] = MoneyEncoder.encode(credit_line, json_dumps=False)
         else:
-            data['credit_line'] = None
+            data['credit_line'] = credit_line
+
+        filtered_data = {}
+        for key in data:
+            if data[key] is not NO_UPDATE:
+                filtered_data[key] = data[key]
 
         if json_dumps:
-            return json.dumps(data)
+            return json.dumps(filtered_data)
         else:
             return data
