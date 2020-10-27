@@ -1,3 +1,5 @@
+NO_UPDATE = object()
+
 def convert_cls(cl):
     """If the attribute is an instance of cls and not None, pass, else try constructing."""
     def converter(val):
@@ -28,7 +30,8 @@ def optional_convert(convert):
     def optional_converter(val):
         if val is None:
             return None
-        return convert(val)
+        elif val is NO_UPDATE:
+            return NO_UPDATE
     return optional_converter
 
 
