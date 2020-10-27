@@ -234,7 +234,7 @@ class QuoteComponentMapper(BaseMapper):
         mapped_result['add_ons'] = map(AddOnMapper.map, resource['add_ons'])
         field_keys = ['id', 'innate_quantity', 'description',
                       'part_custom_attrs', 'part_name', 'part_number',
-                      'part_uuid', 'revision', 'type']
+                      'part_uuid', 'revision', 'type', 'thumbnail_url']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files', 'quantities', 'children']
