@@ -58,14 +58,14 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
         params = {}
         if erp_code is not None:
             params['erp_code'] = erp_code
-        resp_json = client.get_resource_list(self.construct_list_url(), params=params)
+        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
         return resp_json
 
     @classmethod
     def search(cls, search_term):
         client = PaperlessClient.get_instance()
         params = {'search': search_term}
-        resp_json = client.get_resource_list(self.construct_list_url(), params=params)
+        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
         return resp_json
 
 
