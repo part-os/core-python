@@ -54,19 +54,10 @@ class CompanyList(FromJSONMixin, PaginatedListMixin):
 
     @classmethod
     def filter(cls, erp_code=None):
-        client = PaperlessClient.get_instance()
-        params = {}
-        if erp_code is not None:
-            params['erp_code'] = erp_code
-        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
-        return resp_json
-
+        return cls.list(params={'erp_code': erp_code})
     @classmethod
     def search(cls, search_term):
-        client = PaperlessClient.get_instance()
-        params = {'search': search_term}
-        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
-        return resp_json
+        return cls.list(params={'search': search_term})
 
 
 @attr.s(frozen=False)
@@ -164,21 +155,17 @@ class CustomerList(FromJSONMixin, PaginatedListMixin):
 
     @classmethod
     def filter(cls, company_erp_code=None, company_id=None):
-        client = PaperlessClient.get_instance()
         params = {}
         if company_erp_code is not None:
             params['company_erp_code'] = company_erp_code
         if company_id is not None:
             params['company_id'] = company_id
-        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
-        return resp_json
+        return cls.list(params=params)
+
 
     @classmethod
     def search(cls, search_term):
-        client = PaperlessClient.get_instance()
-        params = {'search': search_term}
-        resp_json = client.get_resource_list(cls.construct_list_url(), params=params)
-        return resp_json
+        return cls.list(params={'search': search_term})
 
 
 

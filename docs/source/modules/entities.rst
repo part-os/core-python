@@ -36,7 +36,7 @@ Examples
 
     #Create a customer with all fields
     complete_customer = Customer(
-        company_id=45
+        company_id=45,
         first_name="John",
         last_name="Smith",
         email="john@paperlessparts.com",
@@ -46,7 +46,7 @@ Examples
         payment_terms_period=30,
         phone="5555555555"
         phone_ext="123"
-        purchase_order_enabled=True,
+        purchase_orders_enabled=True,
         tax_exempt=False,
         tax_rate=6.5,
         url="www.paperlessparts.com"
@@ -60,6 +60,7 @@ Examples
     #add shipping info to customer
     shipping_info = AddressInfo(
         address1="133 Portland St",
+        adresss2=None
         business_name="Shipping Dept",
         city="Boston",
         country="USA",
@@ -75,6 +76,7 @@ Examples
     # add billing info to customer
     billing_info = Address(
         address1="137 Portland St",
+        address2=None,
         business_name="Test Accts Payable Dept",
         city="Boston",
         country="USA",
@@ -103,7 +105,7 @@ Examples
         phone_ext="123",
         payment_terms="Net 30",
         payment_terms_period=30,
-        purchase_order_enabled=True,
+        purchase_orders_enabled=True,
         slug="paperless-parts-inc",
         tax_exempt=False,
         tax_rate=6.25,
@@ -119,12 +121,13 @@ Examples
     #add shipping info to company
     shipping_info = AddressInfo(
         address1="133 Portland St",
+        address2=None,
         business_name="Shipping Dept",
         city="Boston",
         country="USA",
         first_name="Paperless",
         last_name="Paddy",
-        phone=1234567890,
+        phone="1234567890",
         phone_ext="123",
         postal_code="02134",
         state="MA"
@@ -134,6 +137,7 @@ Examples
     # add billing info to company
     billing_info = Address(
         address1="137 Portland St",
+        address2=None
         business_name="Test Accts Payable Dept",
         city="Boston",
         country="USA",
