@@ -108,6 +108,7 @@ class Component:
     shop_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
     supporting_files: List[SupportingFile] = attr.ib(converter=convert_iterable(SupportingFile))
     type: str = attr.ib(validator=attr.validators.in_(['assembled', 'manufactured', 'purchased']))
+    thumbnail_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
     @property
     def is_hardware(self):

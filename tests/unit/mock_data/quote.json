@@ -383,6 +383,7 @@
             }
           ],
           "type": "assembled",
+          "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/71558ecfc5217fba946dae139aed6cda5e8ceb3a.png",
           "add_ons": [
             {
               "id": 145,
@@ -1079,6 +1080,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -1729,6 +1731,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -2379,6 +2382,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -3029,6 +3033,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -3679,6 +3684,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -3791,6 +3797,7 @@
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "assembled",
           "add_ons": [],
           "quantities": [
@@ -3926,6 +3933,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "purchased",
           "add_ons": [],
           "quantities": [
@@ -5229,6 +5237,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -5386,6 +5395,7 @@
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
