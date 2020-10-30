@@ -121,6 +121,7 @@ class CompanyEncoder(BaseJSONEncoder):
         else:
             return filtered_data
 
+
 class CustomerEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):

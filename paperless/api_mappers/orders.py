@@ -26,7 +26,7 @@ class OrderComponentMapper(BaseMapper):
         mapped_result['process'] = ProcessMapper.map(resource['process']) if resource['process'] else None
         mapped_result['shop_operations'] = map(OperationsMapper.map, resource['shop_operations'])
         field_keys = ['id', 'deliver_quantity', 'innate_quantity', 'make_quantity', 'description',
-                      'part_custom_attrs', 'part_name', 'part_number', 'part_uuid', 'revision', 'type']
+                      'part_custom_attrs', 'part_name', 'part_number', 'part_uuid', 'revision', 'thumbnail_url', 'type']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         list_keys = ['child_ids', 'finishes', 'parent_ids', 'supporting_files', 'children']
@@ -45,7 +45,8 @@ class OrderItemMapper(BaseMapper):
         mapped_result['components'] = map(OrderComponentMapper.map, resource['components'])
         field_keys = ['id', 'description', 'expedite_revenue', 'filename', 'lead_days', 'private_notes', 'public_notes',
                       'quantity', 'quantity_outstanding', 'quote_item_id', 'quote_item_type', 'root_component_id',
-                      'ships_on', 'total_price', 'unit_price', 'base_price', 'add_on_fees']
+                      'ships_on', 'total_price', 'unit_price', 'base_price', 'add_on_fees',
+                      'markup_1_price', 'markup_1_name', 'markup_2_price', 'markup_2_name']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['export_controlled']
