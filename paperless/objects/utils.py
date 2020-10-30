@@ -32,6 +32,8 @@ def optional_convert(convert):
             return None
         elif val is NO_UPDATE:
             return NO_UPDATE
+        else:
+            return convert(val)
     return optional_converter
 
 
