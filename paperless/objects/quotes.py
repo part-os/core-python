@@ -13,6 +13,7 @@ from .utils import convert_cls, optional_convert, convert_iterable, numeric_vali
 
 @attr.s(frozen=True)
 class AddOnQuantity:
+    price: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     manual_price: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
@@ -136,6 +137,20 @@ class ParentSupplierOrder:
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     status: str = attr.ib(validator=attr.validators.instance_of(str))
 
+@attr.s(frozen=True)
+class RequestForQuote:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    business_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    requested_delivery_date: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    customer_info_conflict: bool = attr.ib(validator=attr.validators.instance_of(bool))
+
+
+
 
 @attr.s(frozen=True)
 class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin here because quotes are identified uniquely by (number, revision) pairs
@@ -160,7 +175,9 @@ class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin he
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     digital_last_viewed_on: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     expired: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    request_for_quote: Optional[bool] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(bool)))
+    request_for_quote: Optional[RequestForQuote] = \
+        attr.ib(converter=convert_cls(RequestForQuote),
+                validator=attr.validators.optional(attr.validators.instance_of(RequestForQuote)))
     parent_quote: Optional[ParentQuote] = \
         attr.ib(converter=convert_cls(ParentQuote),
                 validator=attr.validators.optional(attr.validators.instance_of(ParentQuote)))
