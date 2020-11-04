@@ -26,10 +26,17 @@ class OrderComponent(Component):
 
 @attr.s(frozen=True)
 class OrderedAddOn:
+    @attr.s(frozen=True)
+    class CostingVariable:
+        label: str = attr.ib(validator=attr.validators.instance_of(str))
+        type: str = attr.ib(validator=attr.validators.instance_of(str))
+        value = attr.ib()
+
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
 
 
 @attr.s(frozen=True)

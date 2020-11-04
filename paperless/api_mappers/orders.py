@@ -1,6 +1,6 @@
 from paperless.api_mappers import BaseMapper
 from paperless.api_mappers.components import MaterialMapper, OperationsMapper, \
-    ProcessMapper
+    ProcessMapper, CostingVariablesMapper, AddOnCostingVariablesMapper
 from paperless.api_mappers.quotes import QuoteSalesPersonMapper
 
 
@@ -8,12 +8,14 @@ class AddOnMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
+        costing_variables = map(AddOnCostingVariablesMapper.map, resource['costing_variables'])
         field_keys = ['name', 'price', 'quantity']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['is_required']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
+        mapped_result['costing_variables'] = costing_variables
         return mapped_result
 
 
