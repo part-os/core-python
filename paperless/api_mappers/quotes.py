@@ -149,6 +149,7 @@ class AddOnMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
+        costing_variables = map(QuoteCostingVariablesMapper.map, resource['costing_variables'])
         field_keys = ['name']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
@@ -156,6 +157,7 @@ class AddOnMapper(BaseMapper):
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
         mapped_result['quantities'] = map(AddOnQuantityMapper.map, resource['quantities'])
+        mapped_result['costing_variables'] = costing_variables
         return mapped_result
 
 

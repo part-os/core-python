@@ -20,9 +20,16 @@ class AddOnQuantity:
 
 @attr.s(frozen=True)
 class AddOn:
+    @attr.s(frozen=True)
+    class CostingVariable:
+        label: str = attr.ib(validator=attr.validators.instance_of(str))
+        type: str = attr.ib(validator=attr.validators.instance_of(str))
+        value = attr.ib()
+
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
+    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
 
 
 @attr.s(frozen=True)
@@ -53,20 +60,6 @@ class Quantity:
 class QuoteComponent(Component):
     add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
     quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
-
-
-@attr.s(frozen=True)
-class AddOnQuantity:
-    manual_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
-    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
-
-
-@attr.s(frozen=True)
-class AddOn:
-    is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
-    quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
-
 
 @attr.s(frozen=True)
 class SalesPerson:

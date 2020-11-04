@@ -17,7 +17,7 @@ class PaperlessClient(object):
 
     __instance = None
     access_token = None
-    base_url = "https://api.paperlessparts.com"
+    base_url = "http://localhost/api"
     group_slug = None
     version = VERSION_0
 
