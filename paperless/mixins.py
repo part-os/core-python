@@ -203,9 +203,10 @@ class CreateMixin(object):
         client = PaperlessClient.get_instance()
         data = self.to_json()
         resp = client.create_resource(self.construct_post_url(), data=data)
-        resp_dict = self.from_json_to_dict(resp)
-        for key, val in resp_dict.items():
-            setattr(self, key, val)
+        resp_obj = self.from_json(resp)
+        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))
 
 
 class UpdateMixin(object):
@@ -222,10 +223,10 @@ class UpdateMixin(object):
         primary_key = getattr(self, self._primary_key)
         data = self.to_json()
         resp = client.update_resource(self.construct_patch_url(), primary_key, data=data)
-        resp_dict = self.from_json_to_dict(resp)
-        for key, val in resp_dict.items():
-            setattr(self, key, val)
-
+        resp_obj = self.from_json(resp)
+        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))
 
 class DeleteMixin(object):
     _primary_key = 'id'
