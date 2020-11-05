@@ -88,7 +88,7 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, D
 
     @classmethod
     def construct_delete_url(cls):
-        return 'customers/public'
+        return 'companies/public'
 
     @classmethod
     def construct_get_url(cls):

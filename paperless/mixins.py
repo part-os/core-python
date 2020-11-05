@@ -208,6 +208,7 @@ class CreateMixin(object):
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
 
+
 class UpdateMixin(object):
     _primary_key = 'id'
 
@@ -225,8 +226,7 @@ class UpdateMixin(object):
         resp_obj = self.from_json(resp)
         keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
         for key in keys:
-            setattr(self, key, getattr(resp_obj, key));
-
+            setattr(self, key, getattr(resp_obj, key))
 
 class DeleteMixin(object):
     _primary_key = 'id'
