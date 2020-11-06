@@ -1,6 +1,6 @@
 from paperless.api_mappers import BaseMapper
 from paperless.api_mappers.components import MaterialMapper, OperationsMapper, \
-    ProcessMapper
+    ProcessMapper, CostingVariablesMapper, AddOnCostingVariablesMapper
 
 
 class QuoteMetricsMapper(BaseMapper):
@@ -90,7 +90,6 @@ class QuoteCostingVariablesMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
-
 class QuoteOperationQuantityMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -139,7 +138,7 @@ class AddOnQuantityMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['manual_price', 'quantity']
+        field_keys = ['price', 'manual_price', 'quantity']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
@@ -149,6 +148,7 @@ class AddOnMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
+        costing_variables = map(AddOnCostingVariablesMapper.map, resource['costing_variables'])
         field_keys = ['name']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
@@ -156,6 +156,7 @@ class AddOnMapper(BaseMapper):
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
         mapped_result['quantities'] = map(AddOnQuantityMapper.map, resource['quantities'])
+        mapped_result['costing_variables'] = costing_variables
         return mapped_result
 
 
