@@ -17,7 +17,7 @@ class PaperlessClient(object):
 
     __instance = None
     access_token = None
-    base_url = "https://api.paperlessparts.com"
+    base_url = "http://localhost/api"
     group_slug = None
     version = VERSION_0
 
@@ -236,4 +236,28 @@ class PaperlessClient(object):
             raise PaperlessException(
                 message="Failed to get resource with id {} from url: {}".format(id, req_url),
                 error_code=resp.status_code
+            )
+
+    def request(self, url, method, data=None):
+        headers = self.get_authenticated_headers()
+        req_url = f'{self.base_url}/{url}'
+
+        if data is not None:
+            resp = requests[method](
+                req_url,
+                headers=headers,
+                data=data
+            )
+        else:
+            resp = requests[method](
+                req_url,
+                header=headers
+            )
+
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            raise PaperlessNotFoundException(
+                message="Request failed",
+                error_code=resp.status_code,
             )

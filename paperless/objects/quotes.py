@@ -148,6 +148,17 @@ class RequestForQuote:
 @attr.s(frozen=True)
 class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin here because quotes are identified uniquely by (number, revision) pairs
 
+    OUTSTANDING = 'outstanding'
+    CANCELLED = 'cancelled'
+    TRASH = 'trash'
+    LOST = 'lost'
+    STATUSES = (
+        (OUTSTANDING, 'Outstanding'),
+        (CANCELLED, 'Cancelled'),
+        (LOST, 'Lost'),
+        (TRASH, 'Trash'),
+    )
+
     _mapper = QuoteDetailsMapper
 
     id: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -226,3 +237,11 @@ class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin he
             cls.construct_get_new_resources_url(),
             params=cls.construct_get_new_params(id, revision) if id else None
         )
+
+    def set_status(self, status):
+        client = PaperlessClient.get_instance()
+        resp_json = client.request(
+            url=f'quotes/public/{self.number}/request_status_change/',
+            method='patch', data={"status": status}
+        )
+        return self.from_json_to_dict(resp_json)
