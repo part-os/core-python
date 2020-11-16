@@ -1,6 +1,7 @@
 import json
 import requests
 
+from types import SimpleNamespace
 from .exceptions import PaperlessAuthorizationException, PaperlessException, PaperlessNotFoundException
 
 
@@ -20,6 +21,8 @@ class PaperlessClient(object):
     base_url = "http://localhost/api"
     group_slug = None
     version = VERSION_0
+
+    METHODS = SimpleNamespace(DELETE='delete', GET='get', PATCH='patch', POST='post', PUT='put')
 
     def __new__(cls, **kwargs):
         """
@@ -242,22 +245,25 @@ class PaperlessClient(object):
         headers = self.get_authenticated_headers()
         req_url = f'{self.base_url}/{url}'
 
+        method_to_call = getattr(requests, method)
+        print(data)
         if data is not None:
-            resp = requests[method](
+            resp = method_to_call(
                 req_url,
                 headers=headers,
-                data=data
+                data=json.dumps(data)
             )
         else:
-            resp = requests[method](
+            resp = method_to_call(
                 req_url,
                 header=headers
             )
 
+
         if resp.status_code == 200:
             return resp.json()
         else:
-            raise PaperlessNotFoundException(
+            raise PaperlessException(
                 message="Request failed",
                 error_code=resp.status_code,
             )
