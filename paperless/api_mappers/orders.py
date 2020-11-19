@@ -154,6 +154,8 @@ class ShipmentsMapper(BaseMapper):
 class ShippingOptionMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
+        if not resource:
+            return None
         mapped_result = {}
         field_keys = ['customers_account_number', 'customers_carrier', 'shipping_method', 'type']
         for key in field_keys:

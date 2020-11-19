@@ -89,7 +89,7 @@ class PaymentDetails:
     card_last4: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     net_payout: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     payment_terms: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    payment_type: str = attr.ib(validator=attr.validators.in_(['credit_card', 'purchase_order']))
+    payment_type: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.in_(['credit_card', 'purchase_order'])))
     purchase_order_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     purchasing_dept_contact_email: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     purchasing_dept_contact_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
