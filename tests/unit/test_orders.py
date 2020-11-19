@@ -15,6 +15,9 @@ class TestOrders(unittest.TestCase):
         with open('tests/unit/mock_data/order.json') as data_file:
             self.mock_order_json = json.load(data_file)
 
+        with open('tests/unit/mock_data/minimal_order.json') as data_file:
+            self.mock_minimal_order_json = json.load(data_file)
+
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
@@ -76,6 +79,14 @@ class TestOrders(unittest.TestCase):
         manual_oi = o.order_items[2]
         self.assertEqual('automatic', manual_oi.quote_item_type)
         self.assertEqual('', manual_oi.description)
+
+    def test_order_null_fields(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_minimal_order_json)
+        o = Order.get(1)
+        self.assertEqual(o.billing_info, None)
+        self.assertEqual(o.shipping_info, None)
+        self.assertEqual(o.payment_details.payment_type, None)
+        self.assertEqual(o.shipping_option, None)
 
     def test_date_fmt(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
