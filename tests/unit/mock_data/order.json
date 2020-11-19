@@ -3328,6 +3328,7 @@
       "add_on_fees": "1000.00",
       "ordered_add_ons": [
         {
+          "costing_variables" : [],
           "id": 145,
           "is_required": true,
           "name": "Non-Recurring Engineering",
