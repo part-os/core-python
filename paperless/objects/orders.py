@@ -87,7 +87,7 @@ class OrderItem(AssemblyMixin):
 class PaymentDetails:
     card_brand: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     card_last4: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    net_payout: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
+    net_payout: Money = attr.ib(converter=Money, validator=attr.validators.optional(attr.validators.instance_of(Money)))
     payment_terms: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     payment_type: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.in_(['credit_card', 'purchase_order'])))
     purchase_order_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
