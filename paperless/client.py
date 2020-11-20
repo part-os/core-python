@@ -246,7 +246,6 @@ class PaperlessClient(object):
         req_url = f'{self.base_url}/{url}'
 
         method_to_call = getattr(requests, method)
-        print(data)
         if data is not None:
             resp = method_to_call(
                 req_url,
@@ -263,7 +262,17 @@ class PaperlessClient(object):
         if resp.status_code == 200:
             return resp.json()
         else:
+            try:
+                resp_json = resp.json()
+                message = resp_json['message']
+            #raise generic error if there is no error message
+            except Exception as e:
+                raise PaperlessException(
+                    message="Request failed",
+                    error_code=resp.status_code,
+                )
             raise PaperlessException(
-                message="Request failed",
+                message=message,
                 error_code=resp.status_code,
             )
+
