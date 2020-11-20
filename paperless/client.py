@@ -266,7 +266,7 @@ class PaperlessClient(object):
                 resp_json = resp.json()
                 message = resp_json['message']
             #raise generic error if there is no error message
-            except Exception as e:
+            except Exception:
                 raise PaperlessException(
                     message="Request failed",
                     error_code=resp.status_code,
