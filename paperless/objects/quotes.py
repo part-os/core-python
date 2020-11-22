@@ -230,9 +230,13 @@ class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin he
 
     def set_status(self, status):
         client = PaperlessClient.get_instance()
+        params = None
+        if self.revision_number is not None:
+           params = { 'revision': self.revision_number }
         resp_json = client.request(
             url=f'quotes/public/{self.number}/status_change',
-            method=PaperlessClient.METHODS.PATCH, data={"status": status}
+            method=PaperlessClient.METHODS.PATCH, data={"status": status},
+            params=params
         )
         resp_obj = self.from_json(resp_json)
         keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))

@@ -241,7 +241,7 @@ class PaperlessClient(object):
                 error_code=resp.status_code
             )
 
-    def request(self, url, method, data=None):
+    def request(self, url, method, data=None, params=None):
         headers = self.get_authenticated_headers()
         req_url = f'{self.base_url}/{url}'
 
@@ -250,12 +250,14 @@ class PaperlessClient(object):
             resp = method_to_call(
                 req_url,
                 headers=headers,
-                data=json.dumps(data)
+                data=json.dumps(data),
+                params=params
             )
         else:
             resp = method_to_call(
                 req_url,
-                header=headers
+                header=headers,
+                params=params,
             )
 
 
