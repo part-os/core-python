@@ -150,6 +150,11 @@ class PaperlessClient(object):
             raise PaperlessNotFoundException(
                 message="Unable to get create resource with invalid url: {}".format(req_url)
             )
+        elif resp.status_code == 400:
+            raise PaperlessException(
+                message="Failed to create resource: {}".format(resp.content),
+                error_code=resp.status_code
+            )
         else:
             raise PaperlessException(
                 message="Failed to create resource",
@@ -177,6 +182,11 @@ class PaperlessClient(object):
         elif resp.status_code == 404:
             raise PaperlessNotFoundException(
                 message="Unable to locate object with id {} from url: {}".format(id, req_url)
+            )
+        elif resp.status_code == 400:
+            raise PaperlessException(
+                message="Failed to update resource: {}".format(resp.content),
+                error_code=resp.status_code
             )
         else:
             raise PaperlessException(
