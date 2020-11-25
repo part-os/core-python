@@ -38,7 +38,7 @@ def optional_convert(convert):
 
 
 def phone_length_validator(instance, attribute, value):
-    if len(value) is not 10:
+    if len(value) != 10:
         raise ValueError("Invalid phone number for {}. Phone number must be 10 digits.".format(
             attribute
         ))
