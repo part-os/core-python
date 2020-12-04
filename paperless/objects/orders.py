@@ -26,10 +26,17 @@ class OrderComponent(Component):
 
 @attr.s(frozen=True)
 class OrderedAddOn:
+    @attr.s(frozen=True)
+    class CostingVariable:
+        label: str = attr.ib(validator=attr.validators.instance_of(str))
+        type: str = attr.ib(validator=attr.validators.instance_of(str))
+        value = attr.ib()
+
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
 
 
 @attr.s(frozen=True)
@@ -41,6 +48,10 @@ class OrderItem(AssemblyMixin):
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(int))
     filename: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     lead_days: int = attr.ib(validator=attr.validators.instance_of(int))
+    markup_1_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    markup_1_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    markup_2_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
+    markup_2_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     public_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))

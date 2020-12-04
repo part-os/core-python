@@ -1,5 +1,13 @@
 from paperless.api_mappers import BaseMapper
 
+class AddOnCostingVariablesMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        keys = ['label', 'type', 'value']
+        mapped_result = {}
+        for key in keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
 
 class CostingVariablesMapper(BaseMapper):
     @classmethod

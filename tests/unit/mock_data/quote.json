@@ -198,6 +198,7 @@
         "material_notes": null,
         "add_ons": [
           {
+            "costing_variables": [],
             "is_required": true,
             "name": "Non-Recurring Engineering",
             "quantities": [
@@ -220,6 +221,7 @@
             ]
           },
           {
+            "costing_variables": [],
             "is_required": false,
             "name": "Non-Recurring Engineering",
             "quantities": [
@@ -383,8 +385,10 @@
             }
           ],
           "type": "assembled",
+          "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/71558ecfc5217fba946dae139aed6cda5e8ceb3a.png",
           "add_ons": [
             {
+              "costing_variables": [],
               "id": 145,
               "is_required": true,
               "name": "Non-Recurring Engineering",
@@ -408,6 +412,7 @@
               ]
             },
             {
+              "costing_variables": [],
               "id": 146,
               "is_required": false,
               "name": "Non-Recurring Engineering",
@@ -1079,6 +1084,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -1729,6 +1735,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -2379,6 +2386,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -3029,6 +3037,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -3679,6 +3688,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -3791,6 +3801,7 @@
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "assembled",
           "add_ons": [],
           "quantities": [
@@ -3926,6 +3937,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "purchased",
           "add_ons": [],
           "quantities": [
@@ -5229,6 +5241,7 @@
             }
           ],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [
@@ -5386,6 +5399,7 @@
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
+          "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
           "quantities": [

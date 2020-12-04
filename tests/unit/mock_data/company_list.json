@@ -1,0 +1,31 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "business_name": "Paperless Parts Inc.",
+      "erp_code": "PPI",
+      "id": 1,
+      "phone": "6035555555",
+      "phone_ext": "",
+      "slug": "paperless-parts-inc"
+    },
+    {
+      "business_name": "ACME Machining",
+      "erp_code": "AMC",
+      "id": 2,
+      "phone": "6175555555",
+      "phone_ext": "12",
+      "slug": "acme-machining"
+    },
+    {
+      "business_name": "A Cut Above CNC",
+      "erp_code": null,
+      "id": 3,
+      "phone": "9785555555",
+      "phone_ext": null,
+      "slug": "a-cut-above-cnc"
+    }
+  ]
+}

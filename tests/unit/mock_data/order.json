@@ -167,6 +167,7 @@
             }
           ],
           "type": "assembled",
+          "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/71558ecfc5217fba946dae139aed6cda5e8ceb3a.png",
           "deliver_quantity": 5,
           "make_quantity": 5
         },
@@ -764,6 +765,7 @@
           ],
           "supporting_files": [],
           "type": "manufactured",
+          "thumbnail_url": null,
           "deliver_quantity": 5,
           "make_quantity": 5
         },
@@ -1361,6 +1363,7 @@
           ],
           "supporting_files": [],
           "type": "manufactured",
+          "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/71558ecfc5217fba946dae139aed6cda5e8ceb3a.png",
           "deliver_quantity": 5,
           "make_quantity": 5
         },
@@ -1958,6 +1961,7 @@
           ],
           "supporting_files": [],
           "type": "manufactured",
+          "thumbnail_url": null,
           "deliver_quantity": 5,
           "make_quantity": 5
         },
@@ -2555,6 +2559,7 @@
           ],
           "supporting_files": [],
           "type": "manufactured",
+          "thumbnail_url": null,
           "deliver_quantity": 5,
           "make_quantity": 5
         },
@@ -3152,6 +3157,7 @@
           ],
           "supporting_files": [],
           "type": "manufactured",
+          "thumbnail_url": null,
           "deliver_quantity": 5,
           "make_quantity": 5
         },
@@ -3211,6 +3217,7 @@
           "shop_operations": [],
           "supporting_files": [],
           "type": "assembled",
+          "thumbnail_url": null,
           "deliver_quantity": 5,
           "make_quantity": 5
         },
@@ -3293,6 +3300,7 @@
           ],
           "supporting_files": [],
           "type": "purchased",
+          "thumbnail_url": null,
           "deliver_quantity": 5,
           "make_quantity": 5
         }
@@ -3320,6 +3328,7 @@
       "add_on_fees": "1000.00",
       "ordered_add_ons": [
         {
+          "costing_variables" : [],
           "id": 145,
           "is_required": true,
           "name": "Non-Recurring Engineering",
@@ -3923,6 +3932,7 @@
           ],
           "supporting_files": [],
           "type": "manufactured",
+          "thumbnail_url": null,
           "deliver_quantity": 1,
           "make_quantity": 1
         }
@@ -3975,6 +3985,7 @@
           "shop_operations": [],
           "supporting_files": [],
           "type": "manufactured",
+          "thumbnail_url": null,
           "deliver_quantity": 1,
           "make_quantity": 1
         }
