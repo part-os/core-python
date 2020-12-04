@@ -109,6 +109,8 @@ class QuoteItem(AssemblyMixin):
     position: int = attr.ib(validator=attr.validators.instance_of(int))
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     component_ids: List[int] = attr.ib(validator=attr.validators.instance_of(list))
+    private_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    public_notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
     @property
     def root_component(self):
