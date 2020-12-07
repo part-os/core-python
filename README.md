@@ -228,3 +228,17 @@ the `delete` method with the table's name:
 ```python
 CustomTable.delete('test_sdk_table_1')
 ```
+
+Changing Quote Status
+---------------------
+
+You can change a quote's status using the `set_status` method. The available statuses 
+are `OUTSTANDING`, `CANCELLED`, `TRASH`  `LOST`, these statuses are defined in the `STATUSES`
+enum on the `Quote` object.
+
+Example:
+
+```python
+quote = Quote.get(1090)
+quote.set_status(Quote.STATUSES.OUTSTANDING)
+```

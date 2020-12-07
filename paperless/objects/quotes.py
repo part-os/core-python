@@ -1,6 +1,6 @@
 from decimal import Decimal
 from typing import Optional, List
-
+from types import SimpleNamespace
 import attr
 
 from paperless.api_mappers.quotes import QuoteDetailsMapper
@@ -11,16 +11,16 @@ from .components import Component, AssemblyMixin
 from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class AddOnQuantity:
     price: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     manual_price: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class AddOn:
-    @attr.s(frozen=True)
+    @attr.s(frozen=False)
     class CostingVariable:
         label: str = attr.ib(validator=attr.validators.instance_of(str))
         type: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -32,7 +32,7 @@ class AddOn:
     costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class Expedite:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -41,7 +41,7 @@ class Expedite:
     total_price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class Quantity:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -56,19 +56,19 @@ class Quantity:
     expedites: List[Expedite] = attr.ib(converter=convert_iterable(Expedite))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class QuoteComponent(Component):
     add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
     quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class SalesPerson:
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class Metrics:
     order_revenue_all_time: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     order_revenue_last_thirty_days: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
@@ -76,7 +76,7 @@ class Metrics:
     quotes_sent_last_thirty_days: int = attr.ib(validator=attr.validators.instance_of(int))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class Company:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
@@ -85,7 +85,7 @@ class Company:
     erp_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class Customer:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -95,7 +95,7 @@ class Customer:
     company: Company = attr.ib(converter=convert_cls(Company))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class QuoteItem(AssemblyMixin):
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     components: List[QuoteComponent] = attr.ib(converter=convert_iterable(QuoteComponent))
@@ -119,20 +119,20 @@ class QuoteItem(AssemblyMixin):
                 return component
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class ParentQuote:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     status: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class ParentSupplierOrder:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     status: str = attr.ib(validator=attr.validators.instance_of(str))
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class RequestForQuote:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -147,8 +147,9 @@ class RequestForQuote:
 
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin here because quotes are identified uniquely by (number, revision) pairs
+    STATUSES = SimpleNamespace(OUTSTANDING='outstanding', CANCELLED='cancelled', TRASH='trash', LOST='lost')
 
     _mapper = QuoteDetailsMapper
 
@@ -228,3 +229,18 @@ class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin he
             cls.construct_get_new_resources_url(),
             params=cls.construct_get_new_params(id, revision) if id else None
         )
+
+    def set_status(self, status):
+        client = PaperlessClient.get_instance()
+        params = None
+        if self.revision_number is not None:
+           params = { 'revision': self.revision_number }
+        resp_json = client.request(
+            url=f'quotes/public/{self.number}/status_change',
+            method=PaperlessClient.METHODS.PATCH, data={"status": status},
+            params=params
+        )
+        resp_obj = self.from_json(resp_json)
+        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))

@@ -1,6 +1,7 @@
 import json
 import requests
 
+from types import SimpleNamespace
 from .exceptions import PaperlessAuthorizationException, PaperlessException, PaperlessNotFoundException
 
 
@@ -20,6 +21,8 @@ class PaperlessClient(object):
     base_url = "https://api.paperlessparts.com"
     group_slug = None
     version = VERSION_0
+
+    METHODS = SimpleNamespace(DELETE='delete', GET='get', PATCH='patch', POST='post', PUT='put')
 
     def __new__(cls, **kwargs):
         """
@@ -247,3 +250,41 @@ class PaperlessClient(object):
                 message="Failed to get resource with id {} from url: {}".format(id, req_url),
                 error_code=resp.status_code
             )
+
+    def request(self, url, method, data=None, params=None):
+        headers = self.get_authenticated_headers()
+        req_url = f'{self.base_url}/{url}'
+
+        method_to_call = getattr(requests, method)
+        if data is not None:
+            resp = method_to_call(
+                req_url,
+                headers=headers,
+                data=json.dumps(data),
+                params=params
+            )
+        else:
+            resp = method_to_call(
+                req_url,
+                header=headers,
+                params=params,
+            )
+
+
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            try:
+                resp_json = resp.json()
+                message = resp_json['message']
+            #raise generic error if there is no error message
+            except Exception:
+                raise PaperlessException(
+                    message="Request failed",
+                    error_code=resp.status_code,
+                )
+            raise PaperlessException(
+                message=message,
+                error_code=resp.status_code,
+            )
+
