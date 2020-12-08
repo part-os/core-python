@@ -22,16 +22,7 @@ class Material:
 
 
 @attr.s(frozen=True)
-class Operation:
-    @attr.s(frozen=True)
-    class CostingVariable:
-        label: str = attr.ib(validator=attr.validators.instance_of(str))
-        type: str = attr.ib(validator=attr.validators.instance_of(str))
-        value = attr.ib()
-        # Note: The row field will only be not None if type == 'table', in which case it will be a dict with
-        # arbitrary keys and values
-        row = attr.ib()
-
+class BaseOperation:
     @attr.s(frozen=True)
     class OperationQuantity:
         price: Optional[Money] = attr.ib(converter=optional_convert(Money),
@@ -45,7 +36,6 @@ class Operation:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     category: str = attr.ib(validator=attr.validators.in_(['operation', 'material']))
     cost: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
-    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
     is_finish: bool = attr.ib(validator=attr.validators.instance_of(bool))
     is_outside_service: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -55,12 +45,6 @@ class Operation:
     quantities: List[OperationQuantity] = attr.ib(converter=convert_iterable(OperationQuantity))
     runtime: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
     setup_time: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
-
-    def get_variable(self, label):
-        """Return the value of the variable with the specified label or None if
-        that variable does not exist."""
-        return {cv.label: cv.value for cv in self.costing_variables}.get(
-            label, None)
 
 
 @attr.s(frozen=True)
@@ -87,7 +71,7 @@ class ChildComponent:
 
 
 @attr.s(frozen=True)
-class Component:
+class BaseComponent:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     child_ids: List[int] = attr.ib(converter=convert_iterable(int))
     children: List[ChildComponent] = attr.ib(converter=convert_iterable(ChildComponent))
@@ -97,7 +81,6 @@ class Component:
     innate_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     is_root_component: bool = attr.ib(validator=attr.validators.instance_of(bool))
     material: Material = attr.ib(converter=convert_cls(Material))
-    material_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
     parent_ids: List[int] = attr.ib(converter=convert_iterable(int))
     part_custom_attrs: Optional[list] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(list)))
     part_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
@@ -105,7 +88,6 @@ class Component:
     part_uuid: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     process: Process = attr.ib(converter=convert_cls(Process))
     revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    shop_operations: List[Operation] = attr.ib(converter=convert_iterable(Operation))
     supporting_files: List[SupportingFile] = attr.ib(converter=convert_iterable(SupportingFile))
     type: str = attr.ib(validator=attr.validators.in_(['assembled', 'manufactured', 'purchased']))
     thumbnail_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))

@@ -2,7 +2,7 @@ import unittest
 import os
 import time
 from paperless.local import LocalStorage, DEFAULT_IMPLEMENTATION
-from paperless.objects.components import Operation
+from paperless.objects.quotes import QuoteOperation
 from paperless.objects.orders import Order
 
 
@@ -23,10 +23,10 @@ class TestLocalStorage(unittest.TestCase):
         time.sleep(1.1)
         storage.process(Order, 2, True)
         self.assertEqual(2, storage.get_last_processed(Order))
-        storage.process(Operation, 10, True)
+        storage.process(QuoteOperation, 10, True)
         storage.clear_cache(Order)
         self.assertIsNone(storage.get_last_processed(Order))
-        self.assertEqual(10, storage.get_last_processed(Operation))
+        self.assertEqual(10, storage.get_last_processed(QuoteOperation))
         storage.clear_cache()
-        self.assertIsNone(storage.get_last_processed(Operation))
+        self.assertIsNone(storage.get_last_processed(QuoteOperation))
         os.remove(filename)

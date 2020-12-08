@@ -1,14 +1,68 @@
 from decimal import Decimal
-from typing import Optional, List
+from typing import Optional, List, Union, Dict
 from types import SimpleNamespace
 import attr
 
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.client import PaperlessClient
-from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
+from paperless.mixins import FromJSONMixin, ListMixin, ToDictMixin
+from paperless.objects.components import BaseOperation
 from .common import Money
-from .components import Component, AssemblyMixin
+from .components import BaseComponent, AssemblyMixin
 from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator
+
+
+def convert_dictionary(cl):
+    def converter(d):
+        result = dict()
+        for key, val in d.items():
+            if isinstance(val, cl):
+                result[key] = val
+            else:
+                result[key] = cl(**val)
+        return result
+    return converter
+
+
+@attr.s(frozen=True)
+class CostingVariablePayload:
+    value: Optional[Union[float, int, str, bool]] = attr.ib()
+    # NOTE: row will only not be None if parent QuoteCostingVariable.variable_class == 'drop_down'
+    row: Optional[Dict[str, Union[float, int, str, bool]]] = attr.ib()
+    # NOTE: options will only not be None if parent QuoteCostingVariable.variable_class == 'drop_down'
+    options: Optional[List[Union[float, int, str]]] = attr.ib()
+
+
+@attr.s(frozen=True)
+class QuoteCostingVariable:
+    label: str = attr.ib(validator=attr.validators.instance_of(str))
+    type: str = attr.ib(validator=attr.validators.instance_of(str))  # TODO: deprecate
+    quantity_specific: bool = attr.ib()
+    value = attr.ib()  # TODO: deprecate
+    # Note: The row field will only be not None if type == 'table', in which case it will be a dict with
+    # arbitrary keys and values
+    row = attr.ib()  # TODO: deprecate
+    quantities: Dict[int, CostingVariablePayload] = attr.ib(convert=convert_dictionary(CostingVariablePayload))
+    variable_class: str = attr.ib(attr.validators.instance_of(str))
+    value_type: str = attr.ib(attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
+class QuoteOperation(BaseOperation):
+    costing_variables: List[QuoteCostingVariable] = attr.ib(converter=convert_iterable(QuoteCostingVariable))
+
+    def get_variable_for_qty(self, label: str, qty: int):
+        """Return the value of the variable with the specified label for the given quantity or None if
+        that variable does not exist."""
+        return {cv.label: cv.quantities for cv in self.costing_variables}.get(
+            label, dict()).get(qty, None)
+
+    # TODO: deprecate this
+    def get_variable(self, label):
+        """Return the value of the variable with the specified label or None if
+        that variable does not exist."""
+        return {cv.label: cv.value for cv in self.costing_variables}.get(
+            label, None)
 
 
 @attr.s(frozen=False)
@@ -20,16 +74,10 @@ class AddOnQuantity:
 
 @attr.s(frozen=False)
 class AddOn:
-    @attr.s(frozen=False)
-    class CostingVariable:
-        label: str = attr.ib(validator=attr.validators.instance_of(str))
-        type: str = attr.ib(validator=attr.validators.instance_of(str))
-        value = attr.ib()
-
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
-    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
+    costing_variables: List[QuoteCostingVariable] = attr.ib(converter=convert_iterable(QuoteCostingVariable))
 
 
 @attr.s(frozen=False)
@@ -57,9 +105,12 @@ class Quantity:
 
 
 @attr.s(frozen=False)
-class QuoteComponent(Component):
+class QuoteComponent(BaseComponent):
     add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
+    material_operations: List[QuoteOperation] = attr.ib(converter=convert_iterable(QuoteOperation))
+    shop_operations: List[QuoteOperation] = attr.ib(converter=convert_iterable(QuoteOperation))
     quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
+
 
 @attr.s(frozen=False)
 class SalesPerson:
@@ -132,6 +183,7 @@ class ParentSupplierOrder:
     number: int = attr.ib(validator=attr.validators.instance_of(int))
     status: str = attr.ib(validator=attr.validators.instance_of(str))
 
+
 @attr.s(frozen=False)
 class RequestForQuote:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -143,8 +195,6 @@ class RequestForQuote:
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     requested_delivery_date: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     customer_info_conflict: bool = attr.ib(validator=attr.validators.instance_of(bool))
-
-
 
 
 @attr.s(frozen=False)

@@ -1,7 +1,6 @@
-import collections
 import datetime
 from decimal import Decimal
-from typing import Generator, List, Optional, NamedTuple
+from typing import List, Optional, Union
 
 import attr
 import dateutil.parser
@@ -9,34 +8,56 @@ import dateutil.parser
 from paperless.api_mappers.orders import OrderDetailsMapper, OrderMinimumMapper
 from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
+from paperless.objects.components import BaseOperation
 from paperless.objects.quotes import SalesPerson
 from .address import Address
 from .common import Money
-from .components import Component, AssemblyComponent, AssemblyMixin
+from .components import BaseComponent, AssemblyMixin
 from .utils import convert_cls, convert_iterable, optional_convert
 
 DATE_FMT = '%Y-%m-%d'
 
 
 @attr.s(frozen=True)
-class OrderComponent(Component):
+class OrderCostingVariable:
+    label: str = attr.ib(validator=attr.validators.instance_of(str))
+    type: str = attr.ib(validator=attr.validators.instance_of(str))  # TODO: deprecate
+    value = attr.ib()
+    # Note: The row field will only be not None if variable_class == 'table', in which case it will be a dict with
+    # arbitrary keys and values
+    row: Optional[dict] = attr.ib()
+    # Note: The options field will only be not None if variable_class == 'drop_down'
+    options: Optional[List[Union[int, float, str]]] = attr.ib()
+    variable_class: str = attr.ib(attr.validators.instance_of(str))
+    value_type: str = attr.ib(attr.validators.instance_of(str))
+
+
+@attr.s(frozen=True)
+class OrderOperation(BaseOperation):
+    costing_variables: List[OrderCostingVariable] = attr.ib(converter=convert_iterable(OrderCostingVariable))
+
+    def get_variable(self, label):
+        """Return the value of the variable with the specified label or None if
+        that variable does not exist."""
+        return {cv.label: cv.value for cv in self.costing_variables}.get(
+            label, None)
+
+
+@attr.s(frozen=True)
+class OrderComponent(BaseComponent):
     deliver_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     make_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    material_operations: List[OrderOperation] = attr.ib(converter=convert_iterable(OrderOperation))
+    shop_operations: List[OrderOperation] = attr.ib(converter=convert_iterable(OrderOperation))
 
 
 @attr.s(frozen=True)
 class OrderedAddOn:
-    @attr.s(frozen=True)
-    class CostingVariable:
-        label: str = attr.ib(validator=attr.validators.instance_of(str))
-        type: str = attr.ib(validator=attr.validators.instance_of(str))
-        value = attr.ib()
-
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
-    costing_variables: List[CostingVariable] = attr.ib(converter=convert_iterable(CostingVariable))
+    costing_variables: List[OrderCostingVariable] = attr.ib(converter=convert_iterable(OrderCostingVariable))
 
 
 @attr.s(frozen=True)

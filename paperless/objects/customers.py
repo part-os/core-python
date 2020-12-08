@@ -1,21 +1,16 @@
-import decimal
-from decimal import Decimal
-from typing import Optional, List
+from typing import Optional
 
 import attr
 
-from paperless.api_mappers.customers import PaymentTermsDetailsMapper, \
-    CompanyListMapper, CompanyMapper, CustomerMapper, CustomerListMapper
+from paperless.api_mappers.customers import CompanyListMapper, CompanyMapper, CustomerMapper, CustomerListMapper
 from paperless.client import PaperlessClient
-from paperless.json_encoders.customers import PaymentTermsEncoder, CompanyEncoder, \
+from paperless.json_encoders.customers import CompanyEncoder, \
     CustomerEncoder, AddressEncoder
-from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, \
+from paperless.mixins import FromJSONMixin, ReadMixin,  \
     CreateMixin, PaginatedListMixin, \
     UpdateMixin, ToJSONMixin, DeleteMixin
 from .common import Money
-from .components import Component, AssemblyMixin
-from .utils import convert_cls, optional_convert, convert_iterable, numeric_validator, \
-    NO_UPDATE
+from .utils import convert_cls, optional_convert, NO_UPDATE
 
 
 @attr.s(frozen=False)
@@ -127,7 +122,6 @@ class Company(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, D
         return AddressInfo.from_json(resp_json)
 
 
-
 @attr.s(frozen=False)
 class CustomerList(FromJSONMixin, PaginatedListMixin):
 
@@ -145,9 +139,7 @@ class CustomerList(FromJSONMixin, PaginatedListMixin):
     phone_ext: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     win_rate: (int, float) = attr.ib(validator=attr.validators.instance_of((int, float)))
 
-    #not required for instantiation
-
-
+    # not required for instantiation
 
     @classmethod
     def construct_list_url(cls):
@@ -168,7 +160,6 @@ class CustomerList(FromJSONMixin, PaginatedListMixin):
         return cls.list(params={'search': search_term})
 
 
-
 @attr.s(frozen=False)
 class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
     _mapper = CustomerMapper
@@ -178,7 +169,6 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
-
 
     # not required from instantiation
     created = attr.ib(default=NO_UPDATE, validator=(attr.validators.instance_of((str, object))))
@@ -227,7 +217,6 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
     def search(cls, search_term):
         return CustomerList.search(search_term)
 
-
     def set_billing_info(self, billing_info):
         data = billing_info.to_json()
         client = PaperlessClient.get_instance()
@@ -239,4 +228,3 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
         client = PaperlessClient.get_instance()
         resp_json = client.create_resource(f'{self.construct_post_url()}/{self.id}/shipping', data=data)
         return AddressInfo.from_json(resp_json)
-
