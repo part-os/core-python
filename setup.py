@@ -11,7 +11,7 @@ URL = 'https://github.com/paperlessPARTS/core-python'
 EMAIL = 'dev@paperlessparts.com'
 AUTHOR = 'Paperless Parts Engineering'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.1.0'
+VERSION = '0.6.0'
 
 REQUIRED = [
     'attrs', 'factory_boy', 'Faker', 'requests'
