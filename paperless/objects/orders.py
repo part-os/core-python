@@ -36,7 +36,7 @@ class OrderCostingVariable:
 class OrderOperation(BaseOperation):
     costing_variables: List[OrderCostingVariable] = attr.ib(converter=convert_iterable(OrderCostingVariable))
 
-    def get_variable(self, label):
+    def get_variable(self, label) -> Optional[OrderCostingVariable]:
         """Return the value of the variable with the specified label or None if
         that variable does not exist."""
         return {cv.label: cv.value for cv in self.costing_variables}.get(

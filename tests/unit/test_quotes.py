@@ -45,6 +45,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(root_component.type, 'assembled')
         self.assertEqual(root_component.part_name, 'small-sub-assembly.STEP')
         self.assertFalse(root_component.part_custom_attrs)  # Note - this could either be None or a list, this confirms it is either None or an empty list
+        # TODO: quote add on costing variables, each type
         # test addons
         add_on = root_component.add_ons[0]
         self.assertEqual(add_on.is_required, True)
@@ -61,11 +62,27 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(operation.operation_definition_name, 'Chromate')
         operation_quantity = operation.quantities[0]
         self.assertEqual(operation_quantity.price.dollars, 150)
+        # TODO: quote operation costing variables, each type
         # test table costing variables
         costing_variable = operation.costing_variables[3]
         self.assertEqual(costing_variable.type, 'table')
         self.assertEqual(costing_variable.value, '304-#4')
         self.assertEqual(costing_variable.row, {'diameter': 4.0, 'length': 48.0, 'material': '304-#4', 'requires_prep': True, 'row_number': 3})
+        self.assertEqual(costing_variable.quantities[operation.quantities[0].quantity].value, '304-#4')
+        self.assertEqual(
+            costing_variable.quantities[operation.quantities[0].quantity].row,
+            {'diameter': 4.0, 'length': 48.0, 'material': '304-#4', 'requires_prep': True, 'row_number': 3},
+        )
+        self.assertEqual(costing_variable.quantities[operation.quantities[1].quantity].value, '304-#4')
+        self.assertEqual(
+            costing_variable.quantities[operation.quantities[1].quantity].row,
+            {'diameter': 4.0, 'length': 48.0, 'material': '304-#4', 'requires_prep': True, 'row_number': 3},
+        )
+        self.assertIsNone(costing_variable.quantities[operation.quantities[1].quantity].options)
+        vp = operation.get_variable_for_qty('Lot Charge', operation.quantities[0].quantity)
+        self.assertEqual(vp.value, 150)
+        self.assertIsNone(vp.row)
+        self.assertIsNone(vp.options)
         # test process
         process = root_component.process
         self.assertEqual(process.name, 'CNC Machining')

@@ -55,6 +55,12 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(len(assmb_root_component.shop_operations), 1)
         self.assertEqual(len(assmb_root_component.supporting_files), 1)
         self.assertEqual(assmb_root_component.type, 'assembled')
+
+        # TODO: order operation costing variables, each type
+        op = assmb_root_component.shop_operations[0]
+        self.assertEqual('304-#4', op.get_variable('Material Selection'))
+        self.assertEqual(150, op.get_variable('Lot Charge'))
+
         # test single component order item
         standard_oi = o.order_items[1]
         self.assertEqual(len(standard_oi.components), 1)
@@ -70,6 +76,7 @@ class TestOrders(unittest.TestCase):
         self.assertIsNone(finish_op.get_variable('bad name'))
         op_quantity = finish_op.quantities[0]
         self.assertEqual(op_quantity.quantity, 1)
+        # TODO: order add on costing variables, each type
         # test add ons
         other_oi = o.order_items[0]
         self.assertEqual(other_oi.base_price.dollars, Decimal('2757.80'))

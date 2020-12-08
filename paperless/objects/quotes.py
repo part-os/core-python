@@ -51,7 +51,7 @@ class QuoteCostingVariable:
 class QuoteOperation(BaseOperation):
     costing_variables: List[QuoteCostingVariable] = attr.ib(converter=convert_iterable(QuoteCostingVariable))
 
-    def get_variable_for_qty(self, label: str, qty: int):
+    def get_variable_for_qty(self, label: str, qty: int) -> Optional[CostingVariablePayload]:
         """Return the value of the variable with the specified label for the given quantity or None if
         that variable does not exist."""
         return {cv.label: cv.quantities for cv in self.costing_variables}.get(
