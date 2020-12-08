@@ -1,6 +1,6 @@
 {
   "billing_info": {
-    "id": 6937,
+    "id": 6595,
     "address1": "1 FISKE TER",
     "address2": "",
     "business_name": "Outside Firm",
@@ -13,7 +13,7 @@
     "postal_code": "02134-4503",
     "state": "MA"
   },
-  "created": "2020-06-22T17:09:50+00:00",
+  "created": "2020-12-08T15:18:14+00:00",
   "customer": {
     "id": 3545,
     "first_name": "Test",
@@ -29,40 +29,40 @@
     "phone": "",
     "phone_ext": ""
   },
-  "deliver_by": "2020-07-13T08:00:00Z",
+  "deliver_by": "2020-12-29T09:30:00Z",
   "estimator": {
     "first_name": "Heathrow Chester",
     "last_name": "Carrington",
     "email": "rob.carrington+heathrow@paperlessparts.com"
   },
-  "number": 72,
+  "number": 179,
   "order_items": [
     {
-      "id": 38497,
+      "id": 63375,
       "components": [
         {
-          "id": 69659,
+          "id": 114391,
           "child_ids": [
-            69656,
-            69655,
-            69654,
-            69653
+            114388,
+            114387,
+            114386,
+            114385
           ],
           "children": [
             {
-              "child_id": 69656,
+              "child_id": 114388,
               "quantity": 1
             },
             {
-              "child_id": 69655,
+              "child_id": 114387,
               "quantity": 1
             },
             {
-              "child_id": 69654,
+              "child_id": 114386,
               "quantity": 1
             },
             {
-              "child_id": 69653,
+              "child_id": 114385,
               "quantity": 1
             }
           ],
@@ -80,12 +80,12 @@
           },
           "material_operations": [],
           "parent_ids": [
-            69652
+            114384
           ],
           "part_custom_attrs": null,
           "part_name": "Subassembly <1>.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=FjfXPwZBqOOmCwcogFV3vjk4%2F3c%3D&Expires=1607825364",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Subassembly%20%3C1%3E.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=X2NzwB89fszJsK0MVCleXHuyNrc%3D&Expires=1607874370",
           "part_uuid": "8deb6257-56f8-4aaf-bebc-1707361bf2af",
           "process": {
             "id": 1117,
@@ -101,7 +101,7 @@
           "make_quantity": 5
         },
         {
-          "id": 69658,
+          "id": 114390,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -120,7 +120,7 @@
           },
           "material_operations": [
             {
-              "id": 71992,
+              "id": 89964,
               "category": "material",
               "cost": "16.50",
               "costing_variables": [
@@ -201,7 +201,7 @@
               "setup_time": null
             },
             {
-              "id": 71993,
+              "id": 89965,
               "category": "material",
               "cost": "4.95",
               "costing_variables": [
@@ -256,12 +256,12 @@
             }
           ],
           "parent_ids": [
-            69652
+            114384
           ],
           "part_custom_attrs": null,
           "part_name": "Bottom Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=IRe%2Fosx%2Baqz00UaTDbk1KhR%2F9hA%3D&Expires=1607825364",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Bottom%20Block.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=vmmm%2BHEjYvJ1OEpCGAVQ2K8IWqo%3D&Expires=1607874370",
           "part_uuid": "f56acc3c-e75e-4735-a712-bf111182b437",
           "process": {
             "id": 1117,
@@ -271,7 +271,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 71994,
+              "id": 89966,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -343,7 +343,7 @@
               "setup_time": 0.5
             },
             {
-              "id": 71995,
+              "id": 89967,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
@@ -406,7 +406,7 @@
               "setup_time": 2
             },
             {
-              "id": 71996,
+              "id": 89968,
               "category": "operation",
               "cost": "105.91",
               "costing_variables": [
@@ -550,7 +550,7 @@
               "setup_time": 1
             },
             {
-              "id": 71997,
+              "id": 89969,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -631,7 +631,7 @@
               "setup_time": 0.25
             },
             {
-              "id": 71998,
+              "id": 89970,
               "category": "operation",
               "cost": "1.55",
               "costing_variables": [
@@ -685,7 +685,7 @@
               "setup_time": null
             },
             {
-              "id": 71999,
+              "id": 89971,
               "category": "operation",
               "cost": "44.38",
               "costing_variables": [
@@ -739,7 +739,7 @@
               "setup_time": null
             },
             {
-              "id": 72000,
+              "id": 89972,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
@@ -827,7 +827,7 @@
           "make_quantity": 5
         },
         {
-          "id": 69657,
+          "id": 114389,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -846,7 +846,7 @@
           },
           "material_operations": [
             {
-              "id": 71983,
+              "id": 89955,
               "category": "material",
               "cost": "0.55",
               "costing_variables": [
@@ -927,7 +927,7 @@
               "setup_time": null
             },
             {
-              "id": 71984,
+              "id": 89956,
               "category": "material",
               "cost": "0.17",
               "costing_variables": [
@@ -982,12 +982,12 @@
             }
           ],
           "parent_ids": [
-            69652
+            114384
           ],
           "part_custom_attrs": null,
           "part_name": "Seal.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=zJNRKu2zaJaC70Ac5Kw6t7hPC8I%3D&Expires=1607825364",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Seal.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=dJL%2BTXodU3x%2Bjll5bZIhp8H9Ifw%3D&Expires=1607874369",
           "part_uuid": "a9be1070-67d8-4a95-8c7d-54a5f6e58d4d",
           "process": {
             "id": 1117,
@@ -997,7 +997,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 71985,
+              "id": 89957,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -1069,7 +1069,7 @@
               "setup_time": 0.5
             },
             {
-              "id": 71986,
+              "id": 89958,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
@@ -1132,7 +1132,7 @@
               "setup_time": 2
             },
             {
-              "id": 71987,
+              "id": 89959,
               "category": "operation",
               "cost": "79.08",
               "costing_variables": [
@@ -1276,7 +1276,7 @@
               "setup_time": 1
             },
             {
-              "id": 71988,
+              "id": 89960,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -1357,7 +1357,7 @@
               "setup_time": 0.25
             },
             {
-              "id": 71989,
+              "id": 89961,
               "category": "operation",
               "cost": "0.20",
               "costing_variables": [
@@ -1411,7 +1411,7 @@
               "setup_time": null
             },
             {
-              "id": 71990,
+              "id": 89962,
               "category": "operation",
               "cost": "41.70",
               "costing_variables": [
@@ -1465,7 +1465,7 @@
               "setup_time": null
             },
             {
-              "id": 71991,
+              "id": 89963,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
@@ -1553,7 +1553,7 @@
           "make_quantity": 5
         },
         {
-          "id": 69655,
+          "id": 114387,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -1572,7 +1572,7 @@
           },
           "material_operations": [
             {
-              "id": 71974,
+              "id": 89945,
               "category": "material",
               "cost": "0",
               "costing_variables": [
@@ -1653,7 +1653,7 @@
               "setup_time": null
             },
             {
-              "id": 71975,
+              "id": 89946,
               "category": "material",
               "cost": "0",
               "costing_variables": [
@@ -1708,12 +1708,12 @@
             }
           ],
           "parent_ids": [
-            69659
+            114391
           ],
           "part_custom_attrs": null,
           "part_name": "O-Ring.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=g27dk7HYatgmvwStJDyMcIElqGY%3D&Expires=1607825363",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22O-Ring.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=IFB8Cqfsdz6znDDvxpY4ZkU4FXU%3D&Expires=1607874369",
           "part_uuid": "860b8958-9733-4bea-a6d2-3473d308a93d",
           "process": {
             "id": 1117,
@@ -1723,7 +1723,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 71976,
+              "id": 89947,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -1795,7 +1795,7 @@
               "setup_time": 0.5
             },
             {
-              "id": 71977,
+              "id": 89948,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
@@ -1858,7 +1858,7 @@
               "setup_time": 2
             },
             {
-              "id": 71978,
+              "id": 89949,
               "category": "operation",
               "cost": "1.98",
               "costing_variables": [
@@ -2002,7 +2002,7 @@
               "setup_time": 0
             },
             {
-              "id": 71979,
+              "id": 89950,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -2083,7 +2083,7 @@
               "setup_time": 0.25
             },
             {
-              "id": 71980,
+              "id": 89951,
               "category": "operation",
               "cost": "0.10",
               "costing_variables": [
@@ -2137,7 +2137,7 @@
               "setup_time": null
             },
             {
-              "id": 71981,
+              "id": 89952,
               "category": "operation",
               "cost": "26.49",
               "costing_variables": [
@@ -2191,7 +2191,7 @@
               "setup_time": null
             },
             {
-              "id": 71982,
+              "id": 89953,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
@@ -2279,7 +2279,7 @@
           "make_quantity": 5
         },
         {
-          "id": 69654,
+          "id": 114386,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -2298,7 +2298,7 @@
           },
           "material_operations": [
             {
-              "id": 71965,
+              "id": 89936,
               "category": "material",
               "cost": "0",
               "costing_variables": [
@@ -2379,7 +2379,7 @@
               "setup_time": null
             },
             {
-              "id": 71966,
+              "id": 89937,
               "category": "material",
               "cost": "0",
               "costing_variables": [
@@ -2434,12 +2434,12 @@
             }
           ],
           "parent_ids": [
-            69659
+            114391
           ],
           "part_custom_attrs": null,
           "part_name": "Plug.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=G6CMcWbeM0UOOjNHjMKRdqs0gXE%3D&Expires=1607825363",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Plug.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=9kOGRyQEG5HzfQjoVOyCD%2BWUHMk%3D&Expires=1607874369",
           "part_uuid": "a300d612-2209-41b2-b914-a33c960743db",
           "process": {
             "id": 1117,
@@ -2449,7 +2449,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 71967,
+              "id": 89938,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -2521,7 +2521,7 @@
               "setup_time": 0.5
             },
             {
-              "id": 71968,
+              "id": 89939,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
@@ -2584,7 +2584,7 @@
               "setup_time": 2
             },
             {
-              "id": 71969,
+              "id": 89940,
               "category": "operation",
               "cost": "76.57",
               "costing_variables": [
@@ -2728,7 +2728,7 @@
               "setup_time": 1
             },
             {
-              "id": 71970,
+              "id": 89941,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -2809,7 +2809,7 @@
               "setup_time": 0.25
             },
             {
-              "id": 71971,
+              "id": 89942,
               "category": "operation",
               "cost": "0.08",
               "costing_variables": [
@@ -2863,7 +2863,7 @@
               "setup_time": null
             },
             {
-              "id": 71972,
+              "id": 89943,
               "category": "operation",
               "cost": "41.45",
               "costing_variables": [
@@ -2917,7 +2917,7 @@
               "setup_time": null
             },
             {
-              "id": 71973,
+              "id": 89944,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
@@ -3005,7 +3005,7 @@
           "make_quantity": 5
         },
         {
-          "id": 69653,
+          "id": 114385,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -3024,7 +3024,7 @@
           },
           "material_operations": [
             {
-              "id": 71956,
+              "id": 89927,
               "category": "material",
               "cost": "33.00",
               "costing_variables": [
@@ -3105,7 +3105,7 @@
               "setup_time": null
             },
             {
-              "id": 71957,
+              "id": 89928,
               "category": "material",
               "cost": "9.90",
               "costing_variables": [
@@ -3160,12 +3160,12 @@
             }
           ],
           "parent_ids": [
-            69659
+            114391
           ],
           "part_custom_attrs": null,
           "part_name": "Top Block.step",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=7sdMQ5X9EXM4UnF5hfBqXOaZtDk%3D&Expires=1607825363",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Top%20Block.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=pMbbGBdz95PPwGE1G7VUnVtgGbo%3D&Expires=1607874369",
           "part_uuid": "cbe4fd08-c10a-4804-ae97-c647ce862040",
           "process": {
             "id": 1117,
@@ -3175,7 +3175,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 71958,
+              "id": 89929,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -3247,7 +3247,7 @@
               "setup_time": 0.5
             },
             {
-              "id": 71959,
+              "id": 89930,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
@@ -3310,7 +3310,7 @@
               "setup_time": 2
             },
             {
-              "id": 71960,
+              "id": 89931,
               "category": "operation",
               "cost": "189.42",
               "costing_variables": [
@@ -3454,7 +3454,7 @@
               "setup_time": 2
             },
             {
-              "id": 71961,
+              "id": 89932,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -3535,7 +3535,7 @@
               "setup_time": 0.25
             },
             {
-              "id": 71962,
+              "id": 89933,
               "category": "operation",
               "cost": "1.97",
               "costing_variables": [
@@ -3589,7 +3589,7 @@
               "setup_time": null
             },
             {
-              "id": 71963,
+              "id": 89934,
               "category": "operation",
               "cost": "60.23",
               "costing_variables": [
@@ -3643,7 +3643,7 @@
               "setup_time": null
             },
             {
-              "id": 71964,
+              "id": 89935,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
@@ -3731,23 +3731,23 @@
           "make_quantity": 5
         },
         {
-          "id": 69652,
+          "id": 114384,
           "child_ids": [
-            69658,
-            69657,
-            69659
+            114390,
+            114389,
+            114391
           ],
           "children": [
             {
-              "child_id": 69658,
+              "child_id": 114390,
               "quantity": 1
             },
             {
-              "child_id": 69657,
+              "child_id": 114389,
               "quantity": 1
             },
             {
-              "child_id": 69659,
+              "child_id": 114391,
               "quantity": 1
             }
           ],
@@ -3768,7 +3768,7 @@
           "part_custom_attrs": [],
           "part_name": "small-sub-assembly.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=m0HOSp4d4uzlk6uDlMz5Afhc5zE%3D&Expires=1607825362",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22small-sub-assembly.STEP%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=waSa%2FwRsJJ%2BeHg76QRnixxgi4vM%3D&Expires=1607870211",
           "part_uuid": "ddab27ae-ff7b-4db2-be24-41002be6cb58",
           "process": {
             "id": 1117,
@@ -3778,7 +3778,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 72010,
+              "id": 89926,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
@@ -3833,6 +3833,13 @@
               "quantities": [
                 {
                   "price": "150.00",
+                  "manual_price": "160.00",
+                  "lead_time": 3,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "150.00",
                   "manual_price": null,
                   "lead_time": 3,
                   "manual_lead_time": null,
@@ -3851,13 +3858,6 @@
                   "lead_time": 3,
                   "manual_lead_time": null,
                   "quantity": 25
-                },
-                {
-                  "price": "150.00",
-                  "manual_price": "160.00",
-                  "lead_time": 3,
-                  "manual_lead_time": null,
-                  "quantity": 1
                 }
               ],
               "position": 1,
@@ -3868,7 +3868,7 @@
           "supporting_files": [
             {
               "filename": "top Drawing 1.pdf",
-              "url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=zWCSMLBwhFWGU5RfT4f9dnQROpg%3D&Expires=1607825362"
+              "url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/b56903fe-bde6-4a45-a835-3deac13c8d8b.pdf?response-content-disposition=inline%3Bfilename%3D%22top%20Drawing%201.pdf%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=bGsVLDyrBOY7DVmk74n6WxqczpY%3D&Expires=1607870211"
             }
           ],
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/6782e824f87ba47e4807d84e2d388e7ab0a966c2.png",
@@ -3877,7 +3877,7 @@
           "make_quantity": 5
         },
         {
-          "id": 69656,
+          "id": 114388,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -3888,12 +3888,12 @@
           "material": null,
           "material_operations": [],
           "parent_ids": [
-            69659
+            114391
           ],
           "part_custom_attrs": null,
           "part_name": "Fitting.step (AC-M6-2)",
           "part_number": "AC-M6-2",
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=Dzz8iSnUgQ%2F5AnZ7APv0sf3Xkq0%3D&Expires=1607825364",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/2033e4a1-eea4-475d-9fc3-889533cdeadd.step?response-content-disposition=attachment%3Bfilename%3D%22Fitting.step%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=zZqcE0O8vtmFqk4M7Ix702xoeNw%3D&Expires=1607874369",
           "part_uuid": "a0b71d80-a16e-446e-8e7b-6977ff2c5e0c",
           "process": {
             "id": 27258,
@@ -3903,7 +3903,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 73161,
+              "id": 89954,
               "category": "operation",
               "cost": "4.66",
               "costing_variables": [
@@ -3977,17 +3977,17 @@
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "quantity": 5,
       "quantity_outstanding": 5,
-      "quote_item_id": 63527,
+      "quote_item_id": 105565,
       "quote_item_type": "automatic",
-      "root_component_id": 69652,
-      "ships_on": "2020-07-10",
+      "root_component_id": 114384,
+      "ships_on": "2020-12-28",
       "total_price": "3757.80",
       "unit_price": "551.56",
       "base_price": "2757.80",
       "add_on_fees": "1000.00",
       "ordered_add_ons": [
         {
-          "id": 145,
+          "id": 642,
           "is_required": true,
           "name": "Non-Recurring Engineering",
           "price": "1000.00",
@@ -3997,10 +3997,10 @@
       ]
     },
     {
-      "id": 38498,
+      "id": 63376,
       "components": [
         {
-          "id": 69660,
+          "id": 114392,
           "child_ids": [],
           "children": [],
           "description": null,
@@ -4019,7 +4019,7 @@
           },
           "material_operations": [
             {
-              "id": 72001,
+              "id": 89973,
               "category": "material",
               "cost": "6.05",
               "costing_variables": [
@@ -4069,28 +4069,28 @@
                 {
                   "price": "6.05",
                   "manual_price": null,
-                  "lead_time": null,
+                  "lead_time": 0,
                   "manual_lead_time": null,
                   "quantity": 1
                 },
                 {
                   "price": "30.25",
                   "manual_price": null,
-                  "lead_time": null,
+                  "lead_time": 0,
                   "manual_lead_time": null,
                   "quantity": 5
                 },
                 {
                   "price": "60.50",
                   "manual_price": null,
-                  "lead_time": null,
+                  "lead_time": 0,
                   "manual_lead_time": null,
                   "quantity": 10
                 },
                 {
                   "price": "151.25",
                   "manual_price": null,
-                  "lead_time": null,
+                  "lead_time": 0,
                   "manual_lead_time": null,
                   "quantity": 25
                 }
@@ -4100,9 +4100,9 @@
               "setup_time": null
             },
             {
-              "id": 72002,
+              "id": 89974,
               "category": "material",
-              "cost": "1.81",
+              "cost": "1.82",
               "costing_variables": [
                 {
                   "label": "Markup Percentage",
@@ -4121,14 +4121,14 @@
               "notes": null,
               "quantities": [
                 {
-                  "price": "1.81",
+                  "price": "1.82",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
                   "quantity": 1
                 },
                 {
-                  "price": "9.07",
+                  "price": "9.08",
                   "manual_price": null,
                   "lead_time": 0,
                   "manual_lead_time": null,
@@ -4158,7 +4158,7 @@
           "part_custom_attrs": [],
           "part_name": "Counter_Sinks.STEP",
           "part_number": null,
-          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=GkgvxZk9ZW2b3eituHUiEGboLHE%3D&Expires=1607825365",
+          "part_url": "https://s3.amazonaws.com/parts.test.paperlessparts.com///parts.dev.paperlessparts.com/c52005eb-a187-4ee4-a50f-46fdcbdbfe8a.step?response-content-disposition=attachment%3Bfilename%3D%22Counter_Sinks.STEP%22&AWSAccessKeyId=AKIAIMPPNIQY6WTRITQA&Signature=AbeHwWiTlBQBz2qVshgg2Nmlkos%3D&Expires=1607870212",
           "part_uuid": "3b8d60da-aa4f-4b04-983e-8fe755944957",
           "process": {
             "id": 1117,
@@ -4168,7 +4168,7 @@
           "revision": null,
           "shop_operations": [
             {
-              "id": 72003,
+              "id": 89975,
               "category": "operation",
               "cost": "25.00",
               "costing_variables": [
@@ -4176,7 +4176,7 @@
                   "label": "setup_time",
                   "variable_class": "basic",
                   "value_type": "number",
-                  "value": 0.5,
+                  "value": 0.25,
                   "row": null,
                   "options": null,
                   "type": "number"
@@ -4237,10 +4237,10 @@
               ],
               "position": 3,
               "runtime": null,
-              "setup_time": 0.5
+              "setup_time": 0.25
             },
             {
-              "id": 72004,
+              "id": 89976,
               "category": "operation",
               "cost": "100.00",
               "costing_variables": [
@@ -4303,7 +4303,7 @@
               "setup_time": 2
             },
             {
-              "id": 72005,
+              "id": 89977,
               "category": "operation",
               "cost": "85.42",
               "costing_variables": [
@@ -4447,7 +4447,7 @@
               "setup_time": 1
             },
             {
-              "id": 72006,
+              "id": 89978,
               "category": "operation",
               "cost": "6.46",
               "costing_variables": [
@@ -4528,7 +4528,7 @@
               "setup_time": 0.25
             },
             {
-              "id": 72007,
+              "id": 89979,
               "category": "operation",
               "cost": "0.52",
               "costing_variables": [
@@ -4582,7 +4582,7 @@
               "setup_time": null
             },
             {
-              "id": 72008,
+              "id": 89980,
               "category": "operation",
               "cost": "42.33",
               "costing_variables": [
@@ -4636,7 +4636,7 @@
               "setup_time": null
             },
             {
-              "id": 72009,
+              "id": 89981,
               "category": "operation",
               "cost": "150.00",
               "costing_variables": [
@@ -4671,8 +4671,14 @@
                   "label": "Material Selection",
                   "variable_class": "table",
                   "value_type": "string",
-                  "value": null,
-                  "row": {},
+                  "value": "304-#4",
+                  "row": {
+                    "length": 48,
+                    "diameter": 4,
+                    "material": "304-#4",
+                    "row_number": 3,
+                    "requires_prep": true
+                  },
                   "options": null,
                   "type": "table"
                 }
@@ -4715,6 +4721,97 @@
               "position": 9,
               "runtime": null,
               "setup_time": null
+            },
+            {
+              "id": 89982,
+              "category": "operation",
+              "cost": "0",
+              "costing_variables": [
+                {
+                  "label": "Basic Num",
+                  "variable_class": "basic",
+                  "value_type": "number",
+                  "value": 2,
+                  "row": null,
+                  "options": null,
+                  "type": "number"
+                },
+                {
+                  "label": "Basic Str",
+                  "variable_class": "basic",
+                  "value_type": "string",
+                  "value": "a",
+                  "row": null,
+                  "options": null,
+                  "type": "string"
+                },
+                {
+                  "label": "Drop Down Num",
+                  "variable_class": "drop_down",
+                  "value_type": "string",
+                  "value": "2",
+                  "row": null,
+                  "options": [
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "label": "Material Selection",
+                  "variable_class": "table",
+                  "value_type": "string",
+                  "value": "6061-T6",
+                  "row": {
+                    "length": 24,
+                    "diameter": 1,
+                    "material": "6061-T6",
+                    "row_number": 0,
+                    "requires_prep": false
+                  },
+                  "options": null,
+                  "type": "table"
+                }
+              ],
+              "is_finish": false,
+              "is_outside_service": false,
+              "name": "Quantity Specific",
+              "operation_definition_name": "Quantity Specific",
+              "notes": null,
+              "quantities": [
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 1
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 5
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 10
+                },
+                {
+                  "price": "0.00",
+                  "manual_price": null,
+                  "lead_time": 0,
+                  "manual_lead_time": null,
+                  "quantity": 25
+                }
+              ],
+              "position": 10,
+              "runtime": null,
+              "setup_time": null
             }
           ],
           "supporting_files": [],
@@ -4737,21 +4834,77 @@
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "quantity": 1,
       "quantity_outstanding": 1,
-      "quote_item_id": 63528,
+      "quote_item_id": 105566,
       "quote_item_type": "automatic",
-      "root_component_id": 69660,
-      "ships_on": "2020-07-10",
-      "total_price": "501.11",
-      "unit_price": "501.11",
-      "base_price": "501.11",
-      "add_on_fees": null,
-      "ordered_add_ons": []
+      "root_component_id": 114392,
+      "ships_on": "2020-12-28",
+      "total_price": "551.12",
+      "unit_price": "501.12",
+      "base_price": "501.12",
+      "add_on_fees": "50.00",
+      "ordered_add_ons": [
+        {
+          "id": 644,
+          "is_required": true,
+          "name": "Quantity Specific",
+          "price": "50.00",
+          "quantity": 1,
+          "costing_variables": [
+            {
+              "label": "Basic Num",
+              "variable_class": "basic",
+              "value_type": "number",
+              "value": 2,
+              "row": null,
+              "options": null,
+              "type": "number"
+            },
+            {
+              "label": "Basic Str",
+              "variable_class": "basic",
+              "value_type": "string",
+              "value": "a",
+              "row": null,
+              "options": null,
+              "type": "string"
+            },
+            {
+              "label": "Drop Down Num",
+              "variable_class": "drop_down",
+              "value_type": "string",
+              "value": "2",
+              "row": null,
+              "options": [
+                "1",
+                "2",
+                "3"
+              ],
+              "type": "string"
+            },
+            {
+              "label": "Material Selection",
+              "variable_class": "table",
+              "value_type": "string",
+              "value": "6061-T6",
+              "row": {
+                "length": 24,
+                "diameter": 1,
+                "material": "6061-T6",
+                "row_number": 0,
+                "requires_prep": false
+              },
+              "options": null,
+              "type": "table"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 38499,
+      "id": 63377,
       "components": [
         {
-          "id": 69661,
+          "id": 114393,
           "child_ids": [],
           "children": [],
           "description": "",
@@ -4790,10 +4943,10 @@
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "quantity": 1,
       "quantity_outstanding": 1,
-      "quote_item_id": 63529,
+      "quote_item_id": 105567,
       "quote_item_type": "automatic",
-      "root_component_id": 69661,
-      "ships_on": "2020-06-24",
+      "root_component_id": 114393,
+      "ships_on": "2020-12-10",
       "total_price": "65.00",
       "unit_price": "65.00",
       "base_price": "65.00",
@@ -4804,20 +4957,20 @@
   "payment_details": {
     "card_brand": "Visa(4242)",
     "card_last4": "4242",
-    "net_payout": "4239.89",
+    "net_payout": "4222.98",
     "payment_type": "credit_card",
     "purchase_order_number": null,
     "purchasing_dept_contact_email": null,
     "purchasing_dept_contact_name": null,
-    "shipping_cost": "139.13",
-    "subtotal": "4323.91",
+    "shipping_cost": "71.32",
+    "subtotal": "4373.92",
     "tax_cost": "0.00",
     "tax_rate": "0.000",
     "payment_terms": null,
-    "total_price": "4463.04"
+    "total_price": "4445.24"
   },
-  "private_notes": "This is a sweet order",
-  "quote_number": 194,
+  "private_notes": null,
+  "quote_number": 339,
   "quote_revision_number": null,
   "sales_person": {
     "first_name": "Heathrow Chester",
@@ -4850,6 +5003,6 @@
     "shipping_method": "early_am_overnight",
     "type": "suppliers_shipping_account"
   },
-  "ships_on": "2020-07-10",
+  "ships_on": "2020-12-28",
   "status": "pending"
 }

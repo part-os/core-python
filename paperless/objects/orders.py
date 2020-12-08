@@ -36,10 +36,14 @@ class OrderCostingVariable:
 class OrderOperation(BaseOperation):
     costing_variables: List[OrderCostingVariable] = attr.ib(converter=convert_iterable(OrderCostingVariable))
 
-    def get_variable(self, label) -> Optional[OrderCostingVariable]:
-        """Return the value of the variable with the specified label or None if
-        that variable does not exist."""
+    def get_variable(self, label) -> Optional[Union[float, int, str, bool]]:
+        """Return the value of the variable with the specified label or None if that variable does not exist."""
         return {cv.label: cv.value for cv in self.costing_variables}.get(
+            label, None)
+
+    def get_variable_obj(self, label) -> Optional[OrderCostingVariable]:
+        """Return the value of the variable object with the specified label or None if that variable does not exist."""
+        return {cv.label: cv for cv in self.costing_variables}.get(
             label, None)
 
 
@@ -58,6 +62,11 @@ class OrderedAddOn:
     price: Money = attr.ib(converter=Money, validator=attr.validators.instance_of(Money))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     costing_variables: List[OrderCostingVariable] = attr.ib(converter=convert_iterable(OrderCostingVariable))
+
+    def get_variable(self, label) -> Optional[OrderCostingVariable]:
+        """Return the value of the variable object with the specified label or None if that variable does not exist."""
+        return {cv.label: cv for cv in self.costing_variables}.get(
+            label, None)
 
 
 @attr.s(frozen=True)

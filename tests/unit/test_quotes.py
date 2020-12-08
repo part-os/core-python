@@ -17,7 +17,7 @@ class TestQuotes(unittest.TestCase):
     def test_get_quote(self):
         self.client.get_resource = MagicMock(return_value=self.mock_quote_json)
         q = Quote.get(1)
-        self.assertEqual(q.number, 194)
+        self.assertEqual(q.number, 339)
         self.assertEqual(q.tax_rate, 0.)
         self.assertFalse(q.is_unviewed_drafted_rfq)
         # test customer
@@ -35,7 +35,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(estimator.first_name, 'Heathrow Chester')
         # test metrics
         metrics = company.metrics
-        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('38246.19'))
+        self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('42691.43'))
         # test quote items
         quote_item = q.quote_items[0]
         self.assertEqual(quote_item.type, 'automatic')
@@ -45,7 +45,6 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(root_component.type, 'assembled')
         self.assertEqual(root_component.part_name, 'small-sub-assembly.STEP')
         self.assertFalse(root_component.part_custom_attrs)  # Note - this could either be None or a list, this confirms it is either None or an empty list
-        # TODO: quote add on costing variables, each type
         # test addons
         add_on = root_component.add_ons[0]
         self.assertEqual(add_on.is_required, True)
@@ -62,8 +61,8 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(operation.operation_definition_name, 'Chromate')
         operation_quantity = operation.quantities[0]
         self.assertEqual(operation_quantity.price.dollars, 150)
-        # TODO: quote operation costing variables, each type
-        # test table costing variables
+
+        # test all costing variables
         costing_variable = operation.costing_variables[3]
         self.assertEqual(costing_variable.type, 'table')
         self.assertEqual(costing_variable.value, '304-#4')
@@ -83,6 +82,254 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(vp.value, 150)
         self.assertIsNone(vp.row)
         self.assertIsNone(vp.options)
+
+        comp = q.quote_items[1].root_component
+        qty_specific_op = comp.shop_operations[7]
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Num', qty_specific_op.quantities[0].quantity).value,
+            2
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Num', qty_specific_op.quantities[0].quantity).row,
+            None
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Num', qty_specific_op.quantities[0].quantity).options,
+            None
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Num', qty_specific_op.quantities[1].quantity).value,
+            5
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Num', qty_specific_op.quantities[2].quantity).value,
+            10
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Num', qty_specific_op.quantities[3].quantity).value,
+            25
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Str', qty_specific_op.quantities[0].quantity).value,
+            'a'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Str', qty_specific_op.quantities[0].quantity).row,
+            None
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Str', qty_specific_op.quantities[0].quantity).options,
+            None
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Str', qty_specific_op.quantities[1].quantity).value,
+            'b'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Str', qty_specific_op.quantities[2].quantity).value,
+            'c'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Basic Str', qty_specific_op.quantities[3].quantity).value,
+            'd'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[0].quantity).value,
+            '2'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[0].quantity).row,
+            None
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[0].quantity).options,
+            ['1', '2', '3'],
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[1].quantity).value,
+            '5'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[1].quantity).options,
+            ['1', '2', '3', '5']
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[2].quantity).value,
+            '10'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[2].quantity).options,
+            ['1', '2', '3', '10']
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[3].quantity).value,
+            '25'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Drop Down Num', qty_specific_op.quantities[3].quantity).options,
+            ['1', '2', '3', '25']
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[0].quantity).value,
+            '6061-T6'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[0].quantity).row,
+            {'diameter': 1.0, 'length': 24.0, 'material': '6061-T6', 'requires_prep': False, 'row_number': 0},
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[0].quantity).options,
+            None,
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[1].quantity).value,
+            'Ti6Al4V'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[1].quantity).row,
+            {'diameter': 5.0, 'length': 24.0, 'material': 'Ti6Al4V', 'requires_prep': True, 'row_number': 4},
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[2].quantity).value,
+            'A2'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[2].quantity).row,
+            {'diameter': 6.0, 'length': 48.0, 'material': 'A2', 'requires_prep': False, 'row_number': 5},
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[3].quantity).value,
+            '6061-T6'
+        )
+        self.assertEqual(
+            qty_specific_op.get_variable_for_qty('Material Selection', qty_specific_op.quantities[3].quantity).row,
+            {'diameter': 1.0, 'length': 24.0, 'material': '6061-T6', 'requires_prep': False, 'row_number': 0},
+        )
+        
+        # test addon costing variables
+        qty_specific_ao = comp.add_ons[0]
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Num', qty_specific_ao.quantities[0].quantity).value,
+            2
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Num', qty_specific_ao.quantities[0].quantity).row,
+            None
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Num', qty_specific_ao.quantities[0].quantity).options,
+            None
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Num', qty_specific_ao.quantities[1].quantity).value,
+            5
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Num', qty_specific_ao.quantities[2].quantity).value,
+            10
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Num', qty_specific_ao.quantities[3].quantity).value,
+            25
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Str', qty_specific_ao.quantities[0].quantity).value,
+            'a'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Str', qty_specific_ao.quantities[0].quantity).row,
+            None
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Str', qty_specific_ao.quantities[0].quantity).options,
+            None
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Str', qty_specific_ao.quantities[1].quantity).value,
+            'b'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Str', qty_specific_ao.quantities[2].quantity).value,
+            'c'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Basic Str', qty_specific_ao.quantities[3].quantity).value,
+            'd'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[0].quantity).value,
+            '2'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[0].quantity).row,
+            None
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[0].quantity).options,
+            ['1', '2', '3'],
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[1].quantity).value,
+            '5'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[1].quantity).options,
+            ['1', '2', '3', '5']
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[2].quantity).value,
+            '10'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[2].quantity).options,
+            ['1', '2', '3', '10']
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[3].quantity).value,
+            '25'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Drop Down Num', qty_specific_ao.quantities[3].quantity).options,
+            ['1', '2', '3', '25']
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[0].quantity).value,
+            '6061-T6'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[0].quantity).row,
+            {'diameter': 1.0, 'length': 24.0, 'material': '6061-T6', 'requires_prep': False, 'row_number': 0},
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[0].quantity).options,
+            None,
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[1].quantity).value,
+            'Ti6Al4V'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[1].quantity).row,
+            {'diameter': 5.0, 'length': 24.0, 'material': 'Ti6Al4V', 'requires_prep': True, 'row_number': 4},
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[2].quantity).value,
+            'A2'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[2].quantity).row,
+            {'diameter': 6.0, 'length': 48.0, 'material': 'A2', 'requires_prep': False, 'row_number': 5},
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[3].quantity).value,
+            '6061-T6'
+        )
+        self.assertEqual(
+            qty_specific_ao.get_variable_for_qty('Material Selection', qty_specific_ao.quantities[3].quantity).row,
+            {'diameter': 1.0, 'length': 24.0, 'material': '6061-T6', 'requires_prep': False, 'row_number': 0},
+        )
+
+        
         # test process
         process = root_component.process
         self.assertEqual(process.name, 'CNC Machining')
@@ -94,7 +341,7 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(expedite.unit_price.dollars, 65.)
         # test parent quote
         parent_quote = q.parent_quote
-        self.assertEqual(parent_quote.number, 192)
+        self.assertEqual(parent_quote.number, 194)
         # test parent supplier order
         parent_supplier_order = q.parent_supplier_order
         self.assertIsNone(parent_supplier_order)
