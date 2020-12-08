@@ -28,10 +28,10 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(len(o.order_items), 3)
         # test salesperson
         sales_person = o.sales_person
-        self.assertEqual(sales_person.first_name, 'Rob')
+        self.assertEqual(sales_person.first_name, 'Heathrow Chester')
         # test estimator
         estimator = o.estimator
-        self.assertEqual(estimator.first_name, 'Rob')
+        self.assertEqual(estimator.first_name, 'Heathrow Chester')
         # test assembly order item
         assmb_oi = o.order_items[0]
         self.assertEqual(len(assmb_oi.components), 8)
@@ -69,7 +69,7 @@ class TestOrders(unittest.TestCase):
         self.assertIsNone(finish_op.setup_time)
         self.assertIsNone(finish_op.get_variable('bad name'))
         op_quantity = finish_op.quantities[0]
-        self.assertEqual(op_quantity.quantity, 25)
+        self.assertEqual(op_quantity.quantity, 1)
         # test add ons
         other_oi = o.order_items[0]
         self.assertEqual(other_oi.base_price.dollars, Decimal('2757.80'))

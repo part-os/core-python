@@ -29,10 +29,10 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(company.erp_code, 'OUTFIRM')
         # test salesperson
         sales_person = q.sales_person
-        self.assertEqual(sales_person.first_name, 'Rob')
+        self.assertEqual(sales_person.first_name, 'Heathrow Chester')
         # test estimator
         estimator = q.estimator
-        self.assertEqual(estimator.first_name, 'Rob')
+        self.assertEqual(estimator.first_name, 'Heathrow Chester')
         # test metrics
         metrics = company.metrics
         self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('38246.19'))
