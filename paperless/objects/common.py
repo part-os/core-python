@@ -6,6 +6,7 @@ from .utils import positive_number_validator
 
 ROUND_TO = Decimal('0.01')
 
+
 @attr.s(frozen=True, cmp=False)
 class Money:
     """Represents a USD currency value, encapsulates rounding logic and conversion to cents."""

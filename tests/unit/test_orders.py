@@ -21,17 +21,17 @@ class TestOrders(unittest.TestCase):
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
-        self.assertEqual(o.number, 72)
+        self.assertEqual(o.number, 179)
         self.assertEqual('credit_card', o.payment_details.payment_type)
         self.assertEqual('pending', o.status)
-        self.assertEqual(194, o.quote_number)
+        self.assertEqual(339, o.quote_number)
         self.assertEqual(len(o.order_items), 3)
         # test salesperson
         sales_person = o.sales_person
-        self.assertEqual(sales_person.first_name, 'Rob')
+        self.assertEqual(sales_person.first_name, 'Heathrow Chester')
         # test estimator
         estimator = o.estimator
-        self.assertEqual(estimator.first_name, 'Rob')
+        self.assertEqual(estimator.first_name, 'Heathrow Chester')
         # test assembly order item
         assmb_oi = o.order_items[0]
         self.assertEqual(len(assmb_oi.components), 8)
@@ -55,21 +55,63 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(len(assmb_root_component.shop_operations), 1)
         self.assertEqual(len(assmb_root_component.supporting_files), 1)
         self.assertEqual(assmb_root_component.type, 'assembled')
+
+        op = assmb_root_component.shop_operations[0]
+        self.assertEqual('304-#4', op.get_variable('Material Selection'))
+        self.assertEqual(150, op.get_variable('Lot Charge'))
+
         # test single component order item
         standard_oi = o.order_items[1]
         self.assertEqual(len(standard_oi.components), 1)
-        self.assertIsNone(standard_oi.add_on_fees)
+        self.assertEqual(standard_oi.add_on_fees.dollars, Decimal('50'))
         root_component = standard_oi.root_component
         self.assertEqual(len(root_component.material_operations), 2)
-        self.assertEqual(len(root_component.shop_operations), 7)
+        self.assertEqual(len(root_component.shop_operations), 8)
         finish_op = root_component.shop_operations[6]
         self.assertEqual(finish_op.name, 'Chromate')
         self.assertEqual(finish_op.operation_definition_name, 'Chromate')
         self.assertEqual(finish_op.cost.dollars, 150.)
         self.assertIsNone(finish_op.setup_time)
         self.assertIsNone(finish_op.get_variable('bad name'))
-        op_quantity = finish_op.quantities[0]
-        self.assertEqual(op_quantity.quantity, 25)
+
+        # ensure quantities are in proper order
+        op_quantities = [qty.quantity for qty in finish_op.quantities]
+        self.assertEqual([1, 5, 10, 25], op_quantities)
+
+        qty_specific_op = root_component.shop_operations[7]
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Num').value, 2)
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Num').row, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Num').options, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').value, 'a')
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').row, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').options, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Drop Down Num').value, '2')
+        self.assertEqual(qty_specific_op.get_variable_obj('Drop Down Num').row, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Drop Down Num').options, ['1', '2', '3'])
+        self.assertEqual(qty_specific_op.get_variable_obj('Material Selection').value, '6061-T6')
+        self.assertEqual(
+            qty_specific_op.get_variable_obj('Material Selection').row,
+            {'diameter': 1.0, 'length': 24.0, 'material': '6061-T6', 'requires_prep': False, 'row_number': 0},
+        )
+        self.assertEqual(qty_specific_op.get_variable_obj('Material Selection').options, None)
+
+        add_on = standard_oi.ordered_add_ons[0]
+        self.assertEqual(add_on.get_variable('Basic Num').value, 2)
+        self.assertEqual(add_on.get_variable('Basic Num').row, None)
+        self.assertEqual(add_on.get_variable('Basic Num').options, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').value, 'a')
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').row, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').options, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Drop Down Num').value, '2')
+        self.assertEqual(qty_specific_op.get_variable_obj('Drop Down Num').row, None)
+        self.assertEqual(qty_specific_op.get_variable_obj('Drop Down Num').options, ['1', '2', '3'])
+        self.assertEqual(qty_specific_op.get_variable_obj('Material Selection').value, '6061-T6')
+        self.assertEqual(
+            qty_specific_op.get_variable_obj('Material Selection').row,
+            {'diameter': 1.0, 'length': 24.0, 'material': '6061-T6', 'requires_prep': False, 'row_number': 0},
+        )
+        self.assertEqual(qty_specific_op.get_variable_obj('Material Selection').options, None)
+
         # test add ons
         other_oi = o.order_items[0]
         self.assertEqual(other_oi.base_price.dollars, Decimal('2757.80'))
@@ -93,11 +135,11 @@ class TestOrders(unittest.TestCase):
         o = Order.get(1)
         oi = o.order_items[0]
         self.assertEqual(2020, oi.ships_on_dt.year)
-        self.assertEqual(7, oi.ships_on_dt.month)
-        self.assertEqual(10, oi.ships_on_dt.day)
+        self.assertEqual(12, oi.ships_on_dt.month)
+        self.assertEqual(28, oi.ships_on_dt.day)
         self.assertEqual(2020, o.created_dt.year)
-        self.assertEqual(6, o.created_dt.month)
-        self.assertEqual(22, o.created_dt.day)
+        self.assertEqual(12, o.created_dt.month)
+        self.assertEqual(8, o.created_dt.day)
 
     def test_ship_desc(self):
         from paperless.objects.orders import ShippingOption
@@ -144,7 +186,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(8, len(assm))
         self.assertTrue(assm[0].component.is_root_component)
         self.assertEqual(0, assm[0].level)
-        expected_order = [69652, 69658, 69657, 69659, 69656, 69655, 69654, 69653]
+        expected_order = [114384, 114390, 114389, 114391, 114388, 114387, 114386, 114385]
         self.assertEqual(
             expected_order,
             [c.component.id for c in assm]

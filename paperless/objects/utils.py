@@ -1,5 +1,6 @@
 NO_UPDATE = object()
 
+
 def convert_cls(cl):
     """If the attribute is an instance of cls and not None, pass, else try constructing."""
     def converter(val):
@@ -53,6 +54,7 @@ def tax_rate_validator(instance, attribute, value):
         raise ValueError("Invalid tax rate. Rate cannot be above 100%. {} provided.".format(
             value
         ))
+
 
 def positive_number_validator(instance, attribute, value):
     return value >= 0

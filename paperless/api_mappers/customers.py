@@ -10,6 +10,7 @@ class PaymentTermsDetailsMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+
 class AddressInfoMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
