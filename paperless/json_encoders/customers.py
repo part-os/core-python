@@ -66,10 +66,15 @@ class AddressEncoder(BaseJSONEncoder):
         for key in field_keys:
             data[key] = getattr(resource, key, None)
 
+        filtered_data = {}
+        for key in data:
+            if data[key] is not NO_UPDATE:
+                filtered_data[key] = data[key]
+
         if json_dumps:
-            return json.dumps(data)
+            return json.dumps(filtered_data)
         else:
-            return data
+            return filtered_data
 
 
 class AddressInfoEncoder(BaseJSONEncoder):

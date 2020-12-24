@@ -19,7 +19,6 @@ class AddressInfo(FromJSONMixin,ToJSONMixin):
     _json_encoder = AddressEncoder
 
     address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    address2: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
@@ -29,6 +28,8 @@ class AddressInfo(FromJSONMixin,ToJSONMixin):
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+
 
 
 @attr.s(frozen=False)
@@ -170,7 +171,7 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
 
-    # not required from instantiation
+    # not required for instantiation
     created = attr.ib(default=NO_UPDATE, validator=(attr.validators.instance_of((str, object))))
     company_erp_code = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
     id = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((int, object)))
@@ -182,7 +183,7 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
     payment_terms_period = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((int, object))))
     phone = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
     phone_ext = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
-    purchase_orders_enabled= attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((bool, object)))
+    purchase_orders_enabled=attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((bool, object)))
     shipping_info = attr.ib(default=NO_UPDATE, converter=optional_convert(convert_cls(AddressInfo)))
     tax_exempt = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((bool, object)))
     tax_rate = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((int, float, object))))
