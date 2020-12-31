@@ -8,7 +8,7 @@ class AddOnMapper(BaseMapper):
     def map(cls, resource):
         mapped_result = {}
         costing_variables = map(OrderCostingVariablesMapper.map, resource['costing_variables'])
-        field_keys = ['name', 'price', 'quantity']
+        field_keys = ['name', 'notes', 'price', 'quantity']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['is_required']

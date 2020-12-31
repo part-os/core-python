@@ -164,7 +164,7 @@ class AddOnMapper(BaseMapper):
     def map(cls, resource):
         mapped_result = {}
         costing_variables = map(QuoteCostingVariablesMapper.map, resource['costing_variables'])
-        field_keys = ['name']
+        field_keys = ['name', 'notes']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['is_required']
