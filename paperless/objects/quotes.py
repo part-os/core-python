@@ -76,6 +76,7 @@ class AddOnQuantity:
 class AddOn:
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
     costing_variables: List[QuoteCostingVariable] = attr.ib(converter=convert_iterable(QuoteCostingVariable))
 
