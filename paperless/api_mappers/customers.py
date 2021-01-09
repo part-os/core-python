@@ -11,6 +11,16 @@ class PaymentTermsDetailsMapper(BaseMapper):
         return mapped_result
 
 
+class AddressMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['address1', 'address2', 'city', 'country', 'postal_code', 'state']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
 class AddressInfoMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -53,6 +63,20 @@ class CustomerListMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+class AccountMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['name', 'credit_line', 'erp_code', 'id', 'notes', 'payment_terms',
+                      'payment_terms_period', 'phone', 'phone_ext', 'purchase_orders_enabled',
+                      'sold_to_address', 'tax_exempt', 'tax_rate', 'url']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
+        mapped_result['sold_to_address'] = AddressMapper.map(resource['sold_to_address']) if resource['sold_to_address'] else None
+        mapped_result['billing_addresses'] = map(AddressMapper.map, resource['billing_addresses'])
+        return mapped_result
+
 
 class CompanyMapper(BaseMapper):
     @classmethod
@@ -76,6 +100,16 @@ class CompanyListMapper(BaseMapper):
     def map(cls, resource):
         mapped_result = {}
         field_keys = ['business_name', 'erp_code', 'id', 'phone', 'phone_ext', 'slug']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
+class AccountListMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['erp_code', 'id', 'name', 'phone', 'phone_ext']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result

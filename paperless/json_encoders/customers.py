@@ -61,8 +61,7 @@ class AddressEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['address1', 'address2', 'city', 'country', 'first_name',
-                      'last_name', 'phone', 'phone_ext', 'postal_code', 'state']
+        field_keys = ['address1', 'address2', 'city', 'country', 'postal_code', 'state']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
 
@@ -125,6 +124,43 @@ class CompanyEncoder(BaseJSONEncoder):
             return json.dumps(filtered_data)
         else:
             return filtered_data
+
+
+class AccountEncoder(BaseJSONEncoder):
+    @classmethod
+    def encode(cls, resource, json_dumps=True):
+        data = {}
+        field_keys = ['credit_line', 'erp_code', 'notes', 'name', 'payment_terms',
+                      'payment_terms_period', 'phone', 'phone_ext', 'tax_exempt',
+                      'tax_rate', 'slug', 'url']
+        for key in field_keys:
+            data[key] = getattr(resource, key, None)
+        boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
+        for key in boolean_keys:
+            data[key] = getattr(resource, key, False)
+
+        credit_line = getattr(resource, 'credit_line', None)
+        if credit_line is not None and credit_line is not NO_UPDATE:
+            data['credit_line'] = MoneyEncoder.encode(credit_line, json_dumps=False)
+        else:
+            data['credit_line'] = credit_line
+
+        sold_to_address = getattr(resource, 'sold_to_address', None)
+        if sold_to_address is not None and sold_to_address is not NO_UPDATE:
+            data['sold_to_address'] = AddressEncoder.encode(sold_to_address, json_dumps=False)
+        else:
+            data['sold_to_address'] = sold_to_address
+
+        filtered_data = {}
+        for key in data:
+            if data[key] is not NO_UPDATE:
+                filtered_data[key] = data[key]
+
+        if json_dumps:
+            return json.dumps(filtered_data)
+        else:
+            return filtered_data
+
 
 
 class CustomerEncoder(BaseJSONEncoder):
