@@ -4,13 +4,13 @@ import attr
 
 from paperless.api_mappers.customers import CompanyListMapper, CompanyMapper, \
     CustomerMapper, CustomerListMapper, AccountMapper, AccountListMapper, ContactMapper, \
-    ContactListMapper
+    ContactListMapper, FacilityMapper
 from paperless.client import PaperlessClient
 from paperless.json_encoders.customers import CompanyEncoder, \
-    CustomerEncoder, AddressEncoder, AccountEncoder, ContactEncoder
-from paperless.mixins import FromJSONMixin, ReadMixin,  \
+    CustomerEncoder, AddressEncoder, AccountEncoder, ContactEncoder, FacilityEncoder
+from paperless.mixins import FromJSONMixin, ReadMixin, \
     CreateMixin, PaginatedListMixin, \
-    UpdateMixin, ToJSONMixin, DeleteMixin
+    UpdateMixin, ToJSONMixin, DeleteMixin, ListMixin
 from .common import Money
 from .utils import convert_cls, optional_convert, NO_UPDATE, convert_iterable
 
@@ -207,6 +207,72 @@ class AccountList(FromJSONMixin, PaginatedListMixin):
     @classmethod
     def search(cls, search_term):
         return cls.list(params={'search': search_term})
+
+
+@attr.s(frozen=False)
+class Facility(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, ListMixin):
+
+    _mapper = FacilityMapper
+    _json_encoder = FacilityEncoder
+
+    account_id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+
+    #not required for instantiation
+    address = attr.ib(default=NO_UPDATE, converter=optional_convert(convert_cls(Address)))
+    attention = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    created = attr.ib(default=NO_UPDATE, validator=(attr.validators.instance_of((str, object))))
+    id = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((int, object)))
+
+    @classmethod
+    def construct_delete_url(cls):
+        return 'facilities/public'
+
+    @classmethod
+    def construct_get_url(cls):
+        return 'facilities/public'
+
+    @classmethod
+    def construct_patch_url(cls):
+        return 'facilities/public'
+
+    @classmethod
+    def construct_post_url(cls, account_id):
+        return 'accounts/public/{}/facilities'.format(account_id)
+
+    @classmethod
+    def construct_list_url(cls, account_id):
+        return 'accounts/public/{}/facilities'.format(account_id)
+
+    def create(self):
+        """
+        Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
+        """
+        client = PaperlessClient.get_instance()
+        data = self.to_json()
+        resp = client.create_resource(self.construct_post_url(self.account_id), data=data)
+        resp_obj = self.from_json(resp)
+        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))
+
+
+    @classmethod
+    def list(cls, account_id=None, params=None):
+        """
+        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+
+        :param params: dict of params for your list request
+        :return: [resource]
+        """
+        client = PaperlessClient.get_instance()
+        resource_list = cls.parse_list_response(
+            client.get_resource_list(cls.construct_list_url(account_id), params=params))
+        if cls._list_object_representation:
+            return [cls._list_object_representation.from_json(resource) for resource in resource_list]
+        else:
+            return [cls.from_json(resource) for resource in resource_list]
+
 
 
 @attr.s(frozen=False)

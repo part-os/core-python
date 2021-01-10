@@ -218,3 +218,27 @@ class ContactEncoder(BaseJSONEncoder):
         else:
             return filtered_data
 
+
+class FacilityEncoder(BaseJSONEncoder):
+    @classmethod
+    def encode(cls, resource, json_dumps=True):
+        data = {}
+        field_keys = ['account_id', 'attention', 'name']
+        for key in field_keys:
+            data[key] = getattr(resource, key, None)
+
+        address = getattr(resource, 'address', None)
+        if address is not None and address is not NO_UPDATE:
+            data['address'] = AddressEncoder.encode(address, json_dumps=False)
+        else:
+            data['address']
+
+        filtered_data = {}
+        for key in data:
+            if data[key] is not NO_UPDATE:
+                filtered_data[key] = data[key]
+
+        if json_dumps:
+            return json.dumps(filtered_data)
+        else:
+            return filtered_data

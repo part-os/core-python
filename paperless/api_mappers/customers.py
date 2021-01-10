@@ -61,6 +61,17 @@ class ContactMapper(BaseMapper):
         return mapped_result
 
 
+class FacilityMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys =['account_id', 'attention', 'created', 'id', 'name']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        mapped_result['address'] = AddressMapper.map(resource['address']) if resource['address'] else None
+        return mapped_result
+
+
 class CustomerListMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
