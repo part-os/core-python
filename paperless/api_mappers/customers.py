@@ -50,6 +50,17 @@ class CustomerMapper(BaseMapper):
         return mapped_result
 
 
+class ContactMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['account_id', 'email', 'first_name', 'id', 'last_name', 'notes', 'phone', 'phone_ext']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        mapped_result['address'] = AddressMapper.map(resource['address']) if resource['address'] else None
+        return mapped_result
+
+
 class CustomerListMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -63,11 +74,23 @@ class CustomerListMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         return mapped_result
 
+class ContactListMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = [
+            'account_id', 'created', 'email', 'first_name', 'id', 'last_name', 'phone',
+            'phone_ext'
+        ]
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
 class AccountMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['name', 'credit_line', 'erp_code', 'id', 'notes', 'payment_terms',
+        field_keys = ['name', 'created', 'credit_line', 'erp_code', 'id', 'notes', 'payment_terms',
                       'payment_terms_period', 'phone', 'phone_ext', 'purchase_orders_enabled',
                       'sold_to_address', 'tax_exempt', 'tax_rate', 'url']
         for key in field_keys:

@@ -3,10 +3,11 @@ from typing import Optional
 import attr
 
 from paperless.api_mappers.customers import CompanyListMapper, CompanyMapper, \
-    CustomerMapper, CustomerListMapper, AccountMapper, AccountListMapper
+    CustomerMapper, CustomerListMapper, AccountMapper, AccountListMapper, ContactMapper, \
+    ContactListMapper
 from paperless.client import PaperlessClient
 from paperless.json_encoders.customers import CompanyEncoder, \
-    CustomerEncoder, AddressEncoder, AccountEncoder
+    CustomerEncoder, AddressEncoder, AccountEncoder, ContactEncoder
 from paperless.mixins import FromJSONMixin, ReadMixin,  \
     CreateMixin, PaginatedListMixin, \
     UpdateMixin, ToJSONMixin, DeleteMixin
@@ -314,3 +315,81 @@ class Customer(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
         client = PaperlessClient.get_instance()
         resp_json = client.create_resource(f'{self.construct_post_url()}/{self.id}/shipping', data=data)
         return AddressInfo.from_json(resp_json)
+
+
+@attr.s(frozen=False)
+class ContactList(FromJSONMixin, PaginatedListMixin):
+
+    _mapper = ContactListMapper
+
+    account_id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+    created: str = attr.ib(validator=attr.validators.instance_of(str))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    phone: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone_ext: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+
+    @classmethod
+    def construct_list_url(cls):
+        return 'contacts/public'
+
+    @classmethod
+    def filter(cls, account_id=None):
+        params = {}
+        if account_id is not None:
+            params['account_id'] = account_id
+        return cls.list(params=params)
+
+    @classmethod
+    def search(cls, search_term):
+        return cls.list(params={'search': search_term})
+
+
+@attr.s(frozen=False)
+class Contact(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
+    _mapper = ContactMapper
+    _json_encoder = ContactEncoder
+
+    account_id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+
+    #not required for instantiation
+    address = attr.ib(default=NO_UPDATE, converter=optional_convert(convert_cls(Address)))
+    created = attr.ib(default=NO_UPDATE, validator=(attr.validators.instance_of((str, object))))
+    id = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((int, object)))
+    notes = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    phone = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+    phone_ext = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+
+    @classmethod
+    def construct_delete_url(cls):
+        return 'contacts/public'
+
+    @classmethod
+    def construct_get_url(cls):
+        return 'contacts/public'
+
+    @classmethod
+    def construct_patch_url(cls):
+        return 'contacts/public'
+
+    @classmethod
+    def construct_post_url(cls):
+        return 'contacts/public'
+
+    @classmethod
+    def list(cls):
+        return ContactList.list()
+
+    @classmethod
+    def filter(cls, account_id=None):
+        return ContactList.filter(account_id=account_id)
+
+    @classmethod
+    def search(cls, search_term):
+        return ContactList.search(search_term)
+
