@@ -35,6 +35,27 @@ class QuoteCustomerMapper(BaseMapper):
         return mapped_result
 
 
+class QuoteAccountMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'name', 'erp_code', 'notes']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
+class QuoteContactMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        mapped_result['account'] = QuoteAccountMapper.map(resource['account']) if resource['account'] else None
+        field_keys = ['id', 'email', 'first_name', 'last_name', 'notes']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
 class QuoteSalesPersonMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -227,7 +248,7 @@ class QuoteDetailsMapper(BaseMapper):
         bool_keys = ['export_controlled', 'is_unviewed_drafted_rfq']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
-        mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer']) if resource['customer'] else None
+        mapped_result['contact'] = QuoteContactMapper.map(resource['contact']) if resource['contact'] else None
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person']) if resource['sales_person'] else None
         mapped_result['estimator'] = QuoteSalesPersonMapper.map(resource['estimator']) if resource['estimator'] else None
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
