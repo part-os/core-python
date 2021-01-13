@@ -136,7 +136,7 @@ class Metrics:
 
 @attr.s(frozen=False)
 class Company:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     metrics: Metrics = attr.ib(converter=convert_cls(Metrics))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -153,7 +153,7 @@ class Account:
 
 @attr.s(frozen=False)
 class Customer:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -234,6 +234,7 @@ class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin he
     sales_person: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
     estimator: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
     contact: Contact = attr.ib(converter=convert_cls(Contact))
+    customer: Customer = attr.ib(converter=convert_cls(Customer))
     tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal),
                                           validator=attr.validators.optional(attr.validators.instance_of(Decimal)))
     tax_cost: Optional[Money] = attr.ib(converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of(Money)))

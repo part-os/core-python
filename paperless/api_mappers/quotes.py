@@ -249,6 +249,7 @@ class QuoteDetailsMapper(BaseMapper):
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
         mapped_result['contact'] = QuoteContactMapper.map(resource['contact']) if resource['contact'] else None
+        mapped_result['customer'] = QuoteCustomerMapper.map(resource['customer']) if resource['customer'] else None
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person']) if resource['sales_person'] else None
         mapped_result['estimator'] = QuoteSalesPersonMapper.map(resource['estimator']) if resource['estimator'] else None
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])

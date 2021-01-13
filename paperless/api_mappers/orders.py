@@ -91,11 +91,33 @@ class OrderCustomerMapper(BaseMapper):
         return mapped_result
 
 
+class  OrderAccountMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        field_keys = ['id', 'name', 'erp_code', 'notes']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
+class OrderContactMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        mapped_result['account'] = OrderAccountMapper.map(resource['account']) if resource['account'] else None
+        field_keys = ['id', 'email', 'first_name', 'last_name', 'notes']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        return mapped_result
+
+
 class OrderDetailsMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
         mapped_result['billing_info'] = OrderAddressInfoMapper.map(resource['billing_info'])
+        mapped_result['contact'] = OrderContactMapper.map(resource['contact'])
         mapped_result['customer'] = OrderCustomerMapper.map(resource['customer'])
         mapped_result['sales_person'] = QuoteSalesPersonMapper.map(resource['sales_person']) if resource['sales_person'] else None
         mapped_result['estimator'] = QuoteSalesPersonMapper.map(resource['estimator']) if resource['estimator'] else None

@@ -194,7 +194,7 @@ class OrderShipment:
 
 @attr.s(frozen=True)
 class OrderCompany:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
     erp_code: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str)))
@@ -204,7 +204,7 @@ class OrderCompany:
 
 @attr.s(frozen=True)
 class OrderCustomer:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     company: Optional[OrderCompany] = attr.ib(converter=optional_convert(convert_cls(OrderCompany)), validator=attr.validators.optional(attr.validators.instance_of(OrderCompany)))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -213,6 +213,25 @@ class OrderCustomer:
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     notes: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str)))
+
+
+@attr.s(frozen=False)
+class OrderAccount:
+    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    erp_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+
+
+@attr.s(frozen=False)
+class OrderContact:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    account: OrderAccount = attr.ib(converter=convert_cls(OrderAccount))
+
 
 
 @attr.s(frozen=True)
@@ -230,6 +249,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
 
     billing_info: Address = attr.ib(converter=convert_cls(Address))
     created = attr.ib(validator=attr.validators.instance_of(str))
+    contact: OrderContact = attr.ib(converter=convert_cls(OrderContact))
     customer: OrderCustomer = attr.ib(converter=convert_cls(OrderCustomer))
     deliver_by: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     estimator: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
