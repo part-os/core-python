@@ -106,7 +106,7 @@ class OrderContactMapper(BaseMapper):
     def map(cls, resource):
         mapped_result = {}
         mapped_result['account'] = OrderAccountMapper.map(resource['account']) if resource['account'] else None
-        field_keys = ['id', 'email', 'first_name', 'last_name', 'notes']
+        field_keys = ['id', 'email', 'first_name', 'last_name', 'notes', 'phone', 'phone_ext']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result

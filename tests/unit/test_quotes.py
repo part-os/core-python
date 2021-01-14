@@ -22,11 +22,30 @@ class TestQuotes(unittest.TestCase):
         self.assertFalse(q.is_unviewed_drafted_rfq)
         # test customer
         customer = q.customer
+        self.assertIsNone(customer.id)
+        self.assertEqual(customer.first_name, 'Test')
         self.assertEqual(customer.last_name, 'Customer')
+        self.assertEqual(customer.email, 'rob.carrington+outsidefirm@paperlessparts.com')
+        self.assertIsNone(customer.notes)
         # test company
         company = customer.company
+        self.assertIsNone(company.id)
         self.assertEqual(company.business_name, 'Outside Firm')
         self.assertEqual(company.erp_code, 'OUTFIRM')
+        self.assertIsNone(company.notes)
+        contact = q.contact
+        #test contact
+        self.assertEqual(contact.id, 3545)
+        self.assertEqual(contact.first_name, 'Test')
+        self.assertEqual(contact.last_name, 'Customer')
+        self.assertEqual(contact.email, 'rob.carrington+outsidefirm@paperlessparts.com')
+        self.assertIsNone(contact.notes)
+        #test account
+        account = contact.account
+        self.assertEqual(account.id, 1986)
+        self.assertIsNone(account.notes)
+        self.assertEqual(account.name, 'Outside Firm')
+        self.assertEqual(account.erp_code, 'OUTFIRM')
         # test salesperson
         sales_person = q.sales_person
         self.assertEqual(sales_person.first_name, 'Heathrow Chester')

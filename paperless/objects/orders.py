@@ -231,6 +231,9 @@ class OrderContact:
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     account: OrderAccount = attr.ib(converter=convert_cls(OrderAccount))
+    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+
 
 
 
