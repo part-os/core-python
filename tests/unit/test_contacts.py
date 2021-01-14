@@ -4,7 +4,7 @@ from paperless.client import PaperlessClient
 from unittest.mock import MagicMock
 
 from paperless.objects.common import Money
-from paperless.objects.customers import Contact, Account, BillingAddress
+from paperless.objects.customers import Contact, Account, BillingAddress, Facility
 
 
 class TestContact(unittest.TestCase):
@@ -189,3 +189,43 @@ class TestBillingAddress(unittest.TestCase):
             "state": "MA",
         }
         self.assertEqual(ba.to_json(), json.dumps(expected_billing_address_json))
+
+
+class TestFacility(unittest.TestCase):
+    def setUp(self):
+        self.client = PaperlessClient()
+        with open('tests/unit/mock_data/facility.json') as data_file:
+            self.mock_facility_json = json.load(data_file)
+
+    def test_get_billing_address(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_facility_json)
+        f = Facility.get(1)
+        self.assertEqual(f.account_id, 1)
+        self.assertEqual(f.address.address1, "137 Portland St.")
+        self.assertEqual(f.address.address2, None)
+        self.assertEqual(f.address.city, "Boston")
+        self.assertEqual(f.address.country, "USA")
+        self.assertEqual(f.address.postal_code, "02114")
+        self.assertEqual(f.address.state, "MA")
+        self.assertEqual(f.attention, "John Smith")
+        self.assertEqual(f.id, 1)
+        self.assertEqual(f.name, "Boston Office")
+
+    def test_convert_facility_to_json(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_facility_json)
+        f = Facility.get(1)
+        expected_facility_json = {
+            "account_id": 1,
+            "attention": "John Smith",
+            "name": "Boston Office",
+            "address": {
+                "address1": "137 Portland St.",
+                "address2": None,
+                "city": "Boston",
+                "country": "USA",
+                "postal_code": "02114",
+                "state": "MA",
+            }
+        }
+        self.assertEqual(f.to_json(), json.dumps(expected_facility_json))
+

@@ -1,0 +1,15 @@
+{
+  "account_id": 1,
+  "address": {
+    "id": 33890,
+    "address1": "137 Portland St.",
+    "address2": null,
+    "city": "Boston",
+    "country": "USA",
+    "postal_code": "02114",
+    "state": "MA"
+  },
+  "attention": "John Smith",
+  "id": 1,
+  "name": "Boston Office"
+}
