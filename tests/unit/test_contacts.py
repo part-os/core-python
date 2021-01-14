@@ -4,7 +4,7 @@ from paperless.client import PaperlessClient
 from unittest.mock import MagicMock
 
 from paperless.objects.common import Money
-from paperless.objects.customers import Contact, Account
+from paperless.objects.customers import Contact, Account, BillingAddress
 
 
 class TestContact(unittest.TestCase):
@@ -158,3 +158,34 @@ class TestAccountList(unittest.TestCase):
         self.assertEqual(a[1].name, "ACME Machining")
         self.assertEqual(a[1].phone, "6175555555")
         self.assertEqual(a[1].phone_ext, "12")
+
+
+class TestBillingAddress(unittest.TestCase):
+    def setUp(self):
+        self.client = PaperlessClient()
+        with open('tests/unit/mock_data/billing_address.json') as data_file:
+            self.mock_billing_address_json = json.load(data_file)
+
+    def test_get_billing_address(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_billing_address_json)
+        ba = BillingAddress.get(1)
+        self.assertEqual(ba.id, 1)
+        self.assertEqual(ba.address1, "137 Portland St.")
+        self.assertEqual(ba.address2, None)
+        self.assertEqual(ba.city, "Boston")
+        self.assertEqual(ba.country, "USA")
+        self.assertEqual(ba.postal_code, "02114")
+        self.assertEqual(ba.state, "MA")
+
+    def test_convert_billing_address_to_json(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_billing_address_json)
+        ba = BillingAddress.get(1)
+        expected_billing_address_json = {
+            "address1": "137 Portland St.",
+            "address2": None,
+            "city": "Boston",
+            "country": "USA",
+            "postal_code": "02114",
+            "state": "MA",
+        }
+        self.assertEqual(ba.to_json(), json.dumps(expected_billing_address_json))

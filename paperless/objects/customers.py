@@ -14,6 +14,59 @@ from .utils import convert_cls, optional_convert, NO_UPDATE, convert_iterable
 
 
 @attr.s(frozen=False)
+class Address(FromJSONMixin, ToJSONMixin):
+
+    _json_encoder = AddressEncoder
+
+    address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+
+
+@attr.s(frozen=False)
+class BillingAddress(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
+    _mapper = BillingAddressMapper
+    _json_encoder = AddressEncoder
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
+
+    @classmethod
+    def construct_delete_url(cls):
+        return 'billing_addresses/public'
+
+    @classmethod
+    def construct_get_url(cls):
+        return 'billing_addresses/public'
+
+    @classmethod
+    def construct_patch_url(cls):
+        return 'billing_addresses/public'
+
+    @classmethod
+    def construct_post_url(cls, account_id):
+        return 'accounts/public/{}/billing_addresses'.format(account_id)
+
+    def create(self, account_id):
+        """
+        Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
+        """
+        client = PaperlessClient.get_instance()
+        data = self.to_json()
+        resp = client.create_resource(self.construct_post_url(account_id), data=data)
+        resp_obj = self.from_json(resp)
+        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))
+
+@attr.s(frozen=False)
 class Account(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
     _mapper = AccountMapper
     _json_encoder = AccountEncoder
@@ -87,19 +140,6 @@ class AccountList(FromJSONMixin, PaginatedListMixin):
 
 
 @attr.s(frozen=False)
-class Address(FromJSONMixin, ToJSONMixin):
-
-    _json_encoder = AddressEncoder
-
-    address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
-
-
-@attr.s(frozen=False)
 class AddressInfo(FromJSONMixin,ToJSONMixin):
 
     _json_encoder = AddressEncoder
@@ -115,47 +155,6 @@ class AddressInfo(FromJSONMixin,ToJSONMixin):
     postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
-
-
-@attr.s(frozen=False)
-class BillingAddress(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
-    _mapper = BillingAddressMapper
-    _json_encoder = AddressEncoder
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
-
-    @classmethod
-    def construct_delete_url(cls):
-        return 'billing_addresses/public'
-
-    @classmethod
-    def construct_get_url(cls):
-        return 'billing_addresses/public'
-
-    @classmethod
-    def construct_patch_url(cls):
-        return 'billing_addresses/public'
-
-    @classmethod
-    def construct_post_url(cls, account_id):
-        return 'accounts/public/{}/billing_addresses'.format(account_id)
-
-    def create(self, account_id):
-        """
-        Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
-        """
-        client = PaperlessClient.get_instance()
-        data = self.to_json()
-        resp = client.create_resource(self.construct_post_url(account_id), data=data)
-        resp_obj = self.from_json(resp)
-        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
 
 
 @attr.s(frozen=False)
