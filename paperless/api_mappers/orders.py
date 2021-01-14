@@ -63,8 +63,8 @@ class OrderAddressInfoMapper(BaseMapper):
         if resource is None:
             return None
         mapped_result = {}
-        field_keys = ['id', 'address1', 'address2', 'business_name', 'city', 'country', 'first_name', 'last_name',
-                      'phone', 'phone_ext', 'postal_code', 'state']
+        field_keys = ['id', 'attention', 'address1', 'address2', 'business_name',
+                      'city', 'country', 'phone', 'phone_ext', 'postal_code', 'state']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
