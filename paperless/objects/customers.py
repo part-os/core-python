@@ -17,25 +17,25 @@ from .utils import convert_cls, optional_convert, NO_UPDATE, convert_iterable
 class Address(FromJSONMixin, ToJSONMixin):
 
     _json_encoder = AddressEncoder
-
     address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    id = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((int, object)))
     address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
 
 
 @attr.s(frozen=False)
-class BillingAddress(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
+class BillingAddress(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin, ListMixin):
     _mapper = BillingAddressMapper
     _json_encoder = AddressEncoder
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
     address1: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     city: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     country: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     postal_code: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     state: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    id = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((int, object)))
     address2 = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
 
     @classmethod
@@ -54,6 +54,10 @@ class BillingAddress(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateM
     def construct_post_url(cls, account_id):
         return 'accounts/public/{}/billing_addresses'.format(account_id)
 
+    @classmethod
+    def construct_list_url(cls, account_id):
+        return 'accounts/public/{}/billing_addresses'.format(account_id)
+
     def create(self, account_id):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
@@ -66,6 +70,23 @@ class BillingAddress(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateM
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
 
+    @classmethod
+    def list(cls, account_id=None, params=None):
+        """
+        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+
+        :param params: dict of params for your list request
+        :return: [resource]
+        """
+        client = PaperlessClient.get_instance()
+        resource_list = cls.parse_list_response(
+            client.get_resource_list(cls.construct_list_url(account_id), params=params))
+        if cls._list_object_representation:
+            return [cls._list_object_representation.from_json(resource) for resource in resource_list]
+        else:
+            return [cls.from_json(resource) for resource in resource_list]
+
+
 @attr.s(frozen=False)
 class Account(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin):
     _mapper = AccountMapper
@@ -74,7 +95,7 @@ class Account(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, D
     name: str = attr.ib(validator=attr.validators.instance_of(str))
 
     #not required for instantiation
-    billing_addresses = attr.ib(converter=convert_iterable(BillingAddress))
+    billing_addresses = attr.ib(default=[], converter=optional_convert(convert_iterable(BillingAddress)))
     created = attr.ib(default=NO_UPDATE, validator=(attr.validators.instance_of((str, object))))
     credit_line = attr.ib(default=NO_UPDATE, converter=optional_convert(Money), validator=attr.validators.optional(attr.validators.instance_of((Money, object))))
     id = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of((int, object)))
@@ -240,10 +261,10 @@ class Facility(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
     _mapper = FacilityMapper
     _json_encoder = FacilityEncoder
 
-    account_id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
 
     #not required for instantiation
+    account_id = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((int, object))))
     address = attr.ib(default=NO_UPDATE, converter=optional_convert(convert_cls(Address)))
     attention = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
     created = attr.ib(default=NO_UPDATE, validator=(attr.validators.instance_of((str, object))))
@@ -269,13 +290,13 @@ class Facility(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
     def construct_list_url(cls, account_id):
         return 'accounts/public/{}/facilities'.format(account_id)
 
-    def create(self):
+    def create(self, account_id):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
         """
         client = PaperlessClient.get_instance()
         data = self.to_json()
-        resp = client.create_resource(self.construct_post_url(self.account_id), data=data)
+        resp = client.create_resource(self.construct_post_url(account_id), data=data)
         resp_obj = self.from_json(resp)
         keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
         for key in keys:
