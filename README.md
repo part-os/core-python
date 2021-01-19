@@ -242,3 +242,196 @@ Example:
 quote = Quote.get(1090)
 quote.set_status(Quote.STATUSES.OUTSTANDING)
 ```
+
+Customers
+---------------------
+
+Paperless Parts includes Customer Relationship Management (CRM) functionality to make it easy to send quotes to new and existing customers, while keeping data consistent with third-party CRM and ERP systems. Typical use cases for these endpoints are to bulk import customers from an existing customer database and to synchronize new customers or changes from another system.
+
+An account represents a single company or account to which you would send quotes. An account has zero or more Contacts, each of which represents a person at that company and is identified uniquely by their email address. An account also has facilities and billing addresses. Facilities represent destinations to which orders and be shipped and BillingAddresses represnt the bill to address for and order.
+
+##Contacts
+
+A contact represents an individual at an account. A contact has the following fields:
+
+    * account_id: int(optional)
+    * email: string
+    * first_name: string
+    * id: int
+    * last_name: string
+    * address: Address(optional)
+    * created: string
+    * notes: string
+    * phone: string
+    * phone_ext: string
+
+###Importing the Contact class
+
+```python
+from paperless.objects.customers import Contact
+```
+
+###Listing Contacts
+```python
+    contacts = Contacts.list()
+```
+This will return a list on minified Contact objects
+
+###Retrieving a Contact
+```python
+    contact = Contact.get(101) #where 101 is the the contact id
+```
+This will return the contact object with the given id
+
+###Updating a Contact
+```python
+    contact.first_name = 'Jim'
+    contact.update()
+```
+This will update the contact in Paperless Parts and refresh the local instance
+
+###Creating a Contact
+```python
+    address = Address(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")
+    contact = Contact(account_id=141, address=address, email='support@paperlessparts.com', first_name='Jim', last_name='Gordan', notes='Test Account', phone='617-555-5555', phone_ext='123')
+```
+
+##Accounts
+An account represents a company. An account has the following fields:
+
+    * billing_addresses: list of BillingAddress objects 
+    * created: string
+    * credit_line: Money object(optional) 
+    * id:  int 
+    * erp_code: string(optional) 
+    * notes: string(optional)
+    * phone: string(optional) 
+    * phone_ext: string(optional) 
+    * payment_terms: string(optional)
+    * payment_terms_period: int(optional) 
+    * purchase_orders_enabled: boolean(optional) 
+    * sold_to_address: Address object(optional)
+    * tax_exempt: boolean(optional) 
+    * tax_rate: float(optional)
+    * url: string(optional)
+
+###Importing the Account class
+
+```python
+from paperless.objects.customers import Account
+```
+
+###Listing Accounts
+```python
+    accounts = Accounts.list()
+```
+This will return a list on minified Contact objects
+
+###Retrieving an Account
+```python
+    account = Account.get(101) #where 101 is the account id
+```
+This will return the account object with the given id
+
+###Updating a Contact
+```python
+    account.name = "Paperless Parts, Inc."
+    account.update()
+```
+This will update the account in Paperless Parts and refresh the local instance
+
+###Creating an Account
+```python
+    address = Address(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")
+    account = Account(credit_line=10000, erp_code='PPI', name='Paperless Parts', notes='Test account', phone='6175555555', phone_ext='123', payment_terms='Net 30', payment_terms_period=30, sold_to_address=address, tax_exempt=False, tax_rate=5.25)
+    account.create()
+```
+
+##Billing Addresses
+A billing address represents a billing address for a company. A billing addresss has the following fields:
+
+    * address1: string
+    * address2: string(optional)
+    * city: string
+    * country: string - three character country code
+    * id: int
+    * state: string - two character state code
+    * postal_code: string
+
+###Importing the BillingAddress class
+
+```python
+    from paperless.objects.customers import BillingAddress
+```
+
+###Listing BillingAddresses for an Account
+```python
+    billing_addresses = BillingAddress.list(account_id=141)
+```
+This will return a list of billing addresses
+
+###Retrieving a BillingAddress
+```python
+    billing_address = BillingAddress.get(101) #where 101 is the billing address id
+```
+This will return the BillingAddress object with the given id
+
+###Updating a BillingAddress
+```python
+    billing_address.address2 = "Lower Level"  
+    billing_address.update()
+```
+This will update the billing address in Paperless Parts and refresh the local instance
+
+###Create a BillingAddress
+```python
+    billing_address = BillingAddress(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")
+    billing_address.create(account_id=141)
+```
+
+##Facilities
+A facility represents a location for a company. A facility has the following fields:
+    
+    * account_id: int
+    * address: Address object(optional)
+    * attention: string(optional)
+    * name: string
+    * created: string(optional)
+    * id: int
+
+###Importing the Facility class
+
+```python
+    from paperless.objects.customers import Facility
+```
+
+###Listing Facilities for an Account
+```python
+    facilities = Facility.list(account_id=141)
+```
+This will return a list of facilities for the account
+
+###Retrieving a Facility
+```python
+    facility = Facility.get(101) #where 101 is the billing address id
+```
+This will return the Facility object with the given id
+
+###Updating a Facility
+```python
+    facility.name = 'Boston Office'  
+    facility.update()
+```
+This will update the Facility in Paperless Parts and refresh the local instance
+
+###Create a Facility
+```python
+    address = Address(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")    billing_address.create(account_id=141)
+    facility = Facility(name="Boston Office", attention="Jim Gordan", address=address)
+    facility.create(account_id=141)
+```
+
+
+
+    
+    
