@@ -221,6 +221,8 @@ class OrderAccount:
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     erp_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    payment_terms: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    payment_terms_period: int = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
 
 
 @attr.s(frozen=False)

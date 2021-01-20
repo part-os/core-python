@@ -208,6 +208,8 @@ class TestOrders(unittest.TestCase):
         self.assertIsNone(a.notes)
         self.assertEqual(a.name, "Outside Firm"),
         self.assertEqual(a.erp_code, "OUTFIRM")
+        self.assertEqual(a.payment_terms, "Net 30")
+        self.assertEqual(a.payment_terms_period, 30)
         self.assertEqual(c.phone, "")
         self.assertEqual(c.phone_ext, "")
 

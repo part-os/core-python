@@ -95,7 +95,7 @@ class  OrderAccountMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id', 'name', 'erp_code', 'notes']
+        field_keys = ['id', 'name', 'erp_code', 'notes', 'payment_terms', 'payment_terms_period']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
