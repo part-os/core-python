@@ -316,6 +316,7 @@ This will update the contact in Paperless Parts and refresh the local instance
 ```python
     address = Address(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")
     contact = Contact(account_id=141, address=address, email='support@paperlessparts.com', first_name='Jim', last_name='Gordan', notes='Test Account', phone='617-555-5555', phone_ext='123')
+    contact.create()
 ```
 
 ##Accounts
