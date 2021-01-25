@@ -248,7 +248,7 @@ Customers
 
 Paperless Parts includes Customer Relationship Management (CRM) functionality to make it easy to send quotes to new and existing customers, while keeping data consistent with third-party CRM and ERP systems. Typical use cases for these endpoints are to bulk import customers from an existing customer database and to synchronize new customers or changes from another system.
 
-An account represents a single company or account to which you would send quotes. An account has zero or more Contacts, each of which represents a person at that company and is identified uniquely by their email address. An account also has facilities and billing addresses. Facilities represent destinations to which orders will be shipped and BillingAddresses represnt the bill to address for and order.
+An account represents a single company or account to which you would send quotes. An account has zero or more Contacts, each of which represents a person at that company and is identified uniquely by their email address. An account also has facilities and billing addresses. Facilities represent destinations to which orders will be shipped and BillingAddresses represent the bill to address for and order.
 
 ##Contacts
 
