@@ -261,9 +261,9 @@ class Facility(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, 
     _mapper = FacilityMapper
     _json_encoder = FacilityEncoder
 
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
 
     #not required for instantiation
+    name = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
     account_id = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((int, object))))
     address = attr.ib(default=NO_UPDATE, converter=optional_convert(convert_cls(Address)))
     attention = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
