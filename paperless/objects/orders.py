@@ -237,8 +237,6 @@ class OrderContact:
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
-
-
 @attr.s(frozen=True)
 class OrderMinimum(FromJSONMixin):
     _mapper = OrderMinimumMapper

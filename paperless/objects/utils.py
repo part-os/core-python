@@ -14,7 +14,6 @@ def convert_cls(cl):
 
 
 def convert_iterable(cl):
-    # TODO: RAISE UNITERABLE ERROR FOR THIS
     def converter(iterable):
         result = []
         for val in iterable:
