@@ -1,0 +1,20 @@
+{
+  "account_id": 1,
+  "address": {
+    "id": 1,
+    "address1": "135 PORTLAND ST",
+    "address2": null,
+    "city": "BOSTON",
+    "country": "USA",
+    "postal_code": "02114-1702",
+    "state": "MA"
+  },
+  "created": "2021-01-11T23:57:59.114838Z",
+  "email": "john.smith@paperlessparts.com",
+  "first_name": "John",
+  "id": 1,
+  "last_name": "Smith",
+  "notes": "test notes",
+  "phone": "6035555555",
+  "phone_ext": ""
+}

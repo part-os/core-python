@@ -1,0 +1,36 @@
+{
+  "billing_addresses": [
+    {
+      "id": 138,
+      "address1": "1 City Hall Sq.",
+      "address2": null,
+      "city": "Boston",
+      "country": "USA",
+      "postal_code": "02108",
+      "state": "MA"
+    }
+  ],
+  "created": "2021-01-11T23:57:59+00:00",
+  "credit_line": 30000,
+  "erp_code": "ARUE",
+  "id": 1,
+  "name": "Accolades R Us Engineering",
+  "notes": null,
+  "payment_terms": "Net 30",
+  "payment_terms_period": 30,
+  "phone": "6035555555",
+  "phone_ext": null,
+  "purchase_orders_enabled": true,
+  "sold_to_address": {
+    "id": 1,
+    "address1": "1 City Hall Sq.",
+    "address2": null,
+    "city": "Boston",
+    "country": "USA",
+    "postal_code": "02108",
+    "state": "MA"
+  },
+  "tax_exempt": true,
+  "tax_rate": null,
+  "url": "https://www.paperlessparts.com"
+}

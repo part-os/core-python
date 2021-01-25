@@ -16,14 +16,27 @@
     "last_name": "Carrington",
     "email": "rob.carrington+heathrow@paperlessparts.com"
   },
-  "customer": {
+  "contact": {
     "id": 3545,
     "first_name": "Test",
     "last_name": "Customer",
     "email": "rob.carrington+outsidefirm@paperlessparts.com",
     "notes": null,
-    "company": {
+    "account": {
       "id": 1986,
+      "notes": null,
+      "name": "Outside Firm",
+      "erp_code": "OUTFIRM"
+    },
+    "phone": "",
+    "phone_ext": ""
+  },
+  "customer": {
+    "first_name": "Test",
+    "last_name": "Customer",
+    "email": "rob.carrington+outsidefirm@paperlessparts.com",
+    "notes": null,
+    "company": {
       "notes": null,
       "metrics": {
         "order_revenue_all_time": 42691.43,

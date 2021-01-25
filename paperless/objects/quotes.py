@@ -136,7 +136,7 @@ class Metrics:
 
 @attr.s(frozen=False)
 class Company:
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     metrics: Metrics = attr.ib(converter=convert_cls(Metrics))
     business_name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -144,13 +144,31 @@ class Company:
 
 
 @attr.s(frozen=False)
-class Customer:
+class Account:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    erp_code: str = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+
+
+@attr.s(frozen=False)
+class Customer:
+    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     company: Company = attr.ib(converter=convert_cls(Company))
+
+
+@attr.s(frozen=False)
+class Contact:
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    account: Account = attr.ib(converter=convert_cls(Account))
 
 
 @attr.s(frozen=False)
@@ -201,7 +219,7 @@ class RequestForQuote:
     phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     requested_delivery_date: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    customer_info_conflict: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    contact_info_conflict: bool = attr.ib(validator=attr.validators.instance_of(bool))
 
 
 @attr.s(frozen=False)
@@ -215,6 +233,7 @@ class Quote(FromJSONMixin, ListMixin, ToDictMixin):  # We don't use ReadMixin he
     revision_number: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     sales_person: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
     estimator: SalesPerson = attr.ib(converter=convert_cls(SalesPerson))
+    contact: Contact = attr.ib(converter=convert_cls(Contact))
     customer: Customer = attr.ib(converter=convert_cls(Customer))
     tax_rate: Optional[Decimal] = attr.ib(converter=optional_convert(Decimal),
                                           validator=attr.validators.optional(attr.validators.instance_of(Decimal)))

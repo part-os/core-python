@@ -1,14 +1,29 @@
 {
   "billing_info": null,
   "created": "2020-06-22T17:09:50+00:00",
-  "customer": {
+  "contact": {
     "id": 3545,
     "first_name": "Test",
     "last_name": "Customer",
     "email": "rob.carrington+outsidefirm@paperlessparts.com",
     "notes": null,
-    "company": {
+    "account": {
       "id": 1986,
+      "notes": null,
+      "name": "Outside Firm",
+      "erp_code": "OUTFIRM",
+      "payment_terms": "Net 30",
+      "payment_terms_period": 30
+    },
+    "phone": "",
+    "phone_ext": ""
+  },
+  "customer": {
+    "first_name": "Test",
+    "last_name": "Customer",
+    "email": "rob.carrington+outsidefirm@paperlessparts.com",
+    "notes": null,
+    "company": {
       "notes": null,
       "business_name": "Outside Firm",
       "erp_code": "OUTFIRM"

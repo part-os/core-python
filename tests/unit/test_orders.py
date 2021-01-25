@@ -194,6 +194,42 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(2, assm[4].level)
         self.assertEqual(4, assm[4].level_count)
 
+    def test_contact(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_minimal_order_json)
+        o = Order.get(1)
+        c = o.contact
+        a = c.account
+        self.assertEqual(c.id, 3545)
+        self.assertEqual(c.first_name, "Test")
+        self.assertEqual(c.last_name, "Customer")
+        self.assertEqual(c.email, "rob.carrington+outsidefirm@paperlessparts.com")
+        self.assertIsNone(c.notes)
+        self.assertEqual(a.id, 1986)
+        self.assertIsNone(a.notes)
+        self.assertEqual(a.name, "Outside Firm"),
+        self.assertEqual(a.erp_code, "OUTFIRM")
+        self.assertEqual(a.payment_terms, "Net 30")
+        self.assertEqual(a.payment_terms_period, 30)
+        self.assertEqual(c.phone, "")
+        self.assertEqual(c.phone_ext, "")
+
+    def test_customer(self):
+        self.client.get_resource = MagicMock(return_value=self.mock_minimal_order_json)
+        o = Order.get(1)
+        cu = o.customer
+        co = cu.company
+        self.assertIsNone(cu.id)
+        self.assertEqual(cu.first_name, "Test")
+        self.assertEqual(cu.last_name, "Customer")
+        self.assertEqual(cu.email, "rob.carrington+outsidefirm@paperlessparts.com")
+        self.assertIsNone(cu.notes)
+        self.assertIsNone(co.id)
+        self.assertEqual(co.business_name, "Outside Firm")
+        self.assertEqual(co.erp_code, "OUTFIRM")
+        self.assertEqual(cu.phone, "")
+        self.assertEqual(cu.phone_ext, "")
+
+
     def test_hardware(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
         o = Order.get(1)
