@@ -275,7 +275,7 @@ from paperless.objects.customers import Contact
 ```python
     contacts = Contacts.list()
 ```
-This will return a list on minified Contact objects
+This will return a list of minified Contact objects
 
 ###Retrieving a Contact
 ```python
