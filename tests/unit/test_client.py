@@ -11,7 +11,7 @@ class TestClient(unittest.TestCase):
         self.access_token = "test_accesstoken"
 
     def test_client_is_singleton(self):
-        # singelton by get_instance
+        # singleton by get_instance
         new_client1 = PaperlessClient.get_instance()
         self.assertTrue(new_client1 is self.client)
         new_client1.access_token = self.access_token
@@ -28,7 +28,9 @@ class TestClient(unittest.TestCase):
         client = PaperlessClient.get_instance()
         client.access_token = None
         self.assertEqual(client.access_token, None)
-        self.assertRaises(PaperlessAuthorizationException, self.client.get_authenticated_headers)
+        self.assertRaises(
+            PaperlessAuthorizationException, self.client.get_authenticated_headers
+        )
 
     def test_authorization_token(self):
         """
@@ -38,4 +40,6 @@ class TestClient(unittest.TestCase):
         client.access_token = self.access_token
         self.assertEqual(client.access_token, self.access_token)
         headers = self.client.get_authenticated_headers()
-        self.assertEqual(headers['Authorization'], 'API-Token {}'.format(self.access_token))
+        self.assertEqual(
+            headers['Authorization'], 'API-Token {}'.format(self.access_token)
+        )
