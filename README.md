@@ -277,6 +277,28 @@ from paperless.objects.customers import Contact
 ```
 This will return a list of minified Contact objects
 
+###Filtering Contacts
+```python
+    contacts = Contact.filter(account_id=id)
+```
+Contacts can be filtered by account_id
+
+###Searching Contacts
+```python
+    contacts = Contact.search('support@paperlessparts.com')
+```
+Contacts can be searched by the following fields:
+
+    * email
+    * first_name
+    * last_name
+    * notes
+    * phone
+    * account id
+
+Searches are case insensitive and can be partial matches
+
+
 ###Retrieving a Contact
 ```python
     contact = Contact.get(101) #where 101 is the the contact id
@@ -323,9 +345,30 @@ from paperless.objects.customers import Account
 
 ###Listing Accounts
 ```python
-    accounts = Accounts.list()
+    accounts = Account.list()
 ```
-This will return a list of minified Contact objectsx
+This will return a list of minified Contact objects
+
+###Filtering Accounts
+```python
+    accounts = Account.filter(erp_code='PPI')
+```
+
+Account can be filtered by erp code
+
+###Searching Accounts
+```python
+    accounts = Account.search(name='Paperless Parts, Inc.')
+```
+
+Accounts can be searched by the following fields:
+
+    * name
+    * erp_code
+    * notes
+    * id
+
+Searches are case insensitive and can be partial matches
 
 ###Retrieving an Account
 ```python
