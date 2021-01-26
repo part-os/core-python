@@ -1,12 +1,12 @@
 Part OS Paperless Parts SDK (Python)
 ====================================
 
-The [Paperless Parts](https://www.paperlessparts.com) Software Development Kit 
-(SDK) enables developers to easily write custom event listeners that run when 
-objects are created in Paperless Parts. The most common use case is creating 
-orders and other records in an ERP system after an order is placed in Paperless 
-Parts. The SDK uses the 
-[Paperless Parts Open API](https://docs.paperlessparts.com) to access your 
+The [Paperless Parts](https://www.paperlessparts.com) Software Development Kit
+(SDK) enables developers to easily write custom event listeners that run when
+objects are created in Paperless Parts. The most common use case is creating
+orders and other records in an ERP system after an order is placed in Paperless
+Parts. The SDK uses the
+[Paperless Parts Open API](https://docs.paperlessparts.com) to access your
 data.
 
 Prerequisites
@@ -14,9 +14,9 @@ Prerequisites
 
 These instructions assume you are running on Windows 10.
 
-First install the latest [Python3](https://www.python.org/downloads/), which 
-includes `python3`, `pip`, and `venv`. Add the Python installation folder to 
-your system path. 
+First install the latest [Python3](https://www.python.org/downloads/), which
+includes `python3`, `pip`, and `venv`. Add the Python installation folder to
+your system path.
 
 Create a virtual environment and activate it:
 
@@ -28,7 +28,7 @@ Install the required Python packages:
     cd path\to\core-python
     pip install -r requirements.txt
 
-Make sure `paperless` is on your Python path. You can do this using an 
+Make sure `paperless` is on your Python path. You can do this using an
 environment variable like this:
 
     set PYTHONPATH=c:\path\to\core-python
@@ -37,31 +37,31 @@ environment variable like this:
 Authenticating the client
 -------------------------
 
-The SDK client is authenticated via an automatically generated token linked to 
-your Paperless Parts account. To generate, revoke, or re-generate this token, 
-go to Settings > Integrations > API Token. This token must be included in the 
+The SDK client is authenticated via an automatically generated token linked to
+your Paperless Parts account. To generate, revoke, or re-generate this token,
+go to Settings > Integrations > API Token. This token must be included in the
 header of all requests using the key as follows:
 
-`Authorization`: `API-Token <api-token>` 
+`Authorization`: `API-Token <api-token>`
 
-The SDK handles this for you when you this access token when instantiating your 
-`PaperlessClient` object, as shown in the example below. We recommend 
-structuring your application to read this from a configuration file. Your access 
+The SDK handles this for you when you this access token when instantiating your
+`PaperlessClient` object, as shown in the example below. We recommend
+structuring your application to read this from a configuration file. Your access
 token should never be committed to your version control system (like git).
 
 
 Writing custom listeners
------------------------- 
+------------------------
 
-The SDK provides the `paperless.listeners.BaseListener` class, which can be 
+The SDK provides the `paperless.listeners.BaseListener` class, which can be
 extended to listen for particular object creation event. The subclass
-`paperless.listeners.OrderListener` is provided to listen for new order creation 
+`paperless.listeners.OrderListener` is provided to listen for new order creation
 events. You can extend `OrderListener` and implement an `on_event` method. Similary,
 `paperless.listeners.QuoteListener` is provided to listen for new quotes.
 
-You will need to handle all exceptions if you intend to have a long-running 
+You will need to handle all exceptions if you intend to have a long-running
 listener that does not require manual restarts. Alternatively, you can add
-watchdog or restart logic to your application built on the SDK. 
+watchdog or restart logic to your application built on the SDK.
 
 
 Instantiating your listener
@@ -70,28 +70,28 @@ Instantiating your listener
 Listeners keep track of which objects they have processed and persist this
 data in a local file in JSON format.
 
-The first time you run the Paperless SDK you can optionally configure the 
-listener to start with a later object (for example, an order with number other 
+The first time you run the Paperless SDK you can optionally configure the
+listener to start with a later object (for example, an order with number other
 than 1) by providing `last_record_id` when instantiating the listener.
 `last_record_id` represents the last record that was processed, and this record
-will not be processed. Once resources have been processed and the local JSON 
+will not be processed. Once resources have been processed and the local JSON
 file has been initialized, the `last_record_id` will be ignored.
 
 
 Registering your listener and running the SDK
 ---------------------------------------------
 
-The `paperless.main.PaperlessSDK` class provides the event loop to regularly 
+The `paperless.main.PaperlessSDK` class provides the event loop to regularly
 check for new objects and call any registered listeners. Use the `add_listener`
-to register your listener subclass and `run` to start the event loop. You can 
+to register your listener subclass and `run` to start the event loop. You can
 customize the polling interval (in seconds) by specifying the `delay` argument
-when instantiating `PaperlessSDK`. The default and recommended delay is 900 
+when instantiating `PaperlessSDK`. The default and recommended delay is 900
 seconds (15 minutes).
 
-By default, the event loop will run until the program is terminated. If you 
+By default, the event loop will run until the program is terminated. If you
 wish to manage these intervals elsewhere in your application, set `loop=False`
 when instantiating `PaperlessSDK`, which cause `run()` to check for objects one
-time and then return.    
+time and then return.
 
 
 Example
@@ -100,7 +100,7 @@ Example
     from paperless.client import PaperlessClient
     from paperless.main import PaperlessSDK
     from paperless.listeners import OrderListener
-    
+
     class MyOrderListener(OrderListener):
         def on_event(self, resource):
             print("on event")
@@ -110,7 +110,7 @@ Example
         def on_event(self, resource):
             print("on event")
             print(resource)
-    
+
     my_client = PaperlessClient(access_token='', version=PaperlessClient.VERSION_0)
     my_order_listener = MyOrderListener(last_record_id=None)
     my_quote_listener = MyQuoteListener(last_record_id=None)
@@ -229,14 +229,41 @@ the `delete` method with the table's name:
 CustomTable.delete('test_sdk_table_1')
 ```
 
-Changing Quote Status
----------------------
+Quotes
+_____________________
 
-You can change a quote's status using the `set_status` method. The available statuses 
+The PaperlessParts SDK provides functionality for identifying newly sent quotes,
+pulling all information related to a particular quote, and updating a quote's status.
+
+###Importing the Quote class
+
+```python
+from paperless.objects. quotes import Quote
+```
+
+###Listing Newly Sent Quotes
+
+```python
+new_quotes = Quote.get_new(id=35, revision=1) #Where id is the quote number
+```
+This will return a list of newly sent quotes starting after Quote #35 Revision 1.
+
+NOTE: The id and revision parameters are optional, if they are not supplied the all sent quotes will
+be returned.
+
+###Retrieving A Quote
+```python
+quote = Quote.get(id=35, revision=1) #Where id is the quote number
+```
+This will return the details for a specific quote.
+
+NOTE: The revision parameter is optional
+
+###Updating Quote Status
+
+You can change a quote's status using the `set_status` method. The available statuses
 are `OUTSTANDING`, `CANCELLED`, `TRASH`  `LOST`, these statuses are defined in the `STATUSES`
 enum on the `Quote` object.
-
-Example:
 
 ```python
 quote = Quote.get(1090)
@@ -322,19 +349,19 @@ This will update the contact in Paperless Parts and refresh the local instance
 ##Accounts
 An account represents a company. An account has the following fields:
 
-    * billing_addresses: list of BillingAddress objects 
+    * billing_addresses: list of BillingAddress objects
     * created: string
-    * credit_line: Money object(optional) 
-    * id:  int 
-    * erp_code: string(optional) 
+    * credit_line: Money object(optional)
+    * id:  int
+    * erp_code: string(optional)
     * notes: string(optional)
-    * phone: string(optional) 
-    * phone_ext: string(optional) 
+    * phone: string(optional)
+    * phone_ext: string(optional)
     * payment_terms: string(optional)
-    * payment_terms_period: int(optional) 
-    * purchase_orders_enabled: boolean(optional) 
+    * payment_terms_period: int(optional)
+    * purchase_orders_enabled: boolean(optional)
     * sold_to_address: Address object(optional)
-    * tax_exempt: boolean(optional) 
+    * tax_exempt: boolean(optional)
     * tax_rate: float(optional)
     * url: string(optional)
 
@@ -422,7 +449,7 @@ This will return the BillingAddress object with the given id
 
 ###Updating a BillingAddress
 ```python
-    billing_address.address2 = "Lower Level"  
+    billing_address.address2 = "Lower Level"
     billing_address.update()
 ```
 This will update the billing address in Paperless Parts and refresh the local instance
@@ -435,7 +462,7 @@ This will update the billing address in Paperless Parts and refresh the local in
 
 ##Facilities
 A facility represents a location for a company. A facility has the following fields:
-    
+
     * account_id: int
     * address: Address object(optional)
     * attention: string(optional)
@@ -463,7 +490,7 @@ This will return the Facility object with the given id
 
 ###Updating a Facility
 ```python
-    facility.name = 'Boston Office'  
+    facility.name = 'Boston Office'
     facility.update()
 ```
 This will update the Facility in Paperless Parts and refresh the local instance
@@ -474,8 +501,3 @@ This will update the Facility in Paperless Parts and refresh the local instance
     facility = Facility(name="Boston Office", attention="Jim Gordan", address=address)
     facility.create(account_id=141)
 ```
-
-
-
-    
-    
