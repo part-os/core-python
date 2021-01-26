@@ -364,7 +364,7 @@ This will update the contact in Paperless Parts and refresh the local instance
 ###Creating a Contact
 ```python
     address = Address(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")
-    contact = Contact(account_id=141, address=address, email='support@paperlessparts.com', first_name='Jim', last_name='Gordan', notes='Test Account', phone='617-555-5555', phone_ext='123')
+    contact = Contact(account_id=141, address=address, email='support@paperlessparts.com', first_name='Jim', last_name='Gordan', notes='Test Account', phone='6175555555', phone_ext='123')
     contact.create()
 ```
 
@@ -436,7 +436,7 @@ This will update the account in Paperless Parts and refresh the local instance
 ###Creating an Account
 ```python
     address = Address(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")
-    account = Account(credit_line=10000, erp_code='PPI', name='Paperless Parts', notes='Test account', phone='6175555555', phone_ext='123', payment_terms='Net 30', payment_terms_period=30, sold_to_address=address, tax_exempt=False, tax_rate=5.25)
+    account = Account(credit_line=10000, erp_code='PPI', name='Paperless Parts', notes='Test account', phone='6175555555', phone_ext='123', payment_terms='Net 30', payment_terms_period=30, purchase_orders_enabled=True, sold_to_address=address, tax_exempt=False, tax_rate=5.25)
     account.create()
 ```
 
