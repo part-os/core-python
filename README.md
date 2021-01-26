@@ -270,6 +270,28 @@ quote = Quote.get(1090)
 quote.set_status(Quote.STATUSES.OUTSTANDING)
 ```
 
+Orders
+_____________________
+The PaperlessParts SDK provides functionality for identifying newly placed orders,
+pulling all information related to a particular order, and also facilitating and order
+using an existing quote.
+
+###Listing Newly Place Orders
+```python
+new_orders = Order.get_new(id=35) #Where Id is the order number
+```
+This will return a list of order numbers for newly sent orders starting after Order #35.
+
+NOTE: The id parameter is optional, if not supplied then all orders will
+be returned.
+
+###Retrieving An Order
+```python
+order = Order.get(id=35) #Where id is the order number
+```
+This will return the details for a specific order.
+
+
 Customers
 ---------------------
 

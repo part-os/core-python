@@ -14,19 +14,6 @@ from .components import AssemblyMixin, BaseComponent
 from .utils import convert_cls, convert_iterable, numeric_validator, optional_convert
 
 
-def convert_dictionary(cl):
-    def converter(d):
-        result = dict()
-        for key, val in d.items():
-            if isinstance(val, cl):
-                result[key] = val
-            else:
-                result[key] = cl(**val)
-        return result
-
-    return converter
-
-
 @attr.s(frozen=True)
 class CostingVariablePayload:
     value: Optional[Union[float, int, str, bool]] = attr.ib()
