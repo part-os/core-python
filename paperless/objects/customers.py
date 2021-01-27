@@ -112,12 +112,17 @@ class Account(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, D
     url = attr.ib(default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object))))
 
     @classmethod
+    def construct_delete_url(cls):
+        return 'accounts/public'
+
+    @classmethod
     def construct_get_url(cls):
         return 'accounts/public'
 
     @classmethod
     def construct_patch_url(cls):
         return 'accounts/public'
+
 
     @classmethod
     def construct_post_url(cls):
