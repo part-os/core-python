@@ -28,6 +28,7 @@ from paperless.mixins import (
     UpdateMixin,
 )
 
+from .address import Address
 from .common import Money
 from .utils import (
     NO_UPDATE,
@@ -37,34 +38,6 @@ from .utils import (
     phone_length_validator,
     tax_rate_validator,
 )
-
-
-@attr.s(frozen=False)
-class Address(FromJSONMixin, ToJSONMixin):
-
-    _json_encoder = AddressEncoder
-    address1: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    city: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    country: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    postal_code: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    state: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    id = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
-    )
-    address2 = attr.ib(
-        default=NO_UPDATE,
-        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
-    )
 
 
 @attr.s(frozen=False)

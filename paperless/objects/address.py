@@ -1,22 +1,76 @@
-import attr
-
 from typing import Optional
 
-from paperless.mixins import ToJSONMixin
+import attr
+
+from paperless.json_encoders.customers import AddressEncoder
+from paperless.mixins import FromJSONMixin, ToJSONMixin
+from paperless.objects.utils import NO_UPDATE
 
 
-@attr.s
-class Address(ToJSONMixin):
-    address1: str = attr.ib(validator=attr.validators.instance_of(str))
-    city: str = attr.ib(validator=attr.validators.instance_of(str))
-    country: str = attr.ib(validator=attr.validators.in_(['CAN', 'USA']))
-    postal_code: str = attr.ib(validator=attr.validators.instance_of(str))
-    state: str = attr.ib(validator=attr.validators.instance_of(str))
+@attr.s(frozen=False)
+class Address(FromJSONMixin, ToJSONMixin):
 
-    # optional fields
-    id: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)), default=None)
-    attention: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
-    address2: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
-    business_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
-    phone: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
-    phone_ext: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
+    _json_encoder = AddressEncoder
+    address1: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    city: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    country: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    postal_code: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    state: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    id = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
+    )
+    address2 = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
+
+
+@attr.s(frozen=False)
+class AddressInfo(FromJSONMixin, ToJSONMixin):
+
+    _json_encoder = AddressEncoder
+
+    address1: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    attention: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    business_name: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    city: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    country: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    phone: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    phone_ext: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    postal_code: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    state: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    id = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
+    )
+    address2 = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )

@@ -11,7 +11,13 @@ from paperless.objects.components import BaseOperation
 
 from .common import Money
 from .components import AssemblyMixin, BaseComponent
-from .utils import convert_cls, convert_iterable, numeric_validator, optional_convert
+from .utils import (
+    convert_cls,
+    convert_dictionary,
+    convert_iterable,
+    numeric_validator,
+    optional_convert,
+)
 
 
 @attr.s(frozen=True)
