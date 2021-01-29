@@ -1,6 +1,4 @@
-from paperless.api_mappers import (
-    BaseMapper,
-)
+from paperless.api_mappers import BaseMapper
 from paperless.api_mappers.components import (
     MaterialMapper,
     OperationQuantityMapper,
@@ -140,7 +138,7 @@ class CostingVariablePayloadMapper(BaseMapper):
 class QuoteCostingVariablesMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
-        keys = ['label', 'variable_class', 'value_type', 'type', 'value', 'row']
+        keys = ['label', 'variable_class', 'value_type']
         mapped_result = {}
         for key in keys:
             mapped_result[key] = resource.get(key, None)

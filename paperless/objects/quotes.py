@@ -32,12 +32,7 @@ class CostingVariablePayload:
 @attr.s(frozen=True)
 class QuoteCostingVariable:
     label: str = attr.ib(validator=attr.validators.instance_of(str))
-    type: str = attr.ib(validator=attr.validators.instance_of(str))  # TODO: deprecate
     quantity_specific: bool = attr.ib()
-    value = attr.ib()  # TODO: deprecate
-    # Note: The row field will only be not None if type == 'table', in which case it will be a dict with
-    # arbitrary keys and values
-    row = attr.ib()  # TODO: deprecate
     quantities: Dict[int, CostingVariablePayload] = attr.ib(
         convert=convert_dictionary(CostingVariablePayload)
     )
