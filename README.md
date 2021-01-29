@@ -426,12 +426,17 @@ Searches are case insensitive and can be partial matches
 ```
 This will return the account object with the given id
 
-###Updating a Contact
+###Updating an Account
 ```python
     account.name = "Paperless Parts, Inc."
     account.update()
 ```
 This will update the account in Paperless Parts and refresh the local instance
+
+NOTE: Optional fields will be initialized with the value NO_UPDATE by default when no
+value is provided. Properties with a value of NO_UPDATE are filtered out before being
+sent to the backend.
+
 
 ###Creating an Account
 ```python

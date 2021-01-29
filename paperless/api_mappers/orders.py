@@ -1,14 +1,10 @@
-from paperless.api_mappers import (
-    BaseMapper,
-)
+from paperless.api_mappers import BaseMapper
 from paperless.api_mappers.components import (
     MaterialMapper,
     OperationQuantityMapper,
     ProcessMapper,
 )
-from paperless.api_mappers.quotes import (
-    QuoteSalesPersonMapper,
-)
+from paperless.api_mappers.quotes import QuoteSalesPersonMapper
 
 
 class AddOnMapper(BaseMapper):
@@ -333,15 +329,7 @@ class ShippingOptionMapper(BaseMapper):
 class OrderCostingVariablesMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
-        keys = [
-            'label',
-            'variable_class',
-            'value_type',
-            'type',
-            'value',
-            'row',
-            'options',
-        ]
+        keys = ['label', 'variable_class', 'value_type', 'value', 'row', 'options']
         mapped_result = {}
         for key in keys:
             mapped_result[key] = resource.get(key, None)

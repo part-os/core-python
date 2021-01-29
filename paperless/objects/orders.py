@@ -22,7 +22,6 @@ DATE_FMT = '%Y-%m-%d'
 @attr.s(frozen=True)
 class OrderCostingVariable:
     label: str = attr.ib(validator=attr.validators.instance_of(str))
-    type: str = attr.ib(validator=attr.validators.instance_of(str))  # TODO: deprecate
     value = attr.ib()
     # Note: The row field will only be not None if variable_class == 'table', in which case it will be a dict with
     # arbitrary keys and values
