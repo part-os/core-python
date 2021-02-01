@@ -56,9 +56,9 @@ def convert_dictionary(cl):
 
 
 def phone_length_validator(instance, attribute, value):
-    if value == NO_UPDATE:
+    if value == NO_UPDATE or None:
         return
-    if len(value) != 10:
+    if len(value) > 10:
         raise ValueError(
             "Invalid phone number for {}. Phone number must be 10 digits.".format(
                 attribute
