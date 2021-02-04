@@ -96,13 +96,19 @@ class PaperlessClient(object):
         ):
             return resp
         elif resp.status_code == 429:
-            message = resp.json().get('message')
-            LOGGER.info(message)
-            wait_time = (
-                int(message[message.find('in') + 3 : message.find('seconds.') - 1]) + 1
-            )
-            time.sleep(wait_time)
-            return self.request(url=url, method=method, data=data, params=params)
+            try:
+                message = resp.json().get('message')
+                LOGGER.info(message)
+                wait_time = (
+                    int(message[message.find('in') + 3 : message.find('seconds.') - 1])
+                    + 1
+                )
+                time.sleep(wait_time)
+            except Exception as e:  # catch any exception while trying to access the backoff message
+                LOGGER.error(e)
+                time.sleep(60)
+            finally:
+                return self.request(url=url, method=method, data=data, params=params)
         elif resp.status_code == 400:
             raise PaperlessException(
                 message="Failed to update resource: {}".format(resp.content),
