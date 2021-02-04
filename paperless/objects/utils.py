@@ -69,6 +69,9 @@ def phone_length_validator(instance, attribute, value):
 def tax_rate_validator(instance, attribute, value):
     if value == NO_UPDATE:
         return
+
+    if isinstance(value, str):
+        value = float(value)
     if value < 0:
         raise ValueError(
             "Invalid tax rate. Rate cannot be below 0%. {} provided.".format(value)
