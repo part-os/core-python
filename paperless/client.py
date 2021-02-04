@@ -180,7 +180,7 @@ class PaperlessClient(object):
 
         req_url = '{}/{}'.format(resource_url, id)
 
-        resp = self.request(url=req_url, method=self.METHODS.DELETE, headers=headers)
+        resp = self.request(url=req_url, method=self.METHODS.DELETE)
         return
 
     def download_file(self, resource_url, id, file_path, params=None):
