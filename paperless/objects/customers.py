@@ -197,12 +197,17 @@ class Account(
     )
 
     @classmethod
+    def construct_delete_url(cls):
+        return 'accounts/public'
+
+    @classmethod
     def construct_get_url(cls):
         return 'accounts/public'
 
     @classmethod
     def construct_patch_url(cls):
         return 'accounts/public'
+
 
     @classmethod
     def construct_post_url(cls):
