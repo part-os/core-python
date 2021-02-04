@@ -104,7 +104,11 @@ class PaperlessClient(object):
                     + 1
                 )
                 time.sleep(wait_time)
-            except Exception as e:  # catch any exception while trying to access the backoff message
+            except (
+                TypeError,
+                AttributeError,
+                ValueError,
+            ) as e:  # catch any exception while trying to access the backoff message
                 LOGGER.error(e)
                 time.sleep(60)
             finally:
