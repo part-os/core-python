@@ -119,6 +119,15 @@ Example
     my_sdk.add_listener(my_quote_listener)
     my_sdk.run()
 
+Throttling
+----------
+
+The Paperless Parts Open-API limits users to a rate of 30 requests per minute. In the
+event that this rate is exceeded, the API will respond with the response code
+429 (Too Many Requests). The Paperless Parts SDK will catch this response and
+automatically retry the request after waiting the amount of time specified in
+the response body.
+
 
 Custom Tables
 -------------
