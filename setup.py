@@ -2,7 +2,7 @@ import io
 import os
 import sys
 
-from setuptools import find_packages, setup, Command
+from setuptools import Command, find_packages, setup
 
 # Package meta-data.
 NAME = 'core-python'
@@ -11,11 +11,9 @@ URL = 'https://github.com/paperlessPARTS/core-python'
 EMAIL = 'dev@paperlessparts.com'
 AUTHOR = 'Paperless Parts Engineering'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.1.0'
+VERSION = '0.6.0'
 
-REQUIRED = [
-    'attrs', 'factory_boy', 'Faker', 'requests'
-]
+REQUIRED = ['attrs', 'factory_boy', 'Faker', 'requests']
 
 here = os.path.abspath(os.path.dirname(__file__))
 try:
@@ -47,6 +45,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy'
+        'Programming Language :: Python :: Implementation :: PyPy',
     ],
 )
