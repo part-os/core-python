@@ -36,20 +36,18 @@ class CustomTable:
             raise ValueError("The supplied data must be an array of objects")
         for col_data in data:
             if not isinstance(col_data, dict):
-                raise ValueError(
-                    "The supplied data must be an array of objects"
-                )
+                raise ValueError("The supplied data must be an array of objects")
         return data
 
     def from_csv(self, config_csv_file_path, data_csv_file_path=None):
         config_data = []
         table_data = []
-        
+
         with open(config_csv_file_path, 'r') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 config_data.append(row)
-        
+
         self.config = self.validate_config_data(config_data)
 
         if data_csv_file_path is not None:
@@ -73,7 +71,9 @@ class CustomTable:
         """
         client = PaperlessClient.get_instance()
         data = self.to_json({'config': self.config, 'data': self.data})
-        resp_json = client.update_resource(self.construct_patch_url(), table_name, data=data)
+        resp_json = client.update_resource(
+            self.construct_patch_url(), table_name, data=data
+        )
         return resp_json
 
     @classmethod
@@ -104,10 +104,7 @@ class CustomTable:
             file_path = f'table_{table_name}_{"config" if config else "data"}.csv'
         client = PaperlessClient.get_instance()
         client.download_file(
-            cls.construct_download_csv_url(),
-            table_name,
-            file_path,
-            params=params
+            cls.construct_download_csv_url(), table_name, file_path, params=params
         )
 
     @classmethod
@@ -119,10 +116,7 @@ class CustomTable:
     def get_list(cls):
         client = PaperlessClient.get_instance()
 
-        return client.get_new_resources(
-            cls.construct_list_url(),
-            params=None
-        )
+        return client.get_new_resources(cls.construct_list_url(), params=None)
 
     @classmethod
     def construct_delete_url(cls):
@@ -132,7 +126,4 @@ class CustomTable:
     def delete(cls, table_name):
         client = PaperlessClient.get_instance()
 
-        return client.delete_resource(
-            cls.construct_delete_url(),
-            table_name
-        )
+        return client.delete_resource(cls.construct_delete_url(), table_name)
