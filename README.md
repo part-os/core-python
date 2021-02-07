@@ -285,14 +285,10 @@ The PaperlessParts SDK provides functionality for identifying newly placed order
 pulling all information related to a particular order, and also facilitating and order
 using an existing quote.
 
-###Listing Newly Place Orders
+###Listing Orders
 ```python
-new_orders = Order.get_new(id=35) #Where Id is the order number
+orders = Order.list()
 ```
-This will return a list of order numbers for newly sent orders starting after Order #35.
-
-NOTE: The id parameter is optional, if not supplied then all orders will
-be returned.
 
 ###Retrieving An Order
 ```python
