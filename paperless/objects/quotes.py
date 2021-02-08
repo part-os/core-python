@@ -9,7 +9,7 @@ from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ToDictMixin
 from paperless.objects.components import BaseOperation
 
-from .common import Money
+from .common import Money, SalesPerson
 from .components import AssemblyMixin, BaseComponent
 from .utils import (
     convert_cls,
@@ -155,13 +155,6 @@ class QuoteComponent(BaseComponent):
         converter=convert_iterable(QuoteOperation)
     )
     quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
-
-
-@attr.s(frozen=False)
-class SalesPerson:
-    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    email: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
 @attr.s(frozen=False)

@@ -4,7 +4,7 @@ from paperless.api_mappers.components import (
     OperationQuantityMapper,
     ProcessMapper,
 )
-from paperless.api_mappers.quotes import QuoteSalesPersonMapper
+from .common import SalespersonMapper
 
 
 class AddOnMapper(BaseMapper):
@@ -215,12 +215,17 @@ class OrderDetailsMapper(BaseMapper):
         mapped_result['contact'] = OrderContactMapper.map(resource['contact'])
         mapped_result['customer'] = OrderCustomerMapper.map(resource['customer'])
         mapped_result['sales_person'] = (
-            QuoteSalesPersonMapper.map(resource['sales_person'])
+            SalespersonMapper.map(resource['sales_person'])
             if resource['sales_person']
             else None
         )
+        mapped_result['salesperson'] = (
+            SalespersonMapper.map(resource['salesperson'])
+            if resource['salesperson']
+            else None
+        )
         mapped_result['estimator'] = (
-            QuoteSalesPersonMapper.map(resource['estimator'])
+            SalespersonMapper.map(resource['estimator'])
             if resource['estimator']
             else None
         )

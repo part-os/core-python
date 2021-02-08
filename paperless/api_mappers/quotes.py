@@ -5,6 +5,8 @@ from paperless.api_mappers.components import (
     ProcessMapper,
 )
 
+from .common import SalespersonMapper
+
 
 class QuoteMetricsMapper(BaseMapper):
     @classmethod
@@ -65,16 +67,6 @@ class QuoteContactMapper(BaseMapper):
             QuoteAccountMapper.map(resource['account']) if resource['account'] else None
         )
         field_keys = ['id', 'email', 'first_name', 'last_name', 'notes']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteSalesPersonMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['first_name', 'last_name', 'email']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result
@@ -314,12 +306,17 @@ class QuoteDetailsMapper(BaseMapper):
             else None
         )
         mapped_result['sales_person'] = (
-            QuoteSalesPersonMapper.map(resource['sales_person'])
+            SalespersonMapper.map(resource['sales_person'])
             if resource['sales_person']
             else None
         )
+        mapped_result['salesperson'] = (
+            SalespersonMapper.map(resource['salesperson'])
+            if resource['salesperson']
+            else None
+        )
         mapped_result['estimator'] = (
-            QuoteSalesPersonMapper.map(resource['estimator'])
+            SalespersonMapper.map(resource['estimator'])
             if resource['estimator']
             else None
         )

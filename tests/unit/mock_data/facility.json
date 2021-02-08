@@ -11,5 +11,10 @@
   },
   "attention": "John Smith",
   "id": 1,
-  "name": "Boston Office"
+  "name": "Boston Office",
+  "salesperson": {
+    "first_name": "William",
+    "last_name": "Headrick",
+    "email": "william+stack_pusher@paperlessparts.com"
+  }
 }

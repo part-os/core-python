@@ -40,3 +40,10 @@ class Money:
 
     def __bool__(self):
         return bool(self.dollars)
+
+
+@attr.s(frozen=False)
+class Salesperson:
+    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    email: str = attr.ib(validator=attr.validators.instance_of(str))

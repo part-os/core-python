@@ -16,5 +16,10 @@
   "last_name": "Smith",
   "notes": "test notes",
   "phone": "6035555555",
-  "phone_ext": ""
+  "phone_ext": "",
+  "salesperson": {
+    "first_name": "William",
+    "last_name": "Headrick",
+    "email": "william+stack_pusher@paperlessparts.com"
+  }
 }
