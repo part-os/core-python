@@ -217,7 +217,10 @@ class CreateMixin(object):
         resp = client.create_resource(self.construct_post_url(), data=data)
         resp_obj = self.from_json(resp)
         keys = filter(
-            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
+            lambda x: not x.startswith('__')
+            and not x.startswith('_')
+            and type(getattr(resp_obj, x)) != types.MethodType,
+            dir(resp_obj),
         )
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
