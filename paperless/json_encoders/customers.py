@@ -36,6 +36,8 @@ class AccountEncoder(BaseJSONEncoder):
         salesperson = getattr(resource, 'salesperson', None)
         if salesperson is not None and salesperson is not NO_UPDATE:
             data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+        else:
+            data['salesperson'] = salesperson
 
         sold_to_address = getattr(resource, 'sold_to_address', None)
         if sold_to_address is not None and sold_to_address is not NO_UPDATE:
@@ -120,6 +122,8 @@ class ContactEncoder(BaseJSONEncoder):
         salesperson = getattr(resource, 'salesperson', None)
         if salesperson is not None and salesperson is not NO_UPDATE:
             data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+        else:
+            data['salesperson'] = salesperson
 
         filtered_data = {}
         for key in data:
@@ -161,6 +165,8 @@ class FacilityEncoder(BaseJSONEncoder):
         salesperson = getattr(resource, 'salesperson', None)
         if salesperson is not None and salesperson is not NO_UPDATE:
             data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+        else:
+            data['salesperson'] = salesperson
 
         filtered_data = {}
         for key in data:

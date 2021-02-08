@@ -1,6 +1,7 @@
 import attr
 import decimal
 from decimal import Decimal
+from typing import Optional
 
 from .utils import positive_number_validator
 
@@ -44,6 +45,12 @@ class Money:
 
 @attr.s(frozen=False)
 class Salesperson:
-    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
+    first_name: Optional[str] = attr.ib(
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    last_name: Optional[str] = attr.ib(
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
