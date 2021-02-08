@@ -303,6 +303,7 @@ class Quote(
         validator=attr.validators.optional(attr.validators.instance_of(int))
     )
     sales_person: Salesperson = attr.ib(converter=convert_cls(Salesperson))
+    salesperson: Salesperson = attr.ib(converter=convert_cls(Salesperson))
     estimator: Salesperson = attr.ib(converter=convert_cls(Salesperson))
     contact: Contact = attr.ib(converter=convert_cls(Contact))
     customer: Customer = attr.ib(converter=convert_cls(Customer))
