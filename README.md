@@ -381,7 +381,9 @@ This will update the contact in Paperless Parts and refresh the local instance
     contact.salesperson = salesperson
     contact.update()
 ```
-This will update the contact in Paperless Parts and refresh the local instance
+This will update the contact in Paperless Parts and refresh the local instance.
+
+Note: A salespersons email must correspond to a group member for the user group whose API-Token is being used. If another email is used, the request will return an HTTP 400 Error with a relevant error message.
 
 
 ##Accounts
