@@ -1,5 +1,4 @@
 import json
-from typing import List
 
 from paperless.json_encoders import BaseJSONEncoder
 from paperless.objects.utils import NO_UPDATE
@@ -9,9 +8,19 @@ class AccountEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['credit_line', 'erp_code', 'notes', 'name', 'payment_terms',
-                      'payment_terms_period', 'phone', 'phone_ext', 'tax_exempt',
-                      'tax_rate', 'url']
+        field_keys = [
+            'credit_line',
+            'erp_code',
+            'notes',
+            'name',
+            'payment_terms',
+            'payment_terms_period',
+            'phone',
+            'phone_ext',
+            'tax_exempt',
+            'tax_rate',
+            'url',
+        ]
         for key in field_keys:
             data[key] = getattr(resource, key, None)
         boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
@@ -26,7 +35,9 @@ class AccountEncoder(BaseJSONEncoder):
 
         sold_to_address = getattr(resource, 'sold_to_address', None)
         if sold_to_address is not None and sold_to_address is not NO_UPDATE:
-            data['sold_to_address'] = AddressEncoder.encode(sold_to_address, json_dumps=False)
+            data['sold_to_address'] = AddressEncoder.encode(
+                sold_to_address, json_dumps=False
+            )
         else:
             data['sold_to_address'] = sold_to_address
 
@@ -84,8 +95,15 @@ class ContactEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['account_id', 'email', 'first_name', 'last_name', 'notes',
-                      'phone', 'phone_ext']
+        field_keys = [
+            'account_id',
+            'email',
+            'first_name',
+            'last_name',
+            'notes',
+            'phone',
+            'phone_ext',
+        ]
         for key in field_keys:
             data[key] = getattr(resource, key, None)
 
@@ -131,8 +149,6 @@ class FacilityEncoder(BaseJSONEncoder):
         address = getattr(resource, 'address', None)
         if address is not None and address is not NO_UPDATE:
             data['address'] = AddressEncoder.encode(address, json_dumps=False)
-        else:
-            data['address']
 
         filtered_data = {}
         for key in data:

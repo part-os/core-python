@@ -1,9 +1,10 @@
-import unittest
 import os
-from unittest.mock import Mock, MagicMock
-from paperless.listeners import BaseListener, OrderListener
-from paperless.objects.orders import Order
+import unittest
+from unittest.mock import MagicMock, Mock
+
 from paperless.exceptions import PaperlessNotFoundException
+from paperless.listeners import OrderListener
+from paperless.objects.orders import Order
 
 
 def mock_get(order_id):
