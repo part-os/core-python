@@ -126,7 +126,8 @@ class OrderDetailsMapper(BaseMapper):
         mapped_result['shipments'] = map(ShipmentsMapper.map, resource['shipments'])
         mapped_result['shipping_info'] = OrderAddressInfoMapper.map(resource['shipping_info'])
         mapped_result['shipping_option'] = ShippingOptionMapper.map(resource['shipping_option'])
-        field_keys = ['created', 'deliver_by', 'number', 'private_notes', 'quote_number', 'ships_on', 'status']
+        field_keys = ['created', 'deliver_by', 'number', 'private_notes', 'quote_number', 'quote_revision_number',
+                      'ships_on', 'status']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
 
