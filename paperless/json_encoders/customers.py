@@ -2,7 +2,7 @@ import json
 
 from paperless.json_encoders import BaseJSONEncoder
 from paperless.objects.utils import NO_UPDATE
-
+from .common import SalespersonEncoder
 
 class AccountEncoder(BaseJSONEncoder):
     @classmethod
@@ -32,6 +32,12 @@ class AccountEncoder(BaseJSONEncoder):
             data['credit_line'] = MoneyEncoder.encode(credit_line, json_dumps=False)
         else:
             data['credit_line'] = credit_line
+
+        salesperson = getattr(resource, 'salesperson', None)
+        if salesperson is not None and salesperson is not NO_UPDATE:
+            data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+        else:
+            data['salesperson'] = salesperson
 
         sold_to_address = getattr(resource, 'sold_to_address', None)
         if sold_to_address is not None and sold_to_address is not NO_UPDATE:
@@ -113,6 +119,12 @@ class ContactEncoder(BaseJSONEncoder):
         else:
             data['address'] = address
 
+        salesperson = getattr(resource, 'salesperson', None)
+        if salesperson is not None and salesperson is not NO_UPDATE:
+            data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+        else:
+            data['salesperson'] = salesperson
+
         filtered_data = {}
         for key in data:
             if data[key] is not NO_UPDATE:
@@ -149,6 +161,12 @@ class FacilityEncoder(BaseJSONEncoder):
         address = getattr(resource, 'address', None)
         if address is not None and address is not NO_UPDATE:
             data['address'] = AddressEncoder.encode(address, json_dumps=False)
+
+        salesperson = getattr(resource, 'salesperson', None)
+        if salesperson is not None and salesperson is not NO_UPDATE:
+            data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+        else:
+            data['salesperson'] = salesperson
 
         filtered_data = {}
         for key in data:

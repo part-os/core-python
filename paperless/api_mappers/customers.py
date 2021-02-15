@@ -2,6 +2,8 @@ from paperless.api_mappers import (
     BaseMapper,
 )
 
+from .common import SalespersonMapper
+
 
 class AccountMapper(BaseMapper):
     @classmethod
@@ -36,6 +38,11 @@ class AccountMapper(BaseMapper):
         )
         mapped_result['billing_addresses'] = map(
             BillingAddressMapper.map, resource['billing_addresses']
+        )
+        mapped_result['salesperson'] = (
+            SalespersonMapper.map(resource['salesperson'])
+            if resource['salesperson']
+            else None
         )
         return mapped_result
 
@@ -139,6 +146,11 @@ class ContactMapper(BaseMapper):
         mapped_result['address'] = (
             AddressMapper.map(resource['address']) if resource['address'] else None
         )
+        mapped_result['salesperson'] = (
+            SalespersonMapper.map(resource['salesperson'])
+            if resource['salesperson']
+            else None
+        )
         return mapped_result
 
 
@@ -151,6 +163,11 @@ class FacilityMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         mapped_result['address'] = (
             AddressMapper.map(resource['address']) if resource['address'] else None
+        )
+        mapped_result['salesperson'] = (
+            SalespersonMapper.map(resource['salesperson'])
+            if resource['salesperson']
+            else None
         )
         return mapped_result
 

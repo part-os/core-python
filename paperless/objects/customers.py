@@ -29,7 +29,7 @@ from paperless.mixins import (
 )
 
 from .address import Address
-from .common import Money
+from .common import Money, Salesperson
 from .utils import (
     NO_UPDATE,
     convert_cls,
@@ -182,6 +182,9 @@ class Account(
     purchase_orders_enabled = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((bool, object))
     )
+    salesperson = attr.ib(
+        default=NO_UPDATE, converter=optional_convert(convert_cls(Salesperson))
+    )
     sold_to_address = attr.ib(
         default=NO_UPDATE, converter=optional_convert(convert_cls(Address))
     )
@@ -331,6 +334,9 @@ class Contact(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
+    salesperson = attr.ib(
+        default=NO_UPDATE, converter=optional_convert(convert_cls(Salesperson))
+    )
 
     @classmethod
     def construct_delete_url(cls):
@@ -432,6 +438,9 @@ class Facility(
     )
     id = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
+    )
+    salesperson = attr.ib(
+        default=NO_UPDATE, converter=optional_convert(convert_cls(Salesperson))
     )
 
     @classmethod

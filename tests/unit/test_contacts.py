@@ -52,6 +52,9 @@ class TestContact(unittest.TestCase):
                 "postal_code": "02114-1702",
                 "state": "MA"
             },
+            "salesperson": {
+                "email": "william+stack_pusher@paperlessparts.com"
+            }
         }
         self.assertEqual(c.to_json(), json.dumps(expected_contact_json))
 
@@ -132,6 +135,9 @@ class TestAccount(unittest.TestCase):
             "tax_rate": None,
             "url": "https://www.paperlessparts.com",
             "purchase_orders_enabled": True,
+            "salesperson": {
+                "email": "william+stack_pusher@paperlessparts.com"
+            },
             "sold_to_address": {
                 "address1": "1 City Hall Sq.",
                 "address2": None,
@@ -225,6 +231,9 @@ class TestFacility(unittest.TestCase):
                 "country": "USA",
                 "postal_code": "02114",
                 "state": "MA",
+            },
+            "salesperson": {
+                "email": "william+stack_pusher@paperlessparts.com"
             }
         }
         self.assertEqual(f.to_json(), json.dumps(expected_facility_json))

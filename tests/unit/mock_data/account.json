@@ -21,6 +21,11 @@
   "phone": "6035555555",
   "phone_ext": null,
   "purchase_orders_enabled": true,
+  "salesperson": {
+    "first_name": "William",
+    "last_name": "Headrick",
+    "email": "william+stack_pusher@paperlessparts.com"
+  },
   "sold_to_address": {
     "id": 1,
     "address1": "1 City Hall Sq.",

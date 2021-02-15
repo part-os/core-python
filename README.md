@@ -318,6 +318,7 @@ A contact represents an individual at an account. A contact has the following fi
     * notes: string
     * phone: string
     * phone_ext: string
+    * salesperson: Salesperson(optional)
 
 ###Importing the Contact class
 
@@ -373,6 +374,18 @@ This will update the contact in Paperless Parts and refresh the local instance
     contact.create()
 ```
 
+### Adding a salesperson to a Contact
+```python
+    from paperless.objects.common import Salesperson
+    salesperson = Salesperson(email="sales@paperlessparts.com")
+    contact.salesperson = salesperson
+    contact.update()
+```
+This will update the contact in Paperless Parts and refresh the local instance.
+
+Note: A salespersons email must correspond to a group member for the user group whose API-Token is being used. If another email is used, the request will return an HTTP 400 Error with a relevant error message.
+
+
 ##Accounts
 An account represents a company. An account has the following fields:
 
@@ -387,6 +400,7 @@ An account represents a company. An account has the following fields:
     * payment_terms: string(optional)
     * payment_terms_period: int(optional)
     * purchase_orders_enabled: boolean(optional)
+    * salesperson: Salesperson(optional)
     * sold_to_address: Address object(optional)
     * tax_exempt: boolean(optional)
     * tax_rate: float(optional)
@@ -498,9 +512,10 @@ A facility represents a location for a company. A facility has the following fie
     * account_id: int
     * address: Address object(optional)
     * attention: string(optional)
-    * name: string
     * created: string(optional)
     * id: int
+    * name: string
+    * salesperson: Salesperson(optional)
 
 ###Importing the Facility class
 

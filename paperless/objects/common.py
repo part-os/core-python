@@ -1,6 +1,7 @@
 import attr
 import decimal
 from decimal import Decimal
+from typing import Optional
 
 from .utils import positive_number_validator
 
@@ -40,3 +41,16 @@ class Money:
 
     def __bool__(self):
         return bool(self.dollars)
+
+
+@attr.s(frozen=False)
+class Salesperson:
+    email: str = attr.ib(validator=attr.validators.instance_of(str))
+    first_name: Optional[str] = attr.ib(
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    last_name: Optional[str] = attr.ib(
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )

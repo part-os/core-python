@@ -4039,6 +4039,11 @@
     "last_name": "Carrington",
     "email": "rob.carrington@paperlessparts.com"
   },
+  "salesperson": {
+    "first_name": "Rob",
+    "last_name": "Carrington",
+    "email": "rob.carrington@paperlessparts.com"
+  },
   "shipments": [],
   "shipping_info": null,
   "shipping_option": null,
