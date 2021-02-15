@@ -194,6 +194,9 @@ class Account(
     tax_rate = attr.ib(
         default=NO_UPDATE, validator=attr.validators.optional(tax_rate_validator)
     )
+    type = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((str, object))
+    )
     url = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
@@ -244,6 +247,7 @@ class AccountList(FromJSONMixin, PaginatedListMixin):
     phone_ext: str = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
+    type = attr.ib(validator=attr.validators.instance_of(str))
 
     @classmethod
     def construct_list_url(cls):

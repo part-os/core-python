@@ -37,5 +37,6 @@
   },
   "tax_exempt": true,
   "tax_rate": null,
+  "type": "customer",
   "url": "https://www.paperlessparts.com"
 }

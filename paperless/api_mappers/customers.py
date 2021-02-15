@@ -24,6 +24,7 @@ class AccountMapper(BaseMapper):
             'sold_to_address',
             'tax_exempt',
             'tax_rate',
+            'type',
             'url',
         ]
         boolean_keys = ['purchase_orders_enabled', 'tax_exempt']
@@ -51,7 +52,7 @@ class AccountListMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['erp_code', 'id', 'name', 'phone', 'phone_ext']
+        field_keys = ['erp_code', 'id', 'name', 'phone', 'phone_ext', 'type']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         return mapped_result

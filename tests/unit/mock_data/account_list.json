@@ -8,21 +8,24 @@
       "id": 1,
       "name": "Paperless Parts Inc.",
       "phone": "6035555555",
-      "phone_ext": ""
+      "phone_ext": "",
+      "type": "customer"
     },
     {
       "erp_code": "AMC",
       "id": 2,
       "name": "ACME Machining",
       "phone": "6175555555",
-      "phone_ext": "12"
+      "phone_ext": "12",
+      "type": "customer"
     },
     {
       "erp_code": null,
       "id": 3,
       "name": "A Cut Above CNC",
       "phone": "9785555555",
-      "phone_ext": null
+      "phone_ext": null,
+      "type": "vendor"
     }
   ]
 }
