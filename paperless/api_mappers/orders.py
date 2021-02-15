@@ -246,6 +246,7 @@ class OrderDetailsMapper(BaseMapper):
             'number',
             'private_notes',
             'quote_number',
+            'quote_revision_number',
             'ships_on',
             'status',
         ]

@@ -405,6 +405,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     quote_number: int = attr.ib(validator=attr.validators.instance_of(int))
     sales_person: Salesperson = attr.ib(converter=convert_cls(Salesperson))
     salesperson: Salesperson = attr.ib(converter=convert_cls(Salesperson))
+    quote_revision_number: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
     shipments: List[OrderShipment] = attr.ib(converter=convert_iterable(OrderShipment))
     shipping_info: AddressInfo = attr.ib(converter=convert_cls(AddressInfo))
     shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))

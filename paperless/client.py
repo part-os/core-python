@@ -98,7 +98,7 @@ class PaperlessClient(object):
                 message = resp.json().get('message')
                 LOGGER.info(message)
                 wait_time = (
-                    int(message[message.find('in') + 3 : message.find('seconds.') - 1])
+                    int(message[message.find('in') + 3 : message.find('second') - 1])
                     + 1
                 )
                 time.sleep(wait_time)
