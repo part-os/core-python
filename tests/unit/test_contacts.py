@@ -117,7 +117,7 @@ class TestAccount(unittest.TestCase):
         self.assertTrue(a.tax_exempt)
         self.assertIsNone(a.tax_rate)
         self.assertEqual(a.url, "https://www.paperlessparts.com")
-
+        self.assertEqual(a.type, "customer")
 
     def test_convert_account_to_json(self):
         self.client.get_resource = MagicMock(return_value=self.mock_account_json)
@@ -133,6 +133,7 @@ class TestAccount(unittest.TestCase):
             "phone_ext": None,
             "tax_exempt": True,
             "tax_rate": None,
+            "type": "customer",
             "url": "https://www.paperlessparts.com",
             "purchase_orders_enabled": True,
             "salesperson": {
@@ -164,6 +165,7 @@ class TestAccountList(unittest.TestCase):
         self.assertEqual(a[1].name, "ACME Machining")
         self.assertEqual(a[1].phone, "6175555555")
         self.assertEqual(a[1].phone_ext, "12")
+        self.assertEqual(a[1].type, "customer")
 
 
 class TestBillingAddress(unittest.TestCase):

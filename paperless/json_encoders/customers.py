@@ -4,6 +4,7 @@ from paperless.json_encoders import BaseJSONEncoder
 from paperless.objects.utils import NO_UPDATE
 from .common import SalespersonEncoder
 
+
 class AccountEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
@@ -19,6 +20,7 @@ class AccountEncoder(BaseJSONEncoder):
             'phone_ext',
             'tax_exempt',
             'tax_rate',
+            'type',
             'url',
         ]
         for key in field_keys:
