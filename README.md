@@ -129,6 +129,22 @@ automatically retry the request after waiting the amount of time specified in
 the response body.
 
 
+Money Fields
+------------
+
+The SDK will convert numeric fields from the open API that represent money to a
+Money object. The Money object has `.raw_amount` and `.dollars` properties. The
+`.raw_amount` value will maintain the original value of the number out to as many
+decimal places as it was initialized with. The `.dollars` property will always round
+the value to two decimal places. These are both decimal objects.
+
+NOTE: Every money field returned from the open api is pre-rounded to 2 decimal places
+besides one, the `piece_price` field of a purchased component. This number is stored
+to 4 decimal places. When working with the `piece_price` if you want to maintain the
+4 decimal place precision, work with the `.raw_amount` and not `.dollars` property of
+the Money object.
+
+
 Custom Tables
 -------------
 
