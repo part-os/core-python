@@ -3,6 +3,7 @@ from paperless.api_mappers.components import (
     MaterialMapper,
     OperationQuantityMapper,
     ProcessMapper,
+    PurchasedComponentMapper,
 )
 from .common import SalespersonMapper
 
@@ -36,6 +37,11 @@ class OrderComponentMapper(BaseMapper):
         )
         mapped_result['process'] = (
             ProcessMapper.map(resource['process']) if resource['process'] else None
+        )
+        mapped_result['purchased_component'] = (
+            PurchasedComponentMapper.map(resource['purchased_component'])
+            if resource.get('purchased_component', None)
+            else None
         )
         mapped_result['shop_operations'] = map(
             OrderOperationsMapper.map, resource['shop_operations']

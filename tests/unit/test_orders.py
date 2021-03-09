@@ -290,6 +290,17 @@ class TestOrders(unittest.TestCase):
         for oc in oi.components:
             if oc.part_number == 'AC-M6-2':
                 self.assertTrue(oc.is_hardware)
+                # test purchased component
+                pc = oc
+                self.assertEqual('AC-M6-2', pc.purchased_component.oem_part_number)
+                self.assertIsNone(pc.purchased_component.internal_part_number)
+                self.assertIsNone(pc.purchased_component.description)
+                self.assertEqual(Decimal('0.9310'), pc.purchased_component.piece_price.raw_amount)
+                self.assertEqual(Decimal('0.93'), pc.purchased_component.piece_price.dollars)
+                self.assertEqual(pc.purchased_component.get_property('brand'), "Penn")
+                self.assertEqual(pc.purchased_component.get_property('lead_time'), 4)
+                self.assertEqual(pc.purchased_component.get_property('in_stock'), True)
+                self.assertIsNone(pc.purchased_component.get_property("bad_name"))
                 found_hardware = True
                 for parent_id in oc.parent_ids:
                     parent = oi.get_component(parent_id)

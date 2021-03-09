@@ -64,6 +64,41 @@ class SupportingFile:
     )
 
 
+@attr.s(frozen=False)
+class PurchasedComponentProperty:
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    code_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    value_type: str = attr.ib(validator=attr.validators.instance_of(str))
+    value: Optional[Union[str, float, bool]] = attr.ib()
+
+
+@attr.s(frozen=False)
+class PurchasedComponent:
+    oem_part_number: str = attr.ib(validator=attr.validators.instance_of(str))
+    piece_price: Money = attr.ib(
+        converter=Money, validator=attr.validators.instance_of(Money)
+    )
+    properties: List[PurchasedComponentProperty] = attr.ib(
+        converter=convert_iterable(PurchasedComponentProperty)
+    )
+    internal_part_number: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    description: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+
+    def get_property(
+        self, code_name: str
+    ) -> Optional[Union[str, float, bool]]:
+        """
+        Return the value of the property with the specified code name or None
+        """
+        return (
+            {pcp.code_name: pcp.value for pcp in self.properties}.get(code_name, None)
+        )
+
+
 @attr.s(frozen=True)
 class ChildComponent:
     child_id = attr.ib(validator=attr.validators.instance_of(int))
@@ -87,6 +122,7 @@ class BaseComponent:
     part_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     part_uuid: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     process: Process = attr.ib(converter=convert_cls(Process))
+    purchased_component: PurchasedComponent = attr.ib(converter=convert_cls(PurchasedComponent))
     revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
     supporting_files: List[SupportingFile] = attr.ib(converter=convert_iterable(SupportingFile))
     type: str = attr.ib(validator=attr.validators.in_(['assembled', 'manufactured', 'purchased']))

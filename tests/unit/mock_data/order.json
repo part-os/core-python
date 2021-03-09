@@ -106,6 +106,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
@@ -282,6 +283,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [
             {
@@ -1008,6 +1010,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [
             {
@@ -1734,6 +1737,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [
             {
@@ -2460,6 +2464,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [
             {
@@ -3186,6 +3191,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [
             {
@@ -3789,6 +3795,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [
             {
@@ -3913,6 +3920,32 @@
             "id": 27258,
             "external_name": null,
             "name": "Purchased Components"
+          },
+          "purchased_component": {
+            "oem_part_number": "AC-M6-2",
+            "internal_part_number": null,
+            "description": null,
+            "piece_price": "0.9310",
+            "properties": [
+              {
+                "name": "Brand",
+                "code_name": "brand",
+                "value_type": "string",
+                "value": "Penn"
+              },
+              {
+                "name": "Lead Time",
+                "code_name": "lead_time",
+                "value_type": "numeric",
+                "value": 4
+              },
+              {
+                "name": "In Stock",
+                "code_name": "in_stock",
+                "value_type": "boolean",
+                "value": true
+              }
+            ]
           },
           "revision": null,
           "shop_operations": [
@@ -4179,6 +4212,7 @@
             "external_name": "CNC Machining",
             "name": "CNC Machining"
           },
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [
             {
@@ -4935,6 +4969,7 @@
           "part_url": null,
           "part_uuid": "8518573c-73fd-41db-8360-28f783b4fa97",
           "process": null,
+          "purchased_component": null,
           "revision": null,
           "shop_operations": [],
           "supporting_files": [],
