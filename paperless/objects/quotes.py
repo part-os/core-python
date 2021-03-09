@@ -144,7 +144,7 @@ class Quantity:
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
     expedites: List[Expedite] = attr.ib(converter=convert_iterable(Expedite))
     is_most_likely_won_quantity: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    most_likely_won_quantity_percent: int = attr.ib(validator=attr.validators.instance_of(int))
+    most_likely_won_quantity_percent: Optional[int] = attr.ib(validator=attr.validators.instance_of(int))
 
 
 @attr.s(frozen=False)
