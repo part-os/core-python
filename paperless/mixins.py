@@ -1,10 +1,12 @@
-import attr
+import types
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
 
+import attr
+
 from .api_mappers import BaseMapper
-from .json_encoders import BaseJSONEncoder
 from .client import PaperlessClient
+from .json_encoders import BaseJSONEncoder
 
 
 class FromJSONMixin(object):
@@ -19,6 +21,7 @@ class FromJSONMixin(object):
     being passed to the attrs classes which would cause attrs to fail. This gives the flexibility to add new fields to
     the endpoint without having to worry about versioning...yet.
     """
+
     @classmethod
     def from_json_to_dict(cls, resource):
         if hasattr(cls, '_mapper'):
@@ -40,7 +43,6 @@ class FromJSONMixin(object):
 
 
 class ReadMixin(object):
-
     @classmethod
     def construct_get_url(cls):
         """
@@ -74,10 +76,10 @@ class ReadMixin(object):
         :return: resource
         """
         client = PaperlessClient.get_instance()
-        return cls.from_json(client.get_resource(
-            cls.construct_get_url(),
-            id,
-            params=cls.construct_get_params())
+        return cls.from_json(
+            client.get_resource(
+                cls.construct_get_url(), id, params=cls.construct_get_params()
+            )
         )
 
     @classmethod
@@ -86,7 +88,7 @@ class ReadMixin(object):
 
         return client.get_new_resources(
             cls.construct_get_new_resources_url(),
-            params=cls.construct_get_new_params(id) if id else None
+            params=cls.construct_get_new_params(id) if id else None,
         )
 
 
@@ -124,15 +126,18 @@ class ListMixin(object):
         """
         client = PaperlessClient.get_instance()
         resource_list = cls.parse_list_response(
-            client.get_resource_list(cls.construct_list_url(), params=params))
+            client.get_resource_list(cls.construct_list_url(), params=params)
+        )
         if cls._list_object_representation:
-            return [cls._list_object_representation.from_json(resource) for resource in resource_list]
+            return [
+                cls._list_object_representation.from_json(resource)
+                for resource in resource_list
+            ]
         else:
             return [cls.from_json(resource) for resource in resource_list]
 
 
 class PaginatedListMixin(ListMixin):
-
     @classmethod
     def parse_list_response(cls, results):
         """
@@ -161,10 +166,15 @@ class PaginatedListMixin(ListMixin):
             next_query_params = parse_qs(urlparse.urlparse(next_url).query)
             if params is not None:
                 next_query_params = {**next_query_params, **params}
-            response = client.get_resource_list(cls.construct_list_url(), params=next_query_params)
+            response = client.get_resource_list(
+                cls.construct_list_url(), params=next_query_params
+            )
             resource_list.extend(cls.parse_list_response(response))
         if cls._list_object_representation:
-            return [cls._list_object_representation.from_json(resource) for resource in resource_list]
+            return [
+                cls._list_object_representation.from_json(resource)
+                for resource in resource_list
+            ]
         else:
             return [cls.from_json(resource) for resource in resource_list]
 
@@ -175,6 +185,7 @@ class ToDictMixin(object):
 
     :return: dict
     """
+
     def to_dict(self):
         return attr.asdict(self, recurse=True)
 
@@ -185,6 +196,7 @@ class ToJSONMixin(object):
 
     :returns: json
     """
+
     _json_encoder = BaseJSONEncoder
 
     def to_json(self):
@@ -204,7 +216,12 @@ class CreateMixin(object):
         data = self.to_json()
         resp = client.create_resource(self.construct_post_url(), data=data)
         resp_obj = self.from_json(resp)
-        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
+        keys = filter(
+            lambda x: not x.startswith('__')
+            and not x.startswith('_')
+            and type(getattr(resp_obj, x)) != types.MethodType,
+            dir(resp_obj),
+        )
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
 
@@ -212,6 +229,7 @@ class CreateMixin(object):
 class UpdateMixin(object):
     _primary_key = 'id'
 
+    @classmethod
     def construct_patch_url(cls):
         raise NotImplementedError
 
@@ -222,11 +240,19 @@ class UpdateMixin(object):
         client = PaperlessClient.get_instance()
         primary_key = getattr(self, self._primary_key)
         data = self.to_json()
-        resp = client.update_resource(self.construct_patch_url(), primary_key, data=data)
+        resp = client.update_resource(
+            self.construct_patch_url(), primary_key, data=data
+        )
         resp_obj = self.from_json(resp)
-        keys = filter(lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj))
+        keys = filter(
+            lambda x: not x.startswith('__')
+            and not x.startswith('_')
+            and type(getattr(resp_obj, x)) != types.MethodType,
+            dir(resp_obj),
+        )
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
+
 
 class DeleteMixin(object):
     _primary_key = 'id'
