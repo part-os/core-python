@@ -119,6 +119,16 @@ class CustomTable:
         return client.get_new_resources(cls.construct_list_url(), params=None)
 
     @classmethod
+    def construct_get_url(cls):
+        return 'suppliers/public/custom_tables'
+
+    @classmethod
+    def get(cls, table_name):
+        client = PaperlessClient.get_instance()
+
+        return client.get_resource(cls.construct_get_url(), table_name)
+
+    @classmethod
     def construct_delete_url(cls):
         return 'suppliers/public/custom_tables'
 
