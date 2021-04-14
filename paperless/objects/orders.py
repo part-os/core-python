@@ -5,7 +5,6 @@ from typing import List, Optional, Union
 import attr
 import dateutil.parser
 
-from paperless.api_mappers.orders import OrderDetailsMapper, OrderMinimumMapper
 from paperless.client import PaperlessClient
 from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
 from paperless.objects.components import BaseOperation
@@ -377,16 +376,12 @@ class OrderContact:
 
 @attr.s(frozen=True)
 class OrderMinimum(FromJSONMixin):
-    _mapper = OrderMinimumMapper
-
     number = attr.ib(validator=attr.validators.instance_of(int))
 
 
 @attr.s(frozen=True)
 class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
-    _list_mapper = OrderMinimumMapper
     _list_object_representation = OrderMinimum
-    _mapper = OrderDetailsMapper
 
     billing_info: AddressInfo = attr.ib(converter=convert_cls(AddressInfo))
     created = attr.ib(validator=attr.validators.instance_of(str))
@@ -405,7 +400,9 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     quote_number: int = attr.ib(validator=attr.validators.instance_of(int))
     sales_person: Salesperson = attr.ib(converter=convert_cls(Salesperson))
     salesperson: Salesperson = attr.ib(converter=convert_cls(Salesperson))
-    quote_revision_number: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+    quote_revision_number: Optional[int] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(int))
+    )
     shipments: List[OrderShipment] = attr.ib(converter=convert_iterable(OrderShipment))
     shipping_info: AddressInfo = attr.ib(converter=convert_cls(AddressInfo))
     shipping_option: ShippingOption = attr.ib(converter=convert_cls(ShippingOption))

@@ -1,121 +1,5 @@
 from paperless.api_mappers import BaseMapper
-from paperless.api_mappers.components import (
-    MaterialMapper,
-    OperationQuantityMapper,
-    ProcessMapper,
-    PurchasedComponentMapper,
-)
-
-from .common import SalespersonMapper
-
-
-class QuoteMetricsMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = [
-            'order_revenue_all_time',
-            'order_revenue_last_thirty_days',
-            'quotes_sent_all_time',
-            'quotes_sent_last_thirty_days',
-        ]
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteCompanyMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        mapped_result['metrics'] = (
-            QuoteMetricsMapper.map(resource['metrics']) if resource['metrics'] else None
-        )
-        field_keys = ['id', 'business_name', 'erp_code', 'notes']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteCustomerMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        mapped_result['company'] = (
-            QuoteCompanyMapper.map(resource['company']) if resource['company'] else None
-        )
-        field_keys = ['id', 'email', 'first_name', 'last_name', 'notes']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteAccountMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['id', 'name', 'erp_code', 'notes']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteContactMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        mapped_result['account'] = (
-            QuoteAccountMapper.map(resource['account']) if resource['account'] else None
-        )
-        field_keys = ['id', 'email', 'first_name', 'last_name', 'notes']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuotePartMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['filename', 'thumbnail_url', 'url']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        list_keys = ['supporting_files']
-        for key in list_keys:
-            mapped_result[key] = resource.get(key, [])
-        return mapped_result
-
-
-class QuoteExpediteMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['id', 'lead_time', 'markup', 'unit_price', 'total_price']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteQuantityMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = [
-            'id',
-            'quantity',
-            'markup_1_price',
-            'markup_1_name',
-            'markup_2_price',
-            'markup_2_name',
-            'unit_price',
-            'total_price',
-            'total_price_with_required_add_ons',
-            'lead_time',
-        ]
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        mapped_result['expedites'] = map(QuoteExpediteMapper.map, resource['expedites'])
-        return mapped_result
+from paperless.api_mappers.components import PurchasedComponentMapper
 
 
 class CostingVariablePayloadMapper(BaseMapper):
@@ -149,8 +33,7 @@ class QuoteOperationsMapper(BaseMapper):
         costing_variables = map(
             QuoteCostingVariablesMapper.map, resource['costing_variables']
         )
-        quantities = map(OperationQuantityMapper.map, resource['quantities'])
-        keys = [
+        field_keys = [
             'id',
             'category',
             'cost',
@@ -164,50 +47,12 @@ class QuoteOperationsMapper(BaseMapper):
             'setup_time',
         ]
         mapped_result = {}
-        for key in keys:
+        for key in field_keys:
             mapped_result[key] = resource.get(key, None)
+        list_keys = ['quantities']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
         mapped_result['costing_variables'] = costing_variables
-        mapped_result['quantities'] = quantities
-        return mapped_result
-
-
-class QuoteOperationQuantityMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        keys = ['price', 'manual_price', 'lead_time', 'manual_lead_time', 'quantity']
-        mapped_result = {}
-        for key in keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteProcessMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['id', 'name', 'external_name']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class QuoteMaterialMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['id', 'name', 'display_name']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
-        return mapped_result
-
-
-class AddOnQuantityMapper(BaseMapper):
-    @classmethod
-    def map(cls, resource):
-        mapped_result = {}
-        field_keys = ['price', 'manual_price', 'quantity']
-        for key in field_keys:
-            mapped_result[key] = resource.get(key, None)
         return mapped_result
 
 
@@ -224,9 +69,9 @@ class AddOnMapper(BaseMapper):
         bool_keys = ['is_required']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
-        mapped_result['quantities'] = map(
-            AddOnQuantityMapper.map, resource['quantities']
-        )
+        list_keys = ['quantities']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
         mapped_result['costing_variables'] = costing_variables
         return mapped_result
 
@@ -292,35 +137,17 @@ class QuoteDetailsMapper(BaseMapper):
             'request_for_quote',
             'parent_quote',
             'parent_supplier_order',
+            'estimator',
+            'salesperson',
+            'sales_person',
+            'contact',
+            'customer',
         ]
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['export_controlled', 'is_unviewed_drafted_rfq']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)
-        mapped_result['contact'] = (
-            QuoteContactMapper.map(resource['contact']) if resource['contact'] else None
-        )
-        mapped_result['customer'] = (
-            QuoteCustomerMapper.map(resource['customer'])
-            if resource['customer']
-            else None
-        )
-        mapped_result['sales_person'] = (
-            SalespersonMapper.map(resource['sales_person'])
-            if resource['sales_person']
-            else None
-        )
-        mapped_result['salesperson'] = (
-            SalespersonMapper.map(resource['salesperson'])
-            if resource['salesperson']
-            else None
-        )
-        mapped_result['estimator'] = (
-            SalespersonMapper.map(resource['estimator'])
-            if resource['estimator']
-            else None
-        )
         mapped_result['quote_items'] = map(QuoteItemMapper.map, resource['quote_items'])
         if resource['parent_quote'] is not None:
             mapped_result['parent_quote'] = ParentQuoteMapper.map(
@@ -337,14 +164,8 @@ class QuoteComponentMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        mapped_result['material'] = (
-            MaterialMapper.map(resource['material']) if resource['material'] else None
-        )
         mapped_result['material_operations'] = map(
             QuoteOperationsMapper.map, resource['material_operations']
-        )
-        mapped_result['process'] = (
-            ProcessMapper.map(resource['process']) if resource['process'] else None
         )
         mapped_result['purchased_component'] = (
             PurchasedComponentMapper.map(resource['purchased_component'])
@@ -359,10 +180,12 @@ class QuoteComponentMapper(BaseMapper):
             'id',
             'innate_quantity',
             'description',
+            'material',
             'part_custom_attrs',
             'part_name',
             'part_number',
             'part_uuid',
+            'process',
             'revision',
             'thumbnail_url',
             'type',

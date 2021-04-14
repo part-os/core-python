@@ -10,7 +10,7 @@ def convert_cls(cl):
         elif isinstance(val, cl):
             return val
         else:
-            return cl(**val)
+            return safe_instantiate(cl, val)
 
     return converter
 
@@ -22,7 +22,7 @@ def convert_iterable(cl):
             if isinstance(val, cl):
                 result.append(val)
             else:
-                result.append(cl(**val))
+                result.append(safe_instantiate(cl, val))
         return result
 
     return converter
@@ -49,7 +49,7 @@ def convert_dictionary(cl):
             if isinstance(val, cl):
                 result[key] = val
             else:
-                result[key] = cl(**val)
+                result[key] = safe_instantiate(cl, val)
         return result
 
     return converter
@@ -88,3 +88,14 @@ def positive_number_validator(instance, attribute, value):
 
 def numeric_validator(instance, attribute, value):
     return isinstance(value, int) or isinstance(value, float)
+
+
+def safe_instantiate(attrs_class, value_dict):
+    """Safely instantiate an attrs class instance with protection against extra
+    kwargs. This ensures forward compatibility with fields added in the API."""
+    if not hasattr(attrs_class, '__attrs_attrs__'):
+        return attrs_class(**value_dict)
+    safe_dict = {
+        attr.name: value_dict.get(attr.name) for attr in attrs_class.__attrs_attrs__
+    }
+    return attrs_class(**safe_dict)
