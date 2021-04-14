@@ -1,7 +1,7 @@
 import unittest
 
 from paperless.objects.quotes import CostingVariablePayload
-from paperless.objects.utils import safe_instantiate
+from paperless.objects.utils import safe_init
 
 
 class TestObjects(unittest.TestCase):
@@ -10,9 +10,7 @@ class TestObjects(unittest.TestCase):
         with self.assertRaises(TypeError):
             attr_class(value=1, row=None, options=None, new_kwarg=1)
 
-        cvp = safe_instantiate(
-            attr_class, dict(value=1, row=None, options=None, new_kwarg=1)
-        )
+        cvp = safe_init(attr_class, dict(value=1, row=None, options=None, new_kwarg=1))
         self.assertEqual(1, cvp.value)
         self.assertIsNone(cvp.row)
         self.assertIsNone(cvp.options)

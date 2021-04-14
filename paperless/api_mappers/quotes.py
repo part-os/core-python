@@ -1,5 +1,4 @@
 from paperless.api_mappers import BaseMapper
-from paperless.api_mappers.components import PurchasedComponentMapper
 
 
 class CostingVariablePayloadMapper(BaseMapper):
@@ -167,11 +166,6 @@ class QuoteComponentMapper(BaseMapper):
         mapped_result['material_operations'] = map(
             QuoteOperationsMapper.map, resource['material_operations']
         )
-        mapped_result['purchased_component'] = (
-            PurchasedComponentMapper.map(resource['purchased_component'])
-            if resource.get('purchased_component', None)
-            else None
-        )
         mapped_result['shop_operations'] = map(
             QuoteOperationsMapper.map, resource['shop_operations']
         )
@@ -185,6 +179,7 @@ class QuoteComponentMapper(BaseMapper):
             'part_name',
             'part_number',
             'part_uuid',
+            'purchased_component',
             'process',
             'revision',
             'thumbnail_url',
