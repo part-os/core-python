@@ -14,3 +14,7 @@ class TestObjects(unittest.TestCase):
         self.assertEqual(1, cvp.value)
         self.assertIsNone(cvp.row)
         self.assertIsNone(cvp.options)
+
+        d = safe_init(dict, dict(value=2, row=None, options=None, new_kwarg=1))
+        self.assertTrue(isinstance(d, dict))
+        self.assertEqual(2, d['value'])
