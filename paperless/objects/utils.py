@@ -1,3 +1,5 @@
+import attr
+
 NO_UPDATE = object()
 
 
@@ -93,9 +95,9 @@ def numeric_validator(instance, attribute, value):
 def safe_init(attrs_class, value_dict):
     """Safely instantiate an attrs class instance with protection against extra
     kwargs. This ensures forward compatibility with fields added in the API."""
-    if not hasattr(attrs_class, '__attrs_attrs__'):
+    if not attr.has(attrs_class):
         return attrs_class(**value_dict)
     safe_dict = {
-        attr.name: value_dict.get(attr.name) for attr in attrs_class.__attrs_attrs__
+        attr.name: value_dict.get(attr.name) for attr in attr.fields(attrs_class)
     }
     return attrs_class(**safe_dict)
