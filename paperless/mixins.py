@@ -15,11 +15,6 @@ class FromJSONMixin(object):
 
     Note: The response from the API will not necessarily neatly map to this resource.
     Because of this, use the _mapper to specify how to map from the API to your resource.
-
-    As an implementation note, we typically DO want to create a mapper function, even if the API response is 1 to 1
-    with our class. The reason for this, is because the mapper acts as a filter that prevents additional fields from
-    being passed to the attrs classes which would cause attrs to fail. This gives the flexibility to add new fields to
-    the endpoint without having to worry about versioning...yet.
     """
 
     @classmethod

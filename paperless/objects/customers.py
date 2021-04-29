@@ -2,14 +2,6 @@ from typing import Optional
 
 import attr
 
-from paperless.api_mappers.customers import (
-    AccountListMapper,
-    AccountMapper,
-    BillingAddressMapper,
-    ContactListMapper,
-    ContactMapper,
-    FacilityMapper,
-)
 from paperless.client import PaperlessClient
 from paperless.json_encoders.customers import (
     AccountEncoder,
@@ -50,7 +42,6 @@ class BillingAddress(
     DeleteMixin,
     ListMixin,
 ):
-    _mapper = BillingAddressMapper
     _json_encoder = AddressEncoder
     address1: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
@@ -134,7 +125,6 @@ class BillingAddress(
 class Account(
     FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin
 ):
-    _mapper = AccountMapper
     _json_encoder = AccountEncoder
 
     name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -214,7 +204,6 @@ class Account(
     def construct_patch_url(cls):
         return 'accounts/public'
 
-
     @classmethod
     def construct_post_url(cls):
         return 'accounts/public'
@@ -234,7 +223,6 @@ class Account(
 
 @attr.s(frozen=False)
 class AccountList(FromJSONMixin, PaginatedListMixin):
-    _mapper = AccountListMapper
 
     erp_code: str = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
@@ -307,7 +295,6 @@ class AddressInfo(FromJSONMixin, ToJSONMixin):
 class Contact(
     FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin
 ):
-    _mapper = ContactMapper
     _json_encoder = ContactEncoder
 
     account_id: Optional[int] = attr.ib(
@@ -374,8 +361,6 @@ class Contact(
 @attr.s(frozen=False)
 class ContactList(FromJSONMixin, PaginatedListMixin):
 
-    _mapper = ContactListMapper
-
     account_id: Optional[int] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(int))
     )
@@ -417,8 +402,6 @@ class Facility(
     ListMixin,
     DeleteMixin,
 ):
-
-    _mapper = FacilityMapper
     _json_encoder = FacilityEncoder
 
     # not required for instantiation
