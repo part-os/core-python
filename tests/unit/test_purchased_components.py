@@ -20,7 +20,7 @@ class TestPurchasedComponents(unittest.TestCase):
     def test_get_column(self):
         self.client.get_resource = MagicMock(return_value=self.mock_pc1)
         component = PurchasedComponent.get(1)
-        self.assertEqual(component.id, self.mock_pc1.id)
+        self.assertEqual(component.id, self.mock_pc1['id'])
 
 
 class TestPurchasedComponentColumns(unittest.TestCase):
@@ -34,4 +34,4 @@ class TestPurchasedComponentColumns(unittest.TestCase):
     def test_get_column(self):
         self.client.get_resource = MagicMock(return_value=self.mock_c1)
         column = PurchasedComponentColumn.get(1)
-        self.assertEqual(column.id, self.mock_c1.id)
+        self.assertEqual(column.id, self.mock_c1['id'])
