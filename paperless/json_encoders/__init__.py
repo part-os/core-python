@@ -1,15 +1,18 @@
 import json
-from paperless.objects.utils import NO_UPDATE
 from typing import List, Tuple
+
+from paperless.objects.utils import NO_UPDATE
+
 
 class BaseJSONEncoder(object):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         raise NotImplementedError
 
+
 class SmartJSONEncoder(BaseJSONEncoder):
     basic_field_keys: List[str] = []
-    sub_encoders: List[Tuple[str, BaseJSONEncoder]] = []        
+    sub_encoders: List[Tuple[str, BaseJSONEncoder]] = []
 
     @classmethod
     def encode(cls, resource, json_dumps=True):
@@ -19,7 +22,7 @@ class SmartJSONEncoder(BaseJSONEncoder):
 
         for (key, encoder) in cls.sub_encoders:
             value = getattr(resource, key, None)
-            if (value is not None and value is not NO_UPDATE):
+            if value is not None and value is not NO_UPDATE:
                 data[key] = encoder.encode(value, False)
 
         filtered_data = {}
