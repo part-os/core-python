@@ -11,6 +11,13 @@ class BaseJSONEncoder(object):
 
 
 class SmartJSONEncoder(BaseJSONEncoder):
+    """
+    JSON Encoder which loops through basic field keys to pick properties.
+    Properties are automatically filtered out if the value is None or NO_UPDATE.
+    Pass sub_encoders for complex properties which need their own custom encoder.
+
+    """
+
     basic_field_keys: List[str] = []
     sub_encoders: List[Tuple[str, BaseJSONEncoder]] = []
 
