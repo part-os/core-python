@@ -1,0 +1,52 @@
+[
+    {
+        "code_name": "real_name_now",
+        "id": 43,
+        "name": "real name now",
+        "value_type": "numeric",
+        "default_numeric_value": null,
+        "default_string_value": null,
+        "default_boolean_value": false,
+        "position": 1
+    },
+    {
+        "code_name": "example",
+        "id": 42,
+        "name": "example",
+        "value_type": "numeric",
+        "default_numeric_value": 0.0,
+        "default_string_value": null,
+        "default_boolean_value": false,
+        "position": 2
+    },
+    {
+        "code_name": "etst",
+        "id": 45,
+        "name": "etst",
+        "value_type": "numeric",
+        "default_numeric_value": null,
+        "default_string_value": null,
+        "default_boolean_value": false,
+        "position": 3
+    },
+    {
+        "code_name": "oenn",
+        "id": 44,
+        "name": "oenn",
+        "value_type": "string",
+        "default_numeric_value": null,
+        "default_string_value": "reee",
+        "default_boolean_value": false,
+        "position": 4
+    },
+    {
+        "code_name": "kjhkjhkjh",
+        "id": 46,
+        "name": "hhhhh",
+        "value_type": "numeric",
+        "default_numeric_value": null,
+        "default_string_value": null,
+        "default_boolean_value": false,
+        "position": 5
+    }
+]
