@@ -263,7 +263,7 @@ pulling all information related to a particular quote, and updating a quote's st
 ### Importing the Quote class
 
 ```python
-from paperless.objects. quotes import Quote
+from paperless.objects.quotes import Quote
 ```
 
 ### Listing Newly Sent Quotes
@@ -295,8 +295,9 @@ quote = Quote.get(1090)
 quote.set_status(Quote.STATUSES.OUTSTANDING)
 ```
 
-## Orders
-_____________________
+Orders
+------
+
 The PaperlessParts SDK provides functionality for identifying newly placed orders,
 pulling all information related to a particular order, and also facilitating and order
 using an existing quote.
@@ -369,7 +370,6 @@ Contacts can be searched by the following fields:
     * account id
 
 Searches are case insensitive and can be partial matches
-
 
 ### Retrieving a Contact
 ```python
@@ -569,4 +569,99 @@ This will update the Facility in Paperless Parts and refresh the local instance
     address = Address(address1="137 Portland St.", address2="lower", city="Boston", country="USA", postal_code="02114", state="MA")    billing_address.create(account_id=141)
     facility = Facility(name="Boston Office", attention="Jim Gordan", address=address)
     facility.create(account_id=141)
+```
+
+Purchased Components
+--------------------
+
+A Purchased Component has the following fields:
+
+    * id: int
+    * oem_part_number: string
+    * piece_price: string
+    * properties: List(PurchasedComponentCustomProperty)
+    * internal_part_number: string(optional)
+    * description: string(optional)
+
+### Importing the PurchasedComponent class
+
+```python
+from paperless.objects.purchased_components import PurchasedComponent
+```
+
+### Retrieving a PurchasedComponent
+```python
+    pc = PurchasedComponent.get(101) #where 101 is the the purchased component id
+```
+This will return the purchased component object with the given id
+
+### Searching PurchasedComponents
+```python
+    components = PurchasedComponent.search('AEM')
+```
+
+Purchased Components can be searched by the following fields:
+
+    * oem_part_number
+    * internal_part_number
+
+Searches are case insensitive and can be partial matches
+
+### Updating a PurchasedComponent
+```python
+    pc.description = 'very cool part'
+    pc.update()
+```
+This will update the purchased component in Paperless Parts and refresh the local instance
+
+### Deleting a PurchasedComponent
+```python
+    pc.delete()
+```
+
+### PurchasedComponentColumns
+
+Paperless Parts allows you to setup custom properties for purchased components, thes PurchasedComponent object has a getter and setter to work with these custom properties.
+
+```python
+    pc.set_property('my_prop', 20)
+    print(pc.get_property('my_prop'))
+```
+
+Purchased Component Columns
+---------------------------
+
+Paperless Parts allows you to setup custom properties for purchased components, these are manageable by the SDK as well. A Purchased Component Column has the following fields:
+
+    * id: int
+    * name: string
+    * code_name: string
+    * value_type: string
+    * default_string_value: string(optional)
+    * default_boolean_value: boolean
+    * default_numeric_value: int(optional)
+    * position: int
+
+### Importing the PurchasedComponentColumn class
+
+```python
+from paperless.objects.purchased_components import PurchasedComponentColumn
+```
+
+### Retrieving a PurchasedComponentColumn
+```python
+    pcc = PurchasedComponentColumn.get(101) #where 101 is the the purchased component column id
+```
+This will return the purchased component column object with the given id
+
+### Updating a PurchasedComponentColumn
+```python
+    pcc.default_string_value = 'THIS IS A DEFAULT'
+    pcc.update(update_existing_defaults=True) # update existing components default values
+```
+This will update the purchased component column in Paperless Parts and refresh the local instance
+
+### Deleting a PurchasedComponentColumn
+```python
+    pcc.delete()
 ```
