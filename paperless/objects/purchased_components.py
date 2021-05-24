@@ -2,7 +2,10 @@ from typing import List, Optional, Union
 
 import attr
 
-from paperless.json_encoders.purchased_components import PurchasedComponentEncoder
+from paperless.json_encoders.purchased_components import (
+    PurchasedComponentColumnEncoder,
+    PurchasedComponentEncoder,
+)
 from paperless.mixins import (
     CreateMixin,
     DeleteMixin,
@@ -13,7 +16,6 @@ from paperless.mixins import (
     ToJSONMixin,
     UpdateMixin,
 )
-from paperless.objects.common import Money
 from paperless.objects.utils import convert_iterable
 
 
@@ -27,18 +29,22 @@ class PurchasedComponentColumn(
     DeleteMixin,
     ListMixin,
 ):
+    _json_encoder = PurchasedComponentColumnEncoder
+
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     code_name: str = attr.ib(validator=attr.validators.instance_of(str))
     value_type: str = attr.ib(validator=attr.validators.instance_of(str))
-    default_string_value: Optional[str] = attr.validators.optional(
-        validator=attr.validators.instance_of(str)
+    default_string_value: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
     )
     default_boolean_value: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    default_numeric_valye: Optional[int] = attr.validators.optional(
-        validator=attr.validators.instance_of(int)
-    )
+    default_numeric_value: Optional[int] = attr.ib()
     position: int = attr.ib(validator=attr.validators.instance_of(int))
+
+    def update(self, update_existing_defaults=False):
+        self.update_existing_defaults = update_existing_defaults
+        UpdateMixin.update(self)
 
     @classmethod
     def construct_delete_url(cls):
