@@ -3,6 +3,20 @@ import json
 from paperless.json_encoders import BaseJSONEncoder, SmartJSONEncoder
 
 
+class PurchasedComponentColumnEncoder(SmartJSONEncoder):
+    basic_field_keys = [
+        'id',
+        'name',
+        'code_name',
+        'value_type',
+        'default_string_value',
+        'default_boolean_value',
+        'default_numeric_value',
+        'position',
+        'update_existing_defaults',
+    ]
+
+
 class PurchasedComponentsPropertiesEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
