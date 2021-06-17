@@ -16,7 +16,7 @@ from paperless.mixins import (
     ToJSONMixin,
     UpdateMixin,
 )
-from paperless.objects.utils import convert_iterable
+from paperless.objects.utils import NO_UPDATE, convert_iterable
 
 
 @attr.s(frozen=False)
@@ -85,17 +85,21 @@ class PurchasedComponent(
 ):
     _json_encoder = PurchasedComponentEncoder
 
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
     oem_part_number: str = attr.ib(validator=attr.validators.instance_of(str))
     piece_price: str = attr.ib(validator=attr.validators.instance_of(str))
-    properties: List[PurchasedComponentCustomProperty] = attr.ib(
-        converter=convert_iterable(PurchasedComponentCustomProperty)
+    description: Optional[str] = attr.ib(
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str)),
     )
     internal_part_number: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
+        default=None,
+        validator=attr.validators.optional(attr.validators.instance_of(str)),
     )
-    description: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
+    properties: List[PurchasedComponentCustomProperty] = attr.ib(
+        default=[], converter=convert_iterable(PurchasedComponentCustomProperty)
+    )
+    id = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
     )
 
     def get_property(self, key: str) -> Optional[Union[str, float, bool]]:
