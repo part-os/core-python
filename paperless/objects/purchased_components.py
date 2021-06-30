@@ -88,11 +88,11 @@ class PurchasedComponent(
     oem_part_number: str = attr.ib(validator=attr.validators.instance_of(str))
     piece_price: str = attr.ib(validator=attr.validators.instance_of(str))
     description: Optional[str] = attr.ib(
-        default=None,
+        default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of(str)),
     )
     internal_part_number: Optional[str] = attr.ib(
-        default=None,
+        default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of(str)),
     )
     properties: List[PurchasedComponentCustomProperty] = attr.ib(
