@@ -28,8 +28,12 @@ class SmartJSONEncoder(BaseJSONEncoder):
             data[key] = getattr(resource, key, None)
 
         for (key, encoder) in cls.sub_encoders:
-            value = getattr(resource, key, None)
-            if value is not NO_UPDATE:
+            value = getattr(resource, key, NO_UPDATE)
+            if value is NO_UPDATE:
+                continue
+            elif value is None:
+                data[key] = None
+            else:
                 data[key] = encoder.encode(value, False)
 
         filtered_data = {}
