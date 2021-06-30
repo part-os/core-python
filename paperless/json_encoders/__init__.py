@@ -13,7 +13,7 @@ class BaseJSONEncoder(object):
 class SmartJSONEncoder(BaseJSONEncoder):
     """
     JSON Encoder which loops through basic field keys to pick properties.
-    Properties are automatically filtered out if the value is None or NO_UPDATE.
+    Properties are automatically filtered out if the value is NO_UPDATE.
     Pass sub_encoders for complex properties which need their own custom encoder.
 
     """
@@ -29,12 +29,12 @@ class SmartJSONEncoder(BaseJSONEncoder):
 
         for (key, encoder) in cls.sub_encoders:
             value = getattr(resource, key, None)
-            if value is not None and value is not NO_UPDATE:
+            if value is not NO_UPDATE:
                 data[key] = encoder.encode(value, False)
 
         filtered_data = {}
         for key in data:
-            if data[key] is not None and data[key] is not NO_UPDATE:
+            if data[key] is not NO_UPDATE:
                 filtered_data[key] = data[key]
 
         if json_dumps:
