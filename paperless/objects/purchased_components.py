@@ -34,20 +34,20 @@ class PurchasedComponentColumn(
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     code_name: str = attr.ib(validator=attr.validators.instance_of(str))
     value_type: str = attr.ib(validator=attr.validators.instance_of(str))
+    default_string_value: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    default_boolean_value: Optional[bool] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(bool))
+    )
+    default_numeric_value: Optional[int] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(int))
+    )
     id: Union[int, object] = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
     )
     position: Union[int, object] = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
-    )
-    default_string_value: Optional[Union[str, object]] = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object)))
-    )
-    default_boolean_value: Optional[Union[bool, object]] = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((bool, object)))
-    )
-    default_numeric_value: Optional[Union[int, object]] = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((int, object)))
     )
 
     def update(self, update_existing_defaults=False):
