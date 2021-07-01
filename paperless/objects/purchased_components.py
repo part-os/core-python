@@ -37,12 +37,8 @@ class PurchasedComponentColumn(
     default_string_value: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
-    default_boolean_value: Optional[bool] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(bool))
-    )
-    default_numeric_value: Optional[int] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(int))
-    )
+    default_boolean_value: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    default_numeric_value: Optional[int] = attr.ib()
     id: Union[int, object] = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
     )
