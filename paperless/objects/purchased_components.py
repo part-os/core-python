@@ -110,15 +110,19 @@ class PurchasedComponent(
         """
         Return the value of the property with the specified key or None
         """
-        return next((pcp.value for pcp in self.properties if pcp.key == key), None)
+        val = None
+        for pcp in self.properties:
+            if pcp.key == key:
+                val = pcp.value
+        return val
 
-    def set_property(
-        self, key: str, value: Optional[Union[str, float, bool]]
-    ) -> Optional[Union[str, float, bool]]:
+    def set_property(self, key: str, value: Optional[Union[str, float, bool]]):
         """
         Update the value of the property with the specified code name
         """
-        next(pcp for pcp in self.properties if pcp.key == key).value = value
+        for pcp in self.properties:
+            if pcp.key == key:
+                pcp.value = value
 
     @classmethod
     def construct_delete_url(cls):
