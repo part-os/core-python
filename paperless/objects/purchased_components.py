@@ -118,11 +118,18 @@ class PurchasedComponent(
 
     def set_property(self, key: str, value: Optional[Union[str, float, bool]]):
         """
-        Update the value of the property with the specified code name
+        Update the value of the property with the specified code name, or add it if it doesn't exist in the list yet
         """
+        property = None
         for pcp in self.properties:
             if pcp.key == key:
-                pcp.value = value
+                property = pcp
+        if property is None:
+            property = PurchasedComponentCustomProperty(key=key, value=value)
+            self.properties.append(property)
+        else:
+            property.value = value
+
 
     @classmethod
     def construct_delete_url(cls):
