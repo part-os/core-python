@@ -93,11 +93,11 @@ class PurchasedComponent(
     piece_price: str = attr.ib(validator=attr.validators.instance_of(str))
     description: Optional[str] = attr.ib(
         default=NO_UPDATE,
-        validator=attr.validators.optional(attr.validators.instance_of(str)),
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
     internal_part_number: Optional[str] = attr.ib(
         default=NO_UPDATE,
-        validator=attr.validators.optional(attr.validators.instance_of(str)),
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
     properties: List[PurchasedComponentCustomProperty] = attr.ib(
         default=[], converter=convert_iterable(PurchasedComponentCustomProperty)
@@ -110,15 +110,26 @@ class PurchasedComponent(
         """
         Return the value of the property with the specified key or None
         """
-        return next((pcp.value for pcp in self.properties if pcp.key == key), None)
+        val = None
+        for pcp in self.properties:
+            if pcp.key == key:
+                val = pcp.value
+        return val
 
-    def set_property(
-        self, key: str, value: Optional[Union[str, float, bool]]
-    ) -> Optional[Union[str, float, bool]]:
+    def set_property(self, key: str, value: Optional[Union[str, float, bool]]):
         """
-        Update the value of the property with the specified code name
+        Update the value of the property with the specified code name, or add it if it doesn't exist in the list yet
         """
-        next(pcp for pcp in self.properties if pcp.key == key).value = value
+        property = None
+        for pcp in self.properties:
+            if pcp.key == key:
+                property = pcp
+        if property is None:
+            property = PurchasedComponentCustomProperty(key=key, value=value)
+            self.properties.append(property)
+        else:
+            property.value = value
+
 
     @classmethod
     def construct_delete_url(cls):
