@@ -65,9 +65,9 @@ class BillingAddress(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
-    erp_code: Optional[str] = attr.ib(
+    erp_code = attr.ib(
         default=NO_UPDATE,
-        validator=attr.validators.optional(attr.validators.instance_of(str)),
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
 
     @classmethod
