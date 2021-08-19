@@ -64,7 +64,7 @@ class AddressEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['address1', 'address2', 'city', 'country', 'postal_code', 'state']
+        field_keys = ['address1', 'address2', 'city', 'country', 'postal_code', 'state', 'erp_code']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
 
