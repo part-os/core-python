@@ -65,6 +65,10 @@ class BillingAddress(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
+    erp_code = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
 
     @classmethod
     def construct_delete_url(cls):

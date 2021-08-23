@@ -33,6 +33,10 @@ class Address(FromJSONMixin, ToJSONMixin):
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
+    erp_code = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
 
 
 @attr.s(frozen=False)
