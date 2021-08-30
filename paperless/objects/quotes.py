@@ -223,6 +223,12 @@ class Contact:
     notes: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
+    phone: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    phone_ext: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     account: Account = attr.ib(converter=convert_cls(Account))
 
 
