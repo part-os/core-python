@@ -239,10 +239,13 @@ class UpdateMixin(object):
             self.construct_patch_url(), primary_key, data=data
         )
         resp_obj = self.from_json(resp)
+        # This filter is designed to remove methods, properties, and private data members and only let through the
+        # fields explicitly defined in the class definition
         keys = filter(
             lambda x: not x.startswith('__')
             and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType,
+            and type(getattr(resp_obj, x)) != types.MethodType
+            and (not isinstance(getattr(resp_obj.__class__, x), property) if x in dir(resp_obj.__class__) else True),
             dir(resp_obj),
         )
         for key in keys:

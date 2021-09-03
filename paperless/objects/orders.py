@@ -6,18 +6,20 @@ import attr
 import dateutil.parser
 
 from paperless.client import PaperlessClient
-from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin
+from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSONMixin
 from paperless.objects.components import BaseOperation
+from paperless.objects.utils import NO_UPDATE
 
 from .address import AddressInfo
 from .common import Money, Salesperson
 from .components import AssemblyMixin, BaseComponent
 from .utils import convert_cls, convert_iterable, optional_convert
+from paperless.json_encoders.orders import OrderEncoder
 
 DATE_FMT = '%Y-%m-%d'
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderCostingVariable:
     label: str = attr.ib(validator=attr.validators.instance_of(str))
     value = attr.ib()
@@ -30,7 +32,7 @@ class OrderCostingVariable:
     value_type: str = attr.ib(attr.validators.instance_of(str))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderOperation(BaseOperation):
     costing_variables: List[OrderCostingVariable] = attr.ib(
         converter=convert_iterable(OrderCostingVariable)
@@ -45,7 +47,7 @@ class OrderOperation(BaseOperation):
         return {cv.label: cv for cv in self.costing_variables}.get(label, None)
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderComponent(BaseComponent):
     deliver_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     make_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -57,7 +59,7 @@ class OrderComponent(BaseComponent):
     )
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderedAddOn:
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -77,7 +79,7 @@ class OrderedAddOn:
         return {cv.label: cv for cv in self.costing_variables}.get(label, None)
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderItem(AssemblyMixin):
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     components: List[OrderComponent] = attr.ib(
@@ -153,7 +155,7 @@ class OrderItem(AssemblyMixin):
                 return component
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class PaymentDetails:
     card_brand: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
@@ -201,7 +203,7 @@ class PaymentDetails:
     )
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class ShippingOption:
     customers_account_number: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
@@ -273,14 +275,14 @@ class ShippingOption:
             )
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class ShipmentItem:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     order_item_id: int = attr.ib(validator=attr.validators.instance_of(int))
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderShipment:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     pickup_recipient: Optional[str] = attr.ib(
@@ -299,7 +301,7 @@ class OrderShipment:
     )
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderCompany:
     id: Optional[int] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(int))
@@ -313,7 +315,7 @@ class OrderCompany:
     )
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderCustomer:
     id: Optional[int] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(int))
@@ -374,14 +376,17 @@ class OrderContact:
     )
 
 
-@attr.s(frozen=True)
+@attr.s(frozen=False)
 class OrderMinimum(FromJSONMixin):
     number = attr.ib(validator=attr.validators.instance_of(int))
 
 
-@attr.s(frozen=True)
-class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
+@attr.s(frozen=False)
+class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSONMixin):
     _list_object_representation = OrderMinimum
+
+    _primary_key = 'number'
+    _json_encoder = OrderEncoder
 
     billing_info: AddressInfo = attr.ib(converter=convert_cls(AddressInfo))
     created = attr.ib(validator=attr.validators.instance_of(str))
@@ -410,6 +415,14 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     status: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
+    erp_code = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
+    quote_erp_code = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
 
     @property
     def created_dt(self):
@@ -431,3 +444,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin):
     @classmethod
     def parse_list_response(cls, results):
         return results['results']
+
+    @classmethod
+    def construct_patch_url(cls):
+        return 'orders/public'

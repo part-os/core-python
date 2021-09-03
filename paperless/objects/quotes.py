@@ -1,13 +1,16 @@
+import json
 from decimal import Decimal
-from types import SimpleNamespace
+from types import SimpleNamespace, MethodType
 from typing import Dict, List, Optional, Union
 
 import attr
 
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.client import PaperlessClient
-from paperless.mixins import FromJSONMixin, ListMixin, ToDictMixin
+from paperless.mixins import FromJSONMixin, ListMixin, ToDictMixin, UpdateMixin, ToJSONMixin
 from paperless.objects.components import BaseOperation
+from paperless.objects.utils import NO_UPDATE
+from paperless.json_encoders.quotes import QuoteEncoder
 
 from .common import Money, Salesperson
 from .components import AssemblyMixin, BaseComponent
@@ -297,13 +300,15 @@ class RequestForQuote:
 
 @attr.s(frozen=False)
 class Quote(
-    FromJSONMixin, ListMixin, ToDictMixin
+    FromJSONMixin, ListMixin, ToDictMixin, UpdateMixin, ToJSONMixin
 ):  # We don't use ReadMixin here because quotes are identified uniquely by (number, revision) pairs
     STATUSES = SimpleNamespace(
         OUTSTANDING='outstanding', CANCELLED='cancelled', TRASH='trash', LOST='lost'
     )
+    _primary_key = 'number'
 
     _mapper = QuoteDetailsMapper
+    _json_encoder = QuoteEncoder
 
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     number: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -363,6 +368,10 @@ class Quote(
     )
     is_unviewed_drafted_rfq: bool = attr.ib(validator=attr.validators.instance_of(bool))
     created: str = attr.ib(validator=attr.validators.instance_of(str))
+    erp_code = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
 
     @classmethod
     def construct_get_url(cls):
@@ -411,6 +420,37 @@ class Quote(
             cls.construct_get_new_resources_url(),
             params=cls.construct_get_new_params(id, revision) if id else None,
         )
+
+    @classmethod
+    def construct_patch_url(cls):
+        return 'quotes/public'
+
+    def update(self):
+        """
+        Persists local changes of an existing Paperless Parts resource to Paperless.
+        """
+
+        client = PaperlessClient.get_instance()
+        primary_key = getattr(self, self._primary_key)
+        data = self.to_json()
+
+        # Include the revision number as a query parameter, if applicable
+        params = None
+        if self.revision_number is not None:
+            params = {'revision': self.revision_number}
+
+        resp = client.update_resource(
+            self.construct_patch_url(), primary_key, data=data, params=params
+        )
+        resp_obj = self.from_json(resp)
+        keys = filter(
+            lambda x: not x.startswith('__')
+                      and not x.startswith('_')
+                      and type(getattr(resp_obj, x)) != MethodType,
+            dir(resp_obj),
+        )
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))
 
     def set_status(self, status):
         client = PaperlessClient.get_instance()
