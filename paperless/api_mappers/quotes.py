@@ -141,6 +141,7 @@ class QuoteDetailsMapper(BaseMapper):
             'sales_person',
             'contact',
             'customer',
+            'erp_code',
         ]
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
