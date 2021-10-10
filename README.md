@@ -631,7 +631,7 @@ Paperless Parts allows you to setup custom properties for purchased components, 
 Purchased Component Columns
 ---------------------------
 
-Paperless Parts allows you to setup custom properties for purchased components, these are manageable by the SDK as well. A Purchased Component Column has the following fields:
+Paperless Parts allows you to setup custom properties for purchased components. These are manageable by the SDK as well. A Purchased Component Column has the following fields:
 
     * id: int
     * name: string
