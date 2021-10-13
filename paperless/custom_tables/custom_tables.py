@@ -78,8 +78,7 @@ class CustomTable:
 
     @classmethod
     def construct_post_url(cls):
-        client = PaperlessClient.get_instance()
-        return 'suppliers/public/{}/custom_tables'.format(client.group_slug)
+        return 'suppliers/public/custom_tables'
 
     def create(self, table_name):
         """
@@ -109,8 +108,7 @@ class CustomTable:
 
     @classmethod
     def construct_list_url(cls):
-        client = PaperlessClient.get_instance()
-        return 'suppliers/public/{}/custom_tables'.format(client.group_slug)
+        return 'suppliers/public/custom_tables'
 
     @classmethod
     def get_list(cls):

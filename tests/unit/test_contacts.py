@@ -50,7 +50,8 @@ class TestContact(unittest.TestCase):
                 "city": "BOSTON",
                 "country": "USA",
                 "postal_code": "02114-1702",
-                "state": "MA"
+                "state": "MA",
+                "erp_code": None
             },
             "salesperson": {
                 "email": "william+stack_pusher@paperlessparts.com"
@@ -146,6 +147,7 @@ class TestAccount(unittest.TestCase):
                 "country": "USA",
                 "postal_code": "02108",
                 "state": "MA",
+                "erp_code": None
             }
         }
         self.assertEqual(a.to_json(), json.dumps(expected_account_json))
@@ -233,6 +235,7 @@ class TestFacility(unittest.TestCase):
                 "country": "USA",
                 "postal_code": "02114",
                 "state": "MA",
+                "erp_code": None
             },
             "salesperson": {
                 "email": "william+stack_pusher@paperlessparts.com"
