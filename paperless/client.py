@@ -124,6 +124,10 @@ class PaperlessClient(object):
             raise PaperlessNotFoundException(
                 message="Unable to locate object at url: {}".format(url)
             )
+        elif resp.status_code == 502:
+            LOGGER.info("Received 502. Waiting 30 seconds to retry.")
+            time.sleep(30)
+            return self.request(url=url, method=method, data=data, params=params)
         else:
             try:
                 resp_json = resp.json()
