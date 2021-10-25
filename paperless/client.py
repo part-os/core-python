@@ -76,7 +76,7 @@ class PaperlessClient(object):
             'User-Agent': 'python-paperlessSDK {}'.format(self.version),
         }
 
-    def request(self, url=None, method=None, data=None, params=None):
+    def request(self, url=None, method=None, data=None, params=None, retry_attempt_count=0):
         req_url = f'{self.base_url}/{url}'
 
         headers = self.get_authenticated_headers()
@@ -124,6 +124,15 @@ class PaperlessClient(object):
             raise PaperlessNotFoundException(
                 message="Unable to locate object at url: {}".format(url)
             )
+        elif resp.status_code == 502:
+            if retry_attempt_count < 5:
+                LOGGER.info("Received 502. Waiting 30 seconds to retry.")
+                time.sleep(30)
+                return self.request(url=url, method=method, data=data, params=params, retry_attempt_count=retry_attempt_count + 1)
+            else:
+                raise PaperlessException(
+                    message="Request failed", error_code=resp.status_code
+                )
         else:
             try:
                 resp_json = resp.json()
