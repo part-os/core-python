@@ -23,7 +23,7 @@ class PaperlessClient(object):
     PAYMENT_TERMS = 'payment_terms'
     QUOTES = 'quotes'
 
-    VERSION_0 = 'v0.0'
+    VERSION_0 = 'v0.7'
     VALID_VERSIONS = [VERSION_0]
 
     __instance = None
