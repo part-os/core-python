@@ -19,3 +19,22 @@ class IntegrationActionEncoder(BaseJSONEncoder):
             return json.dumps(filtered_data)
         else:
             return filtered_data
+
+
+class ManagedIntegrationEncoder(BaseJSONEncoder):
+    @classmethod
+    def encode(cls, resource, json_dumps=True):
+        data = {}
+        field_keys = ['id', 'erp_name', 'is_active', 'erp_version', 'integrations_project_subcommit', 'create_integration_action_after_creating_new_order']
+        for key in field_keys:
+            data[key] = getattr(resource, key, None)
+
+        filtered_data = {}
+        for key in data:
+            if data[key] is not NO_UPDATE:
+                filtered_data[key] = data[key]
+
+        if json_dumps:
+            return json.dumps(filtered_data)
+        else:
+            return filtered_data
