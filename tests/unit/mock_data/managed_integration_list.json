@@ -1,0 +1,29 @@
+[
+    {
+        "id": 5,
+        "erp_name": "e2",
+        "is_active": false,
+        "erp_version": "1.5",
+        "integrations_version": null,
+        "integrations_project_subcommit": null,
+        "create_integration_action_after_creating_new_order": true
+    },
+    {
+        "id": 4,
+        "erp_name": "e2",
+        "is_active": true,
+        "erp_version": null,
+        "integrations_version": null,
+        "integrations_project_subcommit": null,
+        "create_integration_action_after_creating_new_order": true
+    },
+    {
+        "id": 1,
+        "erp_name": "jobboss",
+        "is_active": true,
+        "erp_version": "1.0",
+        "integrations_version": null,
+        "integrations_project_subcommit": null,
+        "create_integration_action_after_creating_new_order": true
+    }
+]
