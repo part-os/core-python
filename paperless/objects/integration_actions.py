@@ -180,10 +180,7 @@ class ManagedIntegration(FromJSONMixin, ToJSONMixin, ReadMixin, CreateMixin, Lis
     erp_version: Optional[str] = attr.ib(
         default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object)))
     )
-    integrations_version: Optional[str] = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object)))
-    )
-    integrations_project_subcommit: Optional[str] = attr.ib(
+    integration_version: Optional[str] = attr.ib(
         default=NO_UPDATE, validator=attr.validators.optional(attr.validators.instance_of((str, object)))
     )
     id: int = attr.ib(

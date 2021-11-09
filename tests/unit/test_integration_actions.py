@@ -24,8 +24,7 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(managed_integration.id, 3)
         self.assertEqual(managed_integration.erp_name, "jobboss")
         self.assertEqual(managed_integration.is_active, True)
-        self.assertEqual(managed_integration.integrations_version, "2.0")
-        self.assertEqual(managed_integration.integrations_project_subcommit, "blah")
+        self.assertEqual(managed_integration.integration_version, "2.0")
         self.assertEqual(managed_integration.create_integration_action_after_creating_new_order, False)
 
     def test_list_managed_integrations(self):

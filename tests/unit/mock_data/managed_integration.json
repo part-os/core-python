@@ -3,7 +3,6 @@
     "erp_name": "jobboss",
     "is_active": true,
     "erp_version": "1.1",
-    "integrations_version": "2.0",
-    "integrations_project_subcommit": "blah",
+    "integration_version": "2.0",
     "create_integration_action_after_creating_new_order": false
 }
