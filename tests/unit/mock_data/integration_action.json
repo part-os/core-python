@@ -1,0 +1,7 @@
+{
+    "action_type": "export_order",
+    "action_uuid": "abc-123",
+    "status": "queued",
+    "status_message": null,
+    "entity_id": "1"
+}
