@@ -246,8 +246,8 @@ class AccountList(FromJSONMixin, PaginatedListMixin):
         return 'accounts/public'
 
     @classmethod
-    def filter(cls, erp_code):
-        return cls.list(params={'erp_code': erp_code})
+    def filter(cls, erp_code=None, name=None, null_erp_code=False):
+        return cls.list(params={'erp_code': erp_code, 'name': name, 'null_erp_code': null_erp_code})
 
     @classmethod
     def search(cls, search_term):
