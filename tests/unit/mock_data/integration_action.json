@@ -3,5 +3,7 @@
     "action_uuid": "abc-123",
     "status": "queued",
     "status_message": null,
-    "entity_id": "1"
+    "entity_id": "1",
+    "updated": "2021-12-13T12:57:26.063262Z",
+    "created": "2021-11-02T21:25:38.451965Z"
 }

@@ -1,4 +1,4 @@
-import attr
+import dateutil.parser
 import types
 from typing import Optional
 from paperless.client import PaperlessClient
@@ -18,6 +18,7 @@ from urllib.parse import parse_qs
 import attr
 from paperless.api_mappers import BaseMapper
 
+
 @attr.s(frozen=False)
 class IntegrationAction(FromJSONMixin, ToJSONMixin):
     _list_mapper = BaseMapper
@@ -29,6 +30,8 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
     entity_id = attr.ib(
         validator=attr.validators.instance_of(str)
     )
+    created = attr.ib(validator=attr.validators.instance_of(str))
+    updated = attr.ib(validator=attr.validators.instance_of(str))
     action_uuid: Optional[str] = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object)))
@@ -41,6 +44,14 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         default=NO_UPDATE,
         validator=attr.validators.instance_of((str, object))
     )
+
+    @property
+    def created_dt(self):
+        return dateutil.parser.parse(self.created)
+
+    @property
+    def updated_dt(self):
+        return dateutil.parser.parse(self.updated)
 
     @classmethod
     def construct_post_url(cls, managed_integration_id):
@@ -85,7 +96,8 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         :return: [resource]
         """
         client = PaperlessClient.get_instance()
-        response = client.get_resource_list(cls.construct_list_url(managed_integration_id=managed_integration_id), params=params)
+        response = client.get_resource_list(cls.construct_list_url(managed_integration_id=managed_integration_id),
+                                            params=params)
         resource_list = cls.parse_list_response(response)
         while response['next'] is not None:
             next_url = response['next']
@@ -114,7 +126,8 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
 
     @classmethod
     def filter(cls, managed_integration_id: int, status: Optional[str] = None, action_type: Optional[str] = None):
-        return cls.list(managed_integration_id=managed_integration_id, params={'status': status, "action_type": action_type})
+        return cls.list(managed_integration_id=managed_integration_id,
+                        params={'status': status, "action_type": action_type})
 
     @classmethod
     def construct_get_params(cls):
@@ -156,9 +169,10 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         # fields explicitly defined in the class definition
         keys = filter(
             lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType
-            and (not isinstance(getattr(resp_obj.__class__, x), property) if x in dir(resp_obj.__class__) else True),
+                      and not x.startswith('_')
+                      and type(getattr(resp_obj, x)) != types.MethodType
+                      and (not isinstance(getattr(resp_obj.__class__, x), property) if x in dir(
+                resp_obj.__class__) else True),
             dir(resp_obj),
         )
         for key in keys:
