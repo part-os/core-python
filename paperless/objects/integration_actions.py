@@ -30,8 +30,8 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
     entity_id = attr.ib(
         validator=attr.validators.instance_of(str)
     )
-    created = attr.ib(validator=attr.validators.instance_of(str))
-    updated = attr.ib(validator=attr.validators.instance_of(str))
+    created = attr.ib(default=NO_UPDATE,validator=attr.validators.instance_of(str))
+    updated = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of(str))
     action_uuid: Optional[str] = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object)))
