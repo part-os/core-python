@@ -1,3 +1,4 @@
+import datetime
 import unittest
 import json
 from paperless.client import PaperlessClient
@@ -50,6 +51,8 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(int_act.status, "queued")
         self.assertEqual(int_act.status_message, None)
         self.assertEqual(int_act.entity_id, "1")
+        self.assertIsInstance(int_act.created_dt, datetime.date)
+        self.assertIsInstance(int_act.updated_dt, datetime.date)
 
     def test_list_integration_actions(self):
         self.client.get_resource_list = MagicMock(return_value=self.mock_integration_action_list_json)
@@ -61,9 +64,13 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(action_1.status, "completed")
         self.assertEqual(action_1.status_message, None)
         self.assertEqual(action_1.entity_id, "1")
+        self.assertIsInstance(action_1.created_dt, datetime.date)
+        self.assertIsInstance(action_1.updated_dt, datetime.date)
         action_8 = action_list[-1]
         self.assertEqual(action_8.action_type, "export_order")
         self.assertEqual(action_8.action_uuid, "f9e8b33c-2361-47b2-ad23-c9390d488619")
         self.assertEqual(action_8.status, "queued")
         self.assertEqual(action_8.status_message, None)
         self.assertEqual(action_8.entity_id, "99")
+        self.assertIsInstance(action_8.created_dt, datetime.date)
+        self.assertIsInstance(action_8.updated_dt, datetime.date)
