@@ -47,11 +47,11 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
 
     @property
     def created_dt(self):
-        return dateutil.parser.parse(self.created.replace("Z", ""))
+        return dateutil.parser.parse(self.created) if isinstance(self.created, str) else None
 
     @property
     def updated_dt(self):
-        return dateutil.parser.parse(self.updated.replace("Z", ""))
+        return dateutil.parser.parse(self.updated) if isinstance(self.updated, str) else None
 
     @classmethod
     def construct_post_url(cls, managed_integration_id):
