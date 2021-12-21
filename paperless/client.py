@@ -83,9 +83,9 @@ class PaperlessClient(object):
 
         method_to_call = getattr(requests, method)
         if data is not None:
-            resp = method_to_call(req_url, headers=headers, data=data, params=params)
+            resp = method_to_call(req_url, headers=headers, data=data, params=params, timeout=300)
         else:
-            resp = method_to_call(req_url, headers=headers, params=params)
+            resp = method_to_call(req_url, headers=headers, params=params, timeout=300)
 
         if (
             resp.status_code == 200
