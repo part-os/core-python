@@ -76,16 +76,16 @@ class PaperlessClient(object):
             'User-Agent': 'python-paperlessSDK {}'.format(self.version),
         }
 
-    def request(self, url=None, method=None, data=None, params=None, retry_attempt_count=0):
+    def request(self, url=None, method=None, data=None, params=None, retry_attempt_count=0, timeout=300):
         req_url = f'{self.base_url}/{url}'
 
         headers = self.get_authenticated_headers()
 
         method_to_call = getattr(requests, method)
         if data is not None:
-            resp = method_to_call(req_url, headers=headers, data=data, params=params)
+            resp = method_to_call(req_url, headers=headers, data=data, params=params, timeout=timeout)
         else:
-            resp = method_to_call(req_url, headers=headers, params=params)
+            resp = method_to_call(req_url, headers=headers, params=params, timeout=timeout)
 
         if (
             resp.status_code == 200
