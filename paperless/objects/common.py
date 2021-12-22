@@ -1,12 +1,13 @@
 import decimal
-from decimal import Decimal
+from decimal import Decimal, DecimalException
 from typing import Optional
-
+import math
 import attr
 
 from .utils import positive_number_validator
 
 ROUND_TO = Decimal('0.01')
+DECIMAL_PLACES = 2
 
 
 @attr.s(frozen=True, cmp=False)
@@ -20,8 +21,21 @@ class Money:
 
     @property
     def dollars(self):
-        return Decimal(
-            self.raw_amount.quantize(ROUND_TO, rounding=decimal.ROUND_HALF_EVEN)
+        try:
+            return self.rounded()
+        except DecimalException:
+            return 'NaN'
+
+    def rounded(
+            self, precision: int = DECIMAL_PLACES, rounding=decimal.ROUND_HALF_EVEN
+    ) -> Decimal:
+        """
+        Round the Money to a specified amount of decimal places.
+        Defaults to 2.
+        """
+        precision = precision or DECIMAL_PLACES
+        return self.raw_amount.quantize(
+            Decimal(str(math.pow(10, -precision))), rounding=rounding
         )
 
     @property
