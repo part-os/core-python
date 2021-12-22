@@ -27,6 +27,7 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(managed_integration.is_active, True)
         self.assertEqual(managed_integration.integration_version, "2.0")
         self.assertEqual(managed_integration.create_integration_action_after_creating_new_order, False)
+        self.assertEqual(managed_integration.create_integration_action_after_quote_sent, False)
 
     def test_list_managed_integrations(self):
         self.client.get_resource_list = MagicMock(return_value=self.mock_managed_integration_list_json)

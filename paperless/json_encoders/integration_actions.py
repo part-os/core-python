@@ -26,7 +26,7 @@ class ManagedIntegrationEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['erp_name', 'is_active', 'erp_version', 'integration_version', 'create_integration_action_after_creating_new_order', 'created', 'updated']
+        field_keys = ['erp_name', 'is_active', 'erp_version', 'integration_version', 'create_integration_action_after_creating_new_order', 'create_integration_action_after_quote_sent', 'created', 'updated']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
 
