@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1234,
+        "label": "Net 30 days",
+        "period": 30
+    },
+    {
+        "id": 1235,
+        "label": "Net 31 days",
+        "period": 31
+    }
+]
