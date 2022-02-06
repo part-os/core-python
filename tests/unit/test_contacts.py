@@ -4,7 +4,7 @@ from paperless.client import PaperlessClient
 from unittest.mock import MagicMock
 
 from paperless.objects.common import Money
-from paperless.objects.customers import Contact, Account, BillingAddress, Facility
+from paperless.objects.customers import Contact, Account, BillingAddress, Facility, PaymentTerms
 
 
 class TestContact(unittest.TestCase):
@@ -243,3 +243,35 @@ class TestFacility(unittest.TestCase):
         }
         self.assertEqual(f.to_json(), json.dumps(expected_facility_json))
 
+class TestPaymentTerms(unittest.TestCase):
+    def setUp(self):
+        self.client = PaperlessClient()
+        with open('tests/unit/mock_data/payment_terms.json') as data_file:
+            self.payment_terms_json = json.load(data_file)
+        with open('tests/unit/mock_data/payment_terms_list.json') as data_file:
+            self.payment_terms_list_json = json.load(data_file)
+
+    def test_get_payment_terms(self):
+        self.client.get_resource = MagicMock(return_value=self.payment_terms_json)
+        p = PaymentTerms.get(1)
+        self.assertEqual(p.id, 1234)
+        self.assertEqual(p.label, "Net 30 days")
+        self.assertEqual(p.period, 30)
+
+    def test_list_payment_terms(self):
+        self.client.get_resource_list = MagicMock(return_value=self.payment_terms_list_json)
+        p = PaymentTerms.list()
+        self.assertEqual(len(p), 2)
+        self.assertEqual(p[0].id, 1234)
+        self.assertEqual(p[0].label, "Net 30 days")
+        self.assertEqual(p[0].period, 30)
+
+    def test_convert_payment_terms_to_json(self):
+        self.client.get_resource = MagicMock(return_value=self.payment_terms_json)
+        p = PaymentTerms.get(1)
+        expected_payment_terms_json = {
+            "id": 1234,
+            "label": "Net 30 days",
+            "period": 30
+        }
+        self.assertEqual(p.to_json(), json.dumps(expected_payment_terms_json))
