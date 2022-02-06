@@ -154,6 +154,10 @@ class Account(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
+    metadata = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((dict, object))),
+    )
     notes = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
@@ -246,8 +250,28 @@ class AccountList(FromJSONMixin, PaginatedListMixin):
         return 'accounts/public'
 
     @classmethod
-    def filter(cls, erp_code=None, name=None, null_erp_code=False):
-        return cls.list(params={'erp_code': erp_code, 'name': name, 'null_erp_code': null_erp_code})
+    def filter(cls, erp_code=None, name=None, null_erp_code=None, metadata=None):
+        params = {}
+
+        if erp_code is not None:
+            params['erp_code'] = erp_code
+
+        if name is not None:
+            params['name'] = name
+
+        if null_erp_code is not None:
+            if not isinstance(null_erp_code, bool):
+                raise TypeError('Parameter null_erp_code must either be None or a bool')
+            params['null_erp_code'] = null_erp_code
+
+        if metadata is not None:
+            if not isinstance(metadata, dict):
+                raise TypeError('Supplied metadata must either be None or a dict')
+            for k, v in metadata.items():
+                key = f'metadata[{k}]'
+                params[key] = v
+        print(f'params: {params}')
+        return cls.list(params=params)
 
     @classmethod
     def search(cls, search_term):
@@ -317,6 +341,10 @@ class Contact(
     )
     id = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
+    )
+    metadata = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((dict, object))),
     )
     notes = attr.ib(
         default=NO_UPDATE,
