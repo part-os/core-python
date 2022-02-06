@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 
 import attr
 
@@ -8,6 +8,7 @@ from paperless.json_encoders.customers import (
     AddressEncoder,
     ContactEncoder,
     FacilityEncoder,
+    PaymentTermsEncoder,
 )
 from paperless.mixins import (
     CreateMixin,
@@ -515,3 +516,37 @@ class Facility(
             ]
         else:
             return [cls.from_json(resource) for resource in resource_list]
+
+@attr.s(frozen=False)
+class PaymentTerms(
+    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin, ListMixin
+):
+    _json_encoder = PaymentTermsEncoder
+
+    period: int = attr.ib(validator=attr.validators.instance_of(int))
+    label: str = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of(str)
+        )
+    id = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
+    )
+
+    @classmethod
+    def construct_delete_url(cls):
+        return 'customers/public/payment_terms'
+
+    @classmethod
+    def construct_get_url(cls):
+        return 'customers/public/payment_terms'
+
+    @classmethod
+    def construct_patch_url(cls):
+        return 'customers/public/payment_terms'
+
+    @classmethod
+    def construct_post_url(cls):
+        return 'customers/public/payment_terms'
+
+    @classmethod
+    def construct_list_url(cls):
+        return 'customers/public/payment_terms'
