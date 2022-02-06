@@ -155,6 +155,10 @@ class Account(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
+    metadata = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((dict, object))),
+    )
     notes = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
@@ -318,6 +322,10 @@ class Contact(
     )
     id = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
+    )
+    metadata = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((dict, object))),
     )
     notes = attr.ib(
         default=NO_UPDATE,

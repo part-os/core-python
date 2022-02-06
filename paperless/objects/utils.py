@@ -101,3 +101,11 @@ def safe_init(attrs_class, value_dict):
         attr.name: value_dict.get(attr.name) for attr in attr.fields(attrs_class)
     }
     return attrs_class(**safe_dict)
+
+
+def get_metadata_filter_query_params(metadata: dict):
+    params = {}
+    for k, v in metadata.items():
+        key = f'metadata[{k}]'
+        params[key] = v
+    return params

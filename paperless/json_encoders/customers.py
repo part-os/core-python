@@ -12,6 +12,7 @@ class AccountEncoder(BaseJSONEncoder):
         field_keys = [
             'credit_line',
             'erp_code',
+            'metadata',
             'notes',
             'name',
             'payment_terms',
@@ -108,6 +109,7 @@ class ContactEncoder(BaseJSONEncoder):
             'email',
             'first_name',
             'last_name',
+            'metadata',
             'notes',
             'phone',
             'phone_ext',
