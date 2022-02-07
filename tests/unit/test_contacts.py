@@ -8,8 +8,8 @@ from paperless.objects.customers import (
     Account,
     BillingAddress,
     Contact,
-    PaymentTerms,
     Facility,
+    PaymentTerms,
 )
 
 
