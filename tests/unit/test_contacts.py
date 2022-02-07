@@ -1,10 +1,16 @@
-import unittest
 import json
-from paperless.client import PaperlessClient
+import unittest
 from unittest.mock import MagicMock
 
+from paperless.client import PaperlessClient
 from paperless.objects.common import Money
-from paperless.objects.customers import Contact, Account, BillingAddress, Facility, PaymentTerms
+from paperless.objects.customers import (
+    Account,
+    BillingAddress,
+    Contact,
+    Facility,
+    PaymentTerms,
+)
 
 
 class TestContact(unittest.TestCase):
@@ -51,11 +57,9 @@ class TestContact(unittest.TestCase):
                 "country": "USA",
                 "postal_code": "02114-1702",
                 "state": "MA",
-                "erp_code": None
+                "erp_code": None,
             },
-            "salesperson": {
-                "email": "william+stack_pusher@paperlessparts.com"
-            }
+            "salesperson": {"email": "william+stack_pusher@paperlessparts.com"},
         }
         self.assertEqual(c.to_json(), json.dumps(expected_contact_json))
 
@@ -67,7 +71,9 @@ class TestContactList(unittest.TestCase):
             self.mock_contact_list_json = json.load(data_file)
 
     def test_get_customer_list(self):
-        self.client.get_resource_list = MagicMock(return_value=self.mock_contact_list_json)
+        self.client.get_resource_list = MagicMock(
+            return_value=self.mock_contact_list_json
+        )
         c = Contact.list()
         self.assertEqual(len(c), 5)
         self.assertEqual(c[2].account_id, 1)
@@ -137,9 +143,7 @@ class TestAccount(unittest.TestCase):
             "type": "customer",
             "url": "https://www.paperlessparts.com",
             "purchase_orders_enabled": True,
-            "salesperson": {
-                "email": "william+stack_pusher@paperlessparts.com"
-            },
+            "salesperson": {"email": "william+stack_pusher@paperlessparts.com"},
             "sold_to_address": {
                 "address1": "1 City Hall Sq.",
                 "address2": None,
@@ -147,8 +151,8 @@ class TestAccount(unittest.TestCase):
                 "country": "USA",
                 "postal_code": "02108",
                 "state": "MA",
-                "erp_code": None
-            }
+                "erp_code": None,
+            },
         }
         self.assertEqual(a.to_json(), json.dumps(expected_account_json))
 
@@ -160,7 +164,9 @@ class TestAccountList(unittest.TestCase):
             self.mock_account_list_json = json.load(data_file)
 
     def test_get_account_list(self):
-        self.client.get_resource_list = MagicMock(return_value=self.mock_account_list_json)
+        self.client.get_resource_list = MagicMock(
+            return_value=self.mock_account_list_json
+        )
         a = Account.list()
         self.assertEqual(len(a), 3)
         self.assertEqual(a[1].id, 2)
@@ -177,7 +183,9 @@ class TestBillingAddress(unittest.TestCase):
             self.mock_billing_address_json = json.load(data_file)
 
     def test_get_billing_address(self):
-        self.client.get_resource = MagicMock(return_value=self.mock_billing_address_json)
+        self.client.get_resource = MagicMock(
+            return_value=self.mock_billing_address_json
+        )
         ba = BillingAddress.get(1)
         self.assertEqual(ba.id, 1)
         self.assertEqual(ba.address1, "137 Portland St.")
@@ -188,7 +196,9 @@ class TestBillingAddress(unittest.TestCase):
         self.assertEqual(ba.state, "MA")
 
     def test_convert_billing_address_to_json(self):
-        self.client.get_resource = MagicMock(return_value=self.mock_billing_address_json)
+        self.client.get_resource = MagicMock(
+            return_value=self.mock_billing_address_json
+        )
         ba = BillingAddress.get(1)
         expected_billing_address_json = {
             "address1": "137 Portland St.",
@@ -235,13 +245,12 @@ class TestFacility(unittest.TestCase):
                 "country": "USA",
                 "postal_code": "02114",
                 "state": "MA",
-                "erp_code": None
+                "erp_code": None,
             },
-            "salesperson": {
-                "email": "william+stack_pusher@paperlessparts.com"
-            }
+            "salesperson": {"email": "william+stack_pusher@paperlessparts.com"},
         }
         self.assertEqual(f.to_json(), json.dumps(expected_facility_json))
+
 
 class TestPaymentTerms(unittest.TestCase):
     def setUp(self):
@@ -259,7 +268,9 @@ class TestPaymentTerms(unittest.TestCase):
         self.assertEqual(p.period, 30)
 
     def test_list_payment_terms(self):
-        self.client.get_resource_list = MagicMock(return_value=self.payment_terms_list_json)
+        self.client.get_resource_list = MagicMock(
+            return_value=self.payment_terms_list_json
+        )
         p = PaymentTerms.list()
         self.assertEqual(len(p), 2)
         self.assertEqual(p[0].id, 1234)
@@ -269,9 +280,5 @@ class TestPaymentTerms(unittest.TestCase):
     def test_convert_payment_terms_to_json(self):
         self.client.get_resource = MagicMock(return_value=self.payment_terms_json)
         p = PaymentTerms.get(1)
-        expected_payment_terms_json = {
-            "id": 1234,
-            "label": "Net 30 days",
-            "period": 30
-        }
+        expected_payment_terms_json = {"id": 1234, "label": "Net 30 days", "period": 30}
         self.assertEqual(p.to_json(), json.dumps(expected_payment_terms_json))

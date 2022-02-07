@@ -252,7 +252,9 @@ class AccountList(FromJSONMixin, PaginatedListMixin):
 
     @classmethod
     def filter(cls, erp_code=None, name=None, null_erp_code=False):
-        return cls.list(params={'erp_code': erp_code, 'name': name, 'null_erp_code': null_erp_code})
+        return cls.list(
+            params={'erp_code': erp_code, 'name': name, 'null_erp_code': null_erp_code}
+        )
 
     @classmethod
     def search(cls, search_term):
@@ -497,16 +499,21 @@ class Facility(
         else:
             return [cls.from_json(resource) for resource in resource_list]
 
+
 @attr.s(frozen=False)
 class PaymentTerms(
-    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin, ListMixin
+    FromJSONMixin,
+    ToJSONMixin,
+    ReadMixin,
+    UpdateMixin,
+    CreateMixin,
+    DeleteMixin,
+    ListMixin,
 ):
     _json_encoder = PaymentTermsEncoder
 
     period: int = attr.ib(validator=attr.validators.instance_of(int))
-    label: str = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.instance_of(str)
-        )
+    label: str = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of(str))
     id = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
     )

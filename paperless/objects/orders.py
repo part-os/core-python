@@ -6,7 +6,15 @@ import attr
 import dateutil.parser
 
 from paperless.client import PaperlessClient
-from paperless.mixins import FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSONMixin
+from paperless.json_encoders.orders import OrderEncoder
+from paperless.mixins import (
+    FromJSONMixin,
+    ListMixin,
+    ReadMixin,
+    ToDictMixin,
+    ToJSONMixin,
+    UpdateMixin,
+)
 from paperless.objects.components import BaseOperation
 from paperless.objects.utils import NO_UPDATE
 
@@ -14,7 +22,6 @@ from .address import AddressInfo
 from .common import Money, Salesperson
 from .components import AssemblyMixin, BaseComponent
 from .utils import convert_cls, convert_iterable, optional_convert
-from paperless.json_encoders.orders import OrderEncoder
 
 DATE_FMT = '%Y-%m-%d'
 

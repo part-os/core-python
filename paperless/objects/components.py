@@ -1,11 +1,10 @@
 import collections
+from typing import TYPE_CHECKING, Generator, List, NamedTuple, Optional, Union
 
 import attr
-from typing import List, Optional, NamedTuple, Generator, TYPE_CHECKING, Union
 
 from paperless.objects.common import Money
-from paperless.objects.utils import optional_convert, convert_iterable, \
-    convert_cls
+from paperless.objects.utils import convert_cls, convert_iterable, optional_convert
 
 if TYPE_CHECKING:
     from paperless.objects.orders import OrderComponent
@@ -15,7 +14,9 @@ if TYPE_CHECKING:
 @attr.s(frozen=True)
 class Material:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
-    display_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    display_name: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     family: str = attr.ib(validator=attr.validators.instance_of(str))
     material_class: str = attr.ib(validator=attr.validators.instance_of(str))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -25,12 +26,20 @@ class Material:
 class BaseOperation:
     @attr.s(frozen=True)
     class OperationQuantity:
-        price: Optional[Money] = attr.ib(converter=optional_convert(Money),
-                                         validator=attr.validators.optional(attr.validators.instance_of(Money)))
-        manual_price: Optional[Money] = attr.ib(converter=optional_convert(Money),
-                                                validator=attr.validators.optional(attr.validators.instance_of(Money)))
-        lead_time: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
-        manual_lead_time: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+        price: Optional[Money] = attr.ib(
+            converter=optional_convert(Money),
+            validator=attr.validators.optional(attr.validators.instance_of(Money)),
+        )
+        manual_price: Optional[Money] = attr.ib(
+            converter=optional_convert(Money),
+            validator=attr.validators.optional(attr.validators.instance_of(Money)),
+        )
+        lead_time: Optional[int] = attr.ib(
+            validator=attr.validators.optional(attr.validators.instance_of(int))
+        )
+        manual_lead_time: Optional[int] = attr.ib(
+            validator=attr.validators.optional(attr.validators.instance_of(int))
+        )
         quantity: int = attr.ib(validator=attr.validators.instance_of(int))
 
     id: int = attr.ib(validator=attr.validators.instance_of(int))
@@ -39,28 +48,44 @@ class BaseOperation:
     is_finish: bool = attr.ib(validator=attr.validators.instance_of(bool))
     is_outside_service: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
-    operation_definition_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    notes: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    operation_definition_name: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    notes: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     position: int = attr.ib(validator=attr.validators.instance_of(int))
-    quantities: List[OperationQuantity] = attr.ib(converter=convert_iterable(OperationQuantity))
-    runtime: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
-    setup_time: Optional[float] = attr.ib(converter=optional_convert(float), validator=attr.validators.optional(attr.validators.instance_of(float)))
+    quantities: List[OperationQuantity] = attr.ib(
+        converter=convert_iterable(OperationQuantity)
+    )
+    runtime: Optional[float] = attr.ib(
+        converter=optional_convert(float),
+        validator=attr.validators.optional(attr.validators.instance_of(float)),
+    )
+    setup_time: Optional[float] = attr.ib(
+        converter=optional_convert(float),
+        validator=attr.validators.optional(attr.validators.instance_of(float)),
+    )
 
 
 @attr.s(frozen=True)
 class Process:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
-    external_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    external_name: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     name: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
 @attr.s(frozen=True)
 class SupportingFile:
     filename: str = attr.ib(validator=attr.validators.instance_of(str))
-    url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    url: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     uuid: Optional[str] = attr.ib(
         default=None,
-        validator=attr.validators.optional(attr.validators.instance_of(str))
+        validator=attr.validators.optional(attr.validators.instance_of(str)),
     )
 
 
@@ -88,14 +113,12 @@ class PurchasedComponent:
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
 
-    def get_property(
-        self, code_name: str
-    ) -> Optional[Union[str, float, bool]]:
+    def get_property(self, code_name: str) -> Optional[Union[str, float, bool]]:
         """
         Return the value of the property with the specified code name or None
         """
-        return (
-            {pcp.code_name: pcp.value for pcp in self.properties}.get(code_name, None)
+        return {pcp.code_name: pcp.value for pcp in self.properties}.get(
+            code_name, None
         )
 
 
@@ -110,23 +133,43 @@ class BaseComponent:
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     child_ids: List[int] = attr.ib(converter=convert_iterable(int))
     children: List[ChildComponent] = attr.ib(converter=convert_iterable(ChildComponent))
-    description: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    description: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     export_controlled: bool = attr.ib(validator=attr.validators.instance_of(bool))
     finishes: List[str] = attr.ib(converter=convert_iterable(str))
     innate_quantity: int = attr.ib(validator=attr.validators.instance_of(int))
     is_root_component: bool = attr.ib(validator=attr.validators.instance_of(bool))
     material: Material = attr.ib(converter=convert_cls(Material))
     parent_ids: List[int] = attr.ib(converter=convert_iterable(int))
-    part_custom_attrs: Optional[list] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(list)))
-    part_name: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    part_number: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    part_uuid: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    part_custom_attrs: Optional[list] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(list))
+    )
+    part_name: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    part_number: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    part_uuid: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     process: Process = attr.ib(converter=convert_cls(Process))
-    purchased_component: PurchasedComponent = attr.ib(converter=convert_cls(PurchasedComponent))
-    revision: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
-    supporting_files: List[SupportingFile] = attr.ib(converter=convert_iterable(SupportingFile))
-    type: str = attr.ib(validator=attr.validators.in_(['assembled', 'manufactured', 'purchased']))
-    thumbnail_url: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    purchased_component: PurchasedComponent = attr.ib(
+        converter=convert_cls(PurchasedComponent)
+    )
+    revision: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    supporting_files: List[SupportingFile] = attr.ib(
+        converter=convert_iterable(SupportingFile)
+    )
+    type: str = attr.ib(
+        validator=attr.validators.in_(['assembled', 'manufactured', 'purchased'])
+    )
+    thumbnail_url: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
     @property
     def is_hardware(self):
@@ -143,6 +186,7 @@ class AssemblyComponent(NamedTuple):
         level_index index of this component within its level
         level_count count of components at this assembly level
     """
+
     component: Union['QuoteComponent', 'OrderComponent']
     level: int  # assembly level (0 for root)
     parent: Optional[Union['QuoteComponent', 'OrderComponent']]
@@ -181,7 +225,7 @@ class AssemblyMixin:
                 level=level,
                 parent=parent,
                 level_index=level_index,
-                level_count=0
+                level_count=0,
             )
             for child_id in node.child_ids:
                 for y in dfs(child_id, level + 1, node):
@@ -193,5 +237,5 @@ class AssemblyMixin:
                 level=assm_comp.level,
                 parent=assm_comp.parent,
                 level_index=assm_comp.level_index,
-                level_count=level_counter[assm_comp.level]
+                level_count=level_counter[assm_comp.level],
             )

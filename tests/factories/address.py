@@ -2,9 +2,11 @@ import factory
 from faker import Faker
 
 from paperless.objects.address import Address
+
 from .fuzzies import FuzzyPhoneExt, FuzzyPhoneNumber
 
 fake = Faker()
+
 
 class AddressFactory(factory.Factory):
     class Meta:

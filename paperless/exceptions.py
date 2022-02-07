@@ -11,7 +11,9 @@ class PaperlessException(Exception):
 
 class PaperlessAuthorizationException(PaperlessException):
     def __init__(self, message, error_code=None, detail=""):
-        super(PaperlessAuthorizationException, self).__init__(message, error_code, detail)
+        super(PaperlessAuthorizationException, self).__init__(
+            message, error_code, detail
+        )
 
     def __str__(self):
         return "Paperless Auth Exception: {}  \n\n {}".format(self.message, self.detail)
@@ -26,4 +28,6 @@ class PaperlessNotFoundException(PaperlessException):
         self.message = message
 
     def __str__(self):
-        return "Paperless Resource Not Found: {}  \n\n {}".format(self.message, self.detail)
+        return "Paperless Resource Not Found: {}  \n\n {}".format(
+            self.message, self.detail
+        )

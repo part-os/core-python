@@ -4,9 +4,9 @@ There is a lightweight base class and a trivial JSON file implementation. Using
 SQLite would be an obvious enhancement to provide better data integrity and
 performance for large numbers of records.
 """
-import os
-import json
 import datetime
+import json
+import os
 import time
 
 
@@ -14,6 +14,7 @@ class LocalStorage:
     """Abstract base class for a local storage that tracks which records have
     been processed. ``resource_type`` is a class from the ``objects``
     package."""
+
     def __init__(self, filename):
         self.filename = filename
 
@@ -63,7 +64,7 @@ class LocalJSONStorage(LocalStorage):
         time.sleep(0.5)
 
     def get_last_processed(self, resource_type):
-        assert(isinstance(resource_type, type))
+        assert isinstance(resource_type, type)
         key = resource_type.__name__
         if key in self.store and len(self.store[key]) > 0:
             # Return the ID of the most recently processed record. Quotes are not necessarily processed in increasing
@@ -76,7 +77,7 @@ class LocalJSONStorage(LocalStorage):
         if resource_type is None:
             self.store = {}
         else:
-            assert(isinstance(resource_type, type))
+            assert isinstance(resource_type, type)
             key = resource_type.__name__
             self.store[key] = []
         self._write()
@@ -88,11 +89,7 @@ class LocalJSONStorage(LocalStorage):
         key = resource_type.__name__
         if key not in self.store:
             self.store[key] = []
-        self.store[key].append({
-            'id': resource_id,
-            'dt': dt_str,
-            's': success
-        })
+        self.store[key].append({'id': resource_id, 'dt': dt_str, 's': success})
         self._write()
 
 
