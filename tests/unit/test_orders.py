@@ -295,8 +295,12 @@ class TestOrders(unittest.TestCase):
                 self.assertEqual('AC-M6-2', pc.purchased_component.oem_part_number)
                 self.assertIsNone(pc.purchased_component.internal_part_number)
                 self.assertIsNone(pc.purchased_component.description)
-                self.assertEqual(Decimal('0.9310'), pc.purchased_component.piece_price.raw_amount)
-                self.assertEqual(Decimal('0.93'), pc.purchased_component.piece_price.dollars)
+                self.assertEqual(
+                    Decimal('0.9310'), pc.purchased_component.piece_price.raw_amount
+                )
+                self.assertEqual(
+                    Decimal('0.93'), pc.purchased_component.piece_price.dollars
+                )
                 self.assertEqual(pc.purchased_component.get_property('brand'), "Penn")
                 self.assertEqual(pc.purchased_component.get_property('lead_time'), 4)
                 self.assertEqual(pc.purchased_component.get_property('in_stock'), True)

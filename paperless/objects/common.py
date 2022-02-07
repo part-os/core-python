@@ -1,7 +1,8 @@
 import decimal
+import math
 from decimal import Decimal, DecimalException
 from typing import Optional
-import math
+
 import attr
 
 from .utils import positive_number_validator
@@ -27,7 +28,7 @@ class Money:
             return 'NaN'
 
     def rounded(
-            self, precision: int = DECIMAL_PLACES, rounding=decimal.ROUND_HALF_EVEN
+        self, precision: int = DECIMAL_PLACES, rounding=decimal.ROUND_HALF_EVEN
     ) -> Decimal:
         """
         Round the Money to a specified amount of decimal places.

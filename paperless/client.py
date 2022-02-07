@@ -76,16 +76,28 @@ class PaperlessClient(object):
             'User-Agent': 'python-paperlessSDK {}'.format(self.version),
         }
 
-    def request(self, url=None, method=None, data=None, params=None, retry_attempt_count=0, timeout=300):
+    def request(
+        self,
+        url=None,
+        method=None,
+        data=None,
+        params=None,
+        retry_attempt_count=0,
+        timeout=300,
+    ):
         req_url = f'{self.base_url}/{url}'
 
         headers = self.get_authenticated_headers()
 
         method_to_call = getattr(requests, method)
         if data is not None:
-            resp = method_to_call(req_url, headers=headers, data=data, params=params, timeout=timeout)
+            resp = method_to_call(
+                req_url, headers=headers, data=data, params=params, timeout=timeout
+            )
         else:
-            resp = method_to_call(req_url, headers=headers, params=params, timeout=timeout)
+            resp = method_to_call(
+                req_url, headers=headers, params=params, timeout=timeout
+            )
 
         if (
             resp.status_code == 200
@@ -128,7 +140,13 @@ class PaperlessClient(object):
             if retry_attempt_count < 5:
                 LOGGER.info("Received 502. Waiting 30 seconds to retry.")
                 time.sleep(30)
-                return self.request(url=url, method=method, data=data, params=params, retry_attempt_count=retry_attempt_count + 1)
+                return self.request(
+                    url=url,
+                    method=method,
+                    data=data,
+                    params=params,
+                    retry_attempt_count=retry_attempt_count + 1,
+                )
             else:
                 raise PaperlessException(
                     message="Request failed", error_code=resp.status_code
@@ -176,7 +194,9 @@ class PaperlessClient(object):
         """
         req_url = '{}/{}'.format(resource_url, id)
         if params is not None:
-            resp = self.request(url=req_url, method=self.METHODS.PATCH, data=data, params=params)
+            resp = self.request(
+                url=req_url, method=self.METHODS.PATCH, data=data, params=params
+            )
         else:
             resp = self.request(url=req_url, method=self.METHODS.PATCH, data=data)
 

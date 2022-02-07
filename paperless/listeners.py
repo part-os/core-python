@@ -1,7 +1,8 @@
-from typing import Optional, Tuple
 import logging
-from .local import LocalStorage
+from typing import Optional, Tuple
+
 from .exceptions import PaperlessNotFoundException
+from .local import LocalStorage
 from .objects.orders import Order
 from .objects.quotes import Quote
 
@@ -13,10 +14,12 @@ class BaseListener:
     """
     An inheritable base listener for new object creation events
     """
+
     resource_type = None
 
-    def __init__(self, filename=LOCAL_STORAGE_PATH,
-                 last_record_id: Optional[int] = None):
+    def __init__(
+        self, filename=LOCAL_STORAGE_PATH, last_record_id: Optional[int] = None
+    ):
         """
         Sets up the initial state of the listener by either loading it from
         local storage or initializing with reasonable defaults.
@@ -48,7 +51,9 @@ class BaseListener:
                 success = False
                 LOGGER.exception(
                     'Unhandled exception in listener, will not retry {}'.format(
-                        self.get_resource_unique_identifier(resource)))
+                        self.get_resource_unique_identifier(resource)
+                    )
+                )
             self.record_resource_processed(resource, success)
             resource = self.get_new_resource()
 
@@ -58,16 +63,13 @@ class BaseListener:
     def record_resource_processed(self, resource, success):
         """Records that an on_event for a resource was handled."""
         self.local_storage.process(
-            self.resource_type,
-            self.get_resource_unique_identifier(resource),
-            success
+            self.resource_type, self.get_resource_unique_identifier(resource), success
         )
 
     def get_last_resource_processed(self) -> int:
         """Retrieves the resource ID from the latest successfully processed
         resource in the data store"""
-        last_processed = self.local_storage.get_last_processed(
-            self.resource_type)
+        last_processed = self.local_storage.get_last_processed(self.resource_type)
         if last_processed is None:
             return self.get_default_last_record_id()
         else:
@@ -77,8 +79,9 @@ class BaseListener:
 class OrderListener(BaseListener):
     resource_type = Order
 
-    def __init__(self, filename=LOCAL_STORAGE_PATH,
-                 last_record_id: Optional[int] = None):
+    def __init__(
+        self, filename=LOCAL_STORAGE_PATH, last_record_id: Optional[int] = None
+    ):
         super().__init__(filename, last_record_id)
         self._most_recent_order = last_record_id
 
@@ -94,7 +97,8 @@ class OrderListener(BaseListener):
             order_list = Order.list(params={'o': '-number'})
             try:
                 self._most_recent_order = self.get_resource_unique_identifier(
-                    order_list[0])
+                    order_list[0]
+                )
             except IndexError:
                 # Default to 0 if there are no orders.
                 # This will not work for suppliers with no orders and
@@ -124,11 +128,17 @@ class OrderListener(BaseListener):
 class QuoteListener(BaseListener):
     resource_type = Quote
 
-    def __init__(self, filename=LOCAL_STORAGE_PATH,
-                 last_record_id: Optional[int] = None,
-                 last_record_revision: Optional[int] = None):
+    def __init__(
+        self,
+        filename=LOCAL_STORAGE_PATH,
+        last_record_id: Optional[int] = None,
+        last_record_revision: Optional[int] = None,
+    ):
         super().__init__(filename, last_record_id)
-        self._most_recent_quote: Tuple[Optional[int], Optional[int]] = (last_record_id, last_record_revision)
+        self._most_recent_quote: Tuple[Optional[int], Optional[int]] = (
+            last_record_id,
+            last_record_revision,
+        )
 
     def get_default_last_record_id(self):
         """
@@ -138,13 +148,18 @@ class QuoteListener(BaseListener):
         """
         most_recent_quote_number, most_recent_quote_revision = self._most_recent_quote
 
-        if most_recent_quote_number is not None:  # If the supplied quote number is not None, use the (quote_number, revision) pair regardless of whether revision is None
+        if (
+            most_recent_quote_number is not None
+        ):  # If the supplied quote number is not None, use the (quote_number, revision) pair regardless of whether revision is None
             return self._most_recent_quote
         else:
             quotes_list = Quote.get_new()
             try:
                 most_recent_quote_result = quotes_list[-1]
-                self._most_recent_quote = (most_recent_quote_result['quote'], most_recent_quote_result['revision'])
+                self._most_recent_quote = (
+                    most_recent_quote_result['quote'],
+                    most_recent_quote_result['revision'],
+                )
             except IndexError:
                 # Default to 0 with revision None if there are no quotes.
                 # This will not work for suppliers with no quotes and

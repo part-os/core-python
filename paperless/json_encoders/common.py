@@ -2,6 +2,7 @@ import json
 
 from paperless.json_encoders import BaseJSONEncoder
 
+
 class SalespersonEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):

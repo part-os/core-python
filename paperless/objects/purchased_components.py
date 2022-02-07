@@ -130,7 +130,6 @@ class PurchasedComponent(
         else:
             property.value = value
 
-
     @classmethod
     def construct_delete_url(cls):
         return 'suppliers/public/purchased_components'

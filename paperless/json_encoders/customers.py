@@ -2,6 +2,7 @@ import json
 
 from paperless.json_encoders import BaseJSONEncoder
 from paperless.objects.utils import NO_UPDATE
+
 from .common import SalespersonEncoder
 
 
@@ -38,7 +39,9 @@ class AccountEncoder(BaseJSONEncoder):
 
         salesperson = getattr(resource, 'salesperson', None)
         if salesperson is not None and salesperson is not NO_UPDATE:
-            data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+            data['salesperson'] = SalespersonEncoder.encode(
+                salesperson, json_dumps=False
+            )
         else:
             data['salesperson'] = salesperson
 
@@ -65,7 +68,15 @@ class AddressEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['address1', 'address2', 'city', 'country', 'postal_code', 'state', 'erp_code']
+        field_keys = [
+            'address1',
+            'address2',
+            'city',
+            'country',
+            'postal_code',
+            'state',
+            'erp_code',
+        ]
         for key in field_keys:
             data[key] = getattr(resource, key, None)
 
@@ -125,7 +136,9 @@ class ContactEncoder(BaseJSONEncoder):
 
         salesperson = getattr(resource, 'salesperson', None)
         if salesperson is not None and salesperson is not NO_UPDATE:
-            data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+            data['salesperson'] = SalespersonEncoder.encode(
+                salesperson, json_dumps=False
+            )
         else:
             data['salesperson'] = salesperson
 
@@ -168,7 +181,9 @@ class FacilityEncoder(BaseJSONEncoder):
 
         salesperson = getattr(resource, 'salesperson', None)
         if salesperson is not None and salesperson is not NO_UPDATE:
-            data['salesperson'] = SalespersonEncoder.encode(salesperson, json_dumps=False)
+            data['salesperson'] = SalespersonEncoder.encode(
+                salesperson, json_dumps=False
+            )
         else:
             data['salesperson'] = salesperson
 

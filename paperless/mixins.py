@@ -245,7 +245,11 @@ class UpdateMixin(object):
             lambda x: not x.startswith('__')
             and not x.startswith('_')
             and type(getattr(resp_obj, x)) != types.MethodType
-            and (not isinstance(getattr(resp_obj.__class__, x), property) if x in dir(resp_obj.__class__) else True),
+            and (
+                not isinstance(getattr(resp_obj.__class__, x), property)
+                if x in dir(resp_obj.__class__)
+                else True
+            ),
             dir(resp_obj),
         )
         for key in keys:

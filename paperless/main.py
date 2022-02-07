@@ -1,5 +1,6 @@
-import time
 import logging
+import time
+
 from .listeners import BaseListener
 
 LOGGER = logging.getLogger(__name__)
@@ -28,7 +29,7 @@ class PaperlessSDK:
             self.loop = DEFAULT_LOOP
 
     def add_listener(self, listener: BaseListener):
-        assert(isinstance(listener, BaseListener))
+        assert isinstance(listener, BaseListener)
         self.listeners.append(listener)
 
     def run(self):

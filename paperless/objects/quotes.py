@@ -1,16 +1,22 @@
 import json
 from decimal import Decimal
-from types import SimpleNamespace, MethodType
+from types import MethodType, SimpleNamespace
 from typing import Dict, List, Optional, Union
 
 import attr
 
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.client import PaperlessClient
-from paperless.mixins import FromJSONMixin, ListMixin, ToDictMixin, UpdateMixin, ToJSONMixin
+from paperless.json_encoders.quotes import QuoteEncoder
+from paperless.mixins import (
+    FromJSONMixin,
+    ListMixin,
+    ToDictMixin,
+    ToJSONMixin,
+    UpdateMixin,
+)
 from paperless.objects.components import BaseOperation
 from paperless.objects.utils import NO_UPDATE
-from paperless.json_encoders.quotes import QuoteEncoder
 
 from .common import Money, Salesperson
 from .components import AssemblyMixin, BaseComponent
@@ -146,8 +152,12 @@ class Quantity:
     )
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
     expedites: List[Expedite] = attr.ib(converter=convert_iterable(Expedite))
-    is_most_likely_won_quantity: bool = attr.ib(validator=attr.validators.instance_of(bool))
-    most_likely_won_quantity_percent: Optional[int] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(int)))
+    is_most_likely_won_quantity: bool = attr.ib(
+        validator=attr.validators.instance_of(bool)
+    )
+    most_likely_won_quantity_percent: Optional[int] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(int))
+    )
 
 
 @attr.s(frozen=False)
@@ -449,7 +459,11 @@ class Quote(
             lambda x: not x.startswith('__')
             and not x.startswith('_')
             and type(getattr(resp_obj, x)) != MethodType
-            and (not isinstance(getattr(resp_obj.__class__, x), property) if x in dir(resp_obj.__class__) else True),
+            and (
+                not isinstance(getattr(resp_obj.__class__, x), property)
+                if x in dir(resp_obj.__class__)
+                else True
+            ),
             dir(resp_obj),
         )
         for key in keys:

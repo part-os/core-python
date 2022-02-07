@@ -1,15 +1,17 @@
-import unittest
 import os
 import time
-from paperless.local import LocalStorage, DEFAULT_IMPLEMENTATION
-from paperless.objects.quotes import QuoteOperation
+import unittest
+
+from paperless.local import DEFAULT_IMPLEMENTATION, LocalStorage
 from paperless.objects.orders import Order
+from paperless.objects.quotes import QuoteOperation
 
 
 class TestLocalStorage(unittest.TestCase):
     def test_factory(self):
-        self.assertIsInstance(LocalStorage.get_instance('/tmp/test'),
-                              DEFAULT_IMPLEMENTATION)
+        self.assertIsInstance(
+            LocalStorage.get_instance('/tmp/test'), DEFAULT_IMPLEMENTATION
+        )
 
     def test_local(self):
         filename = '/tmp/test'
