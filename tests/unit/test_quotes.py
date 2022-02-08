@@ -334,6 +334,15 @@ class TestQuotes(unittest.TestCase):
             },
         )
 
+        # test non-quantity specific costing variables
+        non_qty_specific_op = comp.shop_operations[6]
+        self.assertEqual(
+            non_qty_specific_op.get_variable('Lot Charge'), 150
+        )
+        self.assertEqual(
+            non_qty_specific_op.get_variable('Material Selection'), '304-#4'
+        )
+
         # test addon costing variables
         qty_specific_ao = comp.add_ons[0]
         self.assertEqual(
