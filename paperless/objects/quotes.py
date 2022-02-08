@@ -40,6 +40,7 @@ class CostingVariablePayload:
 
 @attr.s(frozen=True)
 class QuoteCostingVariable:
+    value = attr.ib()
     label: str = attr.ib(validator=attr.validators.instance_of(str))
     quantity_specific: bool = attr.ib()
     quantities: Dict[int, CostingVariablePayload] = attr.ib(
