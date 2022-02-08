@@ -14,7 +14,7 @@ class CostingVariablePayloadMapper(BaseMapper):
 class QuoteCostingVariablesMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
-        keys = ['label', 'variable_class', 'value_type']
+        keys = ['label', 'variable_class', 'value_type', 'value']
         mapped_result = {}
         for key in keys:
             mapped_result[key] = resource.get(key, None)
