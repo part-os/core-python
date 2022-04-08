@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7ef60b12-f9b4-4459-90f6-cfccfea6c7f3",
+    "first_name": "Test",
+    "last_name": "Testerson",
+    "email": "test@testerson.com",
+    "erp_code": "test123"
+  },
+  {
+    "uuid": "7ef60b12-f9b4-4459-90f6-cfccfea6c7f4",
+    "first_name": "Boaty",
+    "last_name": "McBoatFace",
+    "email": "boaty@mcboatface.com",
+    "erp_code": "321boat"
+  }
+]
