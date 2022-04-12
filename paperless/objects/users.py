@@ -14,6 +14,7 @@ from paperless.mixins import (
 
 @attr.s(frozen=False)
 class User(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, ListMixin):
+    _primary_key = 'uuid'
     _json_encoder = UserEncoder
 
     email: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -41,4 +42,4 @@ class User(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, ListMixin):
 
     @classmethod
     def construct_patch_url(cls):
-        return 'user/public'
+        return 'users/public'
