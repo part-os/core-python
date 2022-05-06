@@ -44,7 +44,7 @@ class QuoteCostingVariable:
     label: str = attr.ib(validator=attr.validators.instance_of(str))
     quantity_specific: bool = attr.ib()
     quantities: Dict[int, CostingVariablePayload] = attr.ib(
-        convert=convert_dictionary(CostingVariablePayload)
+        converter=convert_dictionary(CostingVariablePayload)
     )
     variable_class: str = attr.ib(attr.validators.instance_of(str))
     value_type: str = attr.ib(attr.validators.instance_of(str))
