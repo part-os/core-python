@@ -90,7 +90,15 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         )
         resp_obj = self.from_json(resp)
         keys = filter(
-            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
+            lambda x: not x.startswith('__')
+            and not x.startswith('_')
+            and type(getattr(resp_obj, x)) != types.MethodType
+            and (
+                not isinstance(getattr(resp_obj.__class__, x), property)
+                if x in dir(resp_obj.__class__)
+                else True
+            ),
+            dir(resp_obj),
         )
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
