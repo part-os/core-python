@@ -29,18 +29,15 @@ class TestIntegrationAction(unittest.TestCase):
         self.client.get_resource = MagicMock(
             return_value=self.mock_managed_integration_json
         )
-        managed_integration = ManagedIntegration.get(id=3)
-        self.assertEqual(managed_integration.id, 3)
+        managed_integration = ManagedIntegration.get(
+            id="712f4343-a29c-4263-be38-3c1694f53439"
+        )
+        self.assertEqual(
+            managed_integration.uuid, "712f4343-a29c-4263-be38-3c1694f53439"
+        )
         self.assertEqual(managed_integration.erp_name, "jobboss")
         self.assertEqual(managed_integration.is_active, True)
         self.assertEqual(managed_integration.integration_version, "2.0")
-        self.assertEqual(
-            managed_integration.create_integration_action_after_creating_new_order,
-            False,
-        )
-        self.assertEqual(
-            managed_integration.create_integration_action_after_quote_sent, False
-        )
 
     def test_list_managed_integrations(self):
         self.client.get_resource_list = MagicMock(
@@ -49,12 +46,14 @@ class TestIntegrationAction(unittest.TestCase):
         managed_integration_list = ManagedIntegration.list()
         self.assertEqual(len(managed_integration_list), 3)
         integration_1 = managed_integration_list[0]
-        self.assertEqual(integration_1.id, 5)
+        print(integration_1)
+        self.assertEqual(integration_1.uuid, "60e310e2-dfbe-49d1-b406-6726be6516d3")
         self.assertEqual(integration_1.erp_name, "e2")
         self.assertEqual(integration_1.erp_version, "1.5")
         self.assertEqual(integration_1.is_active, False)
         integration_1 = managed_integration_list[-1]
-        self.assertEqual(integration_1.id, 1)
+        print(integration_1)
+        self.assertEqual(integration_1.uuid, "abcef968-7903-44eb-9037-2033573c6c3e")
         self.assertEqual(integration_1.erp_name, "jobboss")
         self.assertEqual(integration_1.erp_version, "1.0")
         self.assertEqual(integration_1.is_active, True)
@@ -64,11 +63,11 @@ class TestIntegrationAction(unittest.TestCase):
             return_value=self.mock_integration_action_json
         )
         int_act = IntegrationAction.get(
-            managed_integration_id=self.mock_managed_integration_json['id'],
-            action_uuid="abc-123",
+            managed_integration_uuid=self.mock_managed_integration_json['uuid'],
+            uuid="abc-123",
         )
-        self.assertEqual(int_act.action_type, "export_order")
-        self.assertEqual(int_act.action_uuid, "abc-123")
+        self.assertEqual(int_act.type, "export_order")
+        self.assertEqual(int_act.uuid, "abc-123")
         self.assertEqual(int_act.status, "queued")
         self.assertEqual(int_act.status_message, None)
         self.assertEqual(int_act.entity_id, "1")
@@ -80,20 +79,20 @@ class TestIntegrationAction(unittest.TestCase):
             return_value=self.mock_integration_action_list_json
         )
         action_list = IntegrationAction.list(
-            managed_integration_id=self.mock_managed_integration_json['id']
+            managed_integration_uuid=self.mock_managed_integration_json['uuid']
         )
         self.assertEqual(len(action_list), 8)
         action_1 = action_list[0]
-        self.assertEqual(action_1.action_type, "export_order")
-        self.assertEqual(action_1.action_uuid, "20bf3744-625a-49d3-b6a8-5293334e9476")
+        self.assertEqual(action_1.type, "export_order")
+        self.assertEqual(action_1.uuid, "20bf3744-625a-49d3-b6a8-5293334e9476")
         self.assertEqual(action_1.status, "completed")
         self.assertEqual(action_1.status_message, None)
         self.assertEqual(action_1.entity_id, "1")
         self.assertIsInstance(action_1.created_dt, datetime.date)
         self.assertIsInstance(action_1.updated_dt, datetime.date)
         action_8 = action_list[-1]
-        self.assertEqual(action_8.action_type, "export_order")
-        self.assertEqual(action_8.action_uuid, "f9e8b33c-2361-47b2-ad23-c9390d488619")
+        self.assertEqual(action_8.type, "export_order")
+        self.assertEqual(action_8.uuid, "f9e8b33c-2361-47b2-ad23-c9390d488619")
         self.assertEqual(action_8.status, "queued")
         self.assertEqual(action_8.status_message, None)
         self.assertEqual(action_8.entity_id, "99")

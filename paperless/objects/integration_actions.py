@@ -16,7 +16,6 @@ from paperless.mixins import (
     CreateMixin,
     FromJSONMixin,
     ListMixin,
-    PaginatedListMixin,
     ReadMixin,
     ToJSONMixin,
     UpdateMixin,
@@ -29,7 +28,7 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
     _list_mapper = BaseMapper
     _list_object_representation = None
     _json_encoder = IntegrationActionEncoder
-    action_type = attr.ib(validator=attr.validators.instance_of(str))
+    type = attr.ib(validator=attr.validators.instance_of(str))
     entity_id = attr.ib(validator=attr.validators.instance_of(str))
     created = attr.ib(
         default=NO_UPDATE,
@@ -39,7 +38,7 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
-    action_uuid: Optional[str] = attr.ib(
+    uuid: Optional[str] = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
@@ -68,25 +67,25 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         )
 
     @classmethod
-    def construct_post_url(cls, managed_integration_id):
+    def construct_post_url(cls, managed_integration_uuid):
         return 'managed_integrations/public/{}/integration_actions'.format(
-            managed_integration_id
+            managed_integration_uuid
         )
 
     @classmethod
-    def construct_list_url(cls, managed_integration_id):
+    def construct_list_url(cls, managed_integration_uuid):
         return 'managed_integrations/public/{}/integration_actions'.format(
-            managed_integration_id
+            managed_integration_uuid
         )
 
-    def create(self, managed_integration_id):
+    def create(self, managed_integration_uuid):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
         """
         client = PaperlessClient.get_instance()
         data = self.to_json()
         resp = client.create_resource(
-            self.construct_post_url(managed_integration_id), data=data
+            self.construct_post_url(managed_integration_uuid), data=data
         )
         resp_obj = self.from_json(resp)
         keys = filter(
@@ -115,7 +114,7 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         return results['results']
 
     @classmethod
-    def list(cls, managed_integration_id, params=None, pages=None):
+    def list(cls, managed_integration_uuid, params=None, pages=None):
         """
         Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
 
@@ -125,7 +124,7 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         """
         client = PaperlessClient.get_instance()
         response = client.get_resource_list(
-            cls.construct_list_url(managed_integration_id=managed_integration_id),
+            cls.construct_list_url(managed_integration_uuid=managed_integration_uuid),
             params=params,
         )
         resource_list = cls.parse_list_response(response)
@@ -135,7 +134,9 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
             if params is not None:
                 next_query_params = {**next_query_params, **params}
             response = client.get_resource_list(
-                cls.construct_list_url(managed_integration_id=managed_integration_id),
+                cls.construct_list_url(
+                    managed_integration_uuid=managed_integration_uuid
+                ),
                 params=next_query_params,
             )
             resource_list.extend(cls.parse_list_response(response))
@@ -148,26 +149,26 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
             return [cls.from_json(resource) for resource in resource_list]
 
     @classmethod
-    def construct_get_url(cls, managed_integration_id):
+    def construct_get_url(cls, managed_integration_uuid):
         return 'managed_integrations/public/{}/integration_actions'.format(
-            managed_integration_id
+            managed_integration_uuid
         )
 
     @classmethod
-    def construct_patch_url(cls, managed_integration_id):
+    def construct_patch_url(cls, managed_integration_uuid):
         return 'managed_integrations/public/{}/integration_actions'.format(
-            managed_integration_id
+            managed_integration_uuid
         )
 
     @classmethod
     def filter(
         cls,
-        managed_integration_id: int,
+        managed_integration_uuid: uuid,
         status: Optional[str] = None,
         action_type: Optional[str] = None,
     ):
         return cls.list(
-            managed_integration_id=managed_integration_id,
+            managed_integration_uuid=managed_integration_uuid,
             params={'status': status, "action_type": action_type},
         )
 
@@ -181,7 +182,7 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         return None
 
     @classmethod
-    def get(cls, managed_integration_id, action_uuid):
+    def get(cls, managed_integration_uuid, uuid):
         """
         Retrieves the resource specified by the id.
 
@@ -193,21 +194,21 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         client = PaperlessClient.get_instance()
         return cls.from_json(
             client.get_resource(
-                cls.construct_get_url(managed_integration_id),
-                action_uuid,
+                cls.construct_get_url(managed_integration_uuid),
+                uuid,
                 params=cls.construct_get_params(),
             )
         )
 
-    def update(self, managed_integration_id):
+    def update(self, managed_integration_uuid):
         """
         Persists local changes of an existing Paperless Parts resource to Paperless.
         """
         client = PaperlessClient.get_instance()
         data = self.to_json()
         resp = client.update_resource(
-            self.construct_patch_url(managed_integration_id=managed_integration_id),
-            self.action_uuid,
+            self.construct_patch_url(managed_integration_uuid=managed_integration_uuid),
+            self.uuid,
             data=data,
         )
         resp_obj = self.from_json(resp)
@@ -232,6 +233,7 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
 class ManagedIntegration(
     FromJSONMixin, ToJSONMixin, ReadMixin, CreateMixin, ListMixin, UpdateMixin
 ):
+    _primary_key = 'uuid'
     _json_encoder = ManagedIntegrationEncoder
     erp_name = attr.ib(validator=attr.validators.instance_of(str))
     is_active: bool = attr.ib(validator=attr.validators.instance_of((bool, object)))
@@ -249,8 +251,8 @@ class ManagedIntegration(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
-    id: int = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
+    uuid: str = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((str, object))
     )
 
     @classmethod

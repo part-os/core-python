@@ -4,8 +4,8 @@
     "previous": null,
     "results": [
         {
-            "action_type": "export_order",
-            "action_uuid": "20bf3744-625a-49d3-b6a8-5293334e9476",
+            "type": "export_order",
+            "uuid": "20bf3744-625a-49d3-b6a8-5293334e9476",
             "status": "completed",
             "status_message": null,
             "entity_id": "1",
@@ -13,8 +13,8 @@
             "created": "2021-11-02T21:25:38.451965Z"
         },
         {
-            "action_type": "export_order",
-            "action_uuid": "2934340f-a817-49d0-96e3-7b9275688a8a",
+            "type": "export_order",
+            "uuid": "2934340f-a817-49d0-96e3-7b9275688a8a",
             "status": "queued",
             "status_message": null,
             "entity_id": "1",
@@ -22,8 +22,8 @@
             "created": "2021-11-02T21:25:38.451965Z"
         },
         {
-            "action_type": "export_order",
-            "action_uuid": "32fb6318-0cae-4814-ac8f-db2aadbf16e6",
+            "type": "export_order",
+            "uuid": "32fb6318-0cae-4814-ac8f-db2aadbf16e6",
             "status": "queued",
             "status_message": null,
             "entity_id": "100",
@@ -31,8 +31,8 @@
             "created": "2021-11-02T21:25:38.451965Z"
         },
         {
-            "action_type": "export_order",
-            "action_uuid": "64f0055c-b9a5-4d65-b8f0-91b876e153d6",
+            "type": "export_order",
+            "uuid": "64f0055c-b9a5-4d65-b8f0-91b876e153d6",
             "status": "queued",
             "status_message": null,
             "entity_id": "10",
@@ -40,8 +40,8 @@
             "created": "2021-11-02T21:25:38.451965Z"
         },
         {
-            "action_type": "export_order",
-            "action_uuid": "659f60f7-6d2b-4a0c-9866-3bfb556368b9",
+            "type": "export_order",
+            "uuid": "659f60f7-6d2b-4a0c-9866-3bfb556368b9",
             "status": "queued",
             "status_message": null,
             "entity_id": "3",
@@ -49,8 +49,8 @@
             "created": "2021-11-02T21:25:38.451965Z"
         },
         {
-            "action_type": "export_order",
-            "action_uuid": "98810970-1e39-4370-ac12-db20b5f65ce1",
+            "type": "export_order",
+            "uuid": "98810970-1e39-4370-ac12-db20b5f65ce1",
             "status": "queued",
             "status_message": null,
             "entity_id": "3",
@@ -58,8 +58,8 @@
             "created": "2021-11-02T21:25:38.451965Z"
         },
         {
-            "action_type": "export_order",
-            "action_uuid": "f635a3fa-2e6c-4d72-ac72-b5074194d792",
+            "type": "export_order",
+            "uuid": "f635a3fa-2e6c-4d72-ac72-b5074194d792",
             "status": "queued",
             "status_message": null,
             "entity_id": "1",
@@ -67,8 +67,8 @@
             "created": "2021-11-02T21:25:38.451965Z"
         },
         {
-            "action_type": "export_order",
-            "action_uuid": "f9e8b33c-2361-47b2-ad23-c9390d488619",
+            "type": "export_order",
+            "uuid": "f9e8b33c-2361-47b2-ad23-c9390d488619",
             "status": "queued",
             "status_message": null,
             "entity_id": "99",
