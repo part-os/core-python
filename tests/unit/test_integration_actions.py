@@ -62,10 +62,7 @@ class TestIntegrationAction(unittest.TestCase):
         self.client.get_resource = MagicMock(
             return_value=self.mock_integration_action_json
         )
-        int_act = IntegrationAction.get(
-            managed_integration_uuid=self.mock_managed_integration_json['uuid'],
-            uuid="abc-123",
-        )
+        int_act = IntegrationAction.get(id="abc-123")
         self.assertEqual(int_act.type, "export_order")
         self.assertEqual(int_act.uuid, "abc-123")
         self.assertEqual(int_act.status, "queued")

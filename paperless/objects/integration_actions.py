@@ -24,7 +24,8 @@ from paperless.objects.utils import NO_UPDATE
 
 
 @attr.s(frozen=False)
-class IntegrationAction(FromJSONMixin, ToJSONMixin):
+class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
+    _primary_key = 'uuid'
     _list_mapper = BaseMapper
     _list_object_representation = None
     _json_encoder = IntegrationActionEncoder
@@ -149,16 +150,12 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
             return [cls.from_json(resource) for resource in resource_list]
 
     @classmethod
-    def construct_get_url(cls, managed_integration_uuid):
-        return 'managed_integrations/public/{}/integration_actions'.format(
-            managed_integration_uuid
-        )
+    def construct_get_url(cls):
+        return 'integration_actions/public'
 
     @classmethod
-    def construct_patch_url(cls, managed_integration_uuid):
-        return 'managed_integrations/public/{}/integration_actions'.format(
-            managed_integration_uuid
-        )
+    def construct_patch_url(cls):
+        return 'integration_actions/public'
 
     @classmethod
     def filter(
@@ -180,53 +177,6 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin):
         :return None or params dict
         """
         return None
-
-    @classmethod
-    def get(cls, managed_integration_uuid, uuid):
-        """
-        Retrieves the resource specified by the id.
-
-
-        :raise PaperlessNotFoundException: Raised when the requested id 404s aka is not found.
-        :param id: int
-        :return: resource
-        """
-        client = PaperlessClient.get_instance()
-        return cls.from_json(
-            client.get_resource(
-                cls.construct_get_url(managed_integration_uuid),
-                uuid,
-                params=cls.construct_get_params(),
-            )
-        )
-
-    def update(self, managed_integration_uuid):
-        """
-        Persists local changes of an existing Paperless Parts resource to Paperless.
-        """
-        client = PaperlessClient.get_instance()
-        data = self.to_json()
-        resp = client.update_resource(
-            self.construct_patch_url(managed_integration_uuid=managed_integration_uuid),
-            self.uuid,
-            data=data,
-        )
-        resp_obj = self.from_json(resp)
-        # This filter is designed to remove methods, properties, and private data members and only let through the
-        # fields explicitly defined in the class definition
-        keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType
-            and (
-                not isinstance(getattr(resp_obj.__class__, x), property)
-                if x in dir(resp_obj.__class__)
-                else True
-            ),
-            dir(resp_obj),
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
 
 
 @attr.s(frozen=False)
