@@ -20,9 +20,7 @@ class TestEvent(unittest.TestCase):
         event_1: Event = event_list[0]
         self.assertEqual(event_1.uuid, "445ddb7c-6cde-4c42-aebc-489c4587d3bb")
         self.assertEqual(event_1.type, "part.created")
-        self.assertEqual(
-            event_1.related_object_uuid, "f3802d7b-16a9-46f7-bf17-c57eeff9edf0"
-        )
+        self.assertEqual(event_1.related_object, "f3802d7b-16a9-46f7-bf17-c57eeff9edf0")
         self.assertEqual(event_1.related_object_type, "part")
         self.assertIsInstance(event_1.data, dict)
         self.assertEqual(event_1.data["type"], "manufactured")
@@ -32,9 +30,7 @@ class TestEvent(unittest.TestCase):
         event_2 = event_list[-1]
         self.assertEqual(event_2.uuid, "245ddb7c-6cde-4c42-aebc-489c4587d3bb")
         self.assertEqual(event_2.type, "integration_action.requested")
-        self.assertEqual(
-            event_2.related_object_uuid, "d3802d7b-16a9-46f7-bf17-c57eeff9edf0"
-        )
+        self.assertEqual(event_2.related_object, "d3802d7b-16a9-46f7-bf17-c57eeff9edf0")
         self.assertEqual(event_2.related_object_type, "order")
         self.assertIsInstance(event_2.data, dict)
         self.assertEqual(event_2.data["action_type"], "export_order")

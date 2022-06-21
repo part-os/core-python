@@ -26,7 +26,7 @@
                 "is_from_external_system": false
             },
             "related_object_type": "part",
-            "related_object_uuid": "f3802d7b-16a9-46f7-bf17-c57eeff9edf0",
+            "related_object": "f3802d7b-16a9-46f7-bf17-c57eeff9edf0",
             "type": "part.created",
             "uuid": "445ddb7c-6cde-4c42-aebc-489c4587d3bb"
         },
@@ -42,7 +42,7 @@
                 "created": "2021-11-15T21:43:04.858348Z"
             },
             "related_object_type": "order",
-            "related_object_uuid": "d3802d7b-16a9-46f7-bf17-c57eeff9edf0",
+            "related_object": "d3802d7b-16a9-46f7-bf17-c57eeff9edf0",
             "type": "integration_action.requested",
             "uuid": "245ddb7c-6cde-4c42-aebc-489c4587d3bb"
         }

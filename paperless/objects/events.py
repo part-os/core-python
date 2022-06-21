@@ -16,7 +16,7 @@ class Event(FromJSONMixin, ToJSONMixin, PaginatedListMixin):
     type = attr.ib(validator=attr.validators.instance_of(str))
     related_object_type = attr.ib(validator=attr.validators.instance_of(str))
     uuid = attr.ib(validator=attr.validators.instance_of(str))
-    related_object_uuid: Optional[str] = attr.ib(
+    related_object: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
 

@@ -162,11 +162,11 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
         cls,
         managed_integration_uuid: uuid,
         status: Optional[str] = None,
-        action_type: Optional[str] = None,
+        type: Optional[str] = None,
     ):
         return cls.list(
             managed_integration_uuid=managed_integration_uuid,
-            params={'status': status, "action_type": action_type},
+            params={'status': status, "type": type},
         )
 
     @classmethod
