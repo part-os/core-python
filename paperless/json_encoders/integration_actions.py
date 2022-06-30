@@ -32,8 +32,6 @@ class ManagedIntegrationEncoder(BaseJSONEncoder):
             'is_active',
             'erp_version',
             'integration_version',
-            'create_integration_action_after_creating_new_order',
-            'create_integration_action_after_quote_sent',
             'created',
             'updated',
         ]

@@ -187,12 +187,6 @@ class ManagedIntegration(
     _json_encoder = ManagedIntegrationEncoder
     erp_name = attr.ib(validator=attr.validators.instance_of(str))
     is_active: bool = attr.ib(validator=attr.validators.instance_of((bool, object)))
-    create_integration_action_after_creating_new_order: bool = attr.ib(
-        validator=attr.validators.instance_of((bool, object))
-    )
-    create_integration_action_after_quote_sent: bool = attr.ib(
-        validator=attr.validators.instance_of((bool, object))
-    )
     erp_version: Optional[str] = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
