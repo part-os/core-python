@@ -4,26 +4,20 @@
         "erp_name": "e2",
         "is_active": false,
         "erp_version": "1.5",
-        "integration_version": null,
-        "create_integration_action_after_creating_new_order": false,
-        "create_integration_action_after_quote_sent": false
+        "integration_version": null
     },
     {
         "uuid": "ce82f762-f1e5-4eed-beb7-6868105079e6",
         "erp_name": "e2",
         "is_active": true,
         "erp_version": null,
-        "integration_version": null,
-        "create_integration_action_after_creating_new_order": false,
-        "create_integration_action_after_quote_sent": false
+        "integration_version": null
     },
     {
         "uuid": "abcef968-7903-44eb-9037-2033573c6c3e",
         "erp_name": "jobboss",
         "is_active": true,
         "erp_version": "1.0",
-        "integration_version": null,
-        "create_integration_action_after_creating_new_order": false,
-        "create_integration_action_after_quote_sent": false
+        "integration_version": null
     }
 ]
