@@ -4,7 +4,11 @@ import unittest
 from unittest.mock import MagicMock
 
 from paperless.client import PaperlessClient
-from paperless.objects.integration_actions import IntegrationAction, ManagedIntegration
+from paperless.objects.integration_actions import (
+    IntegrationAction,
+    IntegrationActionDefinition,
+    ManagedIntegration,
+)
 
 
 class TestIntegrationAction(unittest.TestCase):
@@ -24,6 +28,12 @@ class TestIntegrationAction(unittest.TestCase):
             'tests/unit/mock_data/integration_action_list.json'
         ) as list_actions_data:
             self.mock_integration_action_list_json = json.load(list_actions_data)
+        with open(
+            'tests/unit/mock_data/integration_action_definition_list.json'
+        ) as list_action_definition_data:
+            self.mock_integration_action_definition_list = json.load(
+                list_action_definition_data
+            )
 
     def test_get_managed_integration(self):
         self.client.get_resource = MagicMock(
@@ -95,3 +105,22 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(action_8.entity_id, "99")
         self.assertIsInstance(action_8.created_dt, datetime.date)
         self.assertIsInstance(action_8.updated_dt, datetime.date)
+
+    def test_list_integration_action_definitions(self):
+        self.client.get_resource_list = MagicMock(
+            return_value=self.mock_integration_action_definition_list
+        )
+        definition_list = IntegrationActionDefinition.list(
+            managed_integration_uuid=self.mock_managed_integration_json['uuid']
+        )
+        self.assertEqual(len(definition_list), 2)
+        definition_1 = definition_list[0]
+        self.assertEqual(definition_1.uuid, "82587760-94af-40be-8fdb-4ffa348da001")
+        self.assertEqual(definition_1.name, "Export Order")
+        self.assertEqual(definition_1.type, "export_order")
+        self.assertEqual(definition_1.related_object_type, "order")
+        definition_2 = definition_list[-1]
+        self.assertEqual(definition_2.uuid, "72587760-94af-40be-8fdb-4ffa348da001")
+        self.assertEqual(definition_2.name, "Export Quote")
+        self.assertEqual(definition_2.type, "export_quote")
+        self.assertEqual(definition_2.related_object_type, None)
