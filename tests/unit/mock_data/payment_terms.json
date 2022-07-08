@@ -1,5 +1,6 @@
 {
     "id": 1234,
     "label": "Net 30 days",
-    "period": 30
+    "period": 30,
+    "erp_code": "test"
 }
