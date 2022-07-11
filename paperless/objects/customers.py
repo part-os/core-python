@@ -513,6 +513,9 @@ class PaymentTerms(
     _json_encoder = PaymentTermsEncoder
 
     period: int = attr.ib(validator=attr.validators.instance_of(int))
+    erp_code: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of((str, object)))
+    )
     label: str = attr.ib(default=NO_UPDATE, validator=attr.validators.instance_of(str))
     id = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))

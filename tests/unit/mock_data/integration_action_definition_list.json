@@ -1,0 +1,19 @@
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "uuid": "82587760-94af-40be-8fdb-4ffa348da001",
+            "name": "Export Order",
+            "type": "export_order",
+            "related_object_type": "order"
+        },
+        {
+            "uuid": "72587760-94af-40be-8fdb-4ffa348da001",
+            "name": "Export Quote",
+            "type": "export_quote",
+            "related_object_type": null
+        }
+    ]
+}

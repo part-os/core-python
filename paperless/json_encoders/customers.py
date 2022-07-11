@@ -212,7 +212,7 @@ class PaymentTermsEncoder(BaseJSONEncoder):
     @classmethod
     def encode(cls, resource, json_dumps=True):
         data = {}
-        field_keys = ['id', 'label', 'period']
+        field_keys = ['id', 'label', 'period', 'erp_code']
         for key in field_keys:
             data[key] = getattr(resource, key, None)
         filtered_data = {}
