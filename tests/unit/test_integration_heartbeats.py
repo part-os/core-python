@@ -9,9 +9,7 @@ from paperless.objects.integration_heartbeats import IntegrationHeartbeat
 
 class TestIntegrationHeartbeat(unittest.TestCase):
     def setUp(self):
-        self.client = PaperlessClient(
-            access_token="test_accesstoken", base_url="http://localhost/api"
-        )
+        self.client = PaperlessClient()
         with open(
             'tests/unit/mock_data/integration_heartbeat.json'
         ) as integration_heartbeat_data:
