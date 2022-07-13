@@ -15,7 +15,9 @@ class IntegrationHeartbeat(ToJSONMixin, CreateMixin):
 
     @classmethod
     def construct_post_url(cls, managed_integration_uuid):
-        return 'managed_integrations/{}/heartbeat'.format(managed_integration_uuid)
+        return 'managed_integrations/public/{}/heartbeat'.format(
+            managed_integration_uuid
+        )
 
     def create(self, managed_integration_uuid):
         """
