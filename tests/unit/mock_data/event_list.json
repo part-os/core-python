@@ -1,7 +1,5 @@
 {
-    "count": 2,
-    "next": null,
-    "previous": null,
+    "has_more_events": false,
     "results": [
         {
             "created": "2022-02-01T22:21:58.718957Z",

@@ -4,6 +4,7 @@ import attr
 import dateutil.parser
 
 from paperless.api_mappers import BaseMapper
+from paperless.client import PaperlessClient
 from paperless.json_encoders.events import EventEncoder
 from paperless.mixins import FromJSONMixin, PaginatedListMixin, ToJSONMixin
 
@@ -21,8 +22,31 @@ class Event(FromJSONMixin, ToJSONMixin, PaginatedListMixin):
     )
 
     @classmethod
+    def list(cls, params=None, pages=None):
+        """
+        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+
+        :param params: dict of params for your list request
+        :param pages: iterable of ints describing the indices of the pages you want (starting from 1)
+        :return: [resource]
+        """
+        client = PaperlessClient.get_instance()
+        response = client.get_resource_list(cls.construct_list_url(), params=params)
+        resource_list = cls.parse_list_response(response)
+        while response['has_more_events'] is True:
+            response = client.get_resource_list(cls.construct_list_url(), params=params)
+            resource_list.extend(cls.parse_list_response(response))
+        if cls._list_object_representation:
+            return [
+                cls._list_object_representation.from_json(resource)
+                for resource in resource_list
+            ]
+        else:
+            return [cls.from_json(resource) for resource in resource_list]
+
+    @classmethod
     def construct_list_url(cls):
-        return 'events/public'
+        return 'events/public/poll'
 
     @property
     def created_dt(self):
