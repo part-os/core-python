@@ -1,7 +1,3 @@
-import types
-import urllib.parse as urlparse
-from urllib.parse import parse_qs
-
 import attr
 
 from .api_mappers import BaseMapper
@@ -60,32 +56,6 @@ class ReadMixin(object):
     def construct_get_new_params(cls, id):
         return None
 
-    @classmethod
-    def get(cls, id):
-        """
-        Retrieves the resource specified by the id.
-
-
-        :raise PaperlessNotFoundException: Raised when the requested id 404s aka is not found.
-        :param id: int
-        :return: resource
-        """
-        client = PaperlessClient.get_instance()
-        return cls.from_json(
-            client.get_resource(
-                cls.construct_get_url(), id, params=cls.construct_get_params()
-            )
-        )
-
-    @classmethod
-    def get_new(cls, id=None):
-        client = PaperlessClient.get_instance()
-
-        return client.get_new_resources(
-            cls.construct_get_new_resources_url(),
-            params=cls.construct_get_new_params(id) if id else None,
-        )
-
 
 class ListMixin(object):
     _list_mapper = BaseMapper
@@ -111,28 +81,18 @@ class ListMixin(object):
         """
         return results
 
+
+class PaginatedListMixin(object):
+
     @classmethod
-    def list(cls, params=None):
+    def construct_paginated_list_url(cls):
         """
-        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+        Constructs the url to get a list of resources from.
 
-        :param params: dict of params for your list request
-        :return: [resource]
+        :return: String url
         """
-        client = PaperlessClient.get_instance()
-        resource_list = cls.parse_list_response(
-            client.get_resource_list(cls.construct_list_url(), params=params)
-        )
-        if cls._list_object_representation:
-            return [
-                cls._list_object_representation.from_json(resource)
-                for resource in resource_list
-            ]
-        else:
-            return [cls.from_json(resource) for resource in resource_list]
+        raise NotImplementedError
 
-
-class PaginatedListMixin(ListMixin):
     @classmethod
     def parse_list_response(cls, results):
         """
@@ -143,35 +103,6 @@ class PaginatedListMixin(ListMixin):
         :return: json list of your resource
         """
         return results['results']
-
-    @classmethod
-    def list(cls, params=None, pages=None):
-        """
-        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
-
-        :param params: dict of params for your list request
-        :param pages: iterable of ints describing the indices of the pages you want (starting from 1)
-        :return: [resource]
-        """
-        client = PaperlessClient.get_instance()
-        response = client.get_resource_list(cls.construct_list_url(), params=params)
-        resource_list = cls.parse_list_response(response)
-        while response['next'] is not None:
-            next_url = response['next']
-            next_query_params = parse_qs(urlparse.urlparse(next_url).query)
-            if params is not None:
-                next_query_params = {**next_query_params, **params}
-            response = client.get_resource_list(
-                cls.construct_list_url(), params=next_query_params
-            )
-            resource_list.extend(cls.parse_list_response(response))
-        if cls._list_object_representation:
-            return [
-                cls._list_object_representation.from_json(resource)
-                for resource in resource_list
-            ]
-        else:
-            return [cls.from_json(resource) for resource in resource_list]
 
 
 class ToDictMixin(object):
@@ -203,24 +134,6 @@ class CreateMixin(object):
     def construct_post_url(cls):
         raise NotImplementedError
 
-    def create(self):
-        """
-        Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
-        """
-        client = PaperlessClient.get_instance()
-        data = self.to_json()
-        resp = client.create_resource(self.construct_post_url(), data=data)
-        resp_obj = self.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType,
-            dir(resp_obj),
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
-
-
 class UpdateMixin(object):
     _primary_key = 'id'
 
@@ -228,44 +141,9 @@ class UpdateMixin(object):
     def construct_patch_url(cls):
         raise NotImplementedError
 
-    def update(self):
-        """
-        Persists local changes of an existing Paperless Parts resource to Paperless.
-        """
-        client = PaperlessClient.get_instance()
-        primary_key = getattr(self, self._primary_key)
-        data = self.to_json()
-        resp = client.update_resource(
-            self.construct_patch_url(), primary_key, data=data
-        )
-        resp_obj = self.from_json(resp)
-        # This filter is designed to remove methods, properties, and private data members and only let through the
-        # fields explicitly defined in the class definition
-        keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType
-            and (
-                not isinstance(getattr(resp_obj.__class__, x), property)
-                if x in dir(resp_obj.__class__)
-                else True
-            ),
-            dir(resp_obj),
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
-
 
 class DeleteMixin(object):
     _primary_key = 'id'
 
     def construct_delete_url(cls):
         raise NotImplementedError
-
-    def delete(self):
-        """
-        Deletes the resource from Paperless Parts.
-        """
-        client = PaperlessClient.get_instance()
-        primary_key = getattr(self, self._primary_key)
-        client.delete_resource(self.construct_delete_url(), primary_key)

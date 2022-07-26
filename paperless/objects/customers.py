@@ -20,6 +20,7 @@ from paperless.mixins import (
     ToJSONMixin,
     UpdateMixin,
 )
+from paperless.manager import BaseManager
 
 from .address import Address
 from .common import Money, Salesperson
@@ -91,44 +92,40 @@ class BillingAddress(
     def construct_list_url(cls, account_id):
         return 'accounts/public/{}/billing_addresses'.format(account_id)
 
+
+class BillingAddressManager(BaseManager):
+    _base_object = BillingAddress
+
     def create(self, account_id):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
         """
-        client = PaperlessClient.get_instance()
-        data = self.to_json()
-        resp = client.create_resource(self.construct_post_url(account_id), data=data)
-        resp_obj = self.from_json(resp)
+        client = self._client
+        data = self._base_object.to_json()
+        resp = client.create_resource(self._base_object.construct_post_url(account_id), data=data)
+        resp_obj = self._base_boject.from_json(resp)
         keys = filter(
             lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
         )
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
 
-    @classmethod
-    def list(cls, account_id=None, params=None):
+    def list(self, account_id, params=None):
         """
         Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
 
         :param params: dict of params for your list request
         :return: [resource]
         """
-        client = PaperlessClient.get_instance()
-        resource_list = cls.parse_list_response(
-            client.get_resource_list(cls.construct_list_url(account_id), params=params)
+        client = self._client
+        resource_list = self._base_object.parse_list_response(
+            client.get_resource_list(self._base_object.construct_list_url(account_id), params=params)
         )
-        if cls._list_object_representation:
-            return [
-                cls._list_object_representation.from_json(resource)
-                for resource in resource_list
-            ]
-        else:
-            return [cls.from_json(resource) for resource in resource_list]
-
+        return [self._base_object.from_json(resource) for resource in resource_list]
 
 @attr.s(frozen=False)
 class Account(
-    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin
+    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin, PaginatedListMixin
 ):
     _json_encoder = AccountEncoder
 
@@ -218,47 +215,20 @@ class Account(
         return 'accounts/public'
 
     @classmethod
-    def list(cls):
-        return AccountList.list()
-
-    @classmethod
-    def filter(cls, erp_code=None):
-        return AccountList.filter(erp_code=erp_code)
-
-    @classmethod
-    def search(cls, search_term):
-        return AccountList.search(search_term)
-
-
-@attr.s(frozen=False)
-class AccountList(FromJSONMixin, PaginatedListMixin):
-
-    erp_code: str = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
-    phone: str = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    phone_ext: str = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    type = attr.ib(validator=attr.validators.instance_of(str))
-
-    @classmethod
-    def construct_list_url(cls):
+    def construct_paginated_list_url(cls):
         return 'accounts/public'
 
-    @classmethod
-    def filter(cls, erp_code=None, name=None, null_erp_code=False):
-        return cls.list(
+
+class AccountManager(BaseManager):
+    _base_object = Account
+
+    def search(self, search_term):
+        return self.list(params={'search': search_term})
+
+    def filter(self, erp_code=None, name=None, null_erp_code=False):
+        return self.list(
             params={'erp_code': erp_code, 'name': name, 'null_erp_code': null_erp_code}
         )
-
-    @classmethod
-    def search(cls, search_term):
-        return cls.list(params={'search': search_term})
 
 
 @attr.s(frozen=False)
@@ -304,7 +274,7 @@ class AddressInfo(FromJSONMixin, ToJSONMixin):
 
 @attr.s(frozen=False)
 class Contact(
-    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin
+    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin, PaginatedListMixin
 ):
     _json_encoder = ContactEncoder
 
@@ -361,50 +331,22 @@ class Contact(
         return 'contacts/public'
 
     @classmethod
-    def list(cls):
-        return ContactList.list()
-
-    @classmethod
-    def filter(cls, account_id=None):
-        return ContactList.filter(account_id=account_id)
-
-    @classmethod
-    def search(cls, search_term):
-        return ContactList.search(search_term)
-
-
-@attr.s(frozen=False)
-class ContactList(FromJSONMixin, PaginatedListMixin):
-
-    account_id: Optional[int] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(int))
-    )
-    created: str = attr.ib(validator=attr.validators.instance_of(str))
-    email: str = attr.ib(validator=attr.validators.instance_of(str))
-    first_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    id: int = attr.ib(validator=attr.validators.instance_of(int))
-    last_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    phone: str = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-    phone_ext: str = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-
-    @classmethod
     def construct_list_url(cls):
         return 'contacts/public'
 
-    @classmethod
-    def filter(cls, account_id=None):
+
+class ContactManager(BaseManager):
+
+    _base_object = Contact
+
+    def filter(self, account_id=None):
         params = {}
         if account_id is not None:
             params['account_id'] = account_id
-        return cls.list(params=params)
+        return self.list(params=params)
 
-    @classmethod
-    def search(cls, search_term):
-        return cls.list(params={'search': search_term})
+    def search(self, search_term):
+        return self.list(params={'search': search_term})
 
 
 @attr.s(frozen=False)
@@ -465,22 +407,25 @@ class Facility(
     def construct_list_url(cls, account_id):
         return 'accounts/public/{}/facilities'.format(account_id)
 
+
+class FacilityManager(BaseManager):
+    _base_object = Facility
+
     def create(self, account_id):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
         """
-        client = PaperlessClient.get_instance()
-        data = self.to_json()
-        resp = client.create_resource(self.construct_post_url(account_id), data=data)
-        resp_obj = self.from_json(resp)
+        client = self._client
+        data = self._base_object.to_json()
+        resp = client.create_resource(self._base_object.construct_post_url(account_id), data=data)
+        resp_obj = self._base_object.from_json(resp)
         keys = filter(
             lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
         )
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
 
-    @classmethod
-    def list(cls, account_id=None, params=None):
+    def list(self, account_id, params=None):
         """
         Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
 
@@ -488,17 +433,10 @@ class Facility(
         :return: [resource]
         """
         client = PaperlessClient.get_instance()
-        resource_list = cls.parse_list_response(
-            client.get_resource_list(cls.construct_list_url(account_id), params=params)
+        resource_list = self._base_object.parse_list_response(
+            client.get_resource_list(self._base_object.construct_list_url(account_id), params=params)
         )
-        if cls._list_object_representation:
-            return [
-                cls._list_object_representation.from_json(resource)
-                for resource in resource_list
-            ]
-        else:
-            return [cls.from_json(resource) for resource in resource_list]
-
+        return [self._base_object.from_json(resource) for resource in resource_list]
 
 @attr.s(frozen=False)
 class PaymentTerms(
@@ -540,3 +478,6 @@ class PaymentTerms(
     @classmethod
     def construct_list_url(cls):
         return 'customers/public/payment_terms'
+
+class PaymentTermsManager(BaseManager):
+    _base_object = PaymentTerms

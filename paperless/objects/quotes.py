@@ -487,3 +487,5 @@ class Quote(
         )
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
+
+class QuoteManager

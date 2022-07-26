@@ -7,6 +7,7 @@ from paperless.api_mappers import BaseMapper
 from paperless.client import PaperlessClient
 from paperless.json_encoders.events import EventEncoder
 from paperless.mixins import FromJSONMixin, PaginatedListMixin, ToJSONMixin
+from paperless.manager import BaseManager
 
 
 @attr.s(frozen=False)
@@ -22,30 +23,7 @@ class Event(FromJSONMixin, ToJSONMixin, PaginatedListMixin):
     )
 
     @classmethod
-    def list(cls, params=None, pages=None):
-        """
-        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
-
-        :param params: dict of params for your list request
-        :param pages: iterable of ints describing the indices of the pages you want (starting from 1)
-        :return: [resource]
-        """
-        client = PaperlessClient.get_instance()
-        response = client.get_resource_list(cls.construct_list_url(), params=params)
-        resource_list = cls.parse_list_response(response)
-        while response['has_more_events'] is True:
-            response = client.get_resource_list(cls.construct_list_url(), params=params)
-            resource_list.extend(cls.parse_list_response(response))
-        if cls._list_object_representation:
-            return [
-                cls._list_object_representation.from_json(resource)
-                for resource in resource_list
-            ]
-        else:
-            return [cls.from_json(resource) for resource in resource_list]
-
-    @classmethod
-    def construct_list_url(cls):
+    def construct_paginated_list_url(cls):
         return 'events/public/poll'
 
     @property
@@ -55,3 +33,22 @@ class Event(FromJSONMixin, ToJSONMixin, PaginatedListMixin):
             if isinstance(self.created, str)
             else None
         )
+
+class EventManager(BaseManager):
+    _base_object = Event
+
+    def list(self, params=None):
+        """
+        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+
+        :param params: dict of params for your list request
+        :param pages: iterable of ints describing the indices of the pages you want (starting from 1)
+        :return: [resource]
+        """
+        client = self._client
+        response = client.get_resource_list(self._base_object.construct_paginated_list_url(), params=params)
+        resource_list = self._base_object.parse_list_response(response)
+        while response['has_more_events'] is True:
+            response = client.get_resource_list(self._base_object.construct_paginated_list_url(), params=params)
+            resource_list.extend(self._base_object.parse_list_response(response))
+        return [self._base_object.from_json(resource) for resource in resource_list]

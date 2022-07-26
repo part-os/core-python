@@ -10,6 +10,7 @@ from paperless.mixins import (
     ToJSONMixin,
     UpdateMixin,
 )
+from paperless.manager import BaseManager
 
 
 @attr.s(frozen=False)
@@ -43,3 +44,6 @@ class User(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, ListMixin):
     @classmethod
     def construct_patch_url(cls):
         return 'users/public'
+
+class UserManager(BaseManager):
+    _base_object = User
