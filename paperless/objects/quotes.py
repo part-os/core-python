@@ -399,22 +399,6 @@ class Quote(
         return {'revision': revision}
 
     @classmethod
-    def get(cls, id, revision=None):
-        """
-        Retrieves the resource specified by the id and revision.
-        :raise PaperlessNotFoundException: Raised when the requested id 404s aka is not found.
-        :param id: int
-        :param revision: Optional[int]
-        :return: resource
-        """
-        client = PaperlessClient.get_instance()
-        return cls.from_json(
-            client.get_resource(
-                cls.construct_get_url(), id, params=cls.construct_get_params(revision)
-            )
-        )
-
-    @classmethod
     def construct_get_new_resources_url(cls):
         return 'quotes/public/new'
 
@@ -423,38 +407,53 @@ class Quote(
     def construct_get_new_params(cls, id, revision):
         return {'last_quote': id, 'revision': revision}
 
-    # id is the quote number
-    @classmethod
-    def get_new(cls, id=None, revision=None):
-        client = PaperlessClient.get_instance()
-
-        return client.get_new_resources(
-            cls.construct_get_new_resources_url(),
-            params=cls.construct_get_new_params(id, revision) if id else None,
-        )
-
     @classmethod
     def construct_patch_url(cls):
         return 'quotes/public'
 
-    def update(self):
+
+class QuoteManager(BaseManager):
+    _base_object = Quote
+
+    def set_status(self, obj, status):
+        client = self._client
+        params = None
+        if obj.revision_number is not None:
+            params = {'revision': obj.revision_number}
+        resp_json = client.request(
+            url=f'quotes/public/{obj.number}/status_change',
+            method=PaperlessClient.METHODS.PATCH,
+            data={"status": status},
+            params=params,
+        )
+        resp_obj = self._base_object.from_json(resp_json)
+        keys = filter(
+            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
+        )
+        for key in keys:
+            setattr(obj, key, getattr(resp_obj, key))
+
+    def update(self, obj):
         """
         Persists local changes of an existing Paperless Parts resource to Paperless.
         """
 
-        client = PaperlessClient.get_instance()
-        primary_key = getattr(self, self._primary_key)
-        data = self.to_json()
+        client = self._client
+        primary_key = getattr(self, obj._primary_key)
+        data = obj.to_json()
 
         # Include the revision number as a query parameter, if applicable
         params = None
-        if self.revision_number is not None:
-            params = {'revision': self.revision_number}
+        if obj.revision_number is not None:
+            params = {'revision': obj.revision_number}
 
         resp = client.update_resource(
-            self.construct_patch_url(), primary_key, data=data, params=params
+            self._base_object.construct_patch_url(),
+            primary_key,
+            data=data,
+            params=params,
         )
-        resp_obj = self.from_json(resp)
+        resp_obj = self._base_object.from_json(resp)
         # This filter is designed to remove methods, properties, and private data members and only let through the
         # fields explicitly defined in the class definition
         keys = filter(
@@ -469,26 +468,14 @@ class Quote(
             dir(resp_obj),
         )
         for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+            setattr(obj, key, getattr(resp_obj, key))
 
-    def set_status(self, status):
-        client = PaperlessClient.get_instance()
-        params = None
-        if self.revision_number is not None:
-            params = {'revision': self.revision_number}
-        resp_json = client.request(
-            url=f'quotes/public/{self.number}/status_change',
-            method=PaperlessClient.METHODS.PATCH,
-            data={"status": status},
-            params=params,
+    def get_new(self, id=None, revision=None):
+        client = self._client
+
+        return client.get_new_resources(
+            self._base_object.construct_get_new_resources_url(),
+            params=self._base_object.construct_get_new_params(id, revision)
+            if id
+            else None,
         )
-        resp_obj = self.from_json(resp_json)
-        keys = filter(
-            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
-
-
-class QuoteManager(BaseManager):
-    _base_object = Quote
