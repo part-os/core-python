@@ -1,6 +1,8 @@
 import csv
 import json
 
+from manager import BaseManager
+
 from paperless.client import PaperlessClient
 
 
@@ -8,7 +10,8 @@ class CustomTable:
     config = None
     data = None
 
-    def __init__(self, config=None, data=None):
+    def __init__(self, client, config=None, data=None):
+        self.client = client
         if config is not None:
             self.config = self.validate_config_data(config)
         if data is not None:
@@ -65,73 +68,81 @@ class CustomTable:
     def construct_patch_url(cls):
         return 'suppliers/public/custom_tables'
 
-    def update(self, table_name):
-        """
-        Persists local changes of an existing Paperless Parts resource to Paperless.
-        """
-        client = PaperlessClient.get_instance()
-        data = self.to_json({'config': self.config, 'data': self.data})
-        resp_json = client.update_resource(
-            self.construct_patch_url(), table_name, data=data
-        )
-        return resp_json
-
     @classmethod
     def construct_post_url(cls):
         return 'suppliers/public/custom_tables'
-
-    def create(self, table_name):
-        """
-        Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
-        """
-        client = PaperlessClient.get_instance()
-        data = self.to_json({'name': table_name})
-        resp_json = client.create_resource(self.construct_post_url(), data=data)
-        return resp_json
 
     @classmethod
     def construct_download_csv_url(cls):
         return 'suppliers/public/custom_tables/csv_download'
 
     @classmethod
-    def download_csv(cls, table_name, config=False, file_path=None):
-        """
-        Download a CSV of the table data. If config == True, download the config data for the table instead.
-        """
-        params = {'config': True} if config else None
-        if file_path is None:
-            file_path = f'table_{table_name}_{"config" if config else "data"}.csv'
-        client = PaperlessClient.get_instance()
-        client.download_file(
-            cls.construct_download_csv_url(), table_name, file_path, params=params
-        )
-
-    @classmethod
     def construct_list_url(cls):
         return 'suppliers/public/custom_tables'
-
-    @classmethod
-    def get_list(cls):
-        client = PaperlessClient.get_instance()
-
-        return client.get_new_resources(cls.construct_list_url(), params=None)
 
     @classmethod
     def construct_get_url(cls):
         return 'suppliers/public/custom_tables'
 
     @classmethod
-    def get(cls, table_name):
-        client = PaperlessClient.get_instance()
-
-        return client.get_resource(cls.construct_get_url(), table_name)
-
-    @classmethod
     def construct_delete_url(cls):
         return 'suppliers/public/custom_tables'
 
-    @classmethod
-    def delete(cls, table_name):
-        client = PaperlessClient.get_instance()
 
-        return client.delete_resource(cls.construct_delete_url(), table_name)
+class CustomTableManager(BaseManager):
+    _base_object: CustomTable
+
+    def delete(self, table_name):
+        client = self._client
+
+        return client.delete_resource(
+            self._base_object.construct_delete_url(), table_name
+        )
+
+    def get(self, table_name):
+        client = self._client
+
+        return client.get_resource(self._base_object.construct_get_url(), table_name)
+
+    def get_list(self):
+        client = self._client
+
+        return client.get_new_resources(
+            self._base_object.construct_list_url(), params=None
+        )
+
+    def download_csv(self, table_name, config=False, file_path=None):
+        """
+        Download a CSV of the table data. If config == True, download the config data for the table instead.
+        """
+        params = {'config': True} if config else None
+        if file_path is None:
+            file_path = f'table_{table_name}_{"config" if config else "data"}.csv'
+        client = self._client
+        client.download_file(
+            self._base_object.construct_download_csv_url(),
+            table_name,
+            file_path,
+            params=params,
+        )
+
+    def create(self, obj, table_name):
+        """
+        Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
+        """
+        client = self._client
+        data = obj.to_json({'name': table_name})
+        resp_json = client.create_resource(
+            self._base_object.construct_post_url(), data=data
+        )
+        return resp_json
+
+    def update(self, obj, table_name):
+        """
+        Persists local changes of an existing Paperless Parts resource to Paperless.
+        """
+        data = self.to_json({'config': obj.config, 'data': obj.data})
+        resp_json = self._client.update_resource(
+            self.construct_patch_url(), table_name, data=data
+        )
+        return resp_json

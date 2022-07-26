@@ -29,38 +29,25 @@ class PaperlessClient(object):
     __instance = None
     access_token = None
     base_url = "https://api.paperlessparts.com"
-    group_slug = None
     version = VERSION_0
 
     METHODS = SimpleNamespace(
         DELETE='delete', GET='get', PATCH='patch', POST='post', PUT='put'
     )
 
-    def __new__(cls, **kwargs):
+    def __init__(self, **kwargs):
         """
         Create or return the PaperlessClient Singleton.
         """
-        if PaperlessClient.__instance is None:
-            PaperlessClient.__instance = object.__new__(cls)
-        instance = PaperlessClient.__instance
 
         if 'access_token' in kwargs:
-            instance.access_token = kwargs['access_token']
+            self.access_token = kwargs['access_token']
 
         if 'base_url' in kwargs:
-            instance.base_url = kwargs['base_url']
-
-        if 'group_slug' in kwargs:
-            instance.group_slug = kwargs['group_slug']
+            self.base_url = kwargs['base_url']
 
         if 'version' in kwargs:  # TODO: ADD VERSION VALIDATION
-            instance.version = kwargs['version']
-
-        return instance
-
-    @classmethod
-    def get_instance(cls):
-        return cls.__instance
+            self.version = kwargs['version']
 
     def get_authenticated_headers(self):
         if not self.access_token:

@@ -450,7 +450,7 @@ class FacilityManager(BaseManager):
         :param params: dict of params for your list request
         :return: [resource]
         """
-        client = PaperlessClient.get_instance()
+        client = self._client
         resource_list = self._base_object.parse_list_response(
             client.get_resource_list(
                 self._base_object.construct_list_url(account_id), params=params
