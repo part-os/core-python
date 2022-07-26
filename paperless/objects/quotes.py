@@ -4,6 +4,7 @@ from types import MethodType, SimpleNamespace
 from typing import Dict, List, Optional, Union
 
 import attr
+from manager import BaseManager
 
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.client import PaperlessClient
@@ -488,4 +489,6 @@ class Quote(
         for key in keys:
             setattr(self, key, getattr(resp_obj, key))
 
-class QuoteManager
+
+class QuoteManager(BaseManager):
+    _base_object = Quote

@@ -5,6 +5,7 @@ import attr
 
 from paperless.client import PaperlessClient
 from paperless.json_encoders.integration_heartbeats import IntegrationHeartbeatEncoder
+from paperless.manager import BaseManager
 from paperless.mixins import CreateMixin, ToJSONMixin
 
 
@@ -19,12 +20,16 @@ class IntegrationHeartbeat(ToJSONMixin, CreateMixin):
             managed_integration_uuid
         )
 
-    def create(self, managed_integration_uuid):
+
+class IntegrationHeartbeatManager(BaseManager):
+    _base_object = IntegrationHeartbeat
+
+    def create(self, obj, managed_integration_uuid):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
         """
-        client = PaperlessClient.get_instance()
-        data = self.to_json()
+        client = self._client
+        data = obj.to_json()
         client.create_resource(
             self.construct_post_url(managed_integration_uuid), data=data
         )

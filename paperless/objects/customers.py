@@ -10,6 +10,7 @@ from paperless.json_encoders.customers import (
     FacilityEncoder,
     PaymentTermsEncoder,
 )
+from paperless.manager import BaseManager
 from paperless.mixins import (
     CreateMixin,
     DeleteMixin,
@@ -20,7 +21,6 @@ from paperless.mixins import (
     ToJSONMixin,
     UpdateMixin,
 )
-from paperless.manager import BaseManager
 
 from .address import Address
 from .common import Money, Salesperson
@@ -96,19 +96,21 @@ class BillingAddress(
 class BillingAddressManager(BaseManager):
     _base_object = BillingAddress
 
-    def create(self, account_id):
+    def create(self, obj, account_id):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
         """
         client = self._client
-        data = self._base_object.to_json()
-        resp = client.create_resource(self._base_object.construct_post_url(account_id), data=data)
-        resp_obj = self._base_boject.from_json(resp)
+        data = obj.to_json()
+        resp = client.create_resource(
+            self._base_object.construct_post_url(account_id), data=data
+        )
+        resp_obj = self._base_object.from_json(resp)
         keys = filter(
             lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
         )
         for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+            setattr(obj, key, getattr(resp_obj, key))
 
     def list(self, account_id, params=None):
         """
@@ -119,13 +121,22 @@ class BillingAddressManager(BaseManager):
         """
         client = self._client
         resource_list = self._base_object.parse_list_response(
-            client.get_resource_list(self._base_object.construct_list_url(account_id), params=params)
+            client.get_resource_list(
+                self._base_object.construct_list_url(account_id), params=params
+            )
         )
         return [self._base_object.from_json(resource) for resource in resource_list]
 
+
 @attr.s(frozen=False)
 class Account(
-    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin, PaginatedListMixin
+    FromJSONMixin,
+    ToJSONMixin,
+    ReadMixin,
+    UpdateMixin,
+    CreateMixin,
+    DeleteMixin,
+    PaginatedListMixin,
 ):
     _json_encoder = AccountEncoder
 
@@ -274,7 +285,13 @@ class AddressInfo(FromJSONMixin, ToJSONMixin):
 
 @attr.s(frozen=False)
 class Contact(
-    FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, CreateMixin, DeleteMixin, PaginatedListMixin
+    FromJSONMixin,
+    ToJSONMixin,
+    ReadMixin,
+    UpdateMixin,
+    CreateMixin,
+    DeleteMixin,
+    PaginatedListMixin,
 ):
     _json_encoder = ContactEncoder
 
@@ -336,7 +353,6 @@ class Contact(
 
 
 class ContactManager(BaseManager):
-
     _base_object = Contact
 
     def filter(self, account_id=None):
@@ -411,19 +427,21 @@ class Facility(
 class FacilityManager(BaseManager):
     _base_object = Facility
 
-    def create(self, account_id):
+    def create(self, obj, account_id):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
         """
         client = self._client
-        data = self._base_object.to_json()
-        resp = client.create_resource(self._base_object.construct_post_url(account_id), data=data)
+        data = obj.to_json()
+        resp = client.create_resource(
+            self._base_object.construct_post_url(account_id), data=data
+        )
         resp_obj = self._base_object.from_json(resp)
         keys = filter(
             lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
         )
         for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+            setattr(obj, key, getattr(resp_obj, key))
 
     def list(self, account_id, params=None):
         """
@@ -434,9 +452,12 @@ class FacilityManager(BaseManager):
         """
         client = PaperlessClient.get_instance()
         resource_list = self._base_object.parse_list_response(
-            client.get_resource_list(self._base_object.construct_list_url(account_id), params=params)
+            client.get_resource_list(
+                self._base_object.construct_list_url(account_id), params=params
+            )
         )
         return [self._base_object.from_json(resource) for resource in resource_list]
+
 
 @attr.s(frozen=False)
 class PaymentTerms(
@@ -478,6 +499,7 @@ class PaymentTerms(
     @classmethod
     def construct_list_url(cls):
         return 'customers/public/payment_terms'
+
 
 class PaymentTermsManager(BaseManager):
     _base_object = PaymentTerms

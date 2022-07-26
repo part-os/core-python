@@ -6,6 +6,7 @@ from paperless.json_encoders.purchased_components import (
     PurchasedComponentColumnEncoder,
     PurchasedComponentEncoder,
 )
+from paperless.manager import BaseManager
 from paperless.mixins import (
     CreateMixin,
     DeleteMixin,
@@ -46,10 +47,6 @@ class PurchasedComponentColumn(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
     )
 
-    def update(self, update_existing_defaults=False):
-        self.update_existing_defaults = update_existing_defaults
-        UpdateMixin.update(self)
-
     @classmethod
     def construct_delete_url(cls):
         return 'suppliers/public/purchased_component_columns'
@@ -69,6 +66,14 @@ class PurchasedComponentColumn(
     @classmethod
     def construct_post_url(cls):
         return 'suppliers/public/purchased_component_columns'
+
+
+class PurchasedComponentColumnManager(BaseManager):
+    _base_object = PurchasedComponentColumn
+
+    def update(self, obj, update_existing_defaults=False):
+        self._base_object.update_existing_defaults = update_existing_defaults
+        super().update(obj)
 
 
 @attr.s(frozen=False)
@@ -150,6 +155,9 @@ class PurchasedComponent(
     def construct_post_url(cls):
         return 'suppliers/public/purchased_components'
 
-    @classmethod
-    def search(cls, search_term):
-        return cls.list(params={'search': search_term})
+
+class PurchasedComponentManager(BaseManager):
+    _base_object = PurchasedComponent
+
+    def search(self, search_term):
+        return self.list(params={'search': search_term})

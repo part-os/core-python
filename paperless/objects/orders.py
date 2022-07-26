@@ -4,6 +4,7 @@ from typing import List, Optional, Union
 
 import attr
 import dateutil.parser
+from manager import BaseManager
 
 from paperless.client import PaperlessClient
 from paperless.json_encoders.orders import OrderEncoder
@@ -445,8 +446,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSO
 
     @classmethod
     def construct_list_url(cls):
-        client = PaperlessClient.get_instance()
-        return 'orders/groups/{}'.format(client.group_slug)
+        return 'orders/public/new'
 
     @classmethod
     def parse_list_response(cls, results):
@@ -455,3 +455,7 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSO
     @classmethod
     def construct_patch_url(cls):
         return 'orders/public'
+
+
+class OrderManager(BaseManager):
+    _base_object = Order
