@@ -159,7 +159,6 @@ class PaperlessClient(object):
             will return true if the next object exists, else false
         """
         url = "{}/{}".format(resource_url, id)
-        print(url)
         resp = self.request(url=url, method=self.METHODS.GET, params=params)
         return resp.json()
 

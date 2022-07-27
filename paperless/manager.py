@@ -1,10 +1,12 @@
-from paperless.client import PaperlessClient
-import urllib.parse as urlparse
-from urllib.parse import parse_qs
 import types
+import urllib.parse as urlparse
+from lib2to3.pytree import Base
+from urllib.parse import parse_qs
+
+from paperless.client import PaperlessClient
 
 
-class BaseManager:
+class BaseManager(object):
 
     _client = None
     _base_object = None
@@ -12,6 +14,8 @@ class BaseManager:
     def __init__(self, client: PaperlessClient) -> None:
         self._client = client
 
+
+class GetManagerMixin(BaseManager):
     def get(self, id):
         """
         Retrieves the resource specified by the id.
@@ -22,7 +26,9 @@ class BaseManager:
         client = self._client
         return self._base_object.from_json(
             client.get_resource(
-                self._base_object.construct_get_url(), id, params=self._base_object.construct_get_params()
+                self._base_object.construct_get_url(),
+                id,
+                params=self._base_object.construct_get_params(),
             )
         )
 
@@ -34,6 +40,8 @@ class BaseManager:
             params=self.construct_get_new_params(id) if id else None,
         )
 
+
+class ListManagerMixin(object):
     def list(self, params=None):
         """
         Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
@@ -45,7 +53,9 @@ class BaseManager:
         if getattr(self._base_object, "construct_paginated_list_url", None):
             return self.paginated_list(params=params)
         resource_list = self._base_object.parse_list_response(
-            client.get_resource_list(self._base_object.construct_list_url(), params=params)
+            client.get_resource_list(
+                self._base_object.construct_list_url(), params=params
+            )
         )
         if self._base_object._list_object_representation:
             return [
@@ -55,6 +65,8 @@ class BaseManager:
         else:
             return [self._base_object.from_json(resource) for resource in resource_list]
 
+
+class PaginatedListManagerMixin(object):
     def paginated_list(self, params=None):
         """
         Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
@@ -64,7 +76,9 @@ class BaseManager:
         :return: [resource]
         """
         client = client = self._client
-        response = client.get_resource_list(self._base_object.construct_paginated_list_url(), params=params)
+        response = client.get_resource_list(
+            self._base_object.construct_paginated_list_url(), params=params
+        )
         resource_list = self._base_object.parse_list_response(response)
         while response['next'] is not None:
             next_url = response['next']
@@ -72,11 +86,14 @@ class BaseManager:
             if params is not None:
                 next_query_params = {**next_query_params, **params}
             response = client.get_resource_list(
-                self._base_object.construct_paginated_list_url(), params=next_query_params
+                self._base_object.construct_paginated_list_url(),
+                params=next_query_params,
             )
             resource_list.extend(self._base_object.parse_list_response(response))
         return [self._base_object.from_json(resource) for resource in resource_list]
 
+
+class CreateManagerMixin(object):
     def create(self, obj):
         """
         Persist new version of self to Paperless Parts and updates instance with any new data from the creation.
@@ -93,7 +110,9 @@ class BaseManager:
         )
         for key in keys:
             setattr(obj, key, getattr(resp_obj, key))
-    
+
+
+class DeleteManagerMixin(object):
     def delete(self, obj):
         """
         Deletes the resource from Paperless Parts.
@@ -102,6 +121,8 @@ class BaseManager:
         primary_key = getattr(self, obj._primary_key)
         client.delete_resource(self._base_object.construct_delete_url(), primary_key)
 
+
+class UpdateManagerMixin(object):
     def update(self, obj):
         """
         Persists local changes of an existing Paperless Parts resource to Paperless.

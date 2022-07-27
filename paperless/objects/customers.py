@@ -10,7 +10,15 @@ from paperless.json_encoders.customers import (
     FacilityEncoder,
     PaymentTermsEncoder,
 )
-from paperless.manager import BaseManager
+from paperless.manager import (
+    BaseManager,
+    CreateManagerMixin,
+    DeleteManagerMixin,
+    GetManagerMixin,
+    ListManagerMixin,
+    PaginatedListManagerMixin,
+    UpdateManagerMixin,
+)
 from paperless.mixins import (
     CreateMixin,
     DeleteMixin,
@@ -93,7 +101,9 @@ class BillingAddress(
         return 'accounts/public/{}/billing_addresses'.format(account_id)
 
 
-class BillingAddressManager(BaseManager):
+class BillingAddressManager(
+    DeleteManagerMixin, GetManagerMixin, UpdateManagerMixin, BaseManager
+):
     _base_object = BillingAddress
 
     def create(self, obj, account_id):
@@ -230,7 +240,14 @@ class Account(
         return 'accounts/public'
 
 
-class AccountManager(BaseManager):
+class AccountManager(
+    DeleteManagerMixin,
+    GetManagerMixin,
+    UpdateManagerMixin,
+    CreateManagerMixin,
+    ListManagerMixin,
+    BaseManager,
+):
     _base_object = Account
 
     def search(self, search_term):
@@ -352,7 +369,14 @@ class Contact(
         return 'contacts/public'
 
 
-class ContactManager(BaseManager):
+class ContactManager(
+    DeleteManagerMixin,
+    GetManagerMixin,
+    UpdateManagerMixin,
+    CreateManagerMixin,
+    ListManagerMixin,
+    BaseManager,
+):
     _base_object = Contact
 
     def filter(self, account_id=None):
@@ -424,7 +448,9 @@ class Facility(
         return 'accounts/public/{}/facilities'.format(account_id)
 
 
-class FacilityManager(BaseManager):
+class FacilityManager(
+    DeleteManagerMixin, GetManagerMixin, UpdateManagerMixin, BaseManager
+):
     _base_object = Facility
 
     def create(self, obj, account_id):
@@ -501,5 +527,12 @@ class PaymentTerms(
         return 'customers/public/payment_terms'
 
 
-class PaymentTermsManager(BaseManager):
+class PaymentTermsManager(
+    DeleteManagerMixin,
+    GetManagerMixin,
+    UpdateManagerMixin,
+    CreateManagerMixin,
+    ListManagerMixin,
+    BaseManager,
+):
     _base_object = PaymentTerms
