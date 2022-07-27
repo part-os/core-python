@@ -16,7 +16,6 @@ from paperless.manager import (
     DeleteManagerMixin,
     GetManagerMixin,
     ListManagerMixin,
-    PaginatedListManagerMixin,
     UpdateManagerMixin,
 )
 from paperless.mixins import (

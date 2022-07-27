@@ -6,7 +6,14 @@ from paperless.json_encoders.purchased_components import (
     PurchasedComponentColumnEncoder,
     PurchasedComponentEncoder,
 )
-from paperless.manager import BaseManager
+from paperless.manager import (
+    BaseManager,
+    CreateManagerMixin,
+    DeleteManagerMixin,
+    GetManagerMixin,
+    ListManagerMixin,
+    UpdateManagerMixin,
+)
 from paperless.mixins import (
     CreateMixin,
     DeleteMixin,
@@ -68,7 +75,14 @@ class PurchasedComponentColumn(
         return 'suppliers/public/purchased_component_columns'
 
 
-class PurchasedComponentColumnManager(BaseManager):
+class PurchasedComponentColumnManager(
+    DeleteManagerMixin,
+    GetManagerMixin,
+    ListManagerMixin,
+    UpdateManagerMixin,
+    CreateManagerMixin,
+    BaseManager,
+):
     _base_object = PurchasedComponentColumn
 
     def update(self, obj, update_existing_defaults=False):
@@ -156,7 +170,14 @@ class PurchasedComponent(
         return 'suppliers/public/purchased_components'
 
 
-class PurchasedComponentManager(BaseManager):
+class PurchasedComponentManager(
+    DeleteManagerMixin,
+    GetManagerMixin,
+    ListManagerMixin,
+    UpdateManagerMixin,
+    CreateManagerMixin,
+    BaseManager,
+):
     _base_object = PurchasedComponent
 
     def search(self, search_term):

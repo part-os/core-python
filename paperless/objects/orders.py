@@ -4,10 +4,14 @@ from typing import List, Optional, Union
 
 import attr
 import dateutil.parser
-from manager import BaseManager
 
-from paperless.client import PaperlessClient
 from paperless.json_encoders.orders import OrderEncoder
+from paperless.manager import (
+    BaseManager,
+    GetManagerMixin,
+    ListManagerMixin,
+    UpdateManagerMixin,
+)
 from paperless.mixins import (
     FromJSONMixin,
     ListMixin,
@@ -457,5 +461,5 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSO
         return 'orders/public'
 
 
-class OrderManager(BaseManager):
+class OrderManager(GetManagerMixin, ListManagerMixin, UpdateManagerMixin, BaseManager):
     _base_object = Order

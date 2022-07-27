@@ -13,7 +13,13 @@ from paperless.json_encoders.integration_actions import (
     IntegrationActionEncoder,
     ManagedIntegrationEncoder,
 )
-from paperless.manager import BaseManager
+from paperless.manager import (
+    BaseManager,
+    CreateManagerMixin,
+    GetManagerMixin,
+    ListManagerMixin,
+    UpdateManagerMixin,
+)
 from paperless.mixins import (
     CreateMixin,
     FromJSONMixin,
@@ -110,7 +116,7 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
         return None
 
 
-class IntegrationActionManager(BaseManager):
+class IntegrationActionManager(GetManagerMixin, UpdateManagerMixin, BaseManager):
     _base_object = IntegrationAction
 
     def create(self, obj, managed_integration_uuid):
@@ -282,5 +288,11 @@ class ManagedIntegration(
         return f'managed_integrations/public'
 
 
-class ManagedIntegrationManager(BaseManager):
+class ManagedIntegrationManager(
+    ListManagerMixin,
+    CreateManagerMixin,
+    GetManagerMixin,
+    UpdateManagerMixin,
+    BaseManager,
+):
     _base_object = ManagedIntegration

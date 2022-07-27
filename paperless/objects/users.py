@@ -3,6 +3,12 @@ from typing import Optional
 import attr
 
 from paperless.json_encoders.users import UserEncoder
+from paperless.manager import (
+    BaseManager,
+    GetManagerMixin,
+    ListManagerMixin,
+    UpdateManagerMixin,
+)
 from paperless.mixins import (
     FromJSONMixin,
     ListMixin,
@@ -10,7 +16,6 @@ from paperless.mixins import (
     ToJSONMixin,
     UpdateMixin,
 )
-from paperless.manager import BaseManager
 
 
 @attr.s(frozen=False)
@@ -45,5 +50,6 @@ class User(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, ListMixin):
     def construct_patch_url(cls):
         return 'users/public'
 
-class UserManager(BaseManager):
+
+class UserManager(GetManagerMixin, ListManagerMixin, UpdateManagerMixin, BaseManager):
     _base_object = User

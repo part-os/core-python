@@ -4,11 +4,11 @@ from types import MethodType, SimpleNamespace
 from typing import Dict, List, Optional, Union
 
 import attr
-from manager import BaseManager
 
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.client import PaperlessClient
 from paperless.json_encoders.quotes import QuoteEncoder
+from paperless.manager import BaseManager, GetManagerMixin
 from paperless.mixins import (
     FromJSONMixin,
     ListMixin,
@@ -412,7 +412,7 @@ class Quote(
         return 'quotes/public'
 
 
-class QuoteManager(BaseManager):
+class QuoteManager(GetManagerMixin, BaseManager):
     _base_object = Quote
 
     def set_status(self, obj, status):
