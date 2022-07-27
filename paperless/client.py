@@ -26,7 +26,6 @@ class PaperlessClient(object):
     VERSION_0 = 'v0.7'
     VALID_VERSIONS = [VERSION_0]
 
-    __instance = None
     access_token = None
     base_url = "https://api.paperlessparts.com"
     version = VERSION_0
@@ -192,11 +191,10 @@ class PaperlessClient(object):
     def delete_resource(self, resource_url, id):
         """
         """
-        headers = self.get_authenticated_headers()
 
         req_url = '{}/{}'.format(resource_url, id)
 
-        resp = self.request(url=req_url, method=self.METHODS.DELETE)
+        self.request(url=req_url, method=self.METHODS.DELETE)
         return
 
     def download_file(self, resource_url, id, file_path, params=None):
