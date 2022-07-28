@@ -20,6 +20,7 @@ from paperless.mixins import (
     ToJSONMixin,
     UpdateMixin,
 )
+from paperless.objects.events import Event
 from paperless.objects.utils import NO_UPDATE
 
 
@@ -281,3 +282,27 @@ class ManagedIntegration(
     @classmethod
     def construct_patch_url(cls):
         return f'managed_integrations/public'
+
+    @classmethod
+    def construct_event_list_url(cls, uuid):
+        return 'managed_integrations/public/{}/poll'.format(uuid)
+
+    @classmethod
+    def event_list(cls, uuid, params=None, pages=None):
+        """
+        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+        :param params: dict of params for your list request
+        :param pages: iterable of ints describing the indices of the pages you want (starting from 1)
+        :return: [resource]
+        """
+        client = PaperlessClient.get_instance()
+        response = client.get_resource_list(
+            cls.construct_event_list_url(uuid), params=params
+        )
+        resource_list = response['results']
+        while response['has_more_events'] is True:
+            response = client.get_resource_list(
+                cls.construct_event_list_url(uuid), params=params
+            )
+            resource_list.extend(response['results'])
+        return [Event.from_json(resource) for resource in resource_list]
