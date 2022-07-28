@@ -1,9 +1,8 @@
 import csv
 import json
 
-from manager import BaseManager
-
 from paperless.client import PaperlessClient
+from paperless.manager import BaseManager
 
 
 class CustomTable:
