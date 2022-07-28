@@ -47,7 +47,7 @@ class BaseListener:
         while resource is not None:
             try:
                 success = self.on_event(resource)
-            except Exception as e:
+            except Exception:
                 success = False
                 LOGGER.exception(
                     'Unhandled exception in listener, will not retry {}'.format(

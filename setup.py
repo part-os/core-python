@@ -1,8 +1,7 @@
 import io
 import os
-import sys
 
-from setuptools import Command, find_packages, setup
+from setuptools import find_packages, setup
 
 # Package meta-data.
 NAME = 'core-python'

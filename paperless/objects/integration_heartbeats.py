@@ -1,9 +1,5 @@
-from tokenize import Number
-from typing import Optional
-
 import attr
 
-from paperless.client import PaperlessClient
 from paperless.json_encoders.integration_heartbeats import IntegrationHeartbeatEncoder
 from paperless.manager import BaseManager
 from paperless.mixins import CreateMixin, ToJSONMixin

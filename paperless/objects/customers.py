@@ -1,8 +1,7 @@
-from typing import List, Optional
+from typing import Optional
 
 import attr
 
-from paperless.client import PaperlessClient
 from paperless.json_encoders.customers import (
     AccountEncoder,
     AddressEncoder,

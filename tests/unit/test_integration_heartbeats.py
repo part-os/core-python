@@ -1,4 +1,3 @@
-import datetime
 import json
 import unittest
 from unittest.mock import MagicMock

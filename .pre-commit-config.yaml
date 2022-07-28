@@ -6,6 +6,12 @@ repos:
         args: ['--skip-string-normalization']
         language_version: python3.7
 
+  - repo: https://github.com/pycqa/flake8
+    rev: 3.7.9
+    hooks:
+    -   id: flake8
+        args: [--config, .flake8.ini]
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.1.0
     hooks:

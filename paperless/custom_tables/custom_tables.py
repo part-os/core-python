@@ -1,7 +1,6 @@
 import csv
 import json
 
-from paperless.client import PaperlessClient
 from paperless.manager import BaseManager
 
 

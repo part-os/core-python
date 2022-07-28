@@ -1,6 +1,5 @@
 import types
 import urllib.parse as urlparse
-from lib2to3.pytree import Base
 from typing import Optional
 from urllib.parse import parse_qs
 
@@ -8,7 +7,6 @@ import attr
 import dateutil.parser
 
 from paperless.api_mappers import BaseMapper
-from paperless.client import PaperlessClient
 from paperless.json_encoders.integration_actions import (
     IntegrationActionEncoder,
     ManagedIntegrationEncoder,

@@ -7,8 +7,8 @@ from paperless.objects.common import Money
 from paperless.objects.utils import convert_cls, convert_iterable, optional_convert
 
 if TYPE_CHECKING:
-    from paperless.objects.orders import OrderComponent
-    from paperless.objects.quotes import QuoteComponent
+    from paperless.objects.orders import OrderComponent  # noqa: F401
+    from paperless.objects.quotes import QuoteComponent  # noqa: F401
 
 
 @attr.s(frozen=True)

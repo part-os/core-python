@@ -3,11 +3,9 @@ from typing import Optional
 import attr
 import dateutil.parser
 
-from paperless.api_mappers import BaseMapper
-from paperless.client import PaperlessClient
 from paperless.json_encoders.events import EventEncoder
-from paperless.mixins import FromJSONMixin, PaginatedListMixin, ToJSONMixin
 from paperless.manager import BaseManager
+from paperless.mixins import FromJSONMixin, PaginatedListMixin, ToJSONMixin
 
 
 @attr.s(frozen=False)
@@ -34,6 +32,7 @@ class Event(FromJSONMixin, ToJSONMixin, PaginatedListMixin):
             else None
         )
 
+
 class EventManager(BaseManager):
     _base_object = Event
 
@@ -46,9 +45,13 @@ class EventManager(BaseManager):
         :return: [resource]
         """
         client = self._client
-        response = client.get_resource_list(self._base_object.construct_paginated_list_url(), params=params)
+        response = client.get_resource_list(
+            self._base_object.construct_paginated_list_url(), params=params
+        )
         resource_list = self._base_object.parse_list_response(response)
         while response['has_more_events'] is True:
-            response = client.get_resource_list(self._base_object.construct_paginated_list_url(), params=params)
+            response = client.get_resource_list(
+                self._base_object.construct_paginated_list_url(), params=params
+            )
             resource_list.extend(self._base_object.parse_list_response(response))
         return [self._base_object.from_json(resource) for resource in resource_list]

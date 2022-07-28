@@ -1,10 +1,8 @@
 """CUSTOM PROVIDER FUNCTIONS TO MAKE THE OBJECT FACTORIES FEEL MORE AUTHENTIC"""
-import random
 import uuid
 
 from factory.fuzzy import BaseFuzzyAttribute, FuzzyDate
 from factory.random import randgen
-from faker.providers import BaseProvider
 
 
 class FuzzyMaterialName(BaseFuzzyAttribute):

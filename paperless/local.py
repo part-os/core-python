@@ -21,13 +21,13 @@ class LocalStorage:
     def get_last_processed(self, resource_type):
         """Get the ID of the last processed resource of type
         ``resource_type``"""
-        raise NotImplemented
+        raise NotImplementedError
 
     def clear_cache(self, resource_type=None):
         """Clear local storage for resources of type ``resource_type``. If
         ``resource_type`` is None, then the entire local storage will be
         cleared."""
-        raise NotImplemented
+        raise NotImplementedError
 
     def process(self, resource_type, resource_id, success, dt=None):
         """
@@ -38,7 +38,7 @@ class LocalStorage:
         :param success: True or False
         :param dt: optional datetime; defaults to current time
         """
-        raise NotImplemented
+        raise NotImplementedError
 
     @staticmethod
     def get_instance(filename):

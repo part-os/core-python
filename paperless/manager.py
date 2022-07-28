@@ -1,6 +1,5 @@
 import types
 import urllib.parse as urlparse
-from lib2to3.pytree import Base
 from urllib.parse import parse_qs
 
 from paperless.client import PaperlessClient

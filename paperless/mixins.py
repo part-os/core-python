@@ -1,7 +1,6 @@
 import attr
 
 from .api_mappers import BaseMapper
-from .client import PaperlessClient
 from .json_encoders import BaseJSONEncoder
 
 
@@ -83,7 +82,6 @@ class ListMixin(object):
 
 
 class PaginatedListMixin(object):
-
     @classmethod
     def construct_paginated_list_url(cls):
         """
@@ -133,6 +131,7 @@ class CreateMixin(object):
     @classmethod
     def construct_post_url(cls):
         raise NotImplementedError
+
 
 class UpdateMixin(object):
     _primary_key = 'id'
