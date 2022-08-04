@@ -51,7 +51,11 @@ class QuoteCostingVariable:
 
 
 @attr.s(frozen=True)
-class QuoteOperation(BaseOperation):
+class QuoteCostingVariableMixin:
+    """
+    Mixin for quote objects that have a costing_variables field (e.g. operations, add-ons, pricing items)
+    """
+
     costing_variables: List[QuoteCostingVariable] = attr.ib(
         converter=convert_iterable(QuoteCostingVariable)
     )
@@ -67,6 +71,9 @@ class QuoteOperation(BaseOperation):
             .get(qty, None)
         )
 
+
+@attr.s(frozen=True)
+class QuoteOperation(BaseOperation, QuoteCostingVariableMixin):
     # TODO: deprecate this
     def get_variable(self, label):
         """Return the value of the variable with the specified label or None if
@@ -88,27 +95,47 @@ class AddOnQuantity:
 
 
 @attr.s(frozen=False)
-class AddOn:
+class AddOn(QuoteCostingVariableMixin):
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
     quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
-    costing_variables: List[QuoteCostingVariable] = attr.ib(
-        converter=convert_iterable(QuoteCostingVariable)
-    )
 
-    def get_variable_for_qty(
-        self, label: str, qty: int
-    ) -> Optional[CostingVariablePayload]:
-        """Return the value of the variable with the specified label for the given quantity or None if
-        that variable does not exist."""
-        return (
-            {cv.label: cv.quantities for cv in self.costing_variables}
-            .get(label, dict())
-            .get(qty, None)
-        )
+
+@attr.s(frozen=False)
+class PricingItemQuantity:
+    calculated_profit: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
+    calculated_percentage: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
+    manual_profit: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
+    manual_percentage: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+
+
+@attr.s(frozen=False)
+class PricingItem(QuoteCostingVariableMixin):
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    category: str = attr.ib(validator=attr.validators.instance_of(str))
+    calculation_type: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    pricing_item_quantities: List[PricingItemQuantity] = attr.ib(
+        converter=convert_iterable(PricingItemQuantity)
+    )
 
 
 @attr.s(frozen=False)
@@ -164,6 +191,7 @@ class Quantity:
 @attr.s(frozen=False)
 class QuoteComponent(BaseComponent):
     add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
+    pricing_items: List[PricingItem] = attr.ib(converter=convert_iterable(PricingItem))
     material_operations: List[QuoteOperation] = attr.ib(
         converter=convert_iterable(QuoteOperation)
     )

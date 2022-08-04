@@ -4041,6 +4041,21 @@
           "quantity": 5,
           "costing_variables": []
         }
+      ],
+      "pricing_items": [
+        {
+          "uuid": "431f9914-354a-4be3-b98e-0ee466029ba7",
+          "category": "general",
+          "calculation_type": "markup",
+          "name": "Overhead",
+          "notes": null,
+          "quantity": 5,
+          "calculated_profit": "0.000000",
+          "calculated_percentage": 0.0,
+          "manual_profit": null,
+          "manual_percentage": null,
+          "costing_variables": []
+        }
       ]
     },
     {
@@ -4946,6 +4961,68 @@
             }
           ]
         }
+      ],
+      "pricing_items": [
+        {
+          "uuid": "431f9914-354a-4be3-b98e-0ee466029ba7",
+          "category": "general",
+          "calculation_type": "markup",
+          "name": "Overhead",
+          "notes": null,
+          "quantity": 5,
+          "calculated_profit": "0.000000",
+          "calculated_percentage": 0.0,
+          "manual_profit": null,
+          "manual_percentage": null,
+          "costing_variables": [
+            {
+              "label": "Basic Num",
+              "variable_class": "basic",
+              "value_type": "number",
+              "value": 2,
+              "row": null,
+              "options": null,
+              "type": "number"
+            },
+            {
+              "label": "Basic Str",
+              "variable_class": "basic",
+              "value_type": "string",
+              "value": "a",
+              "row": null,
+              "options": null,
+              "type": "string"
+            },
+            {
+              "label": "Drop Down Num",
+              "variable_class": "drop_down",
+              "value_type": "string",
+              "value": "2",
+              "row": null,
+              "options": [
+                "1",
+                "2",
+                "3"
+              ],
+              "type": "string"
+            },
+            {
+              "label": "Material Selection",
+              "variable_class": "table",
+              "value_type": "string",
+              "value": "6061-T6",
+              "row": {
+                "length": 24,
+                "diameter": 1,
+                "material": "6061-T6",
+                "row_number": 0,
+                "requires_prep": false
+              },
+              "options": null,
+              "type": "table"
+            }
+          ]
+        }
       ]
     },
     {
@@ -5000,7 +5077,8 @@
       "unit_price": "65.00",
       "base_price": "65.00",
       "add_on_fees": null,
-      "ordered_add_ons": []
+      "ordered_add_ons": [],
+      "pricing_items": []
     }
   ],
   "payment_details": {

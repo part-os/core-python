@@ -20,7 +20,7 @@ class TestOrders(unittest.TestCase):
 
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o = Order.get(1)
+        o: Order = Order.get(1)
         self.assertEqual(o.number, 179)
         self.assertEqual('credit_card', o.payment_details.payment_type)
         self.assertEqual('pending', o.status)
@@ -113,6 +113,10 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(add_on.get_variable('Basic Num').value, 2)
         self.assertEqual(add_on.get_variable('Basic Num').row, None)
         self.assertEqual(add_on.get_variable('Basic Num').options, None)
+        pricing_item = standard_oi.pricing_items[0]
+        self.assertEqual(pricing_item.get_variable('Basic Num').value, 2)
+        self.assertEqual(pricing_item.get_variable('Basic Num').row, None)
+        self.assertEqual(pricing_item.get_variable('Basic Num').options, None)
         self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').value, 'a')
         self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').row, None)
         self.assertEqual(qty_specific_op.get_variable_obj('Basic Str').options, None)
@@ -143,6 +147,9 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(other_oi.base_price.dollars, Decimal('2757.80'))
         add_on = other_oi.ordered_add_ons[0]
         self.assertEqual(add_on.quantity, 5)
+        # test pricing items
+        pricing_item = other_oi.pricing_items[0]
+        self.assertEqual(pricing_item.quantity, 5)
         # test manual line item
         manual_oi = o.order_items[2]
         self.assertEqual('automatic', manual_oi.quote_item_type)

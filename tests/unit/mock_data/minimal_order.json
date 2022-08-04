@@ -3337,7 +3337,8 @@
           "price": "1000.00",
           "quantity": 5
         }
-      ]
+      ],
+      "pricing_items": []
     },
     {
       "id": 38498,
@@ -3960,7 +3961,8 @@
       "unit_price": "501.11",
       "base_price": "501.11",
       "add_on_fees": null,
-      "ordered_add_ons": []
+      "ordered_add_ons": [],
+      "pricing_items": []
     },
     {
       "id": 38499,
@@ -4013,7 +4015,8 @@
       "unit_price": "65.00",
       "base_price": "65.00",
       "add_on_fees": null,
-      "ordered_add_ons": []
+      "ordered_add_ons": [],
+      "pricing_items": []
     }
   ],
   "payment_details": {
