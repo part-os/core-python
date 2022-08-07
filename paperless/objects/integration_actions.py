@@ -251,9 +251,7 @@ class IntegrationActionDefinition(FromJSONMixin, ToJSONMixin):
 
 
 @attr.s(frozen=False)
-class ManagedIntegration(
-    FromJSONMixin, ToJSONMixin, ReadMixin, CreateMixin, ListMixin, UpdateMixin
-):
+class ManagedIntegration(FromJSONMixin, ToJSONMixin, ReadMixin, ListMixin, UpdateMixin):
     _primary_key = 'uuid'
     _json_encoder = ManagedIntegrationEncoder
     erp_name = attr.ib(validator=attr.validators.instance_of(str))
@@ -272,10 +270,6 @@ class ManagedIntegration(
 
     @classmethod
     def construct_list_url(cls):
-        return 'managed_integrations/public'
-
-    @classmethod
-    def construct_post_url(cls):
         return 'managed_integrations/public'
 
     @classmethod
