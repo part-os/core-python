@@ -117,7 +117,7 @@ class DeleteManagerMixin(object):
         Deletes the resource from Paperless Parts.
         """
         client = self._client
-        primary_key = getattr(self, obj._primary_key)
+        primary_key = getattr(obj, obj._primary_key)
         client.delete_resource(self._base_object.construct_delete_url(), primary_key)
 
 
@@ -127,7 +127,7 @@ class UpdateManagerMixin(object):
         Persists local changes of an existing Paperless Parts resource to Paperless.
         """
         client = self._client
-        primary_key = getattr(self, obj._primary_key)
+        primary_key = getattr(obj, obj._primary_key)
         data = obj.to_json()
         resp = client.update_resource(
             self._base_object.construct_patch_url(), primary_key, data=data
