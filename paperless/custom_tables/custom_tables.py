@@ -88,7 +88,7 @@ class CustomTable:
 
 
 class CustomTableManager(BaseManager):
-    _base_object: CustomTable
+    _base_object = CustomTable
 
     def delete(self, table_name):
         client = self._client
