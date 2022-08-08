@@ -182,4 +182,4 @@ class PurchasedComponentManager(
     _base_object = PurchasedComponent
 
     def search(self, search_term):
-        return self.list(params={'search': search_term})
+        return self.paginated_list(params={'search': search_term})
