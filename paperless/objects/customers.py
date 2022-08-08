@@ -15,6 +15,7 @@ from paperless.manager import (
     DeleteManagerMixin,
     GetManagerMixin,
     ListManagerMixin,
+    PaginatedListManagerMixin,
     UpdateManagerMixin,
 )
 from paperless.mixins import (
@@ -243,7 +244,7 @@ class AccountManager(
     GetManagerMixin,
     UpdateManagerMixin,
     CreateManagerMixin,
-    ListManagerMixin,
+    PaginatedListManagerMixin,
     BaseManager,
 ):
     _base_object = Account
@@ -372,7 +373,7 @@ class ContactManager(
     GetManagerMixin,
     UpdateManagerMixin,
     CreateManagerMixin,
-    ListManagerMixin,
+    PaginatedListManagerMixin,
     BaseManager,
 ):
     _base_object = Contact
