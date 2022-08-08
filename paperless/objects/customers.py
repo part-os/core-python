@@ -384,8 +384,11 @@ class ContactManager(
             params['account_id'] = account_id
         return self.paginated_list(params=params)
 
-    def search(self, search_term):
-        return self.paginated_list(params={'search': search_term})
+    def search(self, search_term, account_id=None):
+        params = {'search': search_term}
+        if account_id is not None:
+            params['account_id'] = account_id
+        return self.paginated_list(params=params)
 
 
 @attr.s(frozen=False)
