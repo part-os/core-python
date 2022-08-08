@@ -364,7 +364,7 @@ class Contact(
         return 'contacts/public'
 
     @classmethod
-    def construct_list_url(cls):
+    def construct_paginated_list_url(cls):
         return 'contacts/public'
 
 
