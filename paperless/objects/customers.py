@@ -250,10 +250,10 @@ class AccountManager(
     _base_object = Account
 
     def search(self, search_term):
-        return self.list(params={'search': search_term})
+        return self.paginated_list(params={'search': search_term})
 
     def filter(self, erp_code=None, name=None, null_erp_code=False):
-        return self.list(
+        return self.paginated_list(
             params={'erp_code': erp_code, 'name': name, 'null_erp_code': null_erp_code}
         )
 
@@ -382,10 +382,10 @@ class ContactManager(
         params = {}
         if account_id is not None:
             params['account_id'] = account_id
-        return self.list(params=params)
+        return self.paginated_list(params=params)
 
     def search(self, search_term):
-        return self.list(params={'search': search_term})
+        return self.paginated_list(params={'search': search_term})
 
 
 @attr.s(frozen=False)
