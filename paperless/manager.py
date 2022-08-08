@@ -14,7 +14,7 @@ class BaseManager(object):
         self._client = client
 
 
-class GetManagerMixin(BaseManager):
+class GetManagerMixin(object):
     def get(self, id):
         """
         Retrieves the resource specified by the id.

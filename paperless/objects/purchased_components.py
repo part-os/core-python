@@ -12,6 +12,7 @@ from paperless.manager import (
     DeleteManagerMixin,
     GetManagerMixin,
     ListManagerMixin,
+    PaginatedListManagerMixin,
     UpdateManagerMixin,
 )
 from paperless.mixins import (
@@ -158,7 +159,7 @@ class PurchasedComponent(
         return 'suppliers/public/purchased_components'
 
     @classmethod
-    def construct_list_url(cls):
+    def construct_paginated_list_url(cls):
         return 'suppliers/public/purchased_components'
 
     @classmethod
@@ -173,7 +174,7 @@ class PurchasedComponent(
 class PurchasedComponentManager(
     DeleteManagerMixin,
     GetManagerMixin,
-    ListManagerMixin,
+    PaginatedListManagerMixin,
     UpdateManagerMixin,
     CreateManagerMixin,
     BaseManager,
