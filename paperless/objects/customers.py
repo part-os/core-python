@@ -141,6 +141,9 @@ class Account(
     created = attr.ib(
         default=NO_UPDATE, validator=(attr.validators.instance_of((str, object)))
     )
+    credit_cards_enabled = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((bool, object))
+    )
     credit_line = attr.ib(
         default=NO_UPDATE,
         converter=optional_convert(Money),

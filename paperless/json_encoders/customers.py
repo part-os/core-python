@@ -11,6 +11,7 @@ class AccountEncoder(BaseJSONEncoder):
     def encode(cls, resource, json_dumps=True):
         data = {}
         field_keys = [
+            'credit_cards_enabled',
             'credit_line',
             'erp_code',
             'metadata',
