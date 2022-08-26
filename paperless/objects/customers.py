@@ -98,12 +98,7 @@ class BillingAddress(
         client = PaperlessClient.get_instance()
         data = self.to_json()
         resp = client.create_resource(self.construct_post_url(account_id), data=data)
-        resp_obj = self.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+        self.update_with_response_data(resp)
 
     @classmethod
     def list(cls, account_id=None, params=None):
@@ -475,12 +470,7 @@ class Facility(
         client = PaperlessClient.get_instance()
         data = self.to_json()
         resp = client.create_resource(self.construct_post_url(account_id), data=data)
-        resp_obj = self.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+        self.update_with_response_data(resp)
 
     @classmethod
     def list(cls, account_id=None, params=None):

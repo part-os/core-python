@@ -1,0 +1,24 @@
+[
+  {
+    "type": "export_quote",
+    "uuid": "d6b1962d-3a74-4d86-b2a2-e2ade3125b49",
+    "related_object_type": "quote",
+    "related_object": null,
+    "status": "queued",
+    "status_message": null,
+    "entity_id": "5000",
+    "updated": "2022-08-18T15:41:31.034983Z",
+    "created": "2022-08-18T15:41:31.034898Z"
+  },
+  {
+    "type": "export_quote",
+    "uuid": "10ebb594-dcb1-4347-b578-562547e5e39c",
+    "related_object_type": "quote",
+    "related_object": null,
+    "status": "queued",
+    "status_message": null,
+    "entity_id": "5001",
+    "updated": "2022-08-18T15:41:31.035224Z",
+    "created": "2022-08-18T15:41:31.035187Z"
+  }
+]

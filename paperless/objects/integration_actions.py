@@ -1,4 +1,3 @@
-import types
 import urllib.parse as urlparse
 from typing import Optional
 from urllib.parse import parse_qs
@@ -13,7 +12,8 @@ from paperless.json_encoders.integration_actions import (
     ManagedIntegrationEncoder,
 )
 from paperless.mixins import (
-    CreateMixin,
+    BatchCreateMixin,
+    BatchUpdateMixin,
     FromJSONMixin,
     ListMixin,
     ReadMixin,
@@ -25,8 +25,16 @@ from paperless.objects.utils import NO_UPDATE
 
 
 @attr.s(frozen=False)
-class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
+class IntegrationAction(
+    FromJSONMixin,
+    ToJSONMixin,
+    ReadMixin,
+    UpdateMixin,
+    BatchCreateMixin,
+    BatchUpdateMixin,
+):
     _primary_key = 'uuid'
+    _list_key = 'integration_actions'
     _list_mapper = BaseMapper
     _list_object_representation = None
     _json_encoder = IntegrationActionEncoder
@@ -78,6 +86,18 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
         )
 
     @classmethod
+    def construct_batch_post_url(cls, managed_integration_uuid):
+        return super().construct_batch_post_url(
+            managed_integration_uuid=managed_integration_uuid
+        )
+
+    @classmethod
+    def construct_batch_patch_url(cls, managed_integration_uuid):
+        return cls.construct_batch_post_url(
+            managed_integration_uuid=managed_integration_uuid
+        )
+
+    @classmethod
     def construct_list_url(cls, managed_integration_uuid):
         return 'managed_integrations/public/{}/integration_actions'.format(
             managed_integration_uuid
@@ -92,20 +112,19 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
         resp = client.create_resource(
             self.construct_post_url(managed_integration_uuid), data=data
         )
-        resp_obj = self.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType
-            and (
-                not isinstance(getattr(resp_obj.__class__, x), property)
-                if x in dir(resp_obj.__class__)
-                else True
-            ),
-            dir(resp_obj),
+        self.update_with_response_data(resp)
+
+    @classmethod
+    def create_many(cls, instances, managed_integration_uuid=None):
+        return super().create_many(
+            instances=instances, managed_integration_uuid=managed_integration_uuid
         )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+
+    @classmethod
+    def update_many(cls, instances, managed_integration_uuid=None):
+        return super().update_many(
+            instances=instances, managed_integration_uuid=managed_integration_uuid
+        )
 
     @classmethod
     def parse_list_response(cls, results):

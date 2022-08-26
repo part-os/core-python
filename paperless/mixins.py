@@ -1,3 +1,4 @@
+import json
 import types
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
@@ -35,6 +36,27 @@ class FromJSONMixin(object):
         except attr.exceptions.NotAnAttrsClassError:
             d = resource
         return cls(**cls.from_json_to_dict(d))
+
+    def update_with_response_data(self, response_data):
+        """
+        Update this instance with data from the given API response dictionary.
+        """
+        resp_obj = self.from_json(response_data)
+        # This filter is designed to remove methods, properties, and private data members and only let through the
+        # fields explicitly defined in the class definition
+        keys = filter(
+            lambda x: not x.startswith('__')
+            and not x.startswith('_')
+            and type(getattr(resp_obj, x)) != types.MethodType
+            and (
+                not isinstance(getattr(resp_obj.__class__, x), property)
+                if x in dir(resp_obj.__class__)
+                else True
+            ),
+            dir(resp_obj),
+        )
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))
 
 
 class ReadMixin(object):
@@ -210,15 +232,7 @@ class CreateMixin(object):
         client = PaperlessClient.get_instance()
         data = self.to_json()
         resp = client.create_resource(self.construct_post_url(), data=data)
-        resp_obj = self.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType,
-            dir(resp_obj),
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+        self.update_with_response_data(resp)
 
 
 class UpdateMixin(object):
@@ -238,22 +252,7 @@ class UpdateMixin(object):
         resp = client.update_resource(
             self.construct_patch_url(), primary_key, data=data
         )
-        resp_obj = self.from_json(resp)
-        # This filter is designed to remove methods, properties, and private data members and only let through the
-        # fields explicitly defined in the class definition
-        keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType
-            and (
-                not isinstance(getattr(resp_obj.__class__, x), property)
-                if x in dir(resp_obj.__class__)
-                else True
-            ),
-            dir(resp_obj),
-        )
-        for key in keys:
-            setattr(self, key, getattr(resp_obj, key))
+        self.update_with_response_data(resp)
 
 
 class DeleteMixin(object):
@@ -269,3 +268,65 @@ class DeleteMixin(object):
         client = PaperlessClient.get_instance()
         primary_key = getattr(self, self._primary_key)
         client.delete_resource(self.construct_delete_url(), primary_key)
+
+
+class BatchMixin(object):
+    _list_key = (
+        'override_this'
+    )  # The field in the request schema in which to supply the list of objects
+
+    @classmethod
+    def get_request_payload_from_instances(cls, instances):
+        """
+        Transform list of instances into JSON request.
+        """
+        instance_dict_list = []
+        for instance in instances:
+            instance_dict = cls._json_encoder.encode(instance, json_dumps=False)
+            instance_dict_list.append(instance_dict)
+        data_dict = {cls._list_key: instance_dict_list}
+        return json.dumps(data_dict)
+
+
+class BatchCreateMixin(BatchMixin):
+    @classmethod
+    def construct_batch_post_url(cls, **kwargs):
+        return f'{cls.construct_post_url(**kwargs)}/batch'
+
+    @classmethod
+    def create_many(cls, instances, **kwargs):
+        """
+        Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
+        """
+        client: PaperlessClient = PaperlessClient.get_instance()
+
+        data = cls.get_request_payload_from_instances(instances)
+
+        response = client.create_resource(
+            resource_url=cls.construct_batch_post_url(**kwargs), data=data
+        )
+
+        for response_dict, original_instance in zip(response, instances):
+            original_instance.update_with_response_data(response_dict)
+
+
+class BatchUpdateMixin(BatchMixin):
+    @classmethod
+    def construct_batch_patch_url(cls, **kwargs):
+        return f'{cls.construct_patch_url(**kwargs)}/batch'
+
+    @classmethod
+    def update_many(cls, instances, **kwargs):
+        """
+        Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
+        """
+        client: PaperlessClient = PaperlessClient.get_instance()
+
+        data = cls.get_request_payload_from_instances(instances)
+
+        response = client.patch_resource(
+            resource_url=cls.construct_batch_patch_url(**kwargs), data=data
+        )
+
+        for response_dict, original_instance in zip(response, instances):
+            original_instance.update_with_response_data(response_dict)

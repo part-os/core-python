@@ -34,6 +34,12 @@ class TestIntegrationAction(unittest.TestCase):
             self.mock_integration_action_definition_list = json.load(
                 list_action_definition_data
             )
+        with open(
+            'tests/unit/mock_data/integration_action_list_unwrapped.json'
+        ) as list_actions_data:
+            self.mock_integration_action_list_unwrapped_json = json.load(
+                list_actions_data
+            )
 
     def test_get_managed_integration(self):
         self.client.get_resource = MagicMock(
@@ -124,3 +130,27 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(definition_2.name, "Export Quote")
         self.assertEqual(definition_2.type, "export_quote")
         self.assertEqual(definition_2.related_object_type, None)
+
+    def test_batch_create_integration_actions(self):
+        self.client.create_resource = MagicMock(
+            return_value=self.mock_integration_action_list_unwrapped_json
+        )
+        integration_action_list = IntegrationAction.create_many(
+            [
+                IntegrationAction(type="test_type", entity_id="test_entity_id"),
+                IntegrationAction(type="test_type_2", entity_id="test_entity_id_2"),
+            ]
+        )
+        self.assertEqual(integration_action_list, None)
+
+    def test_batch_update_integration_actions(self):
+        self.client.patch_resource = MagicMock(
+            return_value=self.mock_integration_action_list_unwrapped_json
+        )
+        integration_action_list = IntegrationAction.update_many(
+            [
+                IntegrationAction(type="test_type", entity_id="test_entity_id"),
+                IntegrationAction(type="test_type_2", entity_id="test_entity_id_2"),
+            ]
+        )
+        self.assertEqual(integration_action_list, None)
