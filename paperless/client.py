@@ -195,6 +195,12 @@ class PaperlessClient(object):
         resp = self.request(url=resource_url, method=self.METHODS.PATCH, data=data)
         return resp.json()
 
+    def put_resource(self, resource_url, data):
+        """
+        """
+        resp = self.request(url=resource_url, method=self.METHODS.PUT, data=data)
+        return resp.json()
+
     def update_resource(self, resource_url, id, data, params=None):
         """
         """

@@ -86,6 +86,12 @@ class IntegrationAction(
         )
 
     @classmethod
+    def construct_batch_url(cls, managed_integration_uuid):
+        return 'managed_integrations/public/{}/integration_actions/batch'.format(
+            managed_integration_uuid
+        )
+
+    @classmethod
     def construct_batch_post_url(cls, managed_integration_uuid):
         return super().construct_batch_post_url(
             managed_integration_uuid=managed_integration_uuid

@@ -7,6 +7,7 @@ from paperless.json_encoders.purchased_components import (
     PurchasedComponentEncoder,
 )
 from paperless.mixins import (
+    BatchUpsertMixin,
     CreateMixin,
     DeleteMixin,
     FromJSONMixin,
@@ -86,6 +87,7 @@ class PurchasedComponent(
     CreateMixin,
     DeleteMixin,
     PaginatedListMixin,
+    BatchUpsertMixin,
 ):
     _json_encoder = PurchasedComponentEncoder
 
@@ -149,6 +151,10 @@ class PurchasedComponent(
     @classmethod
     def construct_post_url(cls):
         return 'suppliers/public/purchased_components'
+
+    @classmethod
+    def construct_batch_url(cls):
+        return f'suppliers/public/purchased_components/batch'
 
     @classmethod
     def search(cls, search_term):

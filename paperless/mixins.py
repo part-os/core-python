@@ -8,6 +8,7 @@ import attr
 from .api_mappers import BaseMapper
 from .client import PaperlessClient
 from .json_encoders import BaseJSONEncoder
+from .objects.common import BatchResponse, FailureResponse
 
 
 class FromJSONMixin(object):
@@ -276,6 +277,10 @@ class BatchMixin(object):
     )  # The field in the request schema in which to supply the list of objects
 
     @classmethod
+    def construct_batch_url(cls, **kwargs):
+        raise NotImplementedError
+
+    @classmethod
     def get_request_payload_from_instances(cls, instances):
         """
         Transform list of instances into JSON request.
@@ -290,10 +295,6 @@ class BatchMixin(object):
 
 class BatchCreateMixin(BatchMixin):
     @classmethod
-    def construct_batch_post_url(cls, **kwargs):
-        return f'{cls.construct_post_url(**kwargs)}/batch'
-
-    @classmethod
     def create_many(cls, instances, **kwargs):
         """
         Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
@@ -303,7 +304,7 @@ class BatchCreateMixin(BatchMixin):
         data = cls.get_request_payload_from_instances(instances)
 
         response = client.create_resource(
-            resource_url=cls.construct_batch_post_url(**kwargs), data=data
+            resource_url=cls.construct_batch_url(**kwargs), data=data
         )
 
         for response_dict, original_instance in zip(response, instances):
@@ -311,10 +312,6 @@ class BatchCreateMixin(BatchMixin):
 
 
 class BatchUpdateMixin(BatchMixin):
-    @classmethod
-    def construct_batch_patch_url(cls, **kwargs):
-        return f'{cls.construct_patch_url(**kwargs)}/batch'
-
     @classmethod
     def update_many(cls, instances, **kwargs):
         """
@@ -325,8 +322,36 @@ class BatchUpdateMixin(BatchMixin):
         data = cls.get_request_payload_from_instances(instances)
 
         response = client.patch_resource(
-            resource_url=cls.construct_batch_patch_url(**kwargs), data=data
+            resource_url=cls.construct_batch_url(**kwargs), data=data
         )
 
         for response_dict, original_instance in zip(response, instances):
             original_instance.update_with_response_data(response_dict)
+
+
+class BatchUpsertMixin(BatchMixin):
+    @classmethod
+    def upsert_many(cls, instances, **kwargs):
+        """
+        Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
+        """
+        client: PaperlessClient = PaperlessClient.get_instance()
+
+        data = cls.get_request_payload_from_instances(instances)
+
+        response = client.put_resource(
+            resource_url=cls.construct_batch_url(**kwargs), data=data
+        )
+
+        successes = []
+        for successful_object in response['successes']:
+            deserialized_obj = cls.from_json(successful_object)
+            successes.append(deserialized_obj)
+
+        failures = []
+        for failure in response['failures']:
+            deserialized_obj = cls.from_json(failure['data'])
+            failure_resp = FailureResponse(obj=deserialized_obj, error=failure['error'])
+            failures.append(failure_resp)
+
+        return BatchResponse[cls](successes=successes, failures=failures)

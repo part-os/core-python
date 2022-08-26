@@ -1,0 +1,29 @@
+{
+  "successes": [
+    {
+      "description": null,
+      "id": 23858269,
+      "internal_part_number": "sjidofjds",
+      "oem_part_number": "hisdof",
+      "piece_price": "1.0000",
+      "properties": []
+    }
+  ],
+  "failures": [
+    {
+      "data": {
+        "oem_part_number": "hi",
+        "internal_part_number": "sjidofjds",
+        "piece_price": "1.0000"
+      },
+      "error": {
+        "oem_part_number": [
+          {
+            "message": "This field is required.",
+            "code": "required"
+          }
+        ]
+      }
+    }
+  ]
+}
