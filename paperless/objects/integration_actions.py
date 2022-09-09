@@ -199,6 +199,27 @@ class IntegrationAction(
         )
 
     @classmethod
+    def get_first_record(
+        cls,
+        managed_integration_uuid: uuid,
+        status: Optional[str] = None,
+        type: Optional[str] = None,
+    ):
+
+        params = {'status': status, "type": type}
+
+        client = PaperlessClient.get_instance()
+        response = client.get_resource_list(
+            cls.construct_list_url(managed_integration_uuid=managed_integration_uuid),
+            params=params,
+        )
+        resource_list = cls.parse_list_response(response)
+        clean_list = [cls.from_json(resource) for resource in resource_list]
+        if len(clean_list) > 0:
+            return clean_list[0]
+        return None
+
+    @classmethod
     def construct_get_params(cls):
         """
         Optional method to define query params to send along GET request
