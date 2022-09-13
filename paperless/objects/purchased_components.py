@@ -90,6 +90,7 @@ class PurchasedComponent(
     BatchUpsertMixin,
 ):
     _json_encoder = PurchasedComponentEncoder
+    _list_key = 'purchased_components'
 
     oem_part_number: str = attr.ib(validator=attr.validators.instance_of(str))
     piece_price: str = attr.ib(validator=attr.validators.instance_of(str))
