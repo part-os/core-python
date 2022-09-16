@@ -139,7 +139,7 @@ class CustomTableManager(BaseManager):
         """
         Persists local changes of an existing Paperless Parts resource to Paperless.
         """
-        data = self.to_json({'config': obj.config, 'data': obj.data})
+        data = obj.to_json({'config': obj.config, 'data': obj.data})
         resp_json = self._client.update_resource(
             self.construct_patch_url(), table_name, data=data
         )
