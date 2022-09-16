@@ -141,6 +141,6 @@ class CustomTableManager(BaseManager):
         """
         data = obj.to_json({'config': obj.config, 'data': obj.data})
         resp_json = self._client.update_resource(
-            self.construct_patch_url(), table_name, data=data
+            self._base_object.construct_patch_url(), table_name, data=data
         )
         return resp_json
