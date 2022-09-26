@@ -7,7 +7,7 @@ import attr
 from paperless.api_mappers.quotes import QuoteDetailsMapper
 from paperless.client import PaperlessClient
 from paperless.json_encoders.quotes import QuoteEncoder
-from paperless.manager import BaseManager, GetManagerMixin
+from paperless.manager import BaseManager
 from paperless.mixins import (
     FromJSONMixin,
     ListMixin,
@@ -411,10 +411,24 @@ class Quote(
         return 'quotes/public'
 
 
-class QuoteManager(GetManagerMixin, BaseManager):
+class QuoteManager(BaseManager):
     _base_object = Quote
 
-    def set_status(self, obj, status):
+    def get(self, id, revision=None):
+        """
+        Retrieves the resource specified by the id.
+        :raise PaperlessNotFoundException: Raised when the requested id 404s aka is not found.
+        :param id: int
+        :return: resource
+        """
+        client = self._client
+        return self._base_object.from_json(
+            client.get_resource(
+                self._base_object.construct_get_url(), id, params={'revision': revision}
+            )
+        )
+
+    def set_status(self, obj: Quote, status: str):
         client = self._client
         params = None
         if obj.revision_number is not None:
@@ -432,7 +446,7 @@ class QuoteManager(GetManagerMixin, BaseManager):
         for key in keys:
             setattr(obj, key, getattr(resp_obj, key))
 
-    def update(self, obj):
+    def update(self, obj: Quote):
         """
         Persists local changes of an existing Paperless Parts resource to Paperless.
         """
