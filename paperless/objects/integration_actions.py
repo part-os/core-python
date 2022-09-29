@@ -124,9 +124,9 @@ class IntegrationActionManager(GetManagerMixin, UpdateManagerMixin, BaseManager)
         client = self._client
         data = obj.to_json()
         resp = client.create_resource(
-            self.construct_post_url(managed_integration_uuid), data=data
+            self._base_object.construct_post_url(managed_integration_uuid), data=data
         )
-        resp_obj = self.from_json(resp)
+        resp_obj = self._base_object.from_json(resp)
         keys = filter(
             lambda x: not x.startswith('__')
             and not x.startswith('_')
