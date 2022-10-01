@@ -36,7 +36,10 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
     _list_object_representation = None
     _json_encoder = IntegrationActionEncoder
     type = attr.ib(validator=attr.validators.instance_of(str))
-    entity_id = attr.ib(validator=attr.validators.instance_of(str))
+    entity_id = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
     created = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
