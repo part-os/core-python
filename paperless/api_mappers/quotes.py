@@ -75,6 +75,23 @@ class AddOnMapper(BaseMapper):
         return mapped_result
 
 
+class PricingItemMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        costing_variables = map(
+            QuoteCostingVariablesMapper.map, resource['costing_variables']
+        )
+        field_keys = ['name', 'notes', 'category', 'calculation_type']
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        list_keys = ['pricing_item_quantities']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
+        mapped_result['costing_variables'] = costing_variables
+        return mapped_result
+
+
 class QuoteItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -171,6 +188,9 @@ class QuoteComponentMapper(BaseMapper):
             QuoteOperationsMapper.map, resource['shop_operations']
         )
         mapped_result['add_ons'] = map(AddOnMapper.map, resource['add_ons'])
+        mapped_result['pricing_items'] = map(
+            PricingItemMapper.map, resource['pricing_items']
+        )
         field_keys = [
             'id',
             'innate_quantity',

@@ -114,12 +114,7 @@ class BillingAddressManager(
         resp = client.create_resource(
             self._base_object.construct_post_url(account_id), data=data
         )
-        resp_obj = self._base_object.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
-        )
-        for key in keys:
-            setattr(obj, key, getattr(resp_obj, key))
+        obj.update_with_response_data(resp)
 
     def list(self, account_id, params=None):
         """
@@ -157,6 +152,9 @@ class Account(
     )
     created = attr.ib(
         default=NO_UPDATE, validator=(attr.validators.instance_of((str, object)))
+    )
+    credit_cards_enabled = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((bool, object))
     )
     credit_line = attr.ib(
         default=NO_UPDATE,
@@ -464,12 +462,7 @@ class FacilityManager(
         resp = client.create_resource(
             self._base_object.construct_post_url(account_id), data=data
         )
-        resp_obj = self._base_object.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__') and not x.startswith('_'), dir(resp_obj)
-        )
-        for key in keys:
-            setattr(obj, key, getattr(resp_obj, key))
+        obj.update_with_response_data(resp)
 
     def list(self, account_id, params=None):
         """

@@ -1,7 +1,8 @@
 import decimal
 import math
+from dataclasses import dataclass
 from decimal import Decimal, DecimalException
-from typing import Optional
+from typing import Generic, List, Optional, TypeVar
 
 import attr
 
@@ -74,3 +75,18 @@ class Salesperson:
         default=None,
         validator=attr.validators.optional(attr.validators.instance_of(str)),
     )
+
+
+T = TypeVar('T')
+
+
+@dataclass
+class FailureResponse(Generic[T]):
+    obj: T
+    error: object
+
+
+@dataclass
+class BatchResponse(Generic[T]):
+    successes: List[T]
+    failures: List[FailureResponse[T]]

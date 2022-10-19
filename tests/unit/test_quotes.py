@@ -73,6 +73,17 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(add_on.is_required, True)
         add_on_quantity = add_on.quantities[0]
         self.assertEqual(add_on_quantity.manual_price.dollars, Decimal('1000'))
+        # test pricing items
+        pricing_item = root_component.pricing_items[0]
+        self.assertEqual(pricing_item.category, "general")
+        self.assertEqual(pricing_item.calculation_type, "markup")
+        self.assertEqual(pricing_item.name, "Markup")
+        self.assertEqual(pricing_item.notes, "test notes")
+        pricing_item_quantity = pricing_item.pricing_item_quantities[0]
+        self.assertEqual(pricing_item_quantity.manual_profit, None)
+        self.assertEqual(pricing_item_quantity.calculated_profit.dollars, Decimal('0'))
+        self.assertEqual(pricing_item_quantity.manual_percentage, None)
+        self.assertEqual(pricing_item_quantity.calculated_percentage, Decimal('0'))
         # test quantities
         quantity = root_component.quantities[0]
         self.assertEqual(quantity.quantity, 1)

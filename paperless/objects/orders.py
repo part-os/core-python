@@ -44,15 +44,27 @@ class OrderCostingVariable:
     value_type: str = attr.ib(attr.validators.instance_of(str))
 
 
-@attr.s(frozen=False)
-class OrderOperation(BaseOperation):
+@attr.s(frozen=True)
+class OrderCostingVariableMixin:
+    """
+    Mixin for order objects that have a costing_variables field (e.g. operations, add-ons, pricing items)
+    """
+
     costing_variables: List[OrderCostingVariable] = attr.ib(
         converter=convert_iterable(OrderCostingVariable)
     )
 
+    def get_variable(self, label) -> Optional[OrderCostingVariable]:
+        """Return the value of the variable object with the specified label or None if that variable does not exist."""
+        return {cv.label: cv for cv in self.costing_variables}.get(label, None)
+
+
+@attr.s(frozen=False)
+class OrderOperation(BaseOperation, OrderCostingVariableMixin):
     def get_variable(self, label) -> Optional[Union[float, int, str, bool]]:
         """Return the value of the variable with the specified label or None if that variable does not exist."""
-        return {cv.label: cv.value for cv in self.costing_variables}.get(label, None)
+        variable = super().get_variable(label)
+        return variable.value if variable else None
 
     def get_variable_obj(self, label) -> Optional[OrderCostingVariable]:
         """Return the value of the variable object with the specified label or None if that variable does not exist."""
@@ -72,7 +84,7 @@ class OrderComponent(BaseComponent):
 
 
 @attr.s(frozen=False)
-class OrderedAddOn:
+class OrderedAddOn(OrderCostingVariableMixin):
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(
@@ -82,13 +94,33 @@ class OrderedAddOn:
         converter=Money, validator=attr.validators.instance_of(Money)
     )
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
-    costing_variables: List[OrderCostingVariable] = attr.ib(
-        converter=convert_iterable(OrderCostingVariable)
-    )
 
-    def get_variable(self, label) -> Optional[OrderCostingVariable]:
-        """Return the value of the variable object with the specified label or None if that variable does not exist."""
-        return {cv.label: cv for cv in self.costing_variables}.get(label, None)
+
+@attr.s(frozen=False)
+class OrderedPricingItem(OrderCostingVariableMixin):
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    category: str = attr.ib(validator=attr.validators.instance_of(str))
+    calculation_type: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    calculated_profit: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
+    calculated_percentage: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
+    manual_profit: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
+    manual_percentage: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
 
 
 @attr.s(frozen=False)
@@ -148,6 +180,9 @@ class OrderItem(AssemblyMixin):
     )
     ordered_add_ons: List[OrderedAddOn] = attr.ib(
         converter=convert_iterable(OrderedAddOn)
+    )
+    pricing_items: List[OrderedPricingItem] = attr.ib(
+        converter=convert_iterable(OrderedPricingItem)
     )
 
     @property

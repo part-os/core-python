@@ -4,6 +4,8 @@ from urllib.parse import parse_qs
 
 from paperless.client import PaperlessClient
 
+from .objects.common import BatchResponse, FailureResponse
+
 
 class BaseManager(object):
 
@@ -119,6 +121,67 @@ class DeleteManagerMixin(object):
         client = self._client
         primary_key = getattr(obj, obj._primary_key)
         client.delete_resource(self._base_object.construct_delete_url(), primary_key)
+
+
+class BatchCreateManagerMixin(object):
+    def create_many(self, instances, **kwargs):
+        """
+        Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
+        """
+        client: PaperlessClient = self._client
+
+        data = self._base_object.get_request_payload_from_instances(instances)
+
+        response = client.create_resource(
+            resource_url=self._base_object.construct_batch_url(**kwargs), data=data
+        )
+
+        for response_dict, original_instance in zip(response, instances):
+            original_instance.update_with_response_data(response_dict)
+
+
+class BatchUpdateManagerMixin(object):
+    def update_many(self, instances, **kwargs):
+        """
+        Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
+        """
+        client: PaperlessClient = self._client
+
+        data = self._base_object.get_request_payload_from_instances(instances)
+
+        response = client.patch_resource(
+            resource_url=self._base_object.construct_batch_url(**kwargs), data=data
+        )
+
+        for response_dict, original_instance in zip(response, instances):
+            original_instance.update_with_response_data(response_dict)
+
+
+class BatchUpsertManagerMixin(object):
+    def upsert_many(self, instances, **kwargs):
+        """
+        Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
+        """
+        client: PaperlessClient = self._client
+
+        data = self._base_object.get_request_payload_from_instances(instances)
+
+        response = client.put_resource(
+            resource_url=self._base_object.construct_batch_url(**kwargs), data=data
+        )
+
+        successes = []
+        for successful_object in response['successes']:
+            deserialized_obj = self._base_object.from_json(successful_object)
+            successes.append(deserialized_obj)
+
+        failures = []
+        for failure in response['failures']:
+            deserialized_obj = self._base_object.from_json(failure['data'])
+            failure_resp = FailureResponse(obj=deserialized_obj, error=failure['error'])
+            failures.append(failure_resp)
+
+        return BatchResponse[self._base_object](successes=successes, failures=failures)
 
 
 class UpdateManagerMixin(object):

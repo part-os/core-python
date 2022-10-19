@@ -1,5 +1,5 @@
-import types
 import urllib.parse as urlparse
+import uuid
 from typing import Optional
 from urllib.parse import parse_qs
 
@@ -13,25 +13,29 @@ from paperless.json_encoders.integration_actions import (
 )
 from paperless.manager import (
     BaseManager,
+    BatchCreateManagerMixin,
+    BatchUpdateManagerMixin,
     CreateManagerMixin,
     GetManagerMixin,
     ListManagerMixin,
     UpdateManagerMixin,
 )
 from paperless.mixins import (
-    CreateMixin,
+    BatchMixin,
     FromJSONMixin,
     ListMixin,
     ReadMixin,
     ToJSONMixin,
     UpdateMixin,
 )
+from paperless.objects.events import Event
 from paperless.objects.utils import NO_UPDATE
 
 
 @attr.s(frozen=False)
-class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
+class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin, BatchMixin):
     _primary_key = 'uuid'
+    _list_key = 'integration_actions'
     _list_mapper = BaseMapper
     _list_object_representation = None
     _json_encoder = IntegrationActionEncoder
@@ -94,6 +98,24 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
         )
 
     @classmethod
+    def construct_batch_url(cls, managed_integration_uuid):
+        return 'managed_integrations/public/{}/integration_actions/batch'.format(
+            managed_integration_uuid
+        )
+
+    @classmethod
+    def construct_batch_post_url(cls, managed_integration_uuid):
+        return super().construct_batch_post_url(
+            managed_integration_uuid=managed_integration_uuid
+        )
+
+    @classmethod
+    def construct_batch_patch_url(cls, managed_integration_uuid):
+        return cls.construct_batch_post_url(
+            managed_integration_uuid=managed_integration_uuid
+        )
+
+    @classmethod
     def construct_list_url(cls, managed_integration_uuid):
         return 'managed_integrations/public/{}/integration_actions'.format(
             managed_integration_uuid
@@ -117,7 +139,13 @@ class IntegrationAction(FromJSONMixin, ToJSONMixin, ReadMixin, UpdateMixin):
         return None
 
 
-class IntegrationActionManager(GetManagerMixin, UpdateManagerMixin, BaseManager):
+class IntegrationActionManager(
+    GetManagerMixin,
+    UpdateManagerMixin,
+    BatchCreateManagerMixin,
+    BatchUpdateManagerMixin,
+    BaseManager,
+):
     _base_object = IntegrationAction
 
     def create(self, obj, managed_integration_uuid):
@@ -129,20 +157,17 @@ class IntegrationActionManager(GetManagerMixin, UpdateManagerMixin, BaseManager)
         resp = client.create_resource(
             self._base_object.construct_post_url(managed_integration_uuid), data=data
         )
-        resp_obj = self._base_object.from_json(resp)
-        keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
-            and type(getattr(resp_obj, x)) != types.MethodType
-            and (
-                not isinstance(getattr(resp_obj.__class__, x), property)
-                if x in dir(resp_obj.__class__)
-                else True
-            ),
-            dir(resp_obj),
+        obj.update_with_response_data(resp)
+
+    def create_many(self, instances, managed_integration_uuid=None):
+        return super().create_many(
+            instances=instances, managed_integration_uuid=managed_integration_uuid
         )
-        for key in keys:
-            setattr(obj, key, getattr(resp_obj, key))
+
+    def update_many(self, instances, managed_integration_uuid=None):
+        return super().update_many(
+            instances=instances, managed_integration_uuid=managed_integration_uuid
+        )
 
     def list(self, managed_integration_uuid, params=None, pages=None):
         """
@@ -184,6 +209,39 @@ class IntegrationActionManager(GetManagerMixin, UpdateManagerMixin, BaseManager)
             managed_integration_uuid=managed_integration_uuid,
             params={'status': status, "type": type},
         )
+
+    def get_first_record(
+        self,
+        managed_integration_uuid: uuid.uuid4,
+        status: Optional[str] = None,
+        type: Optional[str] = None,
+    ):
+
+        params = {'status': status, "type": type}
+
+        client = self._client
+        response = client.get_resource_list(
+            self._base_object.construct_list_url(
+                managed_integration_uuid=managed_integration_uuid
+            ),
+            params=params,
+        )
+        resource_list = self._base_object.parse_list_response(response)
+        clean_list = [
+            self._base_object.from_json(resource) for resource in resource_list
+        ]
+        if len(clean_list) > 0:
+            return clean_list[0]
+        return None
+
+    @classmethod
+    def construct_get_params(cls):
+        """
+        Optional method to define query params to send along GET request
+
+        :return None or params dict
+        """
+        return None
 
 
 @attr.s(frozen=False)
@@ -253,9 +311,7 @@ class IntegrationActionDefinitionManager(BaseManager):
 
 
 @attr.s(frozen=False)
-class ManagedIntegration(
-    FromJSONMixin, ToJSONMixin, ReadMixin, CreateMixin, ListMixin, UpdateMixin
-):
+class ManagedIntegration(FromJSONMixin, ToJSONMixin, ReadMixin, ListMixin, UpdateMixin):
     _primary_key = 'uuid'
     _json_encoder = ManagedIntegrationEncoder
     erp_name = attr.ib(validator=attr.validators.instance_of(str))
@@ -277,16 +333,16 @@ class ManagedIntegration(
         return 'managed_integrations/public'
 
     @classmethod
-    def construct_post_url(cls):
-        return 'managed_integrations/public'
-
-    @classmethod
     def construct_get_url(cls):
         return f'managed_integrations/public'
 
     @classmethod
     def construct_patch_url(cls):
         return f'managed_integrations/public'
+
+    @classmethod
+    def construct_event_list_url(cls, uuid):
+        return 'managed_integrations/public/{}/poll'.format(uuid)
 
 
 class ManagedIntegrationManager(
@@ -297,3 +353,22 @@ class ManagedIntegrationManager(
     BaseManager,
 ):
     _base_object = ManagedIntegration
+
+    def event_list(self, uuid, params=None, pages=None):
+        """
+        Returns a list of (1) either the minimal representation of this resource as defined by _list_object_representation or (2) a list of this resource.
+        :param params: dict of params for your list request
+        :param pages: iterable of ints describing the indices of the pages you want (starting from 1)
+        :return: [resource]
+        """
+        client = self._client
+        response = client.get_resource_list(
+            self._base_object.construct_event_list_url(uuid), params=params
+        )
+        resource_list = response['results']
+        while response['has_more_events'] is True:
+            response = client.get_resource_list(
+                self._base_object.construct_event_list_url(uuid), params=params
+            )
+            resource_list.extend(response['results'])
+        return [Event.from_json(resource) for resource in resource_list]

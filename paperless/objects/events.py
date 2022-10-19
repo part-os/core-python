@@ -14,15 +14,23 @@ class Event(FromJSONMixin, ToJSONMixin, PaginatedListMixin):
     created = attr.ib(validator=attr.validators.instance_of(str))
     data = attr.ib(validator=attr.validators.instance_of(dict))
     type = attr.ib(validator=attr.validators.instance_of(str))
-    related_object_type = attr.ib(validator=attr.validators.instance_of(str))
     uuid = attr.ib(validator=attr.validators.instance_of(str))
+    related_object_type: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)),
+        default=None,
+    )
     related_object: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str))
+        validator=attr.validators.optional(attr.validators.instance_of(str)),
+        default=None,
     )
 
     @classmethod
     def construct_paginated_list_url(cls):
         return 'events/public/poll'
+
+    @classmethod
+    def construct_list_url(cls):
+        return 'events/public'
 
     @property
     def created_dt(self):

@@ -105,6 +105,7 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(ba.postal_code, "02108")
         self.assertEqual(ba.state, "MA")
         self.assertEqual(a.created, "2021-01-11T23:57:59+00:00")
+        self.assertEqual(a.credit_cards_enabled, True)
         self.assertEqual(a.credit_line, Money(raw_amount=30000))
         self.assertEqual(a.erp_code, "ARUE")
         self.assertEqual(a.id, 1)
@@ -130,6 +131,7 @@ class TestAccount(unittest.TestCase):
         self.client.get_resource = MagicMock(return_value=self.mock_account_json)
         a = Account.get(1)
         expected_account_json = {
+            "credit_cards_enabled": True,
             "credit_line": 30000.0,
             "erp_code": "ARUE",
             "notes": None,

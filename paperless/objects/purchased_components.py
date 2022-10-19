@@ -8,6 +8,7 @@ from paperless.json_encoders.purchased_components import (
 )
 from paperless.manager import (
     BaseManager,
+    BatchUpsertManagerMixin,
     CreateManagerMixin,
     DeleteManagerMixin,
     GetManagerMixin,
@@ -16,6 +17,7 @@ from paperless.manager import (
     UpdateManagerMixin,
 )
 from paperless.mixins import (
+    BatchMixin,
     CreateMixin,
     DeleteMixin,
     FromJSONMixin,
@@ -106,8 +108,10 @@ class PurchasedComponent(
     CreateMixin,
     DeleteMixin,
     PaginatedListMixin,
+    BatchMixin,
 ):
     _json_encoder = PurchasedComponentEncoder
+    _list_key = 'purchased_components'
 
     oem_part_number: str = attr.ib(validator=attr.validators.instance_of(str))
     piece_price: str = attr.ib(validator=attr.validators.instance_of(str))
@@ -170,6 +174,10 @@ class PurchasedComponent(
     def construct_post_url(cls):
         return 'suppliers/public/purchased_components'
 
+    @classmethod
+    def construct_batch_url(cls):
+        return f'suppliers/public/purchased_components/batch'
+
 
 class PurchasedComponentManager(
     DeleteManagerMixin,
@@ -177,6 +185,7 @@ class PurchasedComponentManager(
     PaginatedListManagerMixin,
     UpdateManagerMixin,
     CreateManagerMixin,
+    BatchUpsertManagerMixin,
     BaseManager,
 ):
     _base_object = PurchasedComponent

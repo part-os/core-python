@@ -1,3 +1,6 @@
+import json
+import types
+
 import attr
 
 from .api_mappers import BaseMapper
@@ -30,6 +33,27 @@ class FromJSONMixin(object):
         except attr.exceptions.NotAnAttrsClassError:
             d = resource
         return cls(**cls.from_json_to_dict(d))
+
+    def update_with_response_data(self, response_data):
+        """
+        Update this instance with data from the given API response dictionary.
+        """
+        resp_obj = self.from_json(response_data)
+        # This filter is designed to remove methods, properties, and private data members and only let through the
+        # fields explicitly defined in the class definition
+        keys = filter(
+            lambda x: not x.startswith('__')
+            and not x.startswith('_')
+            and type(getattr(resp_obj, x)) != types.MethodType
+            and (
+                not isinstance(getattr(resp_obj.__class__, x), property)
+                if x in dir(resp_obj.__class__)
+                else True
+            ),
+            dir(resp_obj),
+        )
+        for key in keys:
+            setattr(self, key, getattr(resp_obj, key))
 
 
 class ReadMixin(object):
@@ -126,6 +150,18 @@ class ToJSONMixin(object):
     def to_json(self):
         return self._json_encoder.encode(self)
 
+    @classmethod
+    def get_request_payload_from_instances(self, instances):
+        """
+        Transform list of instances into JSON request.
+        """
+        instance_dict_list = []
+        for instance in instances:
+            instance_dict = self._json_encoder.encode(instance, json_dumps=False)
+            instance_dict_list.append(instance_dict)
+        data_dict = {self._list_key: instance_dict_list}
+        return json.dumps(data_dict)
+
 
 class CreateMixin(object):
     @classmethod
@@ -145,4 +181,14 @@ class DeleteMixin(object):
     _primary_key = 'id'
 
     def construct_delete_url(cls):
+        raise NotImplementedError
+
+
+class BatchMixin(object):
+    _list_key = (
+        'override_this'
+    )  # The field in the request schema in which to supply the list of objects
+
+    @classmethod
+    def construct_batch_url(cls, **kwargs):
         raise NotImplementedError

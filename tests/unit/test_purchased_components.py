@@ -16,11 +16,26 @@ class TestPurchasedComponents(unittest.TestCase):
         with open('tests/unit/mock_data/purchased_components.json') as data_file:
             self.mock_purchased_components_json = json.load(data_file)
             self.mock_pc1 = self.mock_purchased_components_json[0]
+        with open(
+            'tests/unit/mock_data/purchased_components_batch_response.json'
+        ) as data_file:
+            self.mock_batch_upsert_pc = json.load(data_file)
 
     def test_get_column(self):
         self.client.get_resource = MagicMock(return_value=self.mock_pc1)
         component = PurchasedComponent.get(1)
         self.assertEqual(component.id, self.mock_pc1['id'])
+
+    def test_batch_upsert_purchased_components(self):
+        self.client.put_resource = MagicMock(return_value=self.mock_batch_upsert_pc)
+        response = PurchasedComponent.upsert_many(
+            [
+                PurchasedComponent(oem_part_number="test", piece_price="3"),
+                PurchasedComponent(oem_part_number="test", piece_price="4"),
+            ]
+        )
+        self.assertEqual(len(response.successes), 1)
+        self.assertEqual(len(response.failures), 1)
 
 
 class TestPurchasedComponentColumns(unittest.TestCase):

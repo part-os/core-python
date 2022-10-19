@@ -375,6 +375,64 @@
             ]
           }
         ],
+        "pricing_items": [
+          {
+            "uuid": "6d827067-6b06-474d-8572-1101ebed9cbb",
+            "category": "general",
+            "calculation_type": "markup",
+            "name": "Markup",
+            "notes": "test notes",
+            "costing_variables": [],
+            "pricing_item_quantities": [
+              {
+                "uuid": "e95804d1-fe4e-4617-bded-ce9dba63e74a",
+                "quantity": 2,
+                "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              },
+              {
+                "uuid": "afe16c12-c2fa-4f5a-8c29-7de82aba3330",
+                "quantity": 1,
+                "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              }
+            ]
+          },
+          {
+            "uuid": "431f9914-354a-4be3-b98e-0ee466029ba7",
+            "category": "general",
+            "calculation_type": "markup",
+            "name": "Overhead",
+            "notes": null,
+            "costing_variables": [],
+            "pricing_item_quantities": [
+              {
+                "uuid": "acda455a-8bb2-4407-a421-cda2a244325e",
+                "quantity": 2,
+                "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              },
+              {
+                "uuid": "540206d3-acb6-4300-aa39-23bd1dd089ea",
+                "quantity": 1,
+                "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              }
+            ]
+          }
+        ],
         "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
       "id": 105565,
@@ -671,6 +729,64 @@
                   "manual_price": "500.00",
                   "price": null,
                   "quantity": 25
+                }
+              ]
+            }
+          ],
+          "pricing_items": [
+            {
+              "uuid": "6d827067-6b06-474d-8572-1101ebed9cbb",
+              "category": "general",
+              "calculation_type": "markup",
+              "name": "Markup",
+              "notes": "test notes",
+              "costing_variables": [],
+              "pricing_item_quantities": [
+                {
+                  "uuid": "e95804d1-fe4e-4617-bded-ce9dba63e74a",
+                  "quantity": 2,
+                  "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
+                },
+                {
+                  "uuid": "afe16c12-c2fa-4f5a-8c29-7de82aba3330",
+                  "quantity": 1,
+                  "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
+                }
+              ]
+            },
+            {
+              "uuid": "431f9914-354a-4be3-b98e-0ee466029ba7",
+              "category": "general",
+              "calculation_type": "markup",
+              "name": "Overhead",
+              "notes": null,
+              "costing_variables": [],
+              "pricing_item_quantities": [
+                {
+                  "uuid": "acda455a-8bb2-4407-a421-cda2a244325e",
+                  "quantity": 2,
+                  "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
+                },
+                {
+                  "uuid": "540206d3-acb6-4300-aa39-23bd1dd089ea",
+                  "quantity": 1,
+                  "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
                 }
               ]
             }
@@ -1897,6 +2013,7 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/77f30d3ecaaa2bbe019a7cb2f5c74e366f5e3c04.png",
           "type": "manufactured",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139666,
@@ -3119,6 +3236,7 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/417ef6a39c057a604d6fb9886efd2c9c17de0cd4.png",
           "type": "manufactured",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139670,
@@ -4341,6 +4459,7 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/ef437bcd0ef987394f9a0c8d870d6a9f37f8dc09.png",
           "type": "manufactured",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139674,
@@ -4525,6 +4644,7 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/82a5705b8589591bec042c06e7627cb82f2393c2.png",
           "type": "purchased",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139678,
@@ -5747,6 +5867,7 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/71b063fa0fe571bb49453fb2fe8ebebab51b6a53.png",
           "type": "manufactured",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139682,
@@ -6969,6 +7090,7 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/c2fd9190aefe681ffc3585ee41edf202095f32e7.png",
           "type": "manufactured",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139686,
@@ -7087,6 +7209,7 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/147a8653adafea1b30abf4fc7462e0395a1bd171.png",
           "type": "assembled",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139690,
@@ -8755,6 +8878,64 @@
             ]
           }
         ],
+        "pricing_items": [
+          {
+            "uuid": "6d827067-6b06-474d-8572-1101ebed9cbb",
+            "category": "general",
+            "calculation_type": "markup",
+            "name": "Markup",
+            "notes": "test notes",
+            "costing_variables": [],
+            "pricing_item_quantities": [
+              {
+                "uuid": "e95804d1-fe4e-4617-bded-ce9dba63e74a",
+                "quantity": 2,
+                "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              },
+              {
+                "uuid": "afe16c12-c2fa-4f5a-8c29-7de82aba3330",
+                "quantity": 1,
+                "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              }
+            ]
+          },
+          {
+            "uuid": "431f9914-354a-4be3-b98e-0ee466029ba7",
+            "category": "general",
+            "calculation_type": "markup",
+            "name": "Overhead",
+            "notes": null,
+            "costing_variables": [],
+            "pricing_item_quantities": [
+              {
+                "uuid": "acda455a-8bb2-4407-a421-cda2a244325e",
+                "quantity": 2,
+                "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              },
+              {
+                "uuid": "540206d3-acb6-4300-aa39-23bd1dd089ea",
+                "quantity": 1,
+                "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                "calculated_profit": "0.000000",
+                "calculated_percentage": 0.0,
+                "manual_profit": null,
+                "manual_percentage": null
+              }
+            ]
+          }
+        ],
         "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
       "id": 105566,
@@ -10314,6 +10495,64 @@
               ]
             }
           ],
+          "pricing_items": [
+            {
+              "uuid": "6d827067-6b06-474d-8572-1101ebed9cbb",
+              "category": "general",
+              "calculation_type": "markup",
+              "name": "Markup",
+              "notes": "test notes",
+              "costing_variables": [],
+              "pricing_item_quantities": [
+                {
+                  "uuid": "e95804d1-fe4e-4617-bded-ce9dba63e74a",
+                  "quantity": 2,
+                  "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
+                },
+                {
+                  "uuid": "afe16c12-c2fa-4f5a-8c29-7de82aba3330",
+                  "quantity": 1,
+                  "profit_item": "6d827067-6b06-474d-8572-1101ebed9cbb",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
+                }
+              ]
+            },
+            {
+              "uuid": "431f9914-354a-4be3-b98e-0ee466029ba7",
+              "category": "general",
+              "calculation_type": "markup",
+              "name": "Overhead",
+              "notes": null,
+              "costing_variables": [],
+              "pricing_item_quantities": [
+                {
+                  "uuid": "acda455a-8bb2-4407-a421-cda2a244325e",
+                  "quantity": 2,
+                  "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
+                },
+                {
+                  "uuid": "540206d3-acb6-4300-aa39-23bd1dd089ea",
+                  "quantity": 1,
+                  "profit_item": "431f9914-354a-4be3-b98e-0ee466029ba7",
+                  "calculated_profit": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_profit": null,
+                  "manual_percentage": null
+                }
+              ]
+            }
+          ],
           "quantities": [
             {
               "id": 139694,
@@ -10447,6 +10686,7 @@
         "finishes": [],
         "material_notes": null,
         "add_ons": [],
+        "pricing_items": [],
         "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
       "id": 105567,
@@ -10479,6 +10719,7 @@
           "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
+          "pricing_items": [],
           "quantities": [
             {
               "id": 139698,
