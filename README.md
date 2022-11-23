@@ -44,7 +44,7 @@ header of all requests using the key as follows:
 
 `Authorization`: `API-Token <api-token>`
 
-The SDK handles this for you when you this access token when instantiating your
+The SDK handles this for you when you include this access token when instantiating your
 `PaperlessClient` object, as shown in the example below. We recommend
 structuring your application to read this from a configuration file. Your access
 token should never be committed to your version control system (like git).
