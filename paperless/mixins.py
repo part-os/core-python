@@ -1,6 +1,7 @@
 import json
 import types
 import urllib.parse as urlparse
+from itertools import islice
 from urllib.parse import parse_qs
 
 import attr
@@ -21,7 +22,7 @@ class FromJSONMixin(object):
 
     @classmethod
     def from_json_to_dict(cls, resource):
-        if hasattr(cls, '_mapper'):
+        if hasattr(cls, "_mapper"):
             return cls._mapper.map(resource)
         else:
             return resource
@@ -46,8 +47,8 @@ class FromJSONMixin(object):
         # This filter is designed to remove methods, properties, and private data members and only let through the
         # fields explicitly defined in the class definition
         keys = filter(
-            lambda x: not x.startswith('__')
-            and not x.startswith('_')
+            lambda x: not x.startswith("__")
+            and not x.startswith("_")
             and type(getattr(resp_obj, x)) != types.MethodType
             and (
                 not isinstance(getattr(resp_obj.__class__, x), property)
@@ -165,7 +166,7 @@ class PaginatedListMixin(ListMixin):
 
         :return: json list of your resource
         """
-        return results['results']
+        return results["results"]
 
     @classmethod
     def list(cls, params=None, pages=None):
@@ -179,8 +180,8 @@ class PaginatedListMixin(ListMixin):
         client = PaperlessClient.get_instance()
         response = client.get_resource_list(cls.construct_list_url(), params=params)
         resource_list = cls.parse_list_response(response)
-        while response['next'] is not None:
-            next_url = response['next']
+        while response["next"] is not None:
+            next_url = response["next"]
             next_query_params = parse_qs(urlparse.urlparse(next_url).query)
             if params is not None:
                 next_query_params = {**next_query_params, **params}
@@ -237,7 +238,7 @@ class CreateMixin(object):
 
 
 class UpdateMixin(object):
-    _primary_key = 'id'
+    _primary_key = "id"
 
     @classmethod
     def construct_patch_url(cls):
@@ -257,7 +258,7 @@ class UpdateMixin(object):
 
 
 class DeleteMixin(object):
-    _primary_key = 'id'
+    _primary_key = "id"
 
     def construct_delete_url(cls):
         raise NotImplementedError
@@ -273,7 +274,7 @@ class DeleteMixin(object):
 
 class BatchMixin(object):
     _list_key = (
-        'override_this'
+        "override_this"
     )  # The field in the request schema in which to supply the list of objects
 
     @classmethod
@@ -336,22 +337,34 @@ class BatchUpsertMixin(BatchMixin):
         Persists several instances of self to Paperless Parts and updates instances with any new data from the creation.
         """
         client: PaperlessClient = PaperlessClient.get_instance()
-
-        data = cls.get_request_payload_from_instances(instances)
-
-        response = client.put_resource(
-            resource_url=cls.construct_batch_url(**kwargs), data=data
-        )
-
         successes = []
-        for successful_object in response['successes']:
-            deserialized_obj = cls.from_json(successful_object)
-            successes.append(deserialized_obj)
-
         failures = []
-        for failure in response['failures']:
-            deserialized_obj = cls.from_json(failure['data'])
-            failure_resp = FailureResponse(obj=deserialized_obj, error=failure['error'])
-            failures.append(failure_resp)
+
+        instance_chunks = cls.split_every(999, instances)
+        for instance_chunk in instance_chunks:
+            data = cls.get_request_payload_from_instances(instance_chunk)
+
+            response = client.put_resource(
+                resource_url=cls.construct_batch_url(**kwargs), data=data
+            )
+
+            for successful_object in response["successes"]:
+                deserialized_obj = cls.from_json(successful_object)
+                successes.append(deserialized_obj)
+
+            for failure in response["failures"]:
+                deserialized_obj = cls.from_json(failure["data"])
+                failure_resp = FailureResponse(
+                    obj=deserialized_obj, error=failure["error"]
+                )
+                failures.append(failure_resp)
 
         return BatchResponse[cls](successes=successes, failures=failures)
+
+    @classmethod
+    def split_every(cls, n, iterable) -> list:
+        try:
+            iterable = iter(iterable)
+            return iter(lambda: list(islice(iterable, n)), [])
+        except TypeError:
+            return [iterable]
