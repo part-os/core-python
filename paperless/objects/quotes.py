@@ -186,6 +186,18 @@ class Quantity:
     most_likely_won_quantity_percent: Optional[int] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(int))
     )
+    make_quantity: Optional[int] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(int))
+    )
+    deliver_quantity: Optional[int] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(int))
+    )
+    yield_pct: Union[int, float, object] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(
+            attr.validators.instance_of((int, float, object))
+        ),
+    )
 
 
 @attr.s(frozen=False)
@@ -407,9 +419,19 @@ class Quote(
     )
     is_unviewed_drafted_rfq: bool = attr.ib(validator=attr.validators.instance_of(bool))
     created: str = attr.ib(validator=attr.validators.instance_of(str))
-    erp_code = attr.ib(
+    erp_code: Union[str, object] = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
+    rfq_number: Union[str, object] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
+    priority: Union[int, float, object] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(
+            attr.validators.instance_of((int, float, object))
+        ),
     )
 
     @classmethod

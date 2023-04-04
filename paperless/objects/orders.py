@@ -465,6 +465,10 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSO
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
+    quote_rfq_number: (str, object) = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
 
     @property
     def created_dt(self):
