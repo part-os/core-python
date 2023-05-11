@@ -353,7 +353,10 @@ class BatchUpsertMixin(BatchMixin):
                 successes.append(deserialized_obj)
 
             for failure in response["failures"]:
-                deserialized_obj = cls.from_json(failure["data"])
+                try:
+                    deserialized_obj = cls.from_json(failure["data"])
+                except:
+                    deserialized_obj = {}
                 failure_resp = FailureResponse(
                     obj=deserialized_obj, error=failure["error"]
                 )
