@@ -34,6 +34,7 @@ class ManagedIntegrationEncoder(BaseJSONEncoder):
             'integration_version',
             'created',
             'updated',
+            'configuration_metadata',
         ]
         for key in field_keys:
             data[key] = getattr(resource, key, None)

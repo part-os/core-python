@@ -324,6 +324,14 @@ class ManagedIntegration(FromJSONMixin, ToJSONMixin, ReadMixin, ListMixin, Updat
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
+    configuration_metadata: Optional[dict] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((dict, object))),
+    )
+    configuration_metadata_with_defaults: Optional[dict] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((dict, object))),
+    )
     uuid: str = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((str, object))
     )
