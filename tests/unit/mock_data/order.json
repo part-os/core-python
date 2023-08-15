@@ -5112,6 +5112,7 @@
   "shipments": [],
   "shipping_info": {
     "id": 14013,
+    "erp_code": "some-erp-code",
     "attention": "Cus Tomer",
     "address1": "1 FISKE TER",
     "address2": "",

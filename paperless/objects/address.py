@@ -77,6 +77,10 @@ class AddressInfo(FromJSONMixin, ToJSONMixin):
     id = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((int, object))
     )
+    erp_code = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
     address2 = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),

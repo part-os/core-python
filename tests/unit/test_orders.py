@@ -327,7 +327,7 @@ class TestOrders(unittest.TestCase):
 
     def test_shipping_info(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o = Order.get(1)
+        o: Order = Order.get(1)
         shipping_info = o.shipping_info
         self.assertEqual(shipping_info.address1, "1 FISKE TER")
         self.assertEqual(shipping_info.address2, "")
@@ -339,3 +339,4 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(shipping_info.phone_ext, "")
         self.assertEqual(shipping_info.postal_code, "02134-4503")
         self.assertEqual(shipping_info.state, "MA")
+        self.assertEqual(shipping_info.erp_code, "some-erp-code")
