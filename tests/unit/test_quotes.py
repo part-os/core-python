@@ -91,6 +91,16 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(
             quantity.total_price_with_required_add_ons.dollars, Decimal('3616.74')
         )
+        self.assertEqual(quantity.total_raw_material_cost.dollars, Decimal('538.80'))
+        self.assertEqual(
+            quantity.total_inside_processing_cost.dollars, Decimal('638.80')
+        )
+        self.assertEqual(
+            quantity.total_outside_processing_cost.dollars, Decimal('738.80')
+        )
+        self.assertEqual(
+            quantity.total_purchased_component_cost.dollars, Decimal('838.80')
+        )
         # test operations
         operation = root_component.shop_operations[0]
         self.assertEqual(operation.name, 'Chromate')

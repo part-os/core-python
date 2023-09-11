@@ -192,6 +192,22 @@ class Quantity:
     deliver_quantity: Optional[int] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(int))
     )
+    total_raw_material_cost: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
+    total_inside_processing_cost: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
+    total_outside_processing_cost: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
+    total_purchased_component_cost: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
     yield_pct: Union[int, float, object] = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(
