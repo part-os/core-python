@@ -208,6 +208,10 @@ class Quantity:
         converter=optional_convert(Money),
         validator=attr.validators.optional(attr.validators.instance_of(Money)),
     )
+    total_component_overrides_cost: Optional[Money] = attr.ib(
+        converter=optional_convert(Money),
+        validator=attr.validators.optional(attr.validators.instance_of(Money)),
+    )
     yield_pct: Union[int, float, object] = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(

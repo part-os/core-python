@@ -93,6 +93,7 @@
             "total_inside_processing_cost": "638.80",
             "total_outside_processing_cost": "738.80",
             "total_purchased_component_cost": "838.80",
+            "total_component_overrides_cost": "300.00",
             "expedites": []
           },
           {
@@ -824,6 +825,7 @@
               "total_inside_processing_cost": "638.80",
               "total_outside_processing_cost": "738.80",
               "total_purchased_component_cost": "838.80",
+              "total_component_overrides_cost": "300.00",
               "expedites": []
             },
             {

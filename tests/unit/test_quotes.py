@@ -101,6 +101,9 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(
             quantity.total_purchased_component_cost.dollars, Decimal('838.80')
         )
+        self.assertEqual(
+            quantity.total_component_overrides_cost.dollars, Decimal('300.00')
+        )
         # test operations
         operation = root_component.shop_operations[0]
         self.assertEqual(operation.name, 'Chromate')
