@@ -72,6 +72,7 @@ class TestOrders(unittest.TestCase):
         finish_op = root_component.shop_operations[6]
         self.assertEqual(finish_op.name, 'Chromate')
         self.assertEqual(finish_op.operation_definition_name, 'Chromate')
+        self.assertEqual(finish_op.operation_definition_erp_code, "op_def erp_code")
         self.assertEqual(finish_op.cost.dollars, 150.0)
         self.assertIsNone(finish_op.setup_time)
         self.assertIsNone(finish_op.get_variable('bad name'))
@@ -147,6 +148,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(other_oi.base_price.dollars, Decimal('2757.80'))
         add_on = other_oi.ordered_add_ons[0]
         self.assertEqual(add_on.quantity, 5)
+        self.assertEqual(add_on.add_on_definition_erp_code, "add_on_def erp_code")
         # test pricing items
         pricing_item = other_oi.pricing_items[0]
         self.assertEqual(pricing_item.quantity, 5)

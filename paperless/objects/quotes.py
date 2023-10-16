@@ -102,6 +102,9 @@ class AddOn(QuoteCostingVariableMixin):
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
     quantities: List[AddOnQuantity] = attr.ib(converter=convert_iterable(AddOnQuantity))
+    add_on_definition_erp_code: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
 
 @attr.s(frozen=False)

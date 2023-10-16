@@ -296,6 +296,7 @@
             "is_outside_service": false,
             "name": "Chromate",
             "operation_definition_name": "Chromate",
+            "operation_definition_erp_code": "op_def erp_code",
             "notes": null,
             "quantities": [
               {
@@ -339,6 +340,7 @@
             "costing_variables": [],
             "id": 642,
             "is_required": true,
+            "add_on_definition_erp_code": "add_on_def erp_code",
             "name": "Non-Recurring Engineering",
             "quantities": [
               {
@@ -367,6 +369,7 @@
             "costing_variables": [],
             "id": 643,
             "is_required": false,
+            "add_on_definition_erp_code": "add_on_def erp_code",
             "name": "Non-Recurring Engineering",
             "quantities": [
               {
@@ -648,6 +651,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -697,6 +701,7 @@
               "costing_variables": [],
               "id": 642,
               "is_required": true,
+              "add_on_definition_erp_code": "add_on_def erp_code",
               "name": "Non-Recurring Engineering",
               "quantities": [
                 {
@@ -725,6 +730,7 @@
               "costing_variables": [],
               "id": 643,
               "is_required": false,
+              "add_on_definition_erp_code": "add_on_def erp_code",
               "name": "Non-Recurring Engineering",
               "quantities": [
                 {
@@ -1995,6 +2001,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -3218,6 +3225,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -4441,6 +4449,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -5849,6 +5858,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -7072,6 +7082,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -8500,6 +8511,7 @@
             "is_outside_service": false,
             "name": "Chromate",
             "operation_definition_name": "Chromate",
+            "operation_definition_erp_code": "op_def erp_code",
             "notes": null,
             "quantities": [
               {
@@ -8875,6 +8887,7 @@
             ],
             "id": 644,
             "is_required": true,
+            "add_on_definition_erp_code": "add_on_def erp_code",
             "name": "Quantity Specific",
             "quantities": [
               {
@@ -10116,6 +10129,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -10492,6 +10506,7 @@
               ],
               "id": 644,
               "is_required": true,
+              "add_on_definition_erp_code": "add_on_def erp_code",
               "name": "Quantity Specific",
               "quantities": [
                 {

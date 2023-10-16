@@ -800,6 +800,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -1527,6 +1528,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -2254,6 +2256,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -2981,6 +2984,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -3708,6 +3712,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -3850,6 +3855,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -4036,6 +4042,7 @@
         {
           "id": 642,
           "is_required": true,
+          "add_on_definition_erp_code": "add_on_def erp_code",
           "name": "Non-Recurring Engineering",
           "price": "1000.00",
           "quantity": 5,
@@ -4750,6 +4757,7 @@
               "is_outside_service": false,
               "name": "Chromate",
               "operation_definition_name": "Chromate",
+              "operation_definition_erp_code": "op_def erp_code",
               "notes": null,
               "quantities": [
                 {
@@ -4909,6 +4917,7 @@
         {
           "id": 644,
           "is_required": true,
+          "add_on_definition_erp_code": "add_on_def erp_code",
           "name": "Quantity Specific",
           "price": "50.00",
           "quantity": 1,

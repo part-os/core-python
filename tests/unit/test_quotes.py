@@ -71,6 +71,7 @@ class TestQuotes(unittest.TestCase):
         # test addons
         add_on = root_component.add_ons[0]
         self.assertEqual(add_on.is_required, True)
+        self.assertEqual(add_on.add_on_definition_erp_code, "add_on_def erp_code")
         add_on_quantity = add_on.quantities[0]
         self.assertEqual(add_on_quantity.manual_price.dollars, Decimal('1000'))
         # test pricing items
@@ -108,6 +109,7 @@ class TestQuotes(unittest.TestCase):
         operation = root_component.shop_operations[0]
         self.assertEqual(operation.name, 'Chromate')
         self.assertEqual(operation.operation_definition_name, 'Chromate')
+        self.assertEqual(operation.operation_definition_erp_code, "op_def erp_code")
         operation_quantity = operation.quantities[0]
         self.assertEqual(operation_quantity.price.dollars, 150)
 

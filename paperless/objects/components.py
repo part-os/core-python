@@ -66,6 +66,9 @@ class BaseOperation:
         converter=optional_convert(float),
         validator=attr.validators.optional(attr.validators.instance_of(float)),
     )
+    operation_definition_erp_code: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
 
 @attr.s(frozen=True)

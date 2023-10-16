@@ -44,6 +44,7 @@ class QuoteOperationsMapper(BaseMapper):
             'position',
             'runtime',
             'setup_time',
+            'operation_definition_erp_code',
         ]
         mapped_result = {}
         for key in field_keys:
@@ -62,7 +63,7 @@ class AddOnMapper(BaseMapper):
         costing_variables = map(
             QuoteCostingVariablesMapper.map, resource['costing_variables']
         )
-        field_keys = ['name', 'notes']
+        field_keys = ['name', 'notes', 'add_on_definition_erp_code']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['is_required']

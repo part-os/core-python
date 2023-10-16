@@ -89,6 +89,9 @@ class OrderedAddOn(OrderCostingVariableMixin):
         converter=Money, validator=attr.validators.instance_of(Money)
     )
     quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    add_on_definition_erp_code: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
 
 @attr.s(frozen=False)
