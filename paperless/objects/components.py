@@ -200,7 +200,14 @@ class AssemblyComponent(NamedTuple):
 class AssemblyMixin:
     """Add `iterate_assembly` method for use in OrderItems and QuoteItems."""
 
-    def iterate_assembly(self) -> Generator[AssemblyComponent, None, None]:
+    def iterate_assembly_with_duplicates(self) -> Generator[AssemblyComponent, None, None]:
+        """Traverse assembly components in depth-first search ordering.
+        Components are yielded as AssemblyComponent (namedtuple) objects,
+        containing the component itself as well as information about parent
+        and assembly level."""
+        return self.iterate_assembly(exclude_duplicates=False)
+
+    def iterate_assembly(self, exclude_duplicates=True) -> Generator[AssemblyComponent, None, None]:
         """Traverse assembly components in depth-first search ordering.
         Components are yielded as AssemblyComponent (namedtuple) objects,
         containing the component itself as well as information about parent
@@ -217,9 +224,10 @@ class AssemblyMixin:
         visited = set()
 
         def dfs(node_id, level=0, parent=None):
-            if node_id in visited:
-                return
-            visited.add(node_id)
+            if exclude_duplicates:
+                if node_id in visited:
+                    return
+                visited.add(node_id)
             node = components_by_id[node_id]
             level_index = level_counter[level]
             level_counter[level] += 1
