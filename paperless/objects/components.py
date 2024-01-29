@@ -1,5 +1,5 @@
 import collections
-from typing import TYPE_CHECKING, Generator, List, NamedTuple, Optional, Union
+from typing import TYPE_CHECKING, Generator, List, NamedTuple, Optional, Union, Dict
 
 import attr
 
@@ -193,6 +193,7 @@ class AssemblyComponent(NamedTuple):
     component: Union['QuoteComponent', 'OrderComponent']
     level: int  # assembly level (0 for root)
     parent: Optional[Union['QuoteComponent', 'OrderComponent']]
+    quantity_per_parent: Optional[int]  # node quantity
     level_index: int  # 0-based index of the current component within its level
     level_count: int  # count of components at this assembly level
 
@@ -214,8 +215,8 @@ class AssemblyMixin:
         and assembly level. The same component will only be yielded once even
         if appears twice in the assembly tree (commonly seen with
         hardware/fasteners)."""
-        components_by_id = {}
-        root_component = None
+        components_by_id: Dict[int, Union['QuoteComponent', 'OrderComponent']] = {}
+        root_component: Optional[Union['QuoteComponent', 'OrderComponent']] = None
         for component in self.components:
             components_by_id[component.id] = component
             if component.is_root_component:
@@ -223,23 +224,24 @@ class AssemblyMixin:
         level_counter = collections.defaultdict(lambda: 0)
         visited = set()
 
-        def dfs(node_id, level=0, parent=None):
+        def dfs(component_id, level=0, parent=None, quantity_per_parent=None):
             if exclude_duplicates:
-                if node_id in visited:
+                if component_id in visited:
                     return
-                visited.add(node_id)
-            node = components_by_id[node_id]
+                visited.add(component_id)
+            comp = components_by_id[component_id]
             level_index = level_counter[level]
             level_counter[level] += 1
             yield AssemblyComponent(
-                component=node,
+                component=comp,
                 level=level,
                 parent=parent,
+                quantity_per_parent=quantity_per_parent,
                 level_index=level_index,
                 level_count=0,
             )
-            for child_id in node.child_ids:
-                for y in dfs(child_id, level + 1, node):
+            for child_node in comp.children:
+                for y in dfs(child_node.child_id, level + 1, comp, child_node.quantity):
                     yield y
 
         for assm_comp in list(dfs(root_component.id)):
@@ -247,6 +249,7 @@ class AssemblyMixin:
                 component=assm_comp.component,
                 level=assm_comp.level,
                 parent=assm_comp.parent,
+                quantity_per_parent=assm_comp.quantity_per_parent,
                 level_index=assm_comp.level_index,
                 level_count=level_counter[assm_comp.level],
             )
