@@ -1,5 +1,5 @@
 import collections
-from typing import TYPE_CHECKING, Generator, List, NamedTuple, Optional, Union, Dict
+from typing import TYPE_CHECKING, Dict, Generator, List, NamedTuple, Optional, Union
 
 import attr
 
@@ -201,14 +201,18 @@ class AssemblyComponent(NamedTuple):
 class AssemblyMixin:
     """Add `iterate_assembly` method for use in OrderItems and QuoteItems."""
 
-    def iterate_assembly_with_duplicates(self) -> Generator[AssemblyComponent, None, None]:
+    def iterate_assembly_with_duplicates(
+        self
+    ) -> Generator[AssemblyComponent, None, None]:
         """Traverse assembly components in depth-first search ordering.
         Components are yielded as AssemblyComponent (namedtuple) objects,
         containing the component itself as well as information about parent
         and assembly level."""
         return self.iterate_assembly(exclude_duplicates=False)
 
-    def iterate_assembly(self, exclude_duplicates=True) -> Generator[AssemblyComponent, None, None]:
+    def iterate_assembly(
+        self, exclude_duplicates=True
+    ) -> Generator[AssemblyComponent, None, None]:
         """Traverse assembly components in depth-first search ordering.
         Components are yielded as AssemblyComponent (namedtuple) objects,
         containing the component itself as well as information about parent
