@@ -207,7 +207,10 @@ class AssemblyMixin:
         """Traverse assembly components in depth-first search ordering.
         Components are yielded as AssemblyComponent (namedtuple) objects,
         containing the component itself as well as information about parent
-        and assembly level."""
+        and assembly level.
+
+        Components will be yielded for each instance in the assembly tree.
+        Different AssemblyComponent objects may refer to the same component."""
         return self.iterate_assembly(exclude_duplicates=False)
 
     def iterate_assembly(
@@ -216,7 +219,9 @@ class AssemblyMixin:
         """Traverse assembly components in depth-first search ordering.
         Components are yielded as AssemblyComponent (namedtuple) objects,
         containing the component itself as well as information about parent
-        and assembly level. The same component will only be yielded once even
+        and assembly level.
+
+        The same component will only be yielded once even
         if appears twice in the assembly tree (commonly seen with
         hardware/fasteners)."""
         components_by_id: Dict[int, Union['QuoteComponent', 'OrderComponent']] = {}
