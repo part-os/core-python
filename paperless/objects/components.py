@@ -193,7 +193,10 @@ class AssemblyComponent(NamedTuple):
     component: Union['QuoteComponent', 'OrderComponent']
     level: int  # assembly level (0 for root)
     parent: Optional[Union['QuoteComponent', 'OrderComponent']]
-    quantity_per_parent: Optional[int]  # node quantity
+    quantity_per_parent: Optional[
+        int
+    ]  # number of this component needed to make a single parent component
+    quantity_per_root: int  # number of this component needed to make a single root component
     level_index: int  # 0-based index of the current component within its level
     level_count: int  # count of components at this assembly level
 
@@ -233,7 +236,13 @@ class AssemblyMixin:
         level_counter = collections.defaultdict(lambda: 0)
         visited = set()
 
-        def dfs(component_id, level=0, parent=None, quantity_per_parent=None):
+        def dfs(
+            component_id,
+            level=0,
+            parent=None,
+            quantity_per_parent=None,
+            quantity_per_root=1,
+        ):
             if exclude_duplicates:
                 if component_id in visited:
                     return
@@ -246,11 +255,18 @@ class AssemblyMixin:
                 level=level,
                 parent=parent,
                 quantity_per_parent=quantity_per_parent,
+                quantity_per_root=quantity_per_root,
                 level_index=level_index,
                 level_count=0,
             )
             for child_node in comp.children:
-                for y in dfs(child_node.child_id, level + 1, comp, child_node.quantity):
+                for y in dfs(
+                    component_id=child_node.child_id,
+                    level=level + 1,
+                    parent=comp,
+                    quantity_per_parent=child_node.quantity,
+                    quantity_per_root=child_node.quantity * quantity_per_root,
+                ):
                     yield y
 
         for assm_comp in list(dfs(root_component.id)):
@@ -259,6 +275,7 @@ class AssemblyMixin:
                 level=assm_comp.level,
                 parent=assm_comp.parent,
                 quantity_per_parent=assm_comp.quantity_per_parent,
+                quantity_per_root=assm_comp.quantity_per_root,
                 level_index=assm_comp.level_index,
                 level_count=level_counter[assm_comp.level],
             )
