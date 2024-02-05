@@ -1,5 +1,5 @@
 import collections
-from typing import TYPE_CHECKING, Generator, List, NamedTuple, Optional, Union
+from typing import TYPE_CHECKING, Dict, Generator, List, NamedTuple, Optional, Union
 
 import attr
 
@@ -193,6 +193,10 @@ class AssemblyComponent(NamedTuple):
     component: Union['QuoteComponent', 'OrderComponent']
     level: int  # assembly level (0 for root)
     parent: Optional[Union['QuoteComponent', 'OrderComponent']]
+    quantity_per_parent: Optional[
+        int
+    ]  # number of this component needed to make a single parent component
+    quantity_per_root: int  # number of this component needed to make a single root component
     level_index: int  # 0-based index of the current component within its level
     level_count: int  # count of components at this assembly level
 
@@ -200,15 +204,31 @@ class AssemblyComponent(NamedTuple):
 class AssemblyMixin:
     """Add `iterate_assembly` method for use in OrderItems and QuoteItems."""
 
-    def iterate_assembly(self) -> Generator[AssemblyComponent, None, None]:
+    def iterate_assembly_with_duplicates(
+        self
+    ) -> Generator[AssemblyComponent, None, None]:
         """Traverse assembly components in depth-first search ordering.
         Components are yielded as AssemblyComponent (namedtuple) objects,
         containing the component itself as well as information about parent
-        and assembly level. The same component will only be yielded once even
+        and assembly level.
+
+        Components will be yielded for each instance in the assembly tree.
+        Different AssemblyComponent objects may refer to the same component."""
+        return self.iterate_assembly(exclude_duplicates=False)
+
+    def iterate_assembly(
+        self, exclude_duplicates=True
+    ) -> Generator[AssemblyComponent, None, None]:
+        """Traverse assembly components in depth-first search ordering.
+        Components are yielded as AssemblyComponent (namedtuple) objects,
+        containing the component itself as well as information about parent
+        and assembly level.
+
+        The same component will only be yielded once even
         if appears twice in the assembly tree (commonly seen with
         hardware/fasteners)."""
-        components_by_id = {}
-        root_component = None
+        components_by_id: Dict[int, Union['QuoteComponent', 'OrderComponent']] = {}
+        root_component: Optional[Union['QuoteComponent', 'OrderComponent']] = None
         for component in self.components:
             components_by_id[component.id] = component
             if component.is_root_component:
@@ -216,22 +236,37 @@ class AssemblyMixin:
         level_counter = collections.defaultdict(lambda: 0)
         visited = set()
 
-        def dfs(node_id, level=0, parent=None):
-            if node_id in visited:
-                return
-            visited.add(node_id)
-            node = components_by_id[node_id]
+        def dfs(
+            component_id,
+            level=0,
+            parent=None,
+            quantity_per_parent=None,
+            quantity_per_root=1,
+        ):
+            if exclude_duplicates:
+                if component_id in visited:
+                    return
+                visited.add(component_id)
+            comp = components_by_id[component_id]
             level_index = level_counter[level]
             level_counter[level] += 1
             yield AssemblyComponent(
-                component=node,
+                component=comp,
                 level=level,
                 parent=parent,
+                quantity_per_parent=quantity_per_parent,
+                quantity_per_root=quantity_per_root,
                 level_index=level_index,
                 level_count=0,
             )
-            for child_id in node.child_ids:
-                for y in dfs(child_id, level + 1, node):
+            for child_node in comp.children:
+                for y in dfs(
+                    component_id=child_node.child_id,
+                    level=level + 1,
+                    parent=comp,
+                    quantity_per_parent=child_node.quantity,
+                    quantity_per_root=child_node.quantity * quantity_per_root,
+                ):
                     yield y
 
         for assm_comp in list(dfs(root_component.id)):
@@ -239,6 +274,8 @@ class AssemblyMixin:
                 component=assm_comp.component,
                 level=assm_comp.level,
                 parent=assm_comp.parent,
+                quantity_per_parent=assm_comp.quantity_per_parent,
+                quantity_per_root=assm_comp.quantity_per_root,
                 level_index=assm_comp.level_index,
                 level_count=level_counter[assm_comp.level],
             )
