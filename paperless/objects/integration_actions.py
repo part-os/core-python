@@ -1,6 +1,6 @@
 import urllib.parse as urlparse
 import uuid
-from typing import Optional
+from typing import Optional, Union
 from urllib.parse import parse_qs
 
 import attr
@@ -9,6 +9,7 @@ import dateutil.parser
 from paperless.api_mappers import BaseMapper
 from paperless.json_encoders.integration_actions import (
     IntegrationActionEncoder,
+    IntegrationActionErrorEncoder,
     ManagedIntegrationEncoder,
 )
 from paperless.manager import (
@@ -380,3 +381,32 @@ class ManagedIntegrationManager(
             )
             resource_list.extend(response['results'])
         return [Event.from_json(resource) for resource in resource_list]
+
+
+@attr.s(frozen=False)
+class IntegrationActionError(FromJSONMixin, ToJSONMixin, BatchMixin):
+    _list_key = 'errors'
+    _json_encoder = IntegrationActionErrorEncoder
+    error_message: str = attr.ib(validator=attr.validators.instance_of(str))
+    reference_id: str = attr.ib(validator=attr.validators.instance_of(str))
+    cause: Optional[Union[str, object]] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
+    uuid: Optional[Union[str, object]] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
+
+    @classmethod
+    def construct_batch_url(cls, integration_action_uuid):
+        return 'integration_actions/public/{}/errors'.format(integration_action_uuid)
+
+
+class IntegrationActionErrorManager(BatchCreateManagerMixin, BaseManager):
+    _base_object = IntegrationActionError
+
+    def create_many(self, instances, integration_action_uuid):
+        return super().create_many(
+            instances=instances, integration_action_uuid=integration_action_uuid
+        )

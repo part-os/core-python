@@ -1,6 +1,6 @@
 import json
 
-from paperless.json_encoders import BaseJSONEncoder
+from paperless.json_encoders import BaseJSONEncoder, SmartJSONEncoder
 from paperless.objects.utils import NO_UPDATE
 
 
@@ -48,3 +48,7 @@ class ManagedIntegrationEncoder(BaseJSONEncoder):
             return json.dumps(filtered_data)
         else:
             return filtered_data
+
+
+class IntegrationActionErrorEncoder(SmartJSONEncoder):
+    basic_field_keys = ['reference_id', 'error_message', 'cause']
