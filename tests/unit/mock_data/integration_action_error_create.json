@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3d36c6ca-8b77-45d1-a05c-d52f4a8654cf",
+    "integration_action_uuid": "ef7fc2f3-556f-434d-bfb4-bfb69b8beefb",
+    "reference_id": "123",
+    "error_message": "test error message",
+    "cause": "unknown"
+  },
+  {
+    "uuid": "3a815116-8142-411f-97ea-d3661d95dbf7",
+    "integration_action_uuid": "ef7fc2f3-556f-434d-bfb4-bfb69b8beefb",
+    "reference_id": "456",
+    "error_message": "test error message",
+    "cause": null
+  }
+]

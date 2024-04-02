@@ -1,14 +1,17 @@
 import datetime
 import json
 import unittest
+from typing import Optional, Union
 from unittest.mock import MagicMock
 
 from paperless.client import PaperlessClient
 from paperless.objects.integration_actions import (
     IntegrationAction,
     IntegrationActionDefinition,
+    IntegrationActionError,
     ManagedIntegration,
 )
+from paperless.objects.utils import NO_UPDATE
 
 
 class TestIntegrationAction(unittest.TestCase):
@@ -39,6 +42,12 @@ class TestIntegrationAction(unittest.TestCase):
         ) as list_actions_data:
             self.mock_integration_action_list_unwrapped_json = json.load(
                 list_actions_data
+            )
+        with open(
+            'tests/unit/mock_data/integration_action_error_create.json'
+        ) as create_action_errors_data:
+            self.mock_integration_action_error_create_json = json.load(
+                create_action_errors_data
             )
 
     def test_get_managed_integration(self):
@@ -152,5 +161,69 @@ class TestIntegrationAction(unittest.TestCase):
                 IntegrationAction(type="test_type", entity_id="test_entity_id"),
                 IntegrationAction(type="test_type_2", entity_id="test_entity_id_2"),
             ]
+        )
+        self.assertEqual(integration_action_list, None)
+
+    def assert_valid_integration_action_error(
+        self,
+        integration_action_error: IntegrationActionError,
+        reference_id: str,
+        error_message: str,
+        cause: Optional[Union[str, object]] = None,
+        uuid: Optional[Union[str, object]] = None,
+    ):
+        self.assertEqual(integration_action_error.reference_id, reference_id)
+        self.assertEqual(integration_action_error.error_message, error_message)
+        self.assertEqual(integration_action_error.cause, cause)
+        self.assertEqual(integration_action_error.uuid, uuid)
+
+    def test_valid_integration_action_errors(self):
+        integration_action_error = IntegrationActionError(
+            reference_id='ref', error_message='err'
+        )
+        self.assert_valid_integration_action_error(
+            integration_action_error, 'ref', 'err', NO_UPDATE, NO_UPDATE
+        )
+
+        integration_action_error = IntegrationActionError(
+            reference_id='ref', error_message='err', cause=None, uuid=None
+        )
+        self.assert_valid_integration_action_error(
+            integration_action_error, 'ref', 'err', None, None
+        )
+
+        integration_action_error = IntegrationActionError(
+            reference_id='ref', error_message='err', cause='cause', uuid='uuid'
+        )
+        self.assert_valid_integration_action_error(
+            integration_action_error, 'ref', 'err', 'cause', 'uuid'
+        )
+
+    def test_invalid_integration_action_errors(self):
+        with self.assertRaises(TypeError):
+            IntegrationActionError(reference_id='test')
+        with self.assertRaises(TypeError):
+            IntegrationActionError(error_message='test')
+        with self.assertRaises(TypeError):
+            IntegrationActionError(reference_id=123, error_message='test')
+        with self.assertRaises(TypeError):
+            IntegrationActionError(reference_id='test', error_message=123)
+
+    def test_batch_create_integration_action_errors(self):
+        self.client.create_resource = MagicMock(
+            return_value=self.mock_integration_action_error_create_json
+        )
+        integration_action_list = IntegrationActionError.create_many(
+            [
+                IntegrationActionError(
+                    reference_id="123",
+                    error_message="test error message",
+                    cause="unknown",
+                ),
+                IntegrationActionError(
+                    reference_id="456", error_message="test error message"
+                ),
+            ],
+            "ef7fc2f3-556f-434d-bfb4-bfb69b8beefb",
         )
         self.assertEqual(integration_action_list, None)
