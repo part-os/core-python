@@ -63,6 +63,14 @@ class IntegrationAction(
     status_message: Optional[str] = attr.ib(
         default=NO_UPDATE, validator=attr.validators.instance_of((str, object))
     )
+    current_record_count: Optional[int] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((int, object))),
+    )
+    last_checkin: Optional[str] = attr.ib(
+        default=NO_UPDATE,
+        validator=attr.validators.optional(attr.validators.instance_of((str, object))),
+    )
 
     @property
     def created_dt(self):
@@ -77,6 +85,14 @@ class IntegrationAction(
         return (
             dateutil.parser.parse(self.updated)
             if isinstance(self.updated, str)
+            else None
+        )
+
+    @property
+    def last_checkin_dt(self):
+        return (
+            dateutil.parser.parse(self.last_checkin)
+            if isinstance(self.last_checkin, str)
             else None
         )
 

@@ -93,8 +93,10 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(int_act.status, "queued")
         self.assertEqual(int_act.status_message, None)
         self.assertEqual(int_act.entity_id, "1")
+        self.assertEqual(int_act.current_record_count, 3)
         self.assertIsInstance(int_act.created_dt, datetime.date)
         self.assertIsInstance(int_act.updated_dt, datetime.date)
+        self.assertIsInstance(int_act.last_checkin_dt, datetime.date)
 
     def test_list_integration_actions(self):
         self.client.get_resource_list = MagicMock(
@@ -110,16 +112,20 @@ class TestIntegrationAction(unittest.TestCase):
         self.assertEqual(action_1.status, "completed")
         self.assertEqual(action_1.status_message, None)
         self.assertEqual(action_1.entity_id, "1")
+        self.assertEqual(action_1.current_record_count, None)
         self.assertIsInstance(action_1.created_dt, datetime.date)
         self.assertIsInstance(action_1.updated_dt, datetime.date)
+        self.assertEqual(action_1.last_checkin_dt, None)
         action_8 = action_list[-1]
         self.assertEqual(action_8.type, "export_order")
         self.assertEqual(action_8.uuid, "f9e8b33c-2361-47b2-ad23-c9390d488619")
         self.assertEqual(action_8.status, "queued")
         self.assertEqual(action_8.status_message, None)
         self.assertEqual(action_8.entity_id, "99")
+        self.assertEqual(action_8.current_record_count, 3)
         self.assertIsInstance(action_8.created_dt, datetime.date)
         self.assertIsInstance(action_8.updated_dt, datetime.date)
+        self.assertIsInstance(action_8.last_checkin_dt, datetime.date)
 
     def test_list_integration_action_definitions(self):
         self.client.get_resource_list = MagicMock(
@@ -158,7 +164,9 @@ class TestIntegrationAction(unittest.TestCase):
         )
         integration_action_list = IntegrationAction.update_many(
             [
-                IntegrationAction(type="test_type", entity_id="test_entity_id"),
+                IntegrationAction(
+                    type="test_type", entity_id="test_entity_id", current_record_count=5
+                ),
                 IntegrationAction(type="test_type_2", entity_id="test_entity_id_2"),
             ]
         )

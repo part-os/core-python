@@ -8,7 +8,9 @@
     "status_message": null,
     "entity_id": "5000",
     "updated": "2022-08-18T15:41:31.034983Z",
-    "created": "2022-08-18T15:41:31.034898Z"
+    "created": "2022-08-18T15:41:31.034898Z",
+    "last_checkin": null,
+    "current_record_count": null
   },
   {
     "type": "export_quote",
@@ -19,6 +21,8 @@
     "status_message": null,
     "entity_id": "5001",
     "updated": "2022-08-18T15:41:31.035224Z",
-    "created": "2022-08-18T15:41:31.035187Z"
+    "created": "2022-08-18T15:41:31.035187Z",
+    "last_checkin": "2021-12-13T12:47:26.063262Z",
+    "current_record_count": 3
   }
 ]
