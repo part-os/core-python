@@ -5,5 +5,7 @@
     "status_message": null,
     "entity_id": "1",
     "updated": "2021-12-13T12:57:26.063262Z",
-    "created": "2021-11-02T21:25:38.451965Z"
+    "created": "2021-11-02T21:25:38.451965Z",
+    "last_checkin": "2021-12-13T12:47:26.063262Z",
+    "current_record_count": 3
 }
