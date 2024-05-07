@@ -4,6 +4,8 @@ import unittest
 from typing import Optional, Union
 from unittest.mock import MagicMock
 
+from requests.exceptions import JSONDecodeError
+
 from paperless.client import PaperlessClient
 from paperless.objects.integration_actions import (
     IntegrationAction,
@@ -43,12 +45,6 @@ class TestIntegrationAction(unittest.TestCase):
         ) as list_actions_data:
             self.mock_integration_action_list_unwrapped_json = json.load(
                 list_actions_data
-            )
-        with open(
-            'tests/unit/mock_data/integration_action_error_create.json'
-        ) as create_action_errors_data:
-            self.mock_integration_action_error_create_json = json.load(
-                create_action_errors_data
             )
 
     def test_get_managed_integration(self):
@@ -219,9 +215,10 @@ class TestIntegrationAction(unittest.TestCase):
             IntegrationActionError(reference_id='test', error_message=123)
 
     def test_batch_create_integration_action_errors(self):
-        self.client.create_resource = MagicMock(
-            return_value=self.mock_integration_action_error_create_json
-        )
+        def mock_create(resource_url, data):
+            raise JSONDecodeError
+
+        self.client.create_resource = MagicMock(side_effect=mock_create)
         integration_action_list = IntegrationActionErrorManager(
             self.client
         ).create_many(

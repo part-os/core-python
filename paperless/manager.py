@@ -2,6 +2,8 @@ import types
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
 
+from requests.exceptions import JSONDecodeError
+
 from paperless.client import PaperlessClient
 
 from .objects.common import BatchResponse, FailureResponse
@@ -132,9 +134,12 @@ class BatchCreateManagerMixin(object):
 
         data = self._base_object.get_request_payload_from_instances(instances)
 
-        response = client.create_resource(
-            resource_url=self._base_object.construct_batch_url(**kwargs), data=data
-        )
+        try:
+            response = client.create_resource(
+                resource_url=self._base_object.construct_batch_url(**kwargs), data=data
+            )
+        except JSONDecodeError:
+            return None
 
         for response_dict, original_instance in zip(response, instances):
             original_instance.update_with_response_data(response_dict)
@@ -149,9 +154,12 @@ class BatchUpdateManagerMixin(object):
 
         data = self._base_object.get_request_payload_from_instances(instances)
 
-        response = client.patch_resource(
-            resource_url=self._base_object.construct_batch_url(**kwargs), data=data
-        )
+        try:
+            response = client.patch_resource(
+                resource_url=self._base_object.construct_batch_url(**kwargs), data=data
+            )
+        except JSONDecodeError:
+            return None
 
         for response_dict, original_instance in zip(response, instances):
             original_instance.update_with_response_data(response_dict)
