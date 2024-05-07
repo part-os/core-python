@@ -113,6 +113,7 @@ class PaperlessClient(object):
             raise PaperlessException(
                 message="Failed to update resource: {}".format(resp.content),
                 error_code=resp.status_code,
+                detail=self._get_error_message(resp),
             )
         elif resp.status_code == 401 and resp.json()['code'] == 'authentication_failed':
             raise PaperlessAuthorizationException(
@@ -138,15 +139,16 @@ class PaperlessClient(object):
                     message="Request failed", error_code=resp.status_code
                 )
         else:
-            try:
-                resp_json = resp.json()
-                message = resp_json['message']
-            # raise generic error if there is no error message
-            except Exception:
-                raise PaperlessException(
-                    message="Request failed", error_code=resp.status_code
-                )
-            raise PaperlessException(message=message, error_code=resp.status_code)
+            raise PaperlessException(
+                message=self._get_error_message(resp), error_code=resp.status_code
+            )
+
+    @staticmethod
+    def _get_error_message(response):
+        try:
+            return response.json()['message']
+        except Exception:
+            return "Request failed"
 
     def get_resource_list(self, list_url, params=None):
         resp = self.request(url=list_url, method=self.METHODS.GET, params=params)
