@@ -157,6 +157,11 @@ class TestOrders(unittest.TestCase):
         self.assertEqual('automatic', manual_oi.quote_item_type)
         self.assertEqual('', manual_oi.description)
 
+        supplier_facility = o.send_from_facility
+        self.assertEqual(supplier_facility.id, 1)
+        self.assertEqual(supplier_facility.name, "Paperless Parts")
+        self.assertEqual(supplier_facility.is_default, True)
+
     def test_order_null_fields(self):
         self.client.get_resource = MagicMock(return_value=self.mock_minimal_order_json)
         o = Order.get(1)
@@ -164,6 +169,7 @@ class TestOrders(unittest.TestCase):
         self.assertEqual(o.shipping_info, None)
         self.assertEqual(o.payment_details.payment_type, None)
         self.assertEqual(o.shipping_option, None)
+        self.assertEqual(o.send_from_facility, None)
 
     def test_date_fmt(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)

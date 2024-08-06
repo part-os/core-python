@@ -97,7 +97,14 @@ class QuoteItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
         mapped_result = {}
-        field_keys = ['id', 'type', 'position', 'private_notes', 'public_notes']
+        field_keys = [
+            'id',
+            'type',
+            'position',
+            'private_notes',
+            'public_notes',
+            'workflow_status',
+        ]
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         list_keys = ['component_ids']
@@ -160,6 +167,7 @@ class QuoteDetailsMapper(BaseMapper):
             'contact',
             'customer',
             'erp_code',
+            'send_from_facility',
         ]
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)

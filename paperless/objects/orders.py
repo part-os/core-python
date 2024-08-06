@@ -16,6 +16,7 @@ from paperless.mixins import (
     UpdateMixin,
 )
 from paperless.objects.components import BaseOperation
+from paperless.objects.suppliers import SupplierFacility
 from paperless.objects.utils import NO_UPDATE
 
 from .address import AddressInfo
@@ -452,6 +453,12 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSO
     salesperson: Salesperson = attr.ib(converter=convert_cls(Salesperson))
     quote_revision_number: Optional[int] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(int))
+    )
+    send_from_facility: Optional[SupplierFacility] = attr.ib(
+        converter=convert_cls(SupplierFacility),
+        validator=attr.validators.optional(
+            attr.validators.instance_of(SupplierFacility)
+        ),
     )
     shipments: List[OrderShipment] = attr.ib(converter=convert_iterable(OrderShipment))
     shipping_info: AddressInfo = attr.ib(converter=convert_cls(AddressInfo))

@@ -7308,7 +7308,8 @@
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "root_component_id": 114384,
-      "type": "automatic"
+      "type": "automatic",
+      "workflow_status": "not_started"
     },
     {
       "root_component": {
@@ -10655,7 +10656,8 @@
       "private_notes": null,
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "root_component_id": 114392,
-      "type": "automatic"
+      "type": "automatic",
+      "workflow_status": "not_started"
     },
     {
       "root_component": {
@@ -10810,7 +10812,8 @@
       "private_notes": "This is a test manual line item.",
       "public_notes": "Lead times (business days) account for any material ordering and/or finishing steps required.",
       "root_component_id": 114393,
-      "type": "automatic"
+      "type": "automatic",
+      "workflow_status": "not_started"
     }
   ],
   "status": "accepted",
@@ -10833,5 +10836,22 @@
   "order_numbers": [
     179
   ],
-  "revision_number": null
+  "revision_number": null,
+  "send_from_facility": {
+    "id": 1,
+    "name": "Paperless Parts",
+    "is_default": true,
+    "address": {
+      "id": 1,
+      "address1": "101 Federal St",
+      "address2": null,
+      "city": "Boston",
+      "country": "USA",
+      "postal_code": "02110",
+      "state": "MA"
+    },
+    "phone": "5555555555",
+    "phone_ext": "",
+    "url": "https://www.paperlessparts.com/"
+  }
 }

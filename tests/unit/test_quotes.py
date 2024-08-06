@@ -61,6 +61,7 @@ class TestQuotes(unittest.TestCase):
         quote_item = q.quote_items[0]
         self.assertEqual(quote_item.type, 'automatic')
         self.assertEqual(len(quote_item.component_ids), 8)
+        self.assertEqual(quote_item.workflow_status, 'not_started')
         # test root component
         root_component = quote_item.root_component
         self.assertEqual(root_component.type, 'assembled')
@@ -604,3 +605,8 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(pc.purchased_component.get_property('lead_time'), 4)
         self.assertEqual(pc.purchased_component.get_property('in_stock'), True)
         self.assertIsNone(pc.purchased_component.get_property("bad_name"))
+
+        supplier_facility = q.send_from_facility
+        self.assertEqual(supplier_facility.id, 1)
+        self.assertEqual(supplier_facility.name, "Paperless Parts")
+        self.assertEqual(supplier_facility.is_default, True)

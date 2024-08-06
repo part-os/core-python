@@ -5139,5 +5139,22 @@
     "type": "suppliers_shipping_account"
   },
   "ships_on": "2020-12-28",
-  "status": "pending"
+  "status": "pending",
+  "send_from_facility": {
+    "id": 1,
+    "name": "Paperless Parts",
+    "is_default": true,
+    "address": {
+      "id": 1,
+      "address1": "101 Federal St",
+      "address2": null,
+      "city": "Boston",
+      "country": "USA",
+      "postal_code": "02110",
+      "state": "MA"
+    },
+    "phone": "5555555555",
+    "phone_ext": "",
+    "url": "https://www.paperlessparts.com/"
+  }
 }
