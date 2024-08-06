@@ -153,6 +153,7 @@ class QuoteDetailsMapper(BaseMapper):
             'status',
             'sent_date',
             'expired_date',
+            'due_date',
             'quote_notes',
             'digital_last_viewed_on',
             'expired',

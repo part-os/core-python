@@ -427,6 +427,7 @@ class Quote(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
     expired_date: str = attr.ib(validator=attr.validators.instance_of(str))
+    due_date: str = attr.ib(validator=attr.validators.instance_of(str))
     quote_notes: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
