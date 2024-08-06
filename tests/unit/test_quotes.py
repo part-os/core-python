@@ -54,6 +54,8 @@ class TestQuotes(unittest.TestCase):
         # test estimator
         estimator = q.estimator
         self.assertEqual(estimator.first_name, 'Heathrow Chester')
+        # test due date
+        self.assertEqual(q.due_date, '2024-07-30T14:54:54+00:00')
         # test metrics
         metrics = company.metrics
         self.assertEqual(metrics.order_revenue_all_time.dollars, Decimal('42691.43'))
