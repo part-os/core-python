@@ -4,7 +4,7 @@ from decimal import Decimal
 from unittest.mock import MagicMock
 
 from paperless.client import PaperlessClient
-from paperless.objects.quotes import Quote
+from paperless.objects.quotes import QuoteManager
 
 
 class TestQuotes(unittest.TestCase):
@@ -16,7 +16,7 @@ class TestQuotes(unittest.TestCase):
 
     def test_get_quote(self):
         self.client.get_resource = MagicMock(return_value=self.mock_quote_json)
-        q = Quote.get(1)
+        q = QuoteManager(self.client).get(1)
         self.assertEqual(q.number, 339)
         self.assertEqual(q.tax_rate, 0.0)
         self.assertFalse(q.is_unviewed_drafted_rfq)
@@ -61,6 +61,7 @@ class TestQuotes(unittest.TestCase):
         quote_item = q.quote_items[0]
         self.assertEqual(quote_item.type, 'automatic')
         self.assertEqual(len(quote_item.component_ids), 8)
+        self.assertEqual(quote_item.workflow_status, 'not_started')
         # test root component
         root_component = quote_item.root_component
         self.assertEqual(root_component.type, 'assembled')
@@ -589,3 +590,8 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(pc.purchased_component.get_property('lead_time'), 4)
         self.assertEqual(pc.purchased_component.get_property('in_stock'), True)
         self.assertIsNone(pc.purchased_component.get_property("bad_name"))
+
+        send_from_facility = q.send_from_facility
+        self.assertEqual(send_from_facility.id, 1)
+        self.assertEqual(send_from_facility.name, 'Paperless Parts')
+        self.assertEqual(send_from_facility.is_default, True)

@@ -5,7 +5,7 @@ from unittest.mock import MagicMock
 
 from paperless.client import PaperlessClient
 from paperless.objects.components import ChildComponent
-from paperless.objects.orders import Order, OrderComponent
+from paperless.objects.orders import Order, OrderComponent, OrderManager
 
 
 class TestOrders(unittest.TestCase):
@@ -20,7 +20,7 @@ class TestOrders(unittest.TestCase):
 
     def test_get_order(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o: Order = Order.get(1)
+        o: Order = OrderManager(self.client).get(1)
         self.assertEqual(o.number, 179)
         self.assertEqual('credit_card', o.payment_details.payment_type)
         self.assertEqual('pending', o.status)
@@ -155,17 +155,23 @@ class TestOrders(unittest.TestCase):
         self.assertEqual('automatic', manual_oi.quote_item_type)
         self.assertEqual('', manual_oi.description)
 
+        send_from_facility = o.send_from_facility
+        self.assertEqual(send_from_facility.id, 1)
+        self.assertEqual(send_from_facility.name, 'Paperless Parts')
+        self.assertEqual(send_from_facility.is_default, True)
+
     def test_order_null_fields(self):
         self.client.get_resource = MagicMock(return_value=self.mock_minimal_order_json)
-        o = Order.get(1)
+        o = OrderManager(self.client).get(1)
         self.assertEqual(o.billing_info, None)
         self.assertEqual(o.shipping_info, None)
         self.assertEqual(o.payment_details.payment_type, None)
         self.assertEqual(o.shipping_option, None)
+        self.assertEqual(o.send_from_facility, None)
 
     def test_date_fmt(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o = Order.get(1)
+        o = OrderManager(self.client).get(1)
         oi = o.order_items[0]
         self.assertEqual(2020, oi.ships_on_dt.year)
         self.assertEqual(12, oi.ships_on_dt.month)
@@ -217,7 +223,7 @@ class TestOrders(unittest.TestCase):
 
     def test_assemblies(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o = Order.get(1)
+        o = OrderManager(self.client).get(1)
         oi = o.order_items[0]
         assm = list(oi.iterate_assembly())
         self.assertEqual(8, len(assm))
@@ -239,7 +245,7 @@ class TestOrders(unittest.TestCase):
 
     def test_billing_info(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o = Order.get(1)
+        o = OrderManager(self.client).get(1)
         billing_info = o.billing_info
         self.assertEqual(billing_info.address1, "1 FISKE TER")
         self.assertEqual(billing_info.address2, "")
@@ -254,7 +260,7 @@ class TestOrders(unittest.TestCase):
 
     def test_contact(self):
         self.client.get_resource = MagicMock(return_value=self.mock_minimal_order_json)
-        o = Order.get(1)
+        o = OrderManager(self.client).get(1)
         c = o.contact
         a = c.account
         self.assertEqual(c.id, 3545)
@@ -273,7 +279,7 @@ class TestOrders(unittest.TestCase):
 
     def test_customer(self):
         self.client.get_resource = MagicMock(return_value=self.mock_minimal_order_json)
-        o = Order.get(1)
+        o = OrderManager(self.client).get(1)
         cu = o.customer
         co = cu.company
         self.assertIsNone(cu.id)
@@ -289,7 +295,7 @@ class TestOrders(unittest.TestCase):
 
     def test_hardware(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o = Order.get(1)
+        o = OrderManager(self.client).get(1)
         oi = o.order_items[0]
         found_hardware = False
         total_q = 0
@@ -327,7 +333,7 @@ class TestOrders(unittest.TestCase):
 
     def test_shipping_info(self):
         self.client.get_resource = MagicMock(return_value=self.mock_order_json)
-        o: Order = Order.get(1)
+        o: Order = OrderManager(self.client).get(1)
         shipping_info = o.shipping_info
         self.assertEqual(shipping_info.address1, "1 FISKE TER")
         self.assertEqual(shipping_info.address2, "")

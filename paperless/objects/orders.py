@@ -21,6 +21,7 @@ from paperless.mixins import (
     UpdateMixin,
 )
 from paperless.objects.components import BaseOperation
+from paperless.objects.suppliers import SupplierFacility
 from paperless.objects.utils import NO_UPDATE
 
 from .address import AddressInfo
@@ -461,6 +462,12 @@ class Order(FromJSONMixin, ListMixin, ReadMixin, ToDictMixin, UpdateMixin, ToJSO
     ships_on = attr.ib(validator=attr.validators.instance_of(str))
     status: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    send_from_facility: Optional[SupplierFacility] = attr.ib(
+        converter=convert_cls(SupplierFacility),
+        validator=attr.validators.optional(
+            attr.validators.instance_of(SupplierFacility)
+        ),
     )
     erp_code = attr.ib(
         default=NO_UPDATE,

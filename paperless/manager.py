@@ -1,8 +1,7 @@
 import types
 import urllib.parse as urlparse
+from json import JSONDecodeError
 from urllib.parse import parse_qs
-
-from requests.exceptions import JSONDecodeError
 
 from paperless.client import PaperlessClient
 

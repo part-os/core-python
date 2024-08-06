@@ -16,6 +16,7 @@ from paperless.mixins import (
     UpdateMixin,
 )
 from paperless.objects.components import BaseOperation
+from paperless.objects.suppliers import SupplierFacility
 from paperless.objects.utils import NO_UPDATE
 
 from .common import Money, Salesperson
@@ -276,6 +277,12 @@ class Contact:
 
 @attr.s(frozen=False)
 class QuoteItem(AssemblyMixin):
+    NOT_STARTED = 'not_started'
+    IN_PROGRESS = 'in_progress'
+    ON_HOLD = 'on_hold'
+    COMPLETED = 'completed'
+    NO_QUOTE = 'no_quote'
+
     id: int = attr.ib(validator=attr.validators.instance_of(int))
     components: List[QuoteComponent] = attr.ib(
         converter=convert_iterable(QuoteComponent)
@@ -289,6 +296,13 @@ class QuoteItem(AssemblyMixin):
     )
     public_notes: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    workflow_status: Optional[str] = attr.ib(
+        validator=attr.validators.optional(
+            attr.validators.in_(
+                [NOT_STARTED, IN_PROGRESS, ON_HOLD, COMPLETED, NO_QUOTE]
+            )
+        )
     )
 
     @property
@@ -407,6 +421,12 @@ class Quote(
     )
     is_unviewed_drafted_rfq: bool = attr.ib(validator=attr.validators.instance_of(bool))
     created: str = attr.ib(validator=attr.validators.instance_of(str))
+    send_from_facility: Optional[SupplierFacility] = attr.ib(
+        converter=convert_cls(SupplierFacility),
+        validator=attr.validators.optional(
+            attr.validators.instance_of(SupplierFacility)
+        ),
+    )
     erp_code = attr.ib(
         default=NO_UPDATE,
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),

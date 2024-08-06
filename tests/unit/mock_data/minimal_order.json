@@ -4051,5 +4051,6 @@
   "shipping_info": null,
   "shipping_option": null,
   "ships_on": "2020-07-10",
-  "status": "pending"
+  "status": "pending",
+  "send_from_facility": null
 }
