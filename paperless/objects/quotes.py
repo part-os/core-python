@@ -561,3 +561,6 @@ class Quote(
             params=params,
         )
         self.update_with_response_data(resp_json)
+
+    def get_quote_num_and_revision_str(self) -> str:
+        return f'{self.number}{"-" + str(self.revision_number) if self.revision_number else ""}'
