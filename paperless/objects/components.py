@@ -1,6 +1,6 @@
 import collections
 from typing import TYPE_CHECKING, Dict, Generator, List, NamedTuple, Optional, Union
-
+import os
 import attr
 
 from paperless.objects.common import Money
@@ -151,6 +151,9 @@ class BaseComponent:
     part_name: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
+    part_name_sans_ext: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     part_number: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
@@ -173,6 +176,9 @@ class BaseComponent:
     thumbnail_url: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
+    
+    def __attrs_post_init__(self):
+        object.__setattr__(self, "part_name_sans_ext", os.path.splitext(self.part_name or '')[0])
 
     @property
     def is_hardware(self):
