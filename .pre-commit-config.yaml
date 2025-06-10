@@ -1,30 +1,23 @@
 repos:
   - repo: https://github.com/ambv/black
-    rev: 18.9b0
+    rev: 25.1.0
     hooks:
       - id: black
         args: ['--skip-string-normalization']
-        language_version: python3.7
+        language_version: python3.10
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.1.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        language_version: python3.7
+        language_version: python3.10
       - id: end-of-file-fixer
-        language_version: python3.7
+        language_version: python3.10
       - id: debug-statements
-        language_version: python3.7
+        language_version: python3.10
 
-  - repo: https://github.com/asottile/seed-isort-config
-    rev: v1.7.0
-    hooks:
-      - id: seed-isort-config
-        language_version: python3.7
-
-
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v4.3.12
+  - repo: https://github.com/pycqa/isort
+    rev: 6.0.1
     hooks:
       - id: isort
-        language_version: python3.7
+        name: isort (python)
