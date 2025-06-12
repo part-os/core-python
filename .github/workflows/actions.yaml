@@ -29,5 +29,18 @@ jobs:
       - name: Run tests
         run: |
           coverage run -m unittest
-          coverage report -m
+          coverage report --fail-under=85
+          coverage json -o cov.json
+
+      - name: Add coverage to job summary
+        shell: bash
+        run: |
+          total=$(jq '.totals.percent_covered' cov.json)   # needs jq (pre-installed on runner)
+          {
+            echo "### Test coverage"
+            echo ""
+            echo "| Metric | Percent |"
+            echo "|--------|---------|"
+            echo "| Lines  | ${total}% |"
+          } >> "$GITHUB_STEP_SUMMARY"
           
