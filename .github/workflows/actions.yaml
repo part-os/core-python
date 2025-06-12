@@ -35,12 +35,12 @@ jobs:
       - name: Add coverage to job summary
         shell: bash
         run: |
-          total=$(jq '.totals.percent_covered' cov.json)   # needs jq (pre-installed on runner)
+          total=$(jq '.totals.percent_covered' cov.json)
           {
             echo "### Test coverage"
             echo ""
             echo "| Metric | Percent |"
             echo "|--------|---------|"
-            echo "| Lines  | ${total}% |"
+            printf "| Total  | %.2f%% |\n" "$total"
           } >> "$GITHUB_STEP_SUMMARY"
           
