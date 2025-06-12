@@ -28,4 +28,6 @@ jobs:
           
       - name: Run tests
         run: |
-          python -m pytest tests/
+          coverage run -m unittest
+          coverage report -m
+          
