@@ -1,9 +1,17 @@
 import json
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, Mock
 
+from requests import Response
+
+from paperless.api_mappers.quotes import QuoteComponentMapper
 from paperless.client import PaperlessClient
-from paperless.functions.components import get_quote_item_components, get_quote_items
+from paperless.functions import (
+    get_quote_item_components,
+    get_quote_items,
+    update_component_costing_variables,
+)
+from paperless.objects.quotes import QuoteComponent
 
 
 class TestGetPaginatedAPIObjects(unittest.TestCase):
@@ -112,3 +120,22 @@ class TestGetPaginatedAPIObjects(unittest.TestCase):
 
         self.assertEqual(3, len(quote_items))
         self.assertEqual(2, rs.called)
+
+
+class TestCostingVariableUpdate(unittest.TestCase):
+    def setUp(self):
+        # instantiate client singleton
+        self.client = PaperlessClient()
+        with open('tests/unit/mock_data/quote.json') as data_file:
+            quote_json = json.load(data_file)
+            self.test_component = quote_json['quote_items'][0]['components'][1]
+
+    def test_update_component_costing_variables(self):
+        # we're only testing the happy path here as we've validated in other places
+        # that the payload generated from a QuoteComponent has the correct shape.
+        response_data = Response()
+        response_data.status_code = 204
+        self.client.request = Mock(return_value=response_data)
+        ctor_args = QuoteComponentMapper.map(self.test_component)
+        qc = QuoteComponent(**ctor_args)
+        update_component_costing_variables(1, qc, self.client)
