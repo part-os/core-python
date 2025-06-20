@@ -3,6 +3,10 @@ import unittest
 from typing import List
 
 from paperless.api_mappers.quotes import QuoteComponentMapper
+from paperless.functions.costing import (
+    get_component_costing_updates,
+    get_costing_variable_updates,
+)
 from paperless.objects.quotes import (
     CostingVariablePayload,
     QuoteComponent,
@@ -116,7 +120,7 @@ class TestCostingVariableUpdateData(unittest.TestCase):
 
     def test_basic_variables(self):
         tvc = self.TestVariableContainer(vars=self.basic_vars)
-        cvs = tvc.get_costing_updates()
+        cvs = get_costing_variable_updates(tvc)
         self.assertTrue(cvs.get('drop_down_variables') is None)
         self.assertTrue(cvs.get('table_variables') is None)
         basic_vars = cvs['variables']
@@ -138,7 +142,7 @@ class TestCostingVariableUpdateData(unittest.TestCase):
 
     def test_drop_down_variables(self):
         tvc = self.TestVariableContainer(vars=self.drop_down_vars)
-        cvs = tvc.get_costing_updates()
+        cvs = get_costing_variable_updates(tvc)
         self.assertTrue(cvs.get('variables') is None)
         self.assertTrue(cvs.get('table_variables') is None)
         dd_vars = cvs['drop_down_variables']
@@ -159,7 +163,7 @@ class TestCostingVariableUpdateData(unittest.TestCase):
 
     def test_table_variables(self):
         tvc = self.TestVariableContainer(vars=self.table_vars)
-        cvs = tvc.get_costing_updates()
+        cvs = get_costing_variable_updates(tvc)
         self.assertTrue(cvs.get('variables') is None)
         self.assertTrue(cvs.get('drop_down_variables') is None)
         t_vars = cvs['table_variables']
@@ -187,7 +191,7 @@ class TestQuoteComponentUpdatePayload(unittest.TestCase):
         ctor_args = QuoteComponentMapper.map(self.test_component)
         qc = QuoteComponent(**ctor_args)
         self.assertTrue(isinstance(qc, QuoteComponent))
-        updates = qc.get_costing_updates()
+        updates = get_component_costing_updates(qc)
         self.assertTrue(isinstance(updates, dict))
         self.assertEqual(len(updates), 9)
         self.assertEqual(
