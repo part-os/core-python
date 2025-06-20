@@ -50,43 +50,6 @@ class QuoteCostingVariable:
     value_type: str = attr.ib(attr.validators.instance_of(str))
 
 
-SingleValueType = Union[float, int, str, bool]
-RowType = Dict[str, SingleValueType]
-QuantitySpecificRowType = Dict[int, RowType]
-QuantitySpecificValueType = Dict[int, SingleValueType]
-
-
-# Convert a table-type QuoteCostingVariable to the required payload for a costing update
-def _table_update_transform(
-    v: QuoteCostingVariable,
-) -> Union[RowType, QuantitySpecificRowType]:
-    if v.variable_class != 'table':
-        raise ValueError(f'{v.label} is of type {v.variable_class}, not "table"')
-    if v.quantity_specific is True:
-        q_dict = {}
-        for k, cvp in v.quantities.items():
-            q_dict[k] = cvp.row
-        return q_dict
-    else:
-        # table variables have a single quantity of 1 if it's not quantity-specific
-        cvp = v.quantities[1]
-        return cvp.row
-
-
-def _variable_update_transform(
-    v: QuoteCostingVariable,
-) -> Union[SingleValueType, QuantitySpecificValueType]:
-    if v.variable_class != 'basic' and v.variable_class != 'drop_down':
-        raise ValueError(f'{v.label} is of unsupported type {v.variable_class}')
-    if v.quantity_specific is True:
-        q_dict = {}
-        for k, cvp in v.quantities.items():
-            q_dict[k] = cvp.value
-        return q_dict
-    else:
-        return v.value
-
-
 @attr.s(frozen=True)
 class QuoteCostingVariableMixin:
     """
@@ -107,27 +70,6 @@ class QuoteCostingVariableMixin:
             .get(label, dict())
             .get(qty, None)
         )
-
-    def get_costing_updates(self):
-        dd_vars = {}
-        t_vars = {}
-        vars = {}
-        for cv in self.costing_variables:
-            if cv.variable_class == 'drop_down':
-                dd_vars[cv.label] = _variable_update_transform(cv)
-            elif cv.variable_class == 'table':
-                t_vars[cv.label] = _table_update_transform(cv)
-            else:
-                vars[cv.label] = _variable_update_transform(cv)
-
-        all_vars = {}
-        if len(dd_vars) > 0:
-            all_vars['drop_down_variables'] = dd_vars
-        if len(t_vars) > 0:
-            all_vars['table_variables'] = t_vars
-        if len(vars) > 0:
-            all_vars['variables'] = vars
-        return all_vars
 
 
 @attr.s(frozen=True)
@@ -292,16 +234,6 @@ class QuoteComponent(BaseComponent):
         converter=convert_iterable(QuoteOperation)
     )
     quantities: List[Quantity] = attr.ib(converter=convert_iterable(Quantity))
-
-    def get_costing_updates(self):
-        # generate a payload for bulk-update of all operation costing variables for
-        # this component
-        vars = {}
-        for mop in self.material_operations:
-            vars[mop.id] = mop.get_costing_updates()
-        for sop in self.shop_operations:
-            vars[sop.id] = sop.get_costing_updates()
-        return vars
 
 
 @attr.s(frozen=False)
