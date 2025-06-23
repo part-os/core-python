@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "paperless-python-sdk"
+version = "1.0.0"
+description = "Paperless Parts Python SDK"
+readme = "README.md"
+license = {text = "LGPL-3.0"}
+authors = [
+    {name = "Paperless Parts Engineering", email = "dev@paperlessparts.com"}
+]
+maintainers = [
+    {name = "Paperless Parts Engineering", email = "dev@paperlessparts.com"}
+]
+keywords = ["paperless", "parts", "sdk", "api"]
+classifiers = [
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+requires-python = ">=3.8.0"
+dependencies = [
+    "attrs>=25.3.0",
+    "factory_boy>=2.11.1",
+    "Faker>=1.0.5",
+    "requests>=2.32.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/paperlessPARTS/core-python"
+Repository = "https://github.com/paperlessPARTS/core-python"
+Issues = "https://github.com/paperlessPARTS/core-python/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit>=2.9.3",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["paperless"]
+sources = {"paperless" = "paperless"}
+exclude = ["tests", "tests/*", "*.tests", "*.tests.*"]
