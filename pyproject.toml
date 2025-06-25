@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling >= 1.27.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -19,16 +19,21 @@ classifiers = [
     "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
-requires-python = ">=3.8.0"
+requires-python = ">=3.9.0"
 dependencies = [
-    "attrs>=25.3.0",
-    "factory_boy>=2.11.1",
-    "Faker>=1.0.5",
-    "requests>=2.32.4",
+    "attrs==25.3.0",
+    "factory_boy==3.3.3",
+    "Faker==37.4.0",
+    "requests==2.32.4",
+    "python-dateutil==2.9.0.post0",
 ]
 
 [project.urls]
@@ -38,7 +43,8 @@ Issues = "https://github.com/paperlessPARTS/core-python/issues"
 
 [project.optional-dependencies]
 dev = [
-    "pre-commit>=2.9.3",
+    "coverage==7.9.1",
+    "pre-commit==4.2.0",
 ]
 
 [tool.hatch.build.targets.wheel]
