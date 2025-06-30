@@ -57,17 +57,6 @@ def convert_dictionary(cl):
     return converter
 
 
-def phone_length_validator(instance, attribute, value):
-    if value == NO_UPDATE or None:
-        return
-    if len(value) > 10:
-        raise ValueError(
-            "Invalid phone number for {}. Phone number must be 10 digits.".format(
-                attribute
-            )
-        )
-
-
 def tax_rate_validator(instance, attribute, value):
     if value == NO_UPDATE:
         return

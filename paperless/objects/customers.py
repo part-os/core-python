@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 import attr
 
@@ -28,7 +28,6 @@ from .utils import (
     convert_cls,
     convert_iterable,
     optional_convert,
-    phone_length_validator,
     tax_rate_validator,
 )
 
@@ -162,7 +161,7 @@ class Account(
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
     phone = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.optional(phone_length_validator)
+        default=NO_UPDATE, validator=attr.validators.instance_of((str, object)),
     )
     phone_ext = attr.ib(
         default=NO_UPDATE,
@@ -332,7 +331,7 @@ class Contact(
         validator=attr.validators.optional(attr.validators.instance_of((str, object))),
     )
     phone = attr.ib(
-        default=NO_UPDATE, validator=attr.validators.optional(phone_length_validator)
+        default=NO_UPDATE, validator=attr.validators.instance_of((str, object)),
     )
     phone_ext = attr.ib(
         default=NO_UPDATE,
