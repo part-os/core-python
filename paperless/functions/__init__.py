@@ -1,5 +1,5 @@
 __all__ = [
-    'qet_quote_items',
+    'get_quote_items',
     'get_quote_item_components',
     'update_component_costing_variables',
 ]
