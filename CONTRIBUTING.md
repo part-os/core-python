@@ -1,7 +1,3 @@
-Here’s a strong starting point for a CONTRIBUTING.md file tailored to a Python repository. You can customize details as needed for your workflow and project specifics:
-
----
-
 # Contributing to core-python
 
 Thank you for your interest in contributing to core-python! We welcome contributions from the community and want to make the process as smooth as possible.
@@ -45,7 +41,3 @@ If code requires version-specific logic, use clear and well-documented condition
 
 - Use the [issue tracker](https://github.com/part-os/core-python/issues) for bugs, feature requests, or questions.
 - Provide as much context as possible, including steps to reproduce problems.
-
-## Code of Conduct
-
-Please note we have a [Code of Conduct](CODE_OF_CONDUCT.md); by participating, you agree to abide by its terms.
