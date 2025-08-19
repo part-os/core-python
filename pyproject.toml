@@ -43,7 +43,7 @@ Issues = "https://github.com/paperlessPARTS/core-python/issues"
 
 [project.optional-dependencies]
 dev = [
-    "coverage==7.10.2",
+    "coverage==7.10.4",
     "pre-commit==4.2.0",
 ]
 
