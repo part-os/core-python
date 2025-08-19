@@ -63,7 +63,7 @@ class AddOnMapper(BaseMapper):
         costing_variables = map(
             QuoteCostingVariablesMapper.map, resource['costing_variables']
         )
-        field_keys = ['name', 'notes', 'add_on_definition_erp_code']
+        field_keys = ['id', 'name', 'notes', 'add_on_definition_erp_code']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         bool_keys = ['is_required']
@@ -76,6 +76,28 @@ class AddOnMapper(BaseMapper):
         return mapped_result
 
 
+class DiscountMapper(BaseMapper):
+    @classmethod
+    def map(cls, resource):
+        mapped_result = {}
+        costing_variables = map(
+            QuoteCostingVariablesMapper.map, resource['costing_variables']
+        )
+        costing_variable_overrides = map(
+            QuoteCostingVariablesMapper.map, resource['costing_variable_overrides']
+        )
+        field_keys = ['uuid', 'name', 'notes', 'quote_item_uuid', 'discount_definition']
+
+        for key in field_keys:
+            mapped_result[key] = resource.get(key, None)
+        list_keys = ['discount_quantities']
+        for key in list_keys:
+            mapped_result[key] = resource.get(key, [])
+        mapped_result['costing_variables'] = costing_variables
+        mapped_result['costing_variable_overrides'] = costing_variable_overrides
+        return mapped_result
+
+
 class PricingItemMapper(BaseMapper):
     @classmethod
     def map(cls, resource):
@@ -83,7 +105,7 @@ class PricingItemMapper(BaseMapper):
         costing_variables = map(
             QuoteCostingVariablesMapper.map, resource['costing_variables']
         )
-        field_keys = ['name', 'notes', 'category', 'calculation_type']
+        field_keys = ['uuid', 'name', 'notes', 'category', 'calculation_type']
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
         list_keys = ['pricing_item_quantities']
@@ -199,6 +221,7 @@ class QuoteComponentMapper(BaseMapper):
             QuoteOperationsMapper.map, resource['shop_operations']
         )
         mapped_result['add_ons'] = map(AddOnMapper.map, resource['add_ons'])
+        mapped_result['discounts'] = map(DiscountMapper.map, resource['discounts'])
         mapped_result['pricing_items'] = map(
             PricingItemMapper.map, resource['pricing_items']
         )

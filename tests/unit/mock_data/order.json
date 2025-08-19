@@ -4049,6 +4049,27 @@
           "costing_variables": []
         }
       ],
+      "discounts": [
+          {
+              "uuid": "d5b78a76-f069-45a8-b201-1380735b7559",
+              "name": "Manual discount",
+              "notes": null,
+              "quote_item_uuid": "412f9d66-b0a9-4d33-862b-641d833eab5f",
+              "discount_definition": null,
+              "discount_quantities": [
+                  {
+                      "uuid": "0122208a-e587-4728-9cf3-e1f5749e9a92",
+                      "quantity": 36,
+                      "discount": "d5b78a76-f069-45a8-b201-1380735b7559",
+                      "calculated_discount": "108.648000",
+                      "calculated_percentage": 0.0,
+                      "manual_percentage": 10.0
+                  }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+          }
+      ],
       "pricing_items": [
         {
           "uuid": "431f9914-354a-4be3-b98e-0ee466029ba7",
