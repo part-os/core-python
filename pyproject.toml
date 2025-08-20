@@ -44,7 +44,7 @@ Issues = "https://github.com/paperlessPARTS/core-python/issues"
 [project.optional-dependencies]
 dev = [
     "coverage==7.10.2",
-    "pre-commit==4.2.0",
+    "pre-commit==4.3.0",
 ]
 
 [tool.hatch.build.targets.wheel]
