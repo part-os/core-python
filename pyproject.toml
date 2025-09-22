@@ -31,7 +31,7 @@ requires-python = ">=3.9.0"
 dependencies = [
     "attrs==25.3.0",
     "factory_boy==3.3.3",
-    "Faker==37.5.3",
+    "Faker==37.8.0",
     "requests==2.32.5",
     "python-dateutil==2.9.0.post0",
 ]
@@ -43,8 +43,8 @@ Issues = "https://github.com/paperlessPARTS/core-python/issues"
 
 [project.optional-dependencies]
 dev = [
-    "coverage==7.10.2",
-    "pre-commit==4.2.0",
+    "coverage==7.10.6",
+    "pre-commit==4.3.0",
 ]
 
 [tool.hatch.build.targets.wheel]
