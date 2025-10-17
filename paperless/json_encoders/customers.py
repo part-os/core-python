@@ -11,6 +11,7 @@ class AccountEncoder(BaseJSONEncoder):
     def encode(cls, resource, json_dumps=True):
         data = {}
         field_keys = [
+            'country_code',
             'credit_cards_enabled',
             'credit_line',
             'erp_code',
@@ -118,6 +119,7 @@ class ContactEncoder(BaseJSONEncoder):
         data = {}
         field_keys = [
             'account_id',
+            'country_code',
             'email',
             'first_name',
             'last_name',
