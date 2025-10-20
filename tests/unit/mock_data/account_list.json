@@ -4,6 +4,7 @@
   "previous": null,
   "results": [
     {
+      "country_code": "1",
       "erp_code": "PPI",
       "id": 1,
       "name": "Paperless Parts Inc.",
@@ -12,6 +13,7 @@
       "type": "customer"
     },
     {
+      "country_code": "1",
       "erp_code": "AMC",
       "id": 2,
       "name": "ACME Machining",
@@ -20,6 +22,7 @@
       "type": "customer"
     },
     {
+      "country_code": "1",
       "erp_code": null,
       "id": 3,
       "name": "A Cut Above CNC",

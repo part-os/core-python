@@ -96,6 +96,7 @@ class AddOnQuantity:
 
 @attr.s(frozen=False)
 class AddOn(QuoteCostingVariableMixin):
+    id: int = attr.ib(validator=attr.validators.instance_of(int))
     is_required: bool = attr.ib(validator=attr.validators.instance_of(bool))
     name: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(
@@ -105,6 +106,39 @@ class AddOn(QuoteCostingVariableMixin):
     add_on_definition_erp_code: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
+
+
+@attr.s(frozen=False)
+class DiscountQuantity:
+    uuid: int = attr.ib(validator=attr.validators.instance_of(str))
+    discount: str = attr.ib(validator=attr.validators.instance_of(str))
+    quantity: int = attr.ib(validator=attr.validators.instance_of(int))
+    calculated_discount: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
+    calculated_percentage: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
+    manual_percentage: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
+
+
+@attr.s(frozen=False)
+class Discount(QuoteCostingVariableMixin):
+    uuid: int = attr.ib(validator=attr.validators.instance_of(str))
+    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    notes: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    quote_item_uuid: int = attr.ib(validator=attr.validators.instance_of(str))
+    discount_definition: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
+    discount_quantities: List[DiscountQuantity] = attr.ib(converter=convert_iterable(DiscountQuantity))
 
 
 @attr.s(frozen=False)
@@ -131,6 +165,7 @@ class PricingItemQuantity:
 @attr.s(frozen=False)
 class PricingItem(QuoteCostingVariableMixin):
     name: str = attr.ib(validator=attr.validators.instance_of(str))
+    uuid: int = attr.ib(validator=attr.validators.instance_of(str))
     category: str = attr.ib(validator=attr.validators.instance_of(str))
     calculation_type: str = attr.ib(validator=attr.validators.instance_of(str))
     notes: Optional[str] = attr.ib(
@@ -181,6 +216,16 @@ class Quantity:
     total_price_with_required_add_ons: Money = attr.ib(
         converter=Money, validator=attr.validators.instance_of(Money)
     )
+    unit_price_before_discounts: Money = attr.ib(
+        converter=Money, validator=attr.validators.instance_of(Money)
+    )
+    total_discount: Money = attr.ib(
+        converter=Money, validator=attr.validators.instance_of(Money)
+    )
+    total_discount_percentage: Optional[Decimal] = attr.ib(
+        converter=optional_convert(Decimal),
+        validator=attr.validators.optional(attr.validators.instance_of(Decimal)),
+    )
     lead_time: int = attr.ib(validator=attr.validators.instance_of(int))
     expedites: List[Expedite] = attr.ib(converter=convert_iterable(Expedite))
     is_most_likely_won_quantity: bool = attr.ib(
@@ -226,6 +271,7 @@ class Quantity:
 @attr.s(frozen=False)
 class QuoteComponent(BaseComponent):
     add_ons: List[AddOn] = attr.ib(converter=convert_iterable(AddOn))
+    discounts: List[Discount] = attr.ib(converter=convert_iterable(Discount))
     pricing_items: List[PricingItem] = attr.ib(converter=convert_iterable(PricingItem))
     material_operations: List[QuoteOperation] = attr.ib(
         converter=convert_iterable(QuoteOperation)

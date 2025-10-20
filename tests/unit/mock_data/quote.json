@@ -86,6 +86,7 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "2616.74",
+            "unit_price_before_discounts": "2616.74",
             "total_price": "2616.74",
             "total_price_with_required_add_ons": "3616.74",
             "lead_time": 13,
@@ -94,7 +95,8 @@
             "total_outside_processing_cost": "738.80",
             "total_purchased_component_cost": "838.80",
             "total_component_overrides_cost": "300.00",
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           },
           {
             "id": 139663,
@@ -108,10 +110,12 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "551.56",
+            "unit_price_before_discounts": "551.56",
             "total_price": "2757.80",
             "total_price_with_required_add_ons": "3757.80",
             "lead_time": 13,
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           },
           {
             "id": 139664,
@@ -125,10 +129,12 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "294.90",
+            "unit_price_before_discounts": "294.90",
             "total_price": "2949.00",
             "total_price_with_required_add_ons": "3949.00",
             "lead_time": 13,
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           },
           {
             "id": 139665,
@@ -142,10 +148,12 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "140.90",
+            "unit_price_before_discounts": "140.90",
             "total_price": "3522.50",
             "total_price_with_required_add_ons": "4522.50",
             "lead_time": 13,
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           }
         ],
         "process": {
@@ -393,6 +401,27 @@
                 "quantity": 25
               }
             ]
+          }
+        ],
+        "discounts": [
+          {
+            "uuid": "d5b78a76-f069-45a8-b201-1380735b7559",
+            "name": "Manual discount",
+            "notes": null,
+            "quote_item_uuid": "412f9d66-b0a9-4d33-862b-641d833eab5f",
+            "discount_definition": null,
+            "discount_quantities": [
+              {
+                "uuid": "0122208a-e587-4728-9cf3-e1f5749e9a92",
+                "quantity": 36,
+                "discount": "d5b78a76-f069-45a8-b201-1380735b7559",
+                "calculated_discount": "108.648000",
+                "calculated_percentage": 0.0,
+                "manual_percentage": 10.0
+              }
+            ],
+            "costing_variables": [],
+            "costing_variable_overrides": {}
           }
         ],
         "pricing_items": [
@@ -756,6 +785,27 @@
               ]
             }
           ],
+          "discounts": [
+            {
+              "uuid": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+              "name": "Service discount",
+              "notes": "Discount for service items",
+              "quote_item_uuid": "afa28a80-a55d-4db7-bb68-8f5c7b820d04",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "j55cf60d-0d25-4ac3-8897-7dc29f0fc296",
+                  "quantity": 1,
+                  "discount": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+                  "calculated_discount": "2.500000",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [
             {
               "uuid": "6d827067-6b06-474d-8572-1101ebed9cbb",
@@ -824,6 +874,7 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "2616.74",
+              "unit_price_before_discounts": "2616.74",
               "total_price": "2616.74",
               "total_price_with_required_add_ons": "3616.74",
               "lead_time": 13,
@@ -832,7 +883,8 @@
               "total_outside_processing_cost": "738.80",
               "total_purchased_component_cost": "838.80",
               "total_component_overrides_cost": "300.00",
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139663,
@@ -843,10 +895,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "551.56",
+              "unit_price_before_discounts": "551.56",
               "total_price": "2757.80",
               "total_price_with_required_add_ons": "3757.80",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139664,
@@ -857,10 +911,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "294.90",
+              "unit_price_before_discounts": "294.90",
               "total_price": "2949.00",
               "total_price_with_required_add_ons": "3949.00",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139665,
@@ -871,10 +927,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "140.90",
+              "unit_price_before_discounts": "140.90",
               "total_price": "3522.50",
               "total_price_with_required_add_ons": "4522.50",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         },
@@ -2042,6 +2100,27 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/77f30d3ecaaa2bbe019a7cb2f5c74e366f5e3c04.png",
           "type": "manufactured",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "dafe8a7e-c28a-4519-adcf-f8654789d409",
+              "name": "Manual discount",
+              "notes": null,
+              "quote_item_uuid": "3fa28a80-a55d-4db7-bb68-8f5c7b820cfd",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "b55cf60d-0d25-4ac3-8897-7dc29f0fc288",
+                  "quantity": 1,
+                  "discount": "dafe8a7e-c28a-4519-adcf-f8654789d409",
+                  "calculated_discount": "0.000000",
+                  "calculated_percentage": 0.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -2053,10 +2132,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "505.39",
+              "unit_price_before_discounts": "505.39",
               "total_price": "505.39",
               "total_price_with_required_add_ons": "505.39",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139667,
@@ -2067,10 +2148,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "115.20",
+              "unit_price_before_discounts": "115.20",
               "total_price": "576.00",
               "total_price_with_required_add_ons": "576.00",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139668,
@@ -2081,10 +2164,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "66.42",
+              "unit_price_before_discounts": "66.42",
               "total_price": "664.20",
               "total_price_with_required_add_ons": "664.20",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139669,
@@ -2095,10 +2180,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "37.16",
+              "unit_price_before_discounts": "37.16",
               "total_price": "929.00",
               "total_price_with_required_add_ons": "929.00",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         },
@@ -3266,6 +3353,35 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/417ef6a39c057a604d6fb9886efd2c9c17de0cd4.png",
           "type": "manufactured",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "eafe8a7e-c28a-4519-adcf-f8654789d410",
+              "name": "Bulk discount",
+              "notes": "Volume discount for large orders",
+              "quote_item_uuid": "4fa28a80-a55d-4db7-bb68-8f5c7b820cfe",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "c55cf60d-0d25-4ac3-8897-7dc29f0fc289",
+                  "quantity": 5,
+                  "discount": "eafe8a7e-c28a-4519-adcf-f8654789d410",
+                  "calculated_discount": "25.000000",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                },
+                {
+                  "uuid": "d55cf60d-0d25-4ac3-8897-7dc29f0fc290",
+                  "quantity": 10,
+                  "discount": "eafe8a7e-c28a-4519-adcf-f8654789d410",
+                  "calculated_discount": "60.000000",
+                  "calculated_percentage": 10.0,
+                  "manual_percentage": 10.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -3277,10 +3393,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "398.11",
+              "unit_price_before_discounts": "398.11",
               "total_price": "398.11",
               "total_price_with_required_add_ons": "398.11",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139671,
@@ -3291,10 +3409,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "79.91",
+              "unit_price_before_discounts": "79.91",
               "total_price": "399.55",
               "total_price_with_required_add_ons": "399.55",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139672,
@@ -3305,10 +3425,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "40.14",
+              "unit_price_before_discounts": "40.14",
               "total_price": "401.40",
               "total_price_with_required_add_ons": "401.40",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139673,
@@ -3319,10 +3441,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "16.27",
+              "unit_price_before_discounts": "16.27",
               "total_price": "406.75",
               "total_price_with_required_add_ons": "406.75",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         },
@@ -4490,6 +4614,27 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/ef437bcd0ef987394f9a0c8d870d6a9f37f8dc09.png",
           "type": "manufactured",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "fafe8a7e-c28a-4519-adcf-f8654789d411",
+              "name": "Loyalty discount",
+              "notes": "Discount for returning customers",
+              "quote_item_uuid": "5fa28a80-a55d-4db7-bb68-8f5c7b820cff",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "e55cf60d-0d25-4ac3-8897-7dc29f0fc291",
+                  "quantity": 1,
+                  "discount": "fafe8a7e-c28a-4519-adcf-f8654789d411",
+                  "calculated_discount": "15.410500",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -4501,10 +4646,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "308.21",
+              "unit_price_before_discounts": "308.21",
               "total_price": "308.21",
               "total_price_with_required_add_ons": "308.21",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139675,
@@ -4515,10 +4662,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "62.01",
+              "unit_price_before_discounts": "62.01",
               "total_price": "310.05",
               "total_price_with_required_add_ons": "310.05",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139676,
@@ -4529,10 +4678,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "31.23",
+              "unit_price_before_discounts": "31.23",
               "total_price": "312.30",
               "total_price_with_required_add_ons": "312.30",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139677,
@@ -4543,10 +4694,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "12.76",
+              "unit_price_before_discounts": "12.76",
               "total_price": "319.00",
               "total_price_with_required_add_ons": "319.00",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         },
@@ -4675,6 +4828,27 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/82a5705b8589591bec042c06e7627cb82f2393c2.png",
           "type": "purchased",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "gafe8a7e-c28a-4519-adcf-f8654789d412",
+              "name": "Supplier discount",
+              "notes": "Special pricing from supplier",
+              "quote_item_uuid": "6fa28a80-a55d-4db7-bb68-8f5c7b820d00",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "f55cf60d-0d25-4ac3-8897-7dc29f0fc292",
+                  "quantity": 10,
+                  "discount": "gafe8a7e-c28a-4519-adcf-f8654789d412",
+                  "calculated_discount": "0.465000",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -4686,10 +4860,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "0.93",
+              "unit_price_before_discounts": "0.93",
               "total_price": "0.93",
               "total_price_with_required_add_ons": "0.93",
               "lead_time": 0,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139679,
@@ -4700,10 +4876,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "0.93",
+              "unit_price_before_discounts": "0.93",
               "total_price": "4.66",
               "total_price_with_required_add_ons": "4.66",
               "lead_time": 0,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139680,
@@ -4714,10 +4892,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "0.93",
+              "unit_price_before_discounts": "0.93",
               "total_price": "9.31",
               "total_price_with_required_add_ons": "9.31",
               "lead_time": 0,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139681,
@@ -4728,10 +4908,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "0.93",
+              "unit_price_before_discounts": "0.93",
               "total_price": "23.28",
               "total_price_with_required_add_ons": "23.28",
               "lead_time": 0,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         },
@@ -5899,6 +6081,27 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/71b063fa0fe571bb49453fb2fe8ebebab51b6a53.png",
           "type": "manufactured",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "hafe8a7e-c28a-4519-adcf-f8654789d413",
+              "name": "Finish discount",
+              "notes": "Discount for finish operations",
+              "quote_item_uuid": "7fa28a80-a55d-4db7-bb68-8f5c7b820d01",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "g55cf60d-0d25-4ac3-8897-7dc29f0fc293",
+                  "quantity": 1,
+                  "discount": "hafe8a7e-c28a-4519-adcf-f8654789d413",
+                  "calculated_discount": "19.941500",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -5910,10 +6113,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "398.83",
+              "unit_price_before_discounts": "398.83",
               "total_price": "398.83",
               "total_price_with_required_add_ons": "398.83",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139683,
@@ -5924,10 +6129,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "80.63",
+              "unit_price_before_discounts": "80.63",
               "total_price": "403.15",
               "total_price_with_required_add_ons": "403.15",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139684,
@@ -5938,10 +6145,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "40.86",
+              "unit_price_before_discounts": "40.86",
               "total_price": "408.60",
               "total_price_with_required_add_ons": "408.60",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139685,
@@ -5952,10 +6161,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "16.99",
+              "unit_price_before_discounts": "16.99",
               "total_price": "424.75",
               "total_price_with_required_add_ons": "424.75",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         },
@@ -7123,6 +7334,27 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/c2fd9190aefe681ffc3585ee41edf202095f32e7.png",
           "type": "manufactured",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "iafe8a7e-c28a-4519-adcf-f8654789d414",
+              "name": "Assembly discount",
+              "notes": "Discount for assembly operations",
+              "quote_item_uuid": "8fa28a80-a55d-4db7-bb68-8f5c7b820d02",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "h55cf60d-0d25-4ac3-8897-7dc29f0fc294",
+                  "quantity": 1,
+                  "discount": "iafe8a7e-c28a-4519-adcf-f8654789d414",
+                  "calculated_discount": "19.941500",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -7134,10 +7366,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "409.15",
+              "unit_price_before_discounts": "409.15",
               "total_price": "409.15",
               "total_price_with_required_add_ons": "409.15",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139687,
@@ -7148,10 +7382,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "90.95",
+              "unit_price_before_discounts": "90.95",
               "total_price": "454.75",
               "total_price_with_required_add_ons": "454.75",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139688,
@@ -7162,10 +7398,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "51.17",
+              "unit_price_before_discounts": "51.17",
               "total_price": "511.70",
               "total_price_with_required_add_ons": "511.70",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139689,
@@ -7176,10 +7414,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "27.31",
+              "unit_price_before_discounts": "27.31",
               "total_price": "682.75",
               "total_price_with_required_add_ons": "682.75",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         },
@@ -7242,6 +7482,27 @@
           "thumbnail_url": "https://s3.amazonaws.com//parts.dev.paperlessparts.com/147a8653adafea1b30abf4fc7462e0395a1bd171.png",
           "type": "assembled",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "jafe8a7e-c28a-4519-adcf-f8654789d415",
+              "name": "Assembly discount",
+              "notes": "Discount for assembled components",
+              "quote_item_uuid": "9fa28a80-a55d-4db7-bb68-8f5c7b820d03",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "i55cf60d-0d25-4ac3-8897-7dc29f0fc295",
+                  "quantity": 1,
+                  "discount": "jafe8a7e-c28a-4519-adcf-f8654789d415",
+                  "calculated_discount": "60.632000",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -7253,10 +7514,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "1212.64",
+              "unit_price_before_discounts": "1212.64",
               "total_price": "1212.64",
               "total_price_with_required_add_ons": "1212.64",
               "lead_time": 10,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139691,
@@ -7267,10 +7530,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "258.05",
+              "unit_price_before_discounts": "258.05",
               "total_price": "1290.25",
               "total_price_with_required_add_ons": "1290.25",
               "lead_time": 10,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139692,
@@ -7281,10 +7546,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "138.72",
+              "unit_price_before_discounts": "138.72",
               "total_price": "1387.20",
               "total_price_with_required_add_ons": "1387.20",
               "lead_time": 10,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139693,
@@ -7295,10 +7562,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "67.12",
+              "unit_price_before_discounts": "67.12",
               "total_price": "1678.00",
               "total_price_with_required_add_ons": "1678.00",
               "lead_time": 10,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         }
@@ -7334,10 +7603,12 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "501.12",
+            "unit_price_before_discounts": "501.12",
             "total_price": "501.12",
             "total_price_with_required_add_ons": "551.12",
             "lead_time": 13,
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           },
           {
             "id": 139695,
@@ -7348,10 +7619,12 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "119.27",
+            "unit_price_before_discounts": "119.27",
             "total_price": "596.35",
             "total_price_with_required_add_ons": "646.35",
             "lead_time": 13,
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           },
           {
             "id": 139696,
@@ -7362,10 +7635,12 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "71.54",
+            "unit_price_before_discounts": "71.54",
             "total_price": "715.40",
             "total_price_with_required_add_ons": "765.40",
             "lead_time": 13,
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           },
           {
             "id": 139697,
@@ -7376,10 +7651,12 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "42.90",
+            "unit_price_before_discounts": "42.90",
             "total_price": "1072.50",
             "total_price_with_required_add_ons": "1122.50",
             "lead_time": 13,
-            "expedites": []
+            "expedites": [],
+            "total_discount": "0.00"
           }
         ],
         "process": {
@@ -8912,6 +9189,27 @@
                 "quantity": 25
               }
             ]
+          }
+        ],
+        "discounts": [
+          {
+            "uuid": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+            "name": "Service discount",
+            "notes": "Discount for service items",
+            "quote_item_uuid": "afa28a80-a55d-4db7-bb68-8f5c7b820d04",
+            "discount_definition": null,
+            "discount_quantities": [
+              {
+                "uuid": "j55cf60d-0d25-4ac3-8897-7dc29f0fc296",
+                "quantity": 1,
+                "discount": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+                "calculated_discount": "2.500000",
+                "calculated_percentage": 5.0,
+                "manual_percentage": 5.0
+              }
+            ],
+            "costing_variables": [],
+            "costing_variable_overrides": {}
           }
         ],
         "pricing_items": [
@@ -10533,6 +10831,27 @@
               ]
             }
           ],
+          "discounts": [
+            {
+              "uuid": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+              "name": "Service discount",
+              "notes": "Discount for service items",
+              "quote_item_uuid": "afa28a80-a55d-4db7-bb68-8f5c7b820d04",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "j55cf60d-0d25-4ac3-8897-7dc29f0fc296",
+                  "quantity": 1,
+                  "discount": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+                  "calculated_discount": "2.500000",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [
             {
               "uuid": "6d827067-6b06-474d-8572-1101ebed9cbb",
@@ -10601,10 +10920,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "501.12",
+              "unit_price_before_discounts": "501.12",
               "total_price": "501.12",
               "total_price_with_required_add_ons": "551.12",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139695,
@@ -10615,10 +10936,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "119.27",
+              "unit_price_before_discounts": "119.27",
               "total_price": "596.35",
               "total_price_with_required_add_ons": "646.35",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139696,
@@ -10629,10 +10952,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "71.54",
+              "unit_price_before_discounts": "71.54",
               "total_price": "715.40",
               "total_price_with_required_add_ons": "765.40",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             },
             {
               "id": 139697,
@@ -10643,10 +10968,12 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "42.90",
+              "unit_price_before_discounts": "42.90",
               "total_price": "1072.50",
               "total_price_with_required_add_ons": "1122.50",
               "lead_time": 13,
-              "expedites": []
+              "expedites": [],
+              "total_discount": "0.00"
             }
           ]
         }
@@ -10682,6 +11009,7 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "50.00",
+            "unit_price_before_discounts": "50.00",
             "total_price": "50.00",
             "total_price_with_required_add_ons": "50.00",
             "lead_time": 1,
@@ -10691,9 +11019,12 @@
                 "lead_time": 2,
                 "markup": 30,
                 "unit_price": "65.00",
-                "total_price": "65.00"
+                "unit_price_before_discounts": "65.00",
+                "total_price": "65.00",
+                "total_discount": "0.00"
               }
-            ]
+            ],
+            "total_discount": "0.00"
           },
           {
             "id": 139699,
@@ -10704,6 +11035,7 @@
             "markup_2_price": "0.00",
             "markup_2_name": "Markup",
             "unit_price": "95.00",
+            "unit_price_before_discounts": "95.00",
             "total_price": "190.00",
             "total_price_with_required_add_ons": "190.00",
             "lead_time": 1,
@@ -10713,9 +11045,12 @@
                 "lead_time": 2,
                 "markup": 30,
                 "unit_price": "123.50",
-                "total_price": "247.00"
+                "unit_price_before_discounts": "123.50",
+                "total_price": "247.00",
+                "total_discount": "0.00"
               }
-            ]
+            ],
+            "total_discount": "0.00"
           }
         ],
         "process": null,
@@ -10725,6 +11060,7 @@
         "finishes": [],
         "material_notes": null,
         "add_ons": [],
+        "discounts": [],
         "pricing_items": [],
         "DEPRECATION_WARNING": "The `root_component` attribute will be removed on April 30, 2020. Update your client to use the `components` array and `root_component_id` to find the root."
       },
@@ -10758,6 +11094,27 @@
           "thumbnail_url": null,
           "type": "manufactured",
           "add_ons": [],
+          "discounts": [
+            {
+              "uuid": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+              "name": "Service discount",
+              "notes": "Discount for service items",
+              "quote_item_uuid": "afa28a80-a55d-4db7-bb68-8f5c7b820d04",
+              "discount_definition": null,
+              "discount_quantities": [
+                {
+                  "uuid": "j55cf60d-0d25-4ac3-8897-7dc29f0fc296",
+                  "quantity": 1,
+                  "discount": "kafe8a7e-c28a-4519-adcf-f8654789d416",
+                  "calculated_discount": "2.500000",
+                  "calculated_percentage": 5.0,
+                  "manual_percentage": 5.0
+                }
+              ],
+              "costing_variables": [],
+              "costing_variable_overrides": {}
+            }
+          ],
           "pricing_items": [],
           "quantities": [
             {
@@ -10769,6 +11126,7 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "50.00",
+              "unit_price_before_discounts": "50.00",
               "total_price": "50.00",
               "total_price_with_required_add_ons": "50.00",
               "lead_time": 1,
@@ -10778,9 +11136,12 @@
                   "lead_time": 2,
                   "markup": 30,
                   "unit_price": "65.00",
-                  "total_price": "65.00"
+                  "unit_price_before_discounts": "65.00",
+                  "total_price": "65.00",
+                  "total_discount": "0.00"
                 }
-              ]
+              ],
+              "total_discount": "0.00"
             },
             {
               "id": 139699,
@@ -10791,6 +11152,7 @@
               "markup_2_price": "0.00",
               "markup_2_name": "Markup",
               "unit_price": "95.00",
+              "unit_price_before_discounts": "95.00",
               "total_price": "190.00",
               "total_price_with_required_add_ons": "190.00",
               "lead_time": 1,
@@ -10800,9 +11162,12 @@
                   "lead_time": 2,
                   "markup": 30,
                   "unit_price": "123.50",
-                  "total_price": "247.00"
+                  "unit_price_before_discounts": "123.50",
+                  "total_price": "247.00",
+                  "total_discount": "0.00"
                 }
-              ]
+              ],
+              "total_discount": "0.00"
             }
           ]
         }
