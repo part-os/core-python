@@ -7,7 +7,7 @@ Thank you for your interest in contributing to core-python! We welcome contribut
 1. **Fork the repository** and create your branch from `master`.
 2. **Create descriptive branches**: Use meaningful names, e.g., `feature/add-logging` or `bugfix/fix-typo-in-readme`.
 3. **Write clear, concise commit messages** that explain your changes.
-4. **Open a Pull Request** (PR) against the `master` branch. Please fill out the PR template and link any related issues.
+4. **Open a Pull Request** (PR) against the `master` branch.
 
 ## Code Style & Quality
 
@@ -17,17 +17,17 @@ Thank you for your interest in contributing to core-python! We welcome contribut
 
 ## Supported Versions
 
-We support all current supported versions of Python. When introducing new dependencies or syntax, please ensure they are available and function correctly across all supported Python versions. 
+We support all current supported versions of Python. When introducing new dependencies or syntax, please ensure they are available and function correctly across all supported Python versions.
 If code requires version-specific logic, use clear and well-documented conditional statements. Please verify changes using the test suite in each supported Python environment.
 
 
 ## Testing
 
 - All new features and bugfixes must include tests.
-- We use [pytest](https://docs.pytest.org/) for testing. Add your tests in the `tests/` directory.
+- We use the python `unittest` module for testing to avoid additional dependencies. Add your tests in the `tests/` directory.
 - Ensure your code passes all tests before submitting a PR:
   ```
-  pytest
+  python3 -m unittest
   ```
 - We expect **100% test coverage** for new code (exceptions may be discussed in PRs).
 

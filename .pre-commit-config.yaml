@@ -4,17 +4,17 @@ repos:
     hooks:
       - id: black
         args: ['--skip-string-normalization']
-        language_version: python3.10
+        language_version: python3
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        language_version: python3.10
+        language_version: python3
       - id: end-of-file-fixer
-        language_version: python3.10
+        language_version: python3
       - id: debug-statements
-        language_version: python3.10
+        language_version: python3
 
   - repo: https://github.com/pycqa/isort
     rev: 6.0.1
