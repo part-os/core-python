@@ -35,7 +35,8 @@ class TestContact(unittest.TestCase):
         self.assertEqual(c.id, 1)
         self.assertEqual(c.last_name, "Smith")
         self.assertEqual(c.notes, "test notes")
-        self.assertEqual(c.phone, "6035555555")
+        self.assertEqual(c.country_code, "1")
+        self.assertEqual(c.phone, "6176549944")
         self.assertEqual(c.phone_ext, "")
 
     def test_convert_contact_to_json(self):
@@ -44,11 +45,12 @@ class TestContact(unittest.TestCase):
         c = Contact.get(1)
         expected_contact_json = {
             "account_id": 1,
+            "country_code": "1",
             "email": "john.smith@paperlessparts.com",
             "first_name": "John",
             "last_name": "Smith",
             "notes": "test notes",
-            "phone": "6035555555",
+            "phone": "6176549944",
             "phone_ext": "",
             "address": {
                 "address1": "135 PORTLAND ST",
@@ -104,6 +106,7 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(ba.country, "USA")
         self.assertEqual(ba.postal_code, "02108")
         self.assertEqual(ba.state, "MA")
+        self.assertEqual(a.country_code, "1")
         self.assertEqual(a.created, "2021-01-11T23:57:59+00:00")
         self.assertEqual(a.credit_cards_enabled, True)
         self.assertEqual(a.credit_line, Money(raw_amount=30000))
@@ -113,7 +116,7 @@ class TestAccount(unittest.TestCase):
         self.assertIsNone(a.notes)
         self.assertEqual(a.payment_terms, "Net 30")
         self.assertEqual(a.payment_terms_period, 30)
-        self.assertEqual(a.phone, "6035555555")
+        self.assertEqual(a.phone, "6175671064")
         self.assertIsNone(a.phone_ext)
         self.assertTrue(a.purchase_orders_enabled)
         self.assertEqual(sta.address1, "1 City Hall Sq.")
@@ -131,6 +134,7 @@ class TestAccount(unittest.TestCase):
         self.client.get_resource = MagicMock(return_value=self.mock_account_json)
         a = Account.get(1)
         expected_account_json = {
+            "country_code": "1",
             "credit_cards_enabled": True,
             "credit_line": 30000.0,
             "erp_code": "ARUE",
@@ -138,7 +142,7 @@ class TestAccount(unittest.TestCase):
             "name": "Accolades R Us Engineering",
             "payment_terms": "Net 30",
             "payment_terms_period": 30,
-            "phone": "6035555555",
+            "phone": "6175671064",
             "phone_ext": None,
             "tax_exempt": True,
             "tax_rate": None,

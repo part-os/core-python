@@ -127,6 +127,7 @@ class Account(
     _json_encoder = AccountEncoder
 
     name: str = attr.ib(validator=attr.validators.instance_of(str))
+    country_code: str = attr.ib(validator=attr.validators.instance_of((str, object)))
 
     # not required for instantiation
     billing_addresses = attr.ib(
@@ -229,7 +230,7 @@ class Account(
 
 @attr.s(frozen=False)
 class AccountList(FromJSONMixin, PaginatedListMixin):
-
+    country_code: str = attr.ib(validator=attr.validators.instance_of((str, object)))
     erp_code: str = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
@@ -311,6 +312,7 @@ class Contact(
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
+    country_code: str = attr.ib(validator=attr.validators.instance_of((str, object)))
 
     # not required for instantiation
     address = attr.ib(
@@ -376,6 +378,7 @@ class ContactList(FromJSONMixin, PaginatedListMixin):
     account_id: Optional[int] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(int))
     )
+    country_code: str = attr.ib(validator=attr.validators.instance_of((str, object)))
     created: str = attr.ib(validator=attr.validators.instance_of(str))
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
