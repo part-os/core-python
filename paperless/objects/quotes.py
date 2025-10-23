@@ -527,7 +527,7 @@ class Quote(
         default=None
     )
     order_numbers: List[str] = attr.ib(
-        converter=optional_convert(convert_iterable(str)),
+        converter=lambda x: x if x is not None else [],
         default=attr.Factory(list)
     )
     metadata: Optional[Dict[str, Union[str, int, float, bool]]] = attr.ib(

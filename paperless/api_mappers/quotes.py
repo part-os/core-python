@@ -200,7 +200,7 @@ class QuoteDetailsMapper(BaseMapper):
             mapped_result[key] = resource.get(key, None)
         
         # Handle special default values for new fields
-        if resource.get('order_numbers', None) is None:
+        if mapped_result.get('order_numbers') is None:
             mapped_result['order_numbers'] = []
             
         bool_keys = ['export_controlled', 'is_unviewed_drafted_rfq']
