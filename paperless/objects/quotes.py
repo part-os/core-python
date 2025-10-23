@@ -522,6 +522,18 @@ class Quote(
             attr.validators.instance_of((int, float, object))
         ),
     )
+    uuid: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)),
+        default=None
+    )
+    order_numbers: List[str] = attr.ib(
+        converter=lambda x: x if x is not None else [],
+        default=attr.Factory(list)
+    )
+    metadata: Optional[Dict[str, Union[str, int, float, bool]]] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(dict)),
+        default=None
+    )
 
     @classmethod
     def construct_get_url(cls):

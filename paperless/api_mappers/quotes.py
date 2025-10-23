@@ -191,10 +191,18 @@ class QuoteDetailsMapper(BaseMapper):
             'customer',
             'erp_code',
             'send_from_facility',
-            'rfq_number'
+            'rfq_number',
+            'uuid',
+            'order_numbers',
+            'metadata'
         ]
         for key in field_keys:
             mapped_result[key] = resource.get(key, None)
+        
+        # Handle special default values for new fields
+        if mapped_result.get('order_numbers') is None:
+            mapped_result['order_numbers'] = []
+            
         bool_keys = ['export_controlled', 'is_unviewed_drafted_rfq']
         for key in bool_keys:
             mapped_result[key] = resource.get(key, False)

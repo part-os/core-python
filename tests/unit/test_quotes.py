@@ -20,6 +20,13 @@ class TestQuotes(unittest.TestCase):
         self.assertEqual(q.number, 339)
         self.assertEqual(q.tax_rate, 0.0)
         self.assertFalse(q.is_unviewed_drafted_rfq)
+        # test new fields
+        self.assertEqual(q.uuid, 'a1b2c3d4-e5f6-7890-abcd-ef1234567890')
+        self.assertEqual(q.order_numbers, [179])
+        self.assertIsNotNone(q.metadata)
+        self.assertEqual(q.metadata['source'], 'test')
+        self.assertEqual(q.metadata['priority_level'], 1)
+        self.assertFalse(q.metadata['is_expedited'])
         # test customer
         customer = q.customer
         self.assertIsNone(customer.id)
