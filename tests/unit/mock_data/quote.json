@@ -11199,9 +11199,15 @@
   "authenticated_pdf_quote_url": null,
   "is_unviewed_drafted_rfq": false,
   "created": "2020-12-08T14:54:54+00:00",
+  "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "order_numbers": [
     179
   ],
+  "metadata": {
+    "source": "test",
+    "priority_level": 1,
+    "is_expedited": false
+  },
   "revision_number": null,
   "send_from_facility": {
     "id": 1,
