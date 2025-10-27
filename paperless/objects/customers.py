@@ -127,11 +127,13 @@ class Account(
     _json_encoder = AccountEncoder
 
     name: str = attr.ib(validator=attr.validators.instance_of(str))
-    country_code: str = attr.ib(validator=attr.validators.instance_of((str, object)))
 
     # not required for instantiation
     billing_addresses = attr.ib(
         default=[], converter=optional_convert(convert_iterable(BillingAddress))
+    )
+    country_code: str = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((str, object))
     )
     created = attr.ib(
         default=NO_UPDATE, validator=(attr.validators.instance_of((str, object)))
@@ -312,11 +314,13 @@ class Contact(
     email: str = attr.ib(validator=attr.validators.instance_of(str))
     first_name: str = attr.ib(validator=attr.validators.instance_of(str))
     last_name: str = attr.ib(validator=attr.validators.instance_of(str))
-    country_code: str = attr.ib(validator=attr.validators.instance_of((str, object)))
 
     # not required for instantiation
     address = attr.ib(
         default=NO_UPDATE, converter=optional_convert(convert_cls(Address))
+    )
+    country_code: str = attr.ib(
+        default=NO_UPDATE, validator=attr.validators.instance_of((str, object))
     )
     created = attr.ib(
         default=NO_UPDATE, validator=(attr.validators.instance_of((str, object)))
