@@ -19,6 +19,15 @@ class TestContact(unittest.TestCase):
         with open('tests/unit/mock_data/contact.json') as data_file:
             self.mock_contact_json = json.load(data_file)
 
+    def test_create_contact_obj_with_only_required_args(self):
+        # should not raise any error
+        Contact(
+            account_id = 1,
+            email = "contact@paperlessparts.com",
+            first_name = "Contact",
+            last_name = "Paperless"
+        )
+
     def test_get_contact(self):
         self.client.get_resource = MagicMock(return_value=self.mock_contact_json)
         c = Contact.get(1)
@@ -93,6 +102,10 @@ class TestAccount(unittest.TestCase):
         self.client = PaperlessClient()
         with open('tests/unit/mock_data/account.json') as data_file:
             self.mock_account_json = json.load(data_file)
+
+    def test_create_account_with_only_required_args(self):
+        # should not raise any error
+        Account(name="Account Name")
 
     def test_get_account(self):
         self.client.get_resource = MagicMock(return_value=self.mock_account_json)
