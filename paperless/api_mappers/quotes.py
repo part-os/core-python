@@ -242,6 +242,7 @@ class QuoteComponentMapper(BaseMapper):
             'part_name',
             'part_number',
             'part_uuid',
+            'part_url',
             'purchased_component',
             'process',
             'revision',
