@@ -173,6 +173,9 @@ class BaseComponent:
     thumbnail_url: Optional[str] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(str))
     )
+    part_url: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
     @property
     def part_name_sans_ext(self):
